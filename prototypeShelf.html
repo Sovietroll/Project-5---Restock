@@ -158,10 +158,10 @@
           <p>
             x20
           </p>
-          <p class="line-1">
-            list here
+          <p class="line-1 js-lineOne" contenteditable="false">
+            edit here
           </p>
-          <button class="button-one">edit</button>
+          <button class="button-one js-edit-button">edit</button>
           <button class="button-two">remove</button>
         </li>
       </div>
@@ -250,17 +250,47 @@
       </div>
     </div>
 
-    <script>
-      
-
+    <script>    
       let data = [{
         name: "",
         quantity: 0
       }];
 
-      console.log(data)
+      console.log(data[0])
+
 
       let quantity = 0;
+
+      let toggleEditable = true;
+
+      let nameLineOne = document.querySelector('.js-lineOne');
+
+      nameLineOne.contentEditable = false;
+
+      const editText = document.querySelector('.js-edit-button');
+      editText.addEventListener('click',editableLine);
+
+      /*
+      const editableLine = () => {
+      (toggleEditable === true) ?
+      (nameLineOne.setAttribute('contenteditable','true')),
+      (toggleEditable = false):
+      (nameLineOne.setAttribute('contenteditable','false')),
+      (toggleEditable = true)
+      }; */
+
+      function editableLine(){
+        if(toggleEditable === true){
+          nameLineOne.contentEditable = true;
+          toggleEditable = false;
+        } else{
+          nameLineOne.contentEditable = false;
+          toggleEditable = true;
+        };
+        nameLineOne.value = nameLineOne.innerText;
+        console.log(nameLineOne.value);
+
+      }
 
       let inputOne = document.querySelector(".js-one");
 
@@ -277,17 +307,17 @@
       document.body.addEventListener('keydown',(event) => {
         if(event.key === 'Enter'){
           data.push({
-            name: input.value
+            name: [input.value, nameLineOne.value]
           });
-          nameLineOne.innerHTML = `${data[data.length -1].name}`; //data.name here
+          nameLineOne.innerHTML = `${data[data.length -1].name}`;
           input.value = '';
-          console.log(data[0]);
-          input.style.display = "none"; 
+          nameLineOne.value = '';
+          input.style.display = "none";
+          nameLineOne.contentEditable = false; 
+          console.log(data)
         }
         });
-
-      let nameLineOne = document.querySelector('.line-1')
-        
+       
 
       let shelfQuantity = document.querySelector('.js-quantity');
       shelfQuantity.innerHTML = `0`;

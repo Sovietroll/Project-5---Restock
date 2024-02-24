@@ -1,13 +1,17 @@
-NOTES
-
-
-
-CURRENT
+CURRENT -->
 creates object for data entry and data saving
+Relearn forEach for object array
 
-NEXT
+DONE create concept from AIllustrator
+DONE make HTML
+<--
+
+NEXT -->
 create local save
 create web browser from github
 testing
+<--
 
 BUGS -->
+FIXED kinda? - Object Array not saving properly
+<--
