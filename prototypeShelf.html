@@ -156,13 +156,13 @@
       <div class="list-content">
         <li class="line-main">
           <p>
-            x20
+           <!-- x20 -->
           </p>
           <p class="line-1 js-lineOne" contenteditable="false">
             edit here
           </p>
           <button class="button-one js-edit-button">edit</button>
-          <button class="button-two">remove</button>
+          <button class="button-two js-remove-button">remove</button>
         </li>
       </div>
     </div>
@@ -173,10 +173,10 @@
         <div>2</div>
       </div>
 
-      <div class="shelf-1">
-        <div class="shelf-pic">
-          <div class="shelf-name">Vitalize</div>
-          <div class="shelf-quantity">x15</div>
+      <div>
+        <div>
+          <div></div>
+          <div></div>
         </div>
 
         <div class="shelf-pic"></div>
@@ -256,7 +256,7 @@
         quantity: 0
       }];
 
-      console.log(data[0])
+      console.log(data[0]);
 
 
       let quantity = 0;
@@ -269,6 +269,13 @@
 
       const editText = document.querySelector('.js-edit-button');
       editText.addEventListener('click',editableLine);
+
+      const removeButton = document.querySelector('.js-remove-button');
+      //removeButton.addEventListener('click',);
+
+      function removeButtonSlice(){
+        
+      }
 
       /*
       const editableLine = () => {
@@ -283,13 +290,15 @@
         if(toggleEditable === true){
           nameLineOne.contentEditable = true;
           toggleEditable = false;
+          console.log(toggleEditable);
         } else{
           nameLineOne.contentEditable = false;
           toggleEditable = true;
+          console.log(toggleEditable);
+
         };
         nameLineOne.value = nameLineOne.innerText;
         console.log(nameLineOne.value);
-
       }
 
       let inputOne = document.querySelector(".js-one");
@@ -302,20 +311,30 @@
 
       function appearInputOne(){
       input.style.display = "block";
+      toggleEditable = true;
       }; 
 
       document.body.addEventListener('keydown',(event) => {
-        if(event.key === 'Enter'){
+        if(event.key === 'Enter' && toggleEditable === true){
           data.push({
-            name: [input.value, nameLineOne.value]
+            name: input.value
           });
           nameLineOne.innerHTML = `${data[data.length -1].name}`;
           input.value = '';
-          nameLineOne.value = '';
           input.style.display = "none";
-          nameLineOne.contentEditable = false; 
-          console.log(data)
-        }
+          console.log(data);
+          console.log('runs ONE event key');
+        } 
+        
+        else if(event.key === 'Enter' && toggleEditable === false){ //Shelf list enter key
+            data.push({
+              name: nameLineOne.value
+              });
+              nameLineOne.removeAttribute('contenteditable');
+              nameLineOne.value = '';
+              console.log(data);
+              console.log('runs TWO event key');
+            }
         });
        
 

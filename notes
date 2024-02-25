@@ -1,4 +1,5 @@
 CURRENT -->
+set REMOVE button for splice data from object array
 creates object for data entry and data saving
 Relearn forEach for object array
 
@@ -13,5 +14,5 @@ testing
 <--
 
 BUGS -->
-FIXED kinda? - Object Array not saving properly
+FIXED - Object Array not saving properly
 <--
