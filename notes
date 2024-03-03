@@ -1,11 +1,9 @@
 CURRENT -->
-set REMOVE button for splice data from object array
+remove button
 creates object for data entry and data saving
+
 Relearn forEach for object array
 
-DONE create concept from AIllustrator
-DONE make HTML
-<--
 
 NEXT -->
 create local save
@@ -13,6 +11,14 @@ create web browser from github
 testing
 <--
 
+FINISHED-->
+DONE Trying to implement object array data to list HTML
+DONE set REMOVE button for splice data from object array
+DONE create concept from AIllustrator
+DONE make HTML
+<--
+
 BUGS -->
+remove button doesnt work properly
 FIXED - Object Array not saving properly
 <--
