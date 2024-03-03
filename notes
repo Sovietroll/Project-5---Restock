@@ -1,8 +1,6 @@
 CURRENT -->
-remove button
-creates object for data entry and data saving
-
 Relearn forEach for object array
+Relearn "index" in object array 
 
 
 NEXT -->
@@ -12,6 +10,9 @@ testing
 <--
 
 FINISHED-->
+DONE creates object for data entry and data saving
+DONE place quantity in array 
+DONE remove button
 DONE Trying to implement object array data to list HTML
 DONE set REMOVE button for splice data from object array
 DONE create concept from AIllustrator
@@ -19,6 +20,6 @@ DONE make HTML
 <--
 
 BUGS -->
-remove button doesnt work properly
-FIXED - Object Array not saving properly
+FIXED - remove button doesnt work properly (SOLUTION: document.querySelectorAll for all 'remove' buttons)
+FIXED - Object Array not saving properly (SOLUTION: need to write .push() method properly)
 <--
