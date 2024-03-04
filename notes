@@ -1,6 +1,6 @@
 CURRENT -->
-Relearn forEach for object array
-Relearn "index" in object array 
+Implement multiple selections in the shelf
+Rearrange the whole js,css,html
 
 
 NEXT -->
@@ -20,6 +20,9 @@ DONE make HTML
 <--
 
 BUGS -->
+FIXED - inputOne problem with innerHTML, load with previous input (SOLUTION: place inputOne.innerHTML = '' at addEventListener)
+
 FIXED - remove button doesnt work properly (SOLUTION: document.querySelectorAll for all 'remove' buttons)
+
 FIXED - Object Array not saving properly (SOLUTION: need to write .push() method properly)
 <--

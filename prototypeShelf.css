@@ -16,12 +16,10 @@
       }
       .list-content {
         display: inline-block;
-        background-color: rgb(255, 0, 0);
         width: 400px;
         /*line-height: 100px;*/
       }
       .list-content li {
-        background-color: bisque;
       }
       .shelf {
         background-color: rgb(255, 111, 245);
@@ -77,6 +75,16 @@
         overflow: hidden;
         font-weight: bold;
       }
+      /*NEED TO ADD ONLICK AFTER CLICK, THE COLOR CHANGING*/
+      .shelf-B { 
+        display: grid;
+        grid-template-rows: 0.5fr 0.5fr 2fr;
+        overflow: hidden;
+        font-weight: bold;
+
+      }
+
+
       .one {
         background-color: rgb(231, 81, 81);
         font-size: 8px;
@@ -98,10 +106,17 @@
         margin: 2px;
 
       }
-      .three {
+      .pic-d1 {
         background-image: url(vitalize.jpg);
         background-repeat: no-repeat;
         background-size: 64%;
+        background-position:center;
+        margin: 1%;
+      }
+      .pic-b1{
+        background-image: url(pdlime.jpg);
+        background-repeat: no-repeat;
+        background-size: 80%;
         background-position:center;
         margin: 1%;
       }
@@ -132,7 +147,6 @@
       }
       .line-main{
         display: flex;
-        background-color:blueviolet;
         align-items: center;
         justify-content: left;
         padding-left: 5px;
@@ -140,4 +154,9 @@
       .button-one, .button-two {
         height: 50%;;
         margin-left: 5px;
+      }
+      .css-shelf-list{
+        background-color: rgb(242, 0, 0);
+        padding: 5px;
+        width: 100%;
       }
