@@ -81,7 +81,18 @@
         grid-template-rows: 0.5fr 0.5fr 2fr;
         overflow: hidden;
         font-weight: bold;
-
+      }
+      .shelf-B-active{
+        background-color: rgb(255, 177, 177);
+      }
+      .shelf-D{
+        display: grid;
+        grid-template-rows: 0.5fr 0.5fr 2fr;
+        overflow: hidden;
+        font-weight: bold;
+      }
+      .shelf-D-active{
+        background-color: rgb(255, 177, 177);
       }
 
 
@@ -138,11 +149,8 @@
       }
       .css-input{
         position: absolute;
-        top:90px;
-        left:5px;
-
-        width: 30px;
-        height: 5px;
+        width: 40px;
+        height: 7px;
         font-size: 10px;
       }
       .line-main{

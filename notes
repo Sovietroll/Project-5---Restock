@@ -20,6 +20,8 @@ DONE make HTML
 <--
 
 BUGS -->
+Select/Deselect shelf B and shelf D influence both quantities
+
 FIXED - inputOne problem with innerHTML, load with previous input (SOLUTION: place inputOne.innerHTML = '' at addEventListener)
 
 FIXED - remove button doesnt work properly (SOLUTION: document.querySelectorAll for all 'remove' buttons)
