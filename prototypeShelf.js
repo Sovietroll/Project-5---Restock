@@ -19,9 +19,15 @@ let data = [];
 
   let output = document.querySelector('.outputHere');
 
-  let testHidden = document.querySelector('.js-test');
+  let numberPanel = document.querySelector('.js-panelNumber');
 
-  testHidden.style.display = "none"
+  document.querySelector('.quantityDisplay').addEventListener('click', () => {
+    numberPanel.style.display ="block";
+    console.log('click')
+    numberPanel.classList.add("css-panelNumber-active");
+  })
+
+  numberPanel.style.display = "block"
   
   function runData(){
   output.innerHTML = '';
