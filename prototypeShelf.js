@@ -1,7 +1,9 @@
 let data = [];
 
-  let quantitySupplement_A = 0;
-  let quantitySupplement_B = 0;
+  let quantitySupplement_A = 0;  //1
+  let quantitySupplement_A2 = 0; //1.1
+  let quantitySupplement_B1 = 0;  //2
+  let quantitySupplement_B2 = 0; //2.1
   let quantitySupplement_C = 0;
   let quantitySupplement_D = 0;
   let quantitySupplement_E = 0;
@@ -16,10 +18,13 @@ let data = [];
   let toggleEditable;
 
   let output = document.querySelector('.outputHere');
+
+  let testHidden = document.querySelector('.js-test');
+
+  testHidden.style.display = "none"
   
   function runData(){
   output.innerHTML = '';
-
   data.forEach((item,index) => {
     const text = `<div class="css-shelf-list">
     <button class="js-remove-button">remove</button>
@@ -39,33 +44,39 @@ let data = [];
     };
 
 
-  const inputOne = document.querySelectorAll('.js-one-D, .js-one-B');
+  const inputOneB1 = document.querySelector('.js-one-B1');
+  const inputOneB2 = document.querySelector('.js-one-B2');
+  const inputOneD = document.querySelector('.js-one-D');
 
-  const inputB = document.querySelector('.js-input-B');
+
+  const inputB1 = document.querySelector('.js-input-B1');
+  const inputB2 = document.querySelector('.js-input-B2');
   const inputD = document.querySelector('.js-input-D');
 
-  inputD.style.display = "none"; 
-  inputB.style.display = "none"; 
 
-  inputOne.forEach(element => {
-    element.addEventListener('click',appearInputOne);
-  });
-  /*
-  inputOne.addEventListener('click', appearInputOne); 
-  */
+  inputOneB1.addEventListener('click',appearInputOne);
+  inputOneB2.addEventListener('click',appearInputOne);
+  inputOneD.addEventListener('click',appearInputOne);
+  
+  inputD.style.display = "none"; 
+  inputB1.style.display = "none"; 
+  inputB2.style.display = "none"; 
  
  function appearInputOne(){
   if (toggleEditable === 2){
-    inputB.style.display = "block"; 
+    inputB1.style.display = "block";
+    inputB2.style.display = "none"; 
     inputD.style.display = "none"; 
-    toggleEditable = false;
-    inputOne.innerHTML = '';
+  }
+  else if (toggleEditable === 2.1){
+    inputB2.style.display = "block"; 
+    inputD.style.display = "none"; 
+    inputB1.style.display = "none"; 
   }
   else if (toggleEditable === 4){
    inputD.style.display = "block"; 
-   inputB.style.display = "none"; 
-   toggleEditable = false;
-   innerHTML = '';
+   inputB1.style.display = "none"; 
+   inputB2.style.display = "none"; 
   }
 }; 
 
@@ -73,28 +84,36 @@ let data = [];
     if(event.key === 'Enter'){
       if (toggleEditable === 2){
       data.push({
-            name: inputB.value,
-            quantity: quantitySupplement_B
+            name: inputB1.value,
+            quantity: quantitySupplement_B1
       });
     } 
+    else if (toggleEditable === 2.1){
+      data.push({
+        name: inputB2.value,
+        quantity: quantitySupplement_B2
+       });
+    }
     else if (toggleEditable === 4){
       data.push({
         name: inputD.value,
         quantity: quantitySupplement_D
        });
     }
-      inputOne.innerHTML += inputD.value,inputB.value;
-
-      inputB.value = '';
-      inputD.value = '';
-
-      quantitySupplement = 0;
-
       if (toggleEditable === 2){
-        inputB.style.display = "none"; 
+        inputB1.style.display = "none"; 
+        inputOneB1.innerHTML = inputB1.value;
+        inputB1.value = '';
+      }
+      else if (toggleEditable === 2.1){
+        inputB2.style.display = "none";
+        inputOneB2.innerHTML = inputB2.value;
+        inputB2.value = '';
       }
       else if (toggleEditable === 4){
         inputD.style.display = "none";
+        inputOneD.innerHTML = inputD.value;
+        inputD.value = '';
       }
       runData();
       console.log(data);
@@ -102,61 +121,87 @@ let data = [];
    }
   );
    
-  let toggleSect_B;
+   const shelf = {
+    B1: 'B1',
+    B2: 'B2',
+    D: 'D'
+   };
 
-  let shelfQuantity_B = document.querySelector('.js-quantity-B');
-
-  let shelfQuantity_D = document.querySelector('.js-quantity-D');
-
-  const shelf_B = document.querySelector('.shelf-B')
-  shelf_B.addEventListener('click', () => {
-    const hightLight_B = () => {
-      toggleSect_B = true;
-      shelf_B.classList.add("shelf-B-active");
-      shelf_D.classList.remove("shelf-B-active");
-      toggleEditable = 2;
+   let toggleState;
+   
+  const shelf_B1 = document.querySelector('.shelf-B1')
+  shelf_B1.addEventListener('click', () => {
+    const hightLight_B1 = () => {
+      shelf_B1.classList.add("shelf-active");
+      shelf_B2.classList.remove("shelf-active");
+      shelf_D.classList.remove("shelf-active");
+      toggleState = shelf.B1;
+      console.log(toggleState);
     };
-    hightLight_B();
+    hightLight_B1();
+  });
+
+  const shelf_B2 = document.querySelector('.shelf-B2')
+  shelf_B2.addEventListener('click', () => {
+    const hightLight_B2 = () => {
+      shelf_B2.classList.add("shelf-active");
+      shelf_B1.classList.remove("shelf-active");
+      shelf_D.classList.remove("shelf-active");
+      toggleState = shelf.B2;
+      console.log(toggleState);
+    };
+    hightLight_B2();
   });
 
   const shelf_D = document.querySelector('.shelf-D');
   shelf_D.addEventListener('click', () => {
     const hightLight_D = () => {
-      toggleSect_B = false;
-      shelf_D.classList.add("shelf-B-active");
-      shelf_B.classList.remove("shelf-B-active");
-      toggleEditable = 4;
-
+      shelf_D.classList.add("shelf-active");
+      shelf_B1.classList.remove("shelf-active");
+      shelf_B2.classList.remove("shelf-active");
+      toggleState = shelf.D;
+      console.log(toggleState);
     };
     hightLight_D();
-  })
+  });
 
+  let shelfQuantity_B1 = document.querySelector('.js-quantity-B1');
+  let shelfQuantity_B2 = document.querySelector('.js-quantity-B2');
+  let shelfQuantity_D = document.querySelector('.js-quantity-D');
+
+  shelfQuantity_B1.value = '';
+  shelfQuantity_B2.value = '';
   shelfQuantity_D.value = '';
-  shelfQuantity_B.value = '';
 
+  shelfQuantity_B1.innerHTML = `0`;
+  shelfQuantity_B2.innerHTML = `0`;
   shelfQuantity_D.innerHTML = `0`;
-  shelfQuantity_B.innerHTML = `0`;
 
 
-  const buttonAdd = document.querySelectorAll('.js-button-plus-B, .js-button-plus-D');
+  const buttonAdd = document.querySelectorAll('.js-button-plus-B, .js-button-plus-D, .js-button-plus');
 
   buttonAdd.forEach(add => {
     add.addEventListener('click',buttonPlus);
   }
   )
   function buttonPlus(){
-    if (toggleSect_B === true){
-    quantitySupplement_B++;
-    shelfQuantity_B.innerHTML = `${quantitySupplement_B}`;
-    console.log(quantitySupplement_B);
+    if (toggleState === shelf.B1){
+    quantitySupplement_B1++;
+    shelfQuantity_B1.innerHTML = `${quantitySupplement_B1}`;
+    console.log(`quantitySupplement_B1 ${quantitySupplement_B1}`);
     } 
-    else if (toggleSect_B === false){
-    quantitySupplement_D++;
-    shelfQuantity_D.innerHTML = `${quantitySupplement_D}`;
-    console.log(quantitySupplement_D);
+    else if (toggleState === shelf.B2){
+    quantitySupplement_B2++;
+    shelfQuantity_B2.innerHTML = `${quantitySupplement_B2}`;
+    console.log(`quantitySupplement_B2 ${quantitySupplement_B1}`);
+    }
+    else if (toggleState === shelf.D){
+      quantitySupplement_D++;
+      shelfQuantity_D.innerHTML = `${quantitySupplement_D}`;
+      console.log(quantitySupplement_D);
     }
     else {
-      alert('none select');
+      console.log('none select');
     }
   };
 
@@ -167,12 +212,17 @@ let data = [];
     })
 
     function buttonMinus(){
-      if (toggleSect_B === true && quantitySupplement_B > 0){
-        quantitySupplement_B--;
-        shelfQuantity_B.innerHTML = `${quantitySupplement_B}`;
-        console.log(quantitySupplement_B);
+      if (toggleState === shelf.B1 && quantitySupplement_B1 > 0){
+        quantitySupplement_B1--;
+        shelfQuantity_B1.innerHTML = `${quantitySupplement_B1}`;
+        console.log(quantitySupplement_B1);
       } 
-      else if (toggleSect_B === false && quantitySupplement_D > 0){
+      else if (toggleState === shelf.B2 && quantitySupplement_B2 > 0){
+        quantitySupplement_B2--;
+        shelfQuantity_B2.innerHTML = `${quantitySupplement_B2}`;
+        console.log(quantitySupplement_B2);
+      }
+      else if (toggleState === shelf.D && quantitySupplement_D > 0){
         quantitySupplement_D--;
         shelfQuantity_D.innerHTML = `${quantitySupplement_D}`;
         console.log(quantitySupplement_D);
