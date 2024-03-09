@@ -19,8 +19,6 @@
         width: 400px;
         /*line-height: 100px;*/
       }
-      .list-content li {
-      }
       .shelf {
         background-color: rgb(255, 111, 245);
         display: grid;
@@ -76,40 +74,24 @@
         font-weight: bold;
       }
 
-      .shelf-B1 { 
+      /* HIGHLIGHT */
+      .shelf-B1,.shelf-B2,.shelf-D,.shelf-D2 { 
         display: grid;
         grid-template-rows: 0.5fr 0.5fr 2fr;
         overflow: hidden;
         font-weight: bold;
       }
-      .shelf-active{
+      /* HIGHLIGHT */
+      .shelf-active,.shelf-D-active,.shelf-D2-active{
         background-color: rgb(255, 177, 177);
         transition: 0.2s ease;
       }
-      .shelf-B2 { 
+      .shelf-D2Active {
+        background-color: brown;
         display: grid;
         grid-template-rows: 0.5fr 0.5fr 2fr;
         overflow: hidden;
         font-weight: bold;
-      }
-
-      .shelf-D{
-        display: grid;
-        grid-template-rows: 0.5fr 0.5fr 2fr;
-        overflow: hidden;
-        font-weight: bold;
-      }
-      .shelf-D-active{
-        background-color: rgb(255, 177, 177);
-      }
-      .shelf-D2{
-        display: grid;
-        grid-template-rows: 0.5fr 0.5fr 2fr;
-        overflow: hidden;
-        font-weight: bold;
-      }
-      .shelf-D2-active{
-        background-color: rgb(255, 177, 177);
       }
 
       .one {
@@ -132,25 +114,71 @@
         height: 20px;
         margin: 2px;
       }
-      .css-panelNumber { /* experiment here */
+
+      .css-panelNumber {
+        background-color: rgb(110, 198, 248);
+        font-size: 8px;
+        position: absolute;
+        top: 50px;
+        z-index: 0;
+        display: flex;
+      }
+      .css-panelNumber-buttons {
+        background-color: brown;
+        display: flex;
+      }
+      .css-panelNumber { /*HIDE*/ 
         background-color: rgb(56, 192, 197);
-        width: 0px;
         font-size: 8px;
         margin: 2px;
         position: absolute;
         top: 120px;
         transition: 0.2s ease;
-        z-index: 0;
-      }
-      .css-panelNumber-active {
+        z-index: 0; 
+      } 
+      /*EDIT APPEAR BUTTON*/ 
+      .css-panelNumber-active { /*APPEAR*/
         background-color: rgb(245, 131, 55);
-        width: 45px;
         font-size: 8px;
+        height: 20px;
         margin: 2px;
         position: absolute;
-        top: 100px;
+        display: flex;
+        top: 90px;
         transition: 0.5s ease;
         z-index: 0;
+      } 
+      /*ENTER BUTTONS*/
+      .css-EnterPanelNumber{
+        font-size: 5px;
+        border-radius: 10px;
+      }
+      .button {
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        border-style: none;
+        font-size: 8px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
+      .button:hover {
+        background-color: rgb(199, 199, 199);
+      }
+      .buttonD2 {
+        border-style: none;
+        font-size: 5px;
+        background-color: rgb(185, 115, 255);
+      }
+      .buttonD2:hover {
+        background-color: rgb(255, 143, 212);
+      }
+      .panelNumber-Quantity {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-color: rgb(182, 255, 109);
       }
       .quantityDisplay { /* experiment here */
           background-color: rgb(56, 56, 197);
@@ -199,33 +227,6 @@
         background-size: 60%;
         background-position:center;
         margin: 1%;
-      }
-      .button {
-        width: 10px;
-        height: 10px;
-        border-radius: 10px;
-        border-style: none;
-        font-size: 8px;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-      }
-      .button:hover {
-        background-color: rgb(199, 199, 199);
-      }
-      .buttonD2 {
-        border-radius: 10px;
-        border-style: none;
-        font-size: 5px;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-      }
-      .buttonD2:hover {
-        background-color: rgb(255, 143, 212);
-      }
-      .css-quantity{
-        margin-right: 4px;
       }
       .css-input{
         position: absolute;
