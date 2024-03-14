@@ -115,38 +115,31 @@
         margin: 2px;
       }
 
-      .css-panelNumber {
-        background-color: rgb(110, 198, 248);
-        font-size: 8px;
-        position: absolute;
-        top: 50px;
-        z-index: 0;
-        display: flex;
-      }
       .css-panelNumber-buttons {
         background-color: brown;
         display: flex;
       }
       .css-panelNumber { /*HIDE*/ 
-        background-color: rgb(56, 192, 197);
-        font-size: 8px;
-        margin: 2px;
+        background-color: rgb(78, 212, 233);
+        font-size: 1px;
         position: absolute;
         top: 120px;
+        margin-left: 10px;
         transition: 0.2s ease;
         z-index: 0; 
+        display: flex;
       } 
       /*EDIT APPEAR BUTTON*/ 
       .css-panelNumber-active { /*APPEAR*/
-        background-color: rgb(245, 131, 55);
+        background-color: rgb(245, 55, 55);
         font-size: 8px;
         height: 20px;
         margin: 2px;
         position: absolute;
         display: flex;
-        top: 90px;
+        top: 95px;
         transition: 0.5s ease;
-        z-index: 0;
+        z-index: 10;
       } 
       /*ENTER BUTTONS*/
       .css-EnterPanelNumber{

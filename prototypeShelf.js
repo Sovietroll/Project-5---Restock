@@ -8,21 +8,46 @@ let data = [];
   let quantitySupplement_C2 = 0;//3.1
   let quantitySupplement_D = 0;//4
   let quantitySupplement_D2 = 0;//4.1
-  let quantitySupplement_E = 0;
-  let quantitySupplement_F = 0;
-  let quantitySupplement_G = 0;
-  let quantitySupplement_H = 0;
-  let quantitySupplement_I = 0;
-  let quantitySupplement_J = 0;
-  let quantitySupplement_K = 0;
-  let quantitySupplement_L = 0;
+  let quantitySupplement_E1 = 0;//5
+  let quantitySupplement_E2 = 0;//5.1
+  let quantitySupplement_F1 = 0;//6
+  let quantitySupplement_F2 = 0;//6.1
+  let quantitySupplement_G1 = 0;//7
+  let quantitySupplement_G2 = 0;//7.1
+  let quantitySupplement_H1 = 0;//8
+  let quantitySupplement_H2 = 0;//8.1
+  let quantitySupplement_I1 = 0;//9
+  let quantitySupplement_I2 = 0;//9.1
+  let quantitySupplement_J1 = 0;//10
+  let quantitySupplement_J2 = 0;//10.1
+  let quantitySupplement_K1 = 0;//11
+  let quantitySupplement_K2 = 0;//11.1
+  let quantitySupplement_L1 = 0;//12
+  let quantitySupplement_L2 = 0;//12.1
+
 
   // TOGGLE ARRAY
   const shelf = {
     B1: 'B1',
     B2: 'B2',
     D: 'D',
-    D2: 'D2'
+    D2: 'D2',
+    E1: 'E1',
+    E2: 'E2',
+    F1: 'F1',
+    F2: 'F2',
+    G1: 'G1',
+    G2: 'G2',
+    H1: 'H1',
+    H2: 'H2',
+    I1: 'I1',
+    I2: 'I2',
+    J1: 'J1',
+    J2: 'J2',
+    K1: 'K1',
+    K2: 'K2',
+    L1: 'L1',
+    L2: 'L2'
     };
   
 
@@ -36,6 +61,7 @@ let data = [];
 
   const numbersD2 = document.querySelector('.quantityDisplay');
 
+  /*
   let enterQuantity = document.querySelector('.js-EnterPanelNumber');
   enterQuantity.addEventListener('click', ()=> {
     enterQuantity.value = quantitySupplement_D2;
@@ -50,8 +76,10 @@ let data = [];
     });
     runData();
   });
+ */
+  let shelfQuantity_D2 = document.querySelector('.panelNumber-Quantity');
 
-  numbersD2.addEventListener('click', () => {
+  shelfQuantity_D2.addEventListener('click', () => {
       togglePanelOnOff? (
       console.log('on numberPanel'),
       numberPanel.classList.add("css-panelNumber-active"),
@@ -115,16 +143,21 @@ let data = [];
     inputB1.style.display = "block";
     inputB2.style.display = "none"; 
     inputD.style.display = "none"; 
+    inputD2.style.display = "none";
+
   }
   else if (toggleState === shelf.B2 && toggleEditable === 2.1){
     inputB2.style.display = "block"; 
     inputD.style.display = "none"; 
     inputB1.style.display = "none"; 
+    inputD2.style.display = "none";
+
   }
   else if (toggleState === shelf.D && toggleEditable === 4){
    inputD.style.display = "block"; 
    inputB1.style.display = "none"; 
-   inputB2.style.display = "none"; 
+    inputD2.style.display = "none";
+    inputB2.style.display = "none"; 
   }
   else if (toggleState === shelf.D2 && toggleEditable === 4.1){
     inputD2.style.display = "block";
@@ -168,7 +201,7 @@ let data = [];
       }
       else if (toggleEditable === 4){
         inputD.style.display = "none";
-        inputOneD.innerHTML = inputD.value;
+        OneD.innerHTML = inputD.value;
         inputD.value = '';
       }
       runData();
@@ -231,7 +264,7 @@ let data = [];
   
   const shelf_D2 = document.querySelector('.shelf-D2');
 
-  numbersD2.addEventListener('click', () => {
+  shelfQuantity_D2.addEventListener('click', () => {
     const hightLight_D2 = () => {
       shelf_D2.classList.add("shelf-D2-active");
       shelf_B1.classList.remove("shelf-active");
@@ -249,7 +282,6 @@ let data = [];
   let shelfQuantity_B1 = document.querySelector('.js-quantity-B1');
   let shelfQuantity_B2 = document.querySelector('.js-quantity-B2');
   let shelfQuantity_D = document.querySelector('.js-quantity-D');
-  let shelfQuantity_D2 = document.querySelector('.panelNumber-Quantity');
 
   shelfQuantity_B1.value = '';
   shelfQuantity_B2.value = '';
