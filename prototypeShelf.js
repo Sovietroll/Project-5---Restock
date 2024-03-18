@@ -53,7 +53,7 @@ let data = [];
 
   let toggleEditable;
   let toggleState;
-  let togglePanelOnOff = true;
+  let togglePanelOnOff = true; // 0 is neutral // -1 is off // 1 is on
 
   let output = document.querySelector('.outputHere');
 
@@ -65,10 +65,11 @@ let data = [];
   let enterQuantityD2 = document.querySelector('.js-EnterPanelNumberD2');
   let enterQuantityD1 = document.querySelector('.js-EnterPanelNumberD1');
 
+
   const mainShelfD1 = document.querySelector('.shelf-D1');
   const mainShelfD2 = document.querySelector('.shelf-D2');
 
-  //ENTER BUTTON PANEL NUMBER ADDEVENTLISTENER
+////////ENTER BUTTON PANEL NUMBER ADDEVENTLISTENER
   enterQuantityD1.addEventListener('click', ()=> {
     enterQuantityD2.value = quantitySupplement_D1;
 
@@ -91,6 +92,7 @@ let data = [];
     });
     runData();
   });
+////////////////////////////////////////
 
     //SHELF QUANTITY
   let shelfQuantity_D2 = document.querySelector('.panelNumber-QuantityD2');
@@ -119,78 +121,104 @@ let data = [];
     })
   }); //FOR ADD MINUS BUTTON SELECTED FOR THE RIGHT SHELF
 
-  //IF CLICK NUMBER QUANTITY ADDEVENTLISTENER
+//QUANTITY NUMBER PANEL CLICK TO HIGHLIGHT COLOR
+  shelfQuantity_D1.addEventListener('click', () => {
+      if (togglePanelOnOff === true){
+        numberPanelD1.classList.add("css-panelNumber-activeD1");
+        numberPanelD1.classList.remove("css-panelNumberD1");
+
+    
+        enterQuantityD1.classList.add('css-EnterPanelNumber-activeD1');
+        enterQuantityD1.classList.remove('css-EnterPanelNumberD1');
+
+        inputD1.style.display = "none";
+        toggleState = shelf.D1;
+        console.log(`togglePanelOnOff ${togglePanelOnOff}`);
+        HideD2();
+      }
+      else if (togglePanelOnOff === false) {
+        numberPanelD1.classList.add("css-panelNumberD1");
+        numberPanelD1.classList.remove("css-panelNumber-activeD1");
+    
+        enterQuantityD1.classList.remove('css-EnterPanelNumber-activeD1');
+        enterQuantityD1.classList.add('css-EnterPanelNumberD1');
+
+        inputD1.style.display = "none";
+        console.log(`togglePanelOnOff ${togglePanelOnOff}`);
+      }
+    });
+
+  shelfQuantity_D2.addEventListener('click', () => {
+      if (togglePanelOnOff === true){
+        numberPanelD2.classList.add("css-panelNumber-active");
+        numberPanelD2.classList.remove("css-panelNumber");
+
+        enterQuantityD2.classList.add('css-EnterPanelNumber-active');
+        enterQuantityD2.classList.remove('css-EnterPanelNumber');
+        
+        toggleState = shelf.D2;
+        console.log(toggleState);
+        console.log(`togglePanelOnOff ${togglePanelOnOff}`);
+        inputD2.style.display = "none";
+        HideD1();
+      }
+      else {
+        numberPanelD2.classList.add("css-panelNumber");
+        numberPanelD2.classList.remove("css-panelNumber-active");
+    
+        enterQuantityD2.classList.remove('css-EnterPanelNumber-active');
+        enterQuantityD2.classList.add('css-EnterPanelNumber');
+        inputD2.style.display = "none";
+        console.log(`togglePanelOnOff ${togglePanelOnOff}`);
+
+      }
+    })
+
+    function HideD1(){
+      numberPanelD1.classList.add("css-panelNumberD1");
+      numberPanelD1.classList.remove("css-panelNumber-activeD1");
+      enterQuantityD1.classList.remove('css-EnterPanelNumber-activeD1');
+      enterQuantityD1.classList.add('css-EnterPanelNumberD1');
+    };
+
+    function HideD2(){
+      numberPanelD2.classList.add("css-panelNumber");
+      numberPanelD2.classList.remove("css-panelNumber-active");
+      enterQuantityD2.classList.remove('css-EnterPanelNumber-active');
+      enterQuantityD2.classList.add('css-EnterPanelNumber');
+    }
+////////////////////////////////////////////////////////////
+  //IF CLICK NUMBER QUANTITY ADDEVENTLISTENER 
   mainShelfD1.addEventListener('click', () => {
-    togglePanelOnOff? (clickShelfD1(),unclickShelfD2()):(unclickShelfD1())
-})
+    togglePanelOnOff? 
+    (clickShelfD1(), togglePanelOnOff = false)
+    :(unclickShelfD1(), togglePanelOnOff = true)
+  })
 
   mainShelfD2.addEventListener('click', () => {
-      togglePanelOnOff? (clickShelfD2(),unclickShelfD1()):(unclickShelfD2())
+      togglePanelOnOff? 
+      (clickShelfD2(), togglePanelOnOff = false)
+      :(unclickShelfD2(), togglePanelOnOff = true)
   })
 
 //FUNCTIONS FOR CLICKABLE SHELF ///////////////////////////////////////////////////////////
   function clickShelfD1(){
-    numberPanelD1.classList.add("css-panelNumber-activeD1"),
-    numberPanelD1.classList.remove("css-panelNumberD1"),
-
-    enterQuantityD1.classList.add('css-EnterPanelNumber-activeD1'),
-    enterQuantityD1.classList.remove('css-EnterPanelNumberD1'),
-
-    mainShelfD1.classList.add("shelf-active"),
-    mainShelfD2.classList.remove("shelf-active"),
-
-    inputD1.style.display = "none",
-
-    togglePanelOnOff = false,
-    toggleState = shelf.D1,
-    console.log(toggleState)
+    mainShelfD1.classList.add("shelf-active");
+    mainShelfD2.classList.remove("shelf-active");
+    
   }
 
   function unclickShelfD1(){
-    numberPanelD1.classList.add("css-panelNumberD1"),
-    numberPanelD1.classList.remove("css-panelNumber-activeD1"),
-
-    enterQuantityD1.classList.remove('css-EnterPanelNumber-activeD1'),
-    enterQuantityD1.classList.add('css-EnterPanelNumberD1'),
-    inputD1.style.display = "none",
-
-    mainShelfD1.classList.remove("shelf-active"),
-
-    togglePanelOnOff = true
+    mainShelfD1.classList.remove("shelf-active");
   }
   
   function clickShelfD2(){
-    numberPanelD2.classList.add("css-panelNumber-active"),
-    //numberPanelD2.classList.remove("css-panelNumber"),
-
-
-
-    enterQuantityD2.classList.add('css-EnterPanelNumber-active'),
-    enterQuantityD2.classList.remove('css-EnterPanelNumber'),
-    inputD2.style.display = "none",
-
-    
-
     mainShelfD2.classList.add("shelf-active"),
-    mainShelfD1.classList.remove("shelf-active"),
-
-    togglePanelOnOff = false,
-    toggleState = shelf.D2,
-    console.log(toggleState)
-
+    mainShelfD1.classList.remove("shelf-active");
   };
 
   function unclickShelfD2(){
-    numberPanelD2.classList.add("css-panelNumber"),
-    numberPanelD2.classList.remove("css-panelNumber-active"),
-
-    enterQuantityD2.classList.remove('css-EnterPanelNumber-active'),
-    enterQuantityD2.classList.add('css-EnterPanelNumber'),
-    inputD2.style.display = "none",
-
-    mainShelfD2.classList.remove("shelf-active"),
-
-    togglePanelOnOff = true
+    mainShelfD2.classList.remove("shelf-active");
   }
   ////////////////////////////////////////////////////////////////////////////////////////////
   function runData(){
