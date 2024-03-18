@@ -6,7 +6,7 @@ let data = [];
   let quantitySupplement_B2 = 0;//2.1
   let quantitySupplement_C1 = 0;//3
   let quantitySupplement_C2 = 0;//3.1
-  let quantitySupplement_D = 0;//4
+  let quantitySupplement_D1 = 0;//4
   let quantitySupplement_D2 = 0;//4.1
   let quantitySupplement_E1 = 0;//5
   let quantitySupplement_E2 = 0;//5.1
@@ -30,7 +30,7 @@ let data = [];
   const shelf = {
     B1: 'B1',
     B2: 'B2',
-    D: 'D',
+    D1: 'D1',
     D2: 'D2',
     E1: 'E1',
     E2: 'E2',
@@ -52,50 +52,147 @@ let data = [];
   
 
   let toggleEditable;
+  let toggleState;
+  let togglePanelOnOff = true;
 
   let output = document.querySelector('.outputHere');
 
-  //NUMBERS POP UP
-  let numberPanel = document.querySelector('.js-panelNumber');
-  let togglePanelOnOff = true;
+  //Panel Number Div for Plus and Minus
+  let numberPanelD2 = document.querySelector('.js-panelNumberD2');
+  let numberPanelD1 = document.querySelector('.js-panelNumberD1');
 
-  const numbersD2 = document.querySelector('.quantityDisplay');
+   //ENTER PANEL QUANTITY NUMBER
+  let enterQuantityD2 = document.querySelector('.js-EnterPanelNumberD2');
+  let enterQuantityD1 = document.querySelector('.js-EnterPanelNumberD1');
 
-  /*
-  let enterQuantity = document.querySelector('.js-EnterPanelNumber');
-  enterQuantity.addEventListener('click', ()=> {
-    enterQuantity.value = quantitySupplement_D2;
+  const mainShelfD1 = document.querySelector('.shelf-D1');
+  const mainShelfD2 = document.querySelector('.shelf-D2');
 
-    console.log(enterQuantity.value);
+  //ENTER BUTTON PANEL NUMBER ADDEVENTLISTENER
+  enterQuantityD1.addEventListener('click', ()=> {
+    enterQuantityD2.value = quantitySupplement_D1;
+
     console.log(data);
-    numbersD2.innerHTML = `${enterQuantity.value}`;
 
     data.push({
-      name: 'test',
-      quantity: enterQuantity.value
+      name: inputD1.value,
+      quantity: quantitySupplement_D1
     });
     runData();
   });
- */
-  let shelfQuantity_D2 = document.querySelector('.panelNumber-Quantity');
+  enterQuantityD2.addEventListener('click', ()=> {
+    enterQuantityD2.value = quantitySupplement_D2;
 
-  shelfQuantity_D2.addEventListener('click', () => {
-      togglePanelOnOff? (
-      console.log('on numberPanel'),
-      numberPanel.classList.add("css-panelNumber-active"),
-      numberPanel.classList.remove("css-panelNumber"),
-      togglePanelOnOff = false
-      )
-      :
-      (
-      console.log('off numberPanel'),
-      numberPanel.classList.add("css-panelNumber"),
-      numberPanel.classList.remove("css-panelNumber-active"),
-      togglePanelOnOff = true 
-      )
-  })
+    console.log(data);
+
+    data.push({
+      name: inputD2.value,
+      quantity: quantitySupplement_D2
+    });
+    runData();
+  });
+
+    //SHELF QUANTITY
+  let shelfQuantity_D2 = document.querySelector('.panelNumber-QuantityD2');
+  let shelfQuantity_D1 = document.querySelector('.panelNumber-QuantityD1');
 
   
+  shelfQuantity_D1.value = '';
+  shelfQuantity_D2.value = '';
+  shelfQuantity_D1.innerHTML = '0';
+  shelfQuantity_D2.innerHTML = '0';
+
+  //INPUT HERE
+  const inputB1 = document.querySelector('.js-input-B1');
+  const inputB2 = document.querySelector('.js-input-B2');
+  const inputD1 = document.querySelector('.js-input-D1');
+  const inputD2 = document.querySelector('.js-input-D2');
+  //INPUT DISPLAY
+  inputD1.style.display = "none";
+  inputD2.style.display = "none";
+
+  const allPanels = [numberPanelD1, numberPanelD2];
+  
+  allPanels.forEach(clickPanels => {
+    clickPanels.addEventListener('click', () => {
+     togglePanelOnOff = true;
+    })
+  }); //FOR ADD MINUS BUTTON SELECTED FOR THE RIGHT SHELF
+
+  //IF CLICK NUMBER QUANTITY ADDEVENTLISTENER
+  mainShelfD1.addEventListener('click', () => {
+    togglePanelOnOff? (clickShelfD1(),unclickShelfD2()):(unclickShelfD1())
+})
+
+  mainShelfD2.addEventListener('click', () => {
+      togglePanelOnOff? (clickShelfD2(),unclickShelfD1()):(unclickShelfD2())
+  })
+
+//FUNCTIONS FOR CLICKABLE SHELF ///////////////////////////////////////////////////////////
+  function clickShelfD1(){
+    numberPanelD1.classList.add("css-panelNumber-activeD1"),
+    numberPanelD1.classList.remove("css-panelNumberD1"),
+
+    enterQuantityD1.classList.add('css-EnterPanelNumber-activeD1'),
+    enterQuantityD1.classList.remove('css-EnterPanelNumberD1'),
+
+    mainShelfD1.classList.add("shelf-active"),
+    mainShelfD2.classList.remove("shelf-active"),
+
+    inputD1.style.display = "none",
+
+    togglePanelOnOff = false,
+    toggleState = shelf.D1,
+    console.log(toggleState)
+  }
+
+  function unclickShelfD1(){
+    numberPanelD1.classList.add("css-panelNumberD1"),
+    numberPanelD1.classList.remove("css-panelNumber-activeD1"),
+
+    enterQuantityD1.classList.remove('css-EnterPanelNumber-activeD1'),
+    enterQuantityD1.classList.add('css-EnterPanelNumberD1'),
+    inputD1.style.display = "none",
+
+    mainShelfD1.classList.remove("shelf-active"),
+
+    togglePanelOnOff = true
+  }
+  
+  function clickShelfD2(){
+    numberPanelD2.classList.add("css-panelNumber-active"),
+    //numberPanelD2.classList.remove("css-panelNumber"),
+
+
+
+    enterQuantityD2.classList.add('css-EnterPanelNumber-active'),
+    enterQuantityD2.classList.remove('css-EnterPanelNumber'),
+    inputD2.style.display = "none",
+
+    
+
+    mainShelfD2.classList.add("shelf-active"),
+    mainShelfD1.classList.remove("shelf-active"),
+
+    togglePanelOnOff = false,
+    toggleState = shelf.D2,
+    console.log(toggleState)
+
+  };
+
+  function unclickShelfD2(){
+    numberPanelD2.classList.add("css-panelNumber"),
+    numberPanelD2.classList.remove("css-panelNumber-active"),
+
+    enterQuantityD2.classList.remove('css-EnterPanelNumber-active'),
+    enterQuantityD2.classList.add('css-EnterPanelNumber'),
+    inputD2.style.display = "none",
+
+    mainShelfD2.classList.remove("shelf-active"),
+
+    togglePanelOnOff = true
+  }
+  ////////////////////////////////////////////////////////////////////////////////////////////
   function runData(){
   output.innerHTML = '';
   data.forEach((item,index) => {
@@ -119,54 +216,34 @@ let data = [];
   //STATEMENT ITEM HERE
   const OneB1 = document.querySelector('.js-one-B1');
   const OneB2 = document.querySelector('.js-one-B2');
-  const OneD = document.querySelector('.js-one-D');
+  const OneD1 = document.querySelector('.js-one-D1');
   const OneD2 = document.querySelector('.js-one-D2');
-  
-  const inputs = [OneB1, OneB2, OneD, OneD2];
-  inputs.forEach(element => {
-    element.addEventListener('click',appearInputOne);
-  })
 
-  //INPUT HERE
-  const inputB1 = document.querySelector('.js-input-B1');
-  const inputB2 = document.querySelector('.js-input-B2');
-  const inputD = document.querySelector('.js-input-D');
-  const inputD2 = document.querySelector('.js-input-D2');
+  //GROUPING ALL STATEMENT INPUTS HERE
+    const inputs = [OneB1, OneB2, OneD1, OneD2];
+    inputs.forEach(element => {
+      element.addEventListener('click',appearInputOne);
+    })
   
-  inputD.style.display = "none"; 
-  inputD2.style.display = "none";
-  inputB1.style.display = "none"; 
-  inputB2.style.display = "none"; 
  
  function appearInputOne(){
   if (toggleState === shelf.B1 && toggleEditable === 2){
     inputB1.style.display = "block";
     inputB2.style.display = "none"; 
-    inputD.style.display = "none"; 
     inputD2.style.display = "none";
 
   }
-  else if (toggleState === shelf.B2 && toggleEditable === 2.1){
-    inputB2.style.display = "block"; 
-    inputD.style.display = "none"; 
-    inputB1.style.display = "none"; 
-    inputD2.style.display = "none";
-
-  }
-  else if (toggleState === shelf.D && toggleEditable === 4){
-   inputD.style.display = "block"; 
-   inputB1.style.display = "none"; 
-    inputD2.style.display = "none";
-    inputB2.style.display = "none"; 
-  }
+  else if (toggleState === shelf.D1 && toggleEditable === 4){
+    inputD1.style.display = "block";
+    inputD2.style.display = "none"; 
+   }
   else if (toggleState === shelf.D2 && toggleEditable === 4.1){
     inputD2.style.display = "block";
-    inputD.style.display = "none"; 
-    inputB1.style.display = "none"; 
-    inputB2.style.display = "none"; 
+    inputD1.style.display = "none"; 
    }
 }; 
 
+//ENTER BUTTON ----------------------------------------------------------
   const bodyEvent = document.body.addEventListener('keydown',(event) => {
     if(event.key === 'Enter'){
       if (toggleEditable === 2){
@@ -175,34 +252,33 @@ let data = [];
             quantity: quantitySupplement_B1
       });
     } 
-    else if (toggleEditable === 2.1){
-      data.push({
-        name: inputB2.value,
-        quantity: quantitySupplement_B2
-       });
-    }
     else if (toggleEditable === 4){
       data.push({
-        name: inputD.value,
-        quantity: quantitySupplement_D
+        name: inputD1.value,
+        quantity: quantitySupplement_D1
        });
     }
-
+    else if (toggleEditable === 4.1){
+      data.push({
+        name: inputD2.value,
+        quantity: quantitySupplement_D2
+       });
+    }
 
       if (toggleEditable === 2){
         inputB1.style.display = "none"; 
-        inputOneB1.innerHTML = inputB1.value;
+        OneB1.innerHTML = inputB1.value;
         inputB1.value = '';
       }
-      else if (toggleEditable === 2.1){
-        inputB2.style.display = "none";
-        inputOneB2.innerHTML = inputB2.value;
-        inputB2.value = '';
-      }
       else if (toggleEditable === 4){
-        inputD.style.display = "none";
-        OneD.innerHTML = inputD.value;
-        inputD.value = '';
+        inputD1.style.display = "none";
+        OneD1.innerHTML = inputD1.value;
+        inputD1.value = '';
+      }
+      else if (toggleEditable === 4.1){
+        inputD2.style.display = "none";
+        OneD2.innerHTML = inputD2.value;
+        inputD2.value = '';
       }
       runData();
       console.log(data);
@@ -210,90 +286,35 @@ let data = [];
    }
   );
    
+  
 
-   let toggleState;
-   
-  const shelf_B1 = document.querySelector('.shelf-B1')
-  shelf_B1.addEventListener('click', () => {
-    const hightLight_B1 = () => {
-      shelf_B1.classList.add("shelf-active");
-      shelf_B2.classList.remove("shelf-active");
-      shelf_D.classList.remove("shelf-active");
-      shelf_D2.classList.remove("shelf-D2-active");
+  /*
+  shelfQuantity_D1.addEventListener('click', () => {
+    const hightLight_D1 = () => {
+      shelf_D1.classList.add("shelf-active");
+      shelf_D2.classList.remove("shelf-active");
 
-      toggleEditable = 2;
-      toggleState = shelf.B1;
-      console.log(toggleState);
-      console.log(`toggleEditable ${toggleEditable}`);
-    };
-    hightLight_B1();
-  });
-
-  const shelf_B2 = document.querySelector('.shelf-B2')
-  shelf_B2.addEventListener('click', () => {
-    const hightLight_B2 = () => {
-      shelf_B2.classList.add("shelf-active");
-      shelf_B1.classList.remove("shelf-active");
-      shelf_D.classList.remove("shelf-active");
-      shelf_D2.classList.remove("shelf-D2-active");
-
-      toggleEditable = 2.1;
-      toggleState = shelf.B2;
-      console.log(toggleState);
-      console.log(`toggleEditable ${toggleEditable}`);
-    };
-    hightLight_B2();
-  });
-
-  const shelf_D = document.querySelector('.shelf-D');
-  shelf_D.addEventListener('click', () => {
-    const hightLight_D = () => {
-      shelf_D.classList.add("shelf-active");
-      shelf_B1.classList.remove("shelf-active");
-      shelf_B2.classList.remove("shelf-active");
-      shelf_D2.classList.remove("shelf-D2-active");
-      
       toggleEditable = 4;
-      toggleState = shelf.D;
-      console.log(toggleState);
-      console.log(`toggleEditable ${toggleEditable}`);
+      toggleState = shelf.D1;
     };
-    hightLight_D();
+    hightLight_D1();
   });
-  
-  
-  const shelf_D2 = document.querySelector('.shelf-D2');
 
   shelfQuantity_D2.addEventListener('click', () => {
     const hightLight_D2 = () => {
-      shelf_D2.classList.add("shelf-D2-active");
-      shelf_B1.classList.remove("shelf-active");
-      shelf_B2.classList.remove("shelf-active");
-      shelf_D.classList.remove("shelf-active");
+      shelf_D2.classList.add("shelf-active");
+      shelf_D1.classList.remove("shelf-active");
 
       toggleEditable = 4.1;
       toggleState = shelf.D2;
-      console.log(toggleState);
-      console.log(`toggleEditable ${toggleEditable}`);
+
     };
     hightLight_D2();
   });
-
-  let shelfQuantity_B1 = document.querySelector('.js-quantity-B1');
-  let shelfQuantity_B2 = document.querySelector('.js-quantity-B2');
-  let shelfQuantity_D = document.querySelector('.js-quantity-D');
-
-  shelfQuantity_B1.value = '';
-  shelfQuantity_B2.value = '';
-  shelfQuantity_D.value = '';
-
-  shelfQuantity_B1.innerHTML = `0`;
-  shelfQuantity_B2.innerHTML = `0`;
-  shelfQuantity_D.innerHTML = `0`;
-  shelfQuantity_D2.innerHTML = '0';
+*/
 
   //PLUS BUTTON
-  const buttonAdd = document.querySelectorAll('.js-button-plus-B, .js-button-plus-D, .js-button-plus-D2');
+  const buttonAdd = document.querySelectorAll('.js-button-plus-B, .js-button-plus-D1, .js-button-plus-D2');
 
   buttonAdd.forEach(add => {
     add.addEventListener('click',buttonPlus);
@@ -302,35 +323,22 @@ let data = [];
   function buttonPlus(){
     if (toggleState === shelf.B1){
     quantitySupplement_B1++;
-    shelfQuantity_B1.innerHTML = `${quantitySupplement_B1}`;
-    console.log(`quantitySupplement_B1 ${quantitySupplement_B1}`);
+    shelfQuantity_B1.innerHTML = `x${quantitySupplement_B1}`;
+
     } 
-    else if (toggleState === shelf.B2){
-    quantitySupplement_B2++;
-    shelfQuantity_B2.innerHTML = `${quantitySupplement_B2}`;
-    console.log(`quantitySupplement_B2 ${quantitySupplement_B1}`);
-    }
-    else if (toggleState === shelf.D){
-      quantitySupplement_D++;
-      shelfQuantity_D.innerHTML = `${quantitySupplement_D}`;
-      console.log(quantitySupplement_D);
+    else if (toggleState === shelf.D1){
+    quantitySupplement_D1++;
+    shelfQuantity_D1.innerHTML = `x${quantitySupplement_D1}`;
+  
     }
     else if (toggleState === shelf.D2){
       quantitySupplement_D2++;
-      shelfQuantity_D2.innerHTML = `${quantitySupplement_D2}`;
-      console.log(quantitySupplement_D2);
-
-      //
-     
-
-    }
-    else {
-      console.log('none select');
+      shelfQuantity_D2.innerHTML = `x${quantitySupplement_D2}`;
     }
   };
 
 //SUBTRACT BUTTON
-  const buttonSubtract = document.querySelectorAll('.js-button-minus-B, .js-button-minus-D,.js-button-minus-D2');
+  const buttonSubtract = document.querySelectorAll('.js-button-minus-D1,.js-button-minus-D2');
 
   buttonSubtract.forEach(minus => {
     minus.addEventListener('click',buttonMinus); 
@@ -340,22 +348,14 @@ let data = [];
       if (toggleState === shelf.B1 && quantitySupplement_B1 > 0){
         quantitySupplement_B1--;
         shelfQuantity_B1.innerHTML = `${quantitySupplement_B1}`;
-        console.log(quantitySupplement_B1);
       } 
-      else if (toggleState === shelf.B2 && quantitySupplement_B2 > 0){
-        quantitySupplement_B2--;
-        shelfQuantity_B2.innerHTML = `${quantitySupplement_B2}`;
-        console.log(quantitySupplement_B2);
-      }
-      else if (toggleState === shelf.D &&   quantitySupplement_D > 0){
-        quantitySupplement_D--;
-        shelfQuantity_D.innerHTML = `${quantitySupplement_D}`;
-        console.log(quantitySupplement_D);
+      else if (toggleState === shelf.D1 && quantitySupplement_D1 > 0){
+        quantitySupplement_D1--;
+        shelfQuantity_D1.innerHTML = `x${quantitySupplement_D1}`;
       }
       else if (toggleState === shelf.D2 &&   quantitySupplement_D2 > 0){
         quantitySupplement_D2--;
-        shelfQuantity_D2.innerHTML = `${quantitySupplement_D2}`;
-        console.log(quantitySupplement_D2);
+        shelfQuantity_D2.innerHTML = `x${quantitySupplement_D2}`;
       }
       else {
         alert('Reach Limit');

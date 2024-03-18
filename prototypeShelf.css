@@ -1,4 +1,4 @@
-
+togglest
       body {
         background-color: rgb(63, 62, 62);
         font-family: arial;
@@ -75,34 +75,27 @@
       }
 
       /* HIGHLIGHT */
-      .shelf-B1,.shelf-B2,.shelf-D,.shelf-D2 { 
+      .shelf-D1,.shelf-D2 { 
         display: grid;
         grid-template-rows: 0.5fr 0.5fr 2fr;
         overflow: hidden;
         font-weight: bold;
       }
       /* HIGHLIGHT */
-      .shelf-active,.shelf-D-active,.shelf-D2-active{
-        background-color: rgb(255, 177, 177);
+      .shelf-active{
+        background-color: rgb(246, 177, 255);
         transition: 0.2s ease;
       }
-      .shelf-D2Active {
-        background-color: brown;
-        display: grid;
-        grid-template-rows: 0.5fr 0.5fr 2fr;
-        overflow: hidden;
-        font-weight: bold;
-      }
+
 
       .one {
-        background-color: rgb(231, 81, 81);
+        background-color: rgb(249, 94, 94);
         font-size: 8px;
-        border-radius: 10px;
         border-style: none;
         justify-content: center;
         align-items: center;
         display: flex;
-        margin: 2px;
+        margin: 1px;
       }
       .two {
         background-color: rgb(56, 197, 91);
@@ -119,32 +112,48 @@
         background-color: brown;
         display: flex;
       }
-      .css-panelNumber { /*HIDE*/ 
+      .css-panelNumber,.css-panelNumberD1 { /*HIDE*/ 
         background-color: rgb(78, 212, 233);
         font-size: 1px;
         position: absolute;
         top: 120px;
-        margin-left: 10px;
         transition: 0.2s ease;
         z-index: 0; 
+        height: 20px;
         display: flex;
       } 
       /*EDIT APPEAR BUTTON*/ 
-      .css-panelNumber-active { /*APPEAR*/
-        background-color: rgb(245, 55, 55);
+      .css-panelNumber-active,.css-panelNumber-activeD1 { /*APPEAR*/
+        background-color: rgb(245, 128, 55);
         font-size: 8px;
         height: 20px;
-        margin: 2px;
         position: absolute;
         display: flex;
         top: 95px;
         transition: 0.5s ease;
-        z-index: 10;
+        z-index: 1;
       } 
       /*ENTER BUTTONS*/
-      .css-EnterPanelNumber{
-        font-size: 5px;
-        border-radius: 10px;
+      .css-EnterPanelNumber,.css-EnterPanelNumberD1{
+        font-size: 10px;
+        border-radius: 5px;
+        width: 49px;
+        height: 20px;
+        position: absolute;
+        top: -22px;
+        transition: 0.2s ease;
+        z-index: 0;
+      }
+      .css-EnterPanelNumber-active,
+      .css-EnterPanelNumber-activeD1{
+        position: absolute;
+        font-size: 10px;
+        border-radius: 5px;
+        width: 49px;
+        top: 0px;
+        height: 20px;
+        transition: 0.5s ease;
+        z-index:0;
       }
       .button {
         width: 10px;
@@ -161,27 +170,30 @@
       }
       .buttonD2 {
         border-style: none;
-        font-size: 5px;
+        font-size: 10px;
+        width: 25px;
         background-color: rgb(185, 115, 255);
       }
       .buttonD2:hover {
         background-color: rgb(255, 143, 212);
       }
-      .panelNumber-Quantity {
+      .panelNumber-QuantityD2, .panelNumber-QuantityD1 {
         align-items: center;
         justify-content: center;
         display: flex;
         background-color: rgb(182, 255, 109);
+        z-index: 10;
+        cursor: pointer;
       }
       .quantityDisplay { /* experiment here */
-          background-color: rgb(56, 56, 197);
+          background-color: rgb(146, 146, 243);
           height: 20px;
           font-size: 8px;
           justify-content: center;
           align-items: center;
           display: flex;
           margin: 2px;
-          z-index: 1;
+          z-index: 0;
         }
       
       .twotwo {
@@ -224,8 +236,9 @@
       .css-input{
         position: absolute;
         width: 40px;
-        height: 7px;
+        height: 10px;
         font-size: 10px;
+        z-index: 0;
       }
       .line-main{
         display: flex;
