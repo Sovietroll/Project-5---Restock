@@ -162,7 +162,7 @@ let data = [];
         inputD2.style.display = "none";
         HideD1();
       }
-      else {
+      else if (togglePanelOnOff === false){
         numberPanelD2.classList.add("css-panelNumber");
         numberPanelD2.classList.remove("css-panelNumber-active");
     
