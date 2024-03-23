@@ -84,6 +84,7 @@ let data = [];
     });
     runData();
   });
+
   enterQuantityD2.addEventListener('click', ()=> {
     enterQuantityD2.value = quantitySupplement_D2;
 
@@ -137,14 +138,11 @@ let data = [];
         inputD1.style.display = "none";
         toggleState = shelf.D1;
         HideD2();
+        clickShelfD1()
 
         upDown = 1;
         togglePanelOnOff = true;
 
-        console.log(upDown);
-        console.log(`togglePanelOnOff ${togglePanelOnOff}`);
-        console.log('appear1');
-     
       }
       else if (upDown === 1) {
 
@@ -157,12 +155,7 @@ let data = [];
         inputD1.style.display = "none";
 
         togglePanelOnOff = false;
-
-
- 
-        console.log(`togglePanelOnOff ${togglePanelOnOff}`);
-        console.log('hide1');
-
+        unclickShelfD1()
       }
     });
 
@@ -178,16 +171,14 @@ let data = [];
         enterQuantityD2.classList.remove('css-EnterPanelNumber');
         inputD2.style.display = "none";
         HideD1();
+        clickShelfD2()
         
         toggleState = shelf.D2;
 
         upDown = 2;
         togglePanelOnOff = true;
 
-        console.log(`togglePanelOnOff ${togglePanelOnOff}`);
-        console.log('appear2');
 
-      
       }
       else if (upDown === 2){
 
@@ -201,10 +192,7 @@ let data = [];
         togglePanelOnOff = false;
 
         
-
-        console.log(`togglePanelOnOff ${togglePanelOnOff}`);
-        console.log('hide2')
-
+        unclickShelfD2()
       }
     })
 
@@ -221,25 +209,12 @@ let data = [];
       enterQuantityD2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityD2.classList.add('css-EnterPanelNumber');
     }
-////////////////////////////////////////////////////////////
-  //IF CLICK NUMBER QUANTITY ADDEVENTLISTENER 
-  mainShelfD1.addEventListener('click', () => {
-    togglePanelOnOff? 
-    (clickShelfD1())
-    :(unclickShelfD1())
-  })
-
-  mainShelfD2.addEventListener('click', () => {
-      togglePanelOnOff? 
-      (clickShelfD2())
-      :(unclickShelfD2())
-  })
 
 //FUNCTIONS FOR CLICKABLE SHELF ///////////////////////////////////////////////////////////
   function clickShelfD1(){
     mainShelfD1.classList.add("shelf-active");
     mainShelfD2.classList.remove("shelf-active");
-    
+    toggleState = shelf.D1;
   }
 
   function unclickShelfD1(){
@@ -249,23 +224,53 @@ let data = [];
   function clickShelfD2(){
     mainShelfD2.classList.add("shelf-active"),
     mainShelfD1.classList.remove("shelf-active");
+    toggleState = shelf.D2;
   };
 
   function unclickShelfD2(){
     mainShelfD2.classList.remove("shelf-active");
   }
   ////////////////////////////////////////////////////////////////////////////////////////////
+
+//RUN DATA FOR SHELF LIST//////////////////////////////////////////////////////////////
   function runData(){
   output.innerHTML = '';
+
   data.forEach((item,index) => {
-    const text = `<div class="css-shelf-list">
+   let clickList = false;
+
+  document.querySelectorAll('.css-shelf-list').forEach((selected, index) => {
+    selected.addEventListener('click', () => {
+      clickList = true;
+    
+      console.log(clickList);
+    });
+  });
+
+  const highlightClass = clickList === true ? 'css-shelf-HIGHLIGHT' : '';
+
+  const text = `
+  <div class="css-shelf-list ${highlightClass}">
+    <div class="css-shelf-list-PICTURES"></div>
+    <div class="css-shelf-list-NAME">
+      <div class="list-NAME">
+        ${item.name}
+      </div>
+    </div>
+    <div class="css-shelf-list-QUANTITY">
+      <div class="list-QUANTITY">
+        x${item.quantity}
+      </div>
+    </div>
     <button class="js-remove-button">remove</button>
-    ${item.name} x${item.quantity}
-    </div>`;
+  </div>
+  `;
     output.innerHTML += text;
   })
+////////////////////////////////////////////////////////////////////////////////////////////
 
-   //REMOVE BUTTON
+
+//REMOVE BUTTON/////////////////////////////////////////////////////////////////////////////////////////
     document.querySelectorAll('.js-remove-button').forEach((removeButton,index) => {
     removeButton.addEventListener('click', () => {;
       data.splice(index,1);
@@ -274,57 +279,54 @@ let data = [];
       },console.log(`deleted`,data)
       );
     };
+////////////////////////////////////////////////////////////////////////////////////////////
 
-  //STATEMENT ITEM HERE
-  const OneB1 = document.querySelector('.js-one-B1');
-  const OneB2 = document.querySelector('.js-one-B2');
-  const OneD1 = document.querySelector('.js-one-D1');
-  const OneD2 = document.querySelector('.js-one-D2');
 
-  //GROUPING ALL STATEMENT INPUTS HERE
-    const inputs = [OneB1, OneB2, OneD1, OneD2];
-    inputs.forEach(element => {
-      element.addEventListener('click',appearInputOne);
-    })
-  
- 
- function appearInputOne(){
-  if (toggleState === shelf.B1 && toggleEditable === 2){
-    inputB1.style.display = "block";
-    inputB2.style.display = "none"; 
-    inputD2.style.display = "none";
+//INPUT NAME ITEM HERE//////////////////////////////
 
-  }
-  else if (toggleState === shelf.D1 && toggleEditable === 4){
-    inputD1.style.display = "block";
-    inputD2.style.display = "none"; 
-   }
-  else if (toggleState === shelf.D2 && toggleEditable === 4.1){
+document.querySelector('.js-one-D1').addEventListener('click', () => {
+  inputD1.style.display = "block";
+  inputD2.style.display = "none"; 
+  toggleState = shelf.D1;
+  console.log(toggleState)
+
+})
+
+ document.querySelector('.js-one-D2').addEventListener('click', () => {
     inputD2.style.display = "block";
     inputD1.style.display = "none"; 
-   }
-}; 
+    toggleState = shelf.D2;
 
-//ENTER BUTTON ----------------------------------------------------------
+ })
+
+/////////////////////////////////////////////////////
+  
+ 
+
+
+//ENTER PHYSICAL BUTTON ----------------------------------------------------------
   const bodyEvent = document.body.addEventListener('keydown',(event) => {
+
+    let itemNameHTMLD1 = document.querySelector('.js-one-D1');
+    let itemNameHTMLD2 = document.querySelector('.js-one-D2');
+    
     if(event.key === 'Enter'){
-      if (toggleEditable === 2){
-      data.push({
-            name: inputB1.value,
-            quantity: quantitySupplement_B1
-      });
-    } 
-    else if (toggleEditable === 4){
+      if (toggleState === shelf.D1){
       data.push({
         name: inputD1.value,
         quantity: quantitySupplement_D1
        });
+       inputD1.style.display = "none";
+       itemNameHTMLD1.innerHTML = inputD1.value;
+
     }
-    else if (toggleEditable === 4.1){
+    else if (toggleState === shelf.D2){
       data.push({
         name: inputD2.value,
         quantity: quantitySupplement_D2
        });
+       inputD2.style.display = "none";
+       itemNameHTMLD2.innerHTML = inputD2.value;
     }
 
       if (toggleEditable === 2){
@@ -349,31 +351,6 @@ let data = [];
   );
    
   
-
-  /*
-  shelfQuantity_D1.addEventListener('click', () => {
-    const hightLight_D1 = () => {
-      shelf_D1.classList.add("shelf-active");
-      shelf_D2.classList.remove("shelf-active");
-
-      toggleEditable = 4;
-      toggleState = shelf.D1;
-    };
-    hightLight_D1();
-  });
-
-  shelfQuantity_D2.addEventListener('click', () => {
-    const hightLight_D2 = () => {
-      shelf_D2.classList.add("shelf-active");
-      shelf_D1.classList.remove("shelf-active");
-
-      toggleEditable = 4.1;
-      toggleState = shelf.D2;
-
-    };
-    hightLight_D2();
-  });
-*/
 
   //PLUS BUTTON
   const buttonAdd = document.querySelectorAll('.js-button-plus-B, .js-button-plus-D1, .js-button-plus-D2');
