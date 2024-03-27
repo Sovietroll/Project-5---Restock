@@ -238,7 +238,6 @@ let data = [];
   }
   ////////////////////////////////////////////////////////////////////////////////////////////
   let tryOnce = true;
-  console.log(tryOnce);
 
 //RUN DATA FOR SHELF LIST//////////////////////////////////////////////////////////////
   function runData(){
@@ -299,7 +298,6 @@ inputD1.classList.toggle("css-input-2", false);
 
 // typingState is typing to disable dom.body.click
 let typingState;
-let typingStateTwo;
 
 //Click Panel One not Input
 document.querySelector('.js-one-D1').addEventListener('click', () => {
@@ -310,7 +308,7 @@ document.querySelector('.js-one-D1').addEventListener('click', () => {
   toggleState = shelf.D1;
   
   typingState = true;
-  console.log(`typingState ${typingState}`);
+
 
   // toggle on and off typingState
   // typingState = !typingState;
@@ -325,49 +323,41 @@ document.querySelector('.js-one-D1').addEventListener('click', () => {
     inputD1.classList.toggle("css-input-2",false);
     toggleState = shelf.D2;
 
-    typingState = true;
-    typingStateTwo = false;
-    console.log(`typingState ${typingState}`);
-
  });
 
- //WHEN TYPING INPUT
+ //WHEN TYPING INPUT 1st STATE//When typing
   inputPopUp.forEach(element => {
     element.addEventListener('keypress', () => {
 
-      typingState = !typingState;
-      console.log(`typingState ${typingState}`);
-      if(typingState){
-
-        inputD1.classList.remove("css-input-2");
-        inputD2.classList.remove("css-input-2");
-        console.log('inputPopUp');
-
-      }
+      typingState = true;
 
     });
   });
 
+ //WHEN TYPING INPUT 2nd STATE//When blinking
+  inputPopUp.forEach(element => {
+    element.addEventListener('click', () => {
+      console.log('inputPopUp 2nd STATE');
+      
+      typingState = true;
+
+    })
+  });
+
 /*  
-  inputD1.addEventListener('keypress', ()=>{
-  console.log('typing');
-
-  typingState = false;
-  console.log(`typingState ${typingState}`);
-});
-*/
-
 // OFF POP UP //click for input pop up///
- document.body.addEventListener('click', (event) => {
-  if (!event.target.closest('.js-one-D1') && !event.target.closest('.js-one-D2') && typingStateTwo === true) {
+ const domBody = document.body.addEventListener('click', (event) => {
+  typingState = !typingState;
+
+  if (!event.target.closest('.js-one-D1') && !event.target.closest('.js-one-D2') && typingState === false) {
 
     inputD1.classList.remove("css-input-2");
     inputD2.classList.remove("css-input-2");
     console.log('trigger OFF INPUT');
-
+    triggeredInputPopUp = true;
   };
 });
-
+*/
 
 /////////////////////////////////////////////////////
   
