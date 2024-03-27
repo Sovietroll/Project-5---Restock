@@ -80,8 +80,10 @@ let data = [];
 
     data.push({
       name: inputD1.value,
-      quantity: quantitySupplement_D1
+      quantity: quantitySupplement_D1,
+      loc: shelf.D1
     });
+    mainShelfD1.classList.remove("shelf-active");
     runData();
   });
 
@@ -92,7 +94,8 @@ let data = [];
 
     data.push({
       name: inputD2.value,
-      quantity: quantitySupplement_D2
+      quantity: quantitySupplement_D2,
+      loc: shelf.D2
     });
     runData();
   });
@@ -220,16 +223,24 @@ let data = [];
   function clickShelfD1(){
     mainShelfD1.classList.add("shelf-active");
     mainShelfD2.classList.remove("shelf-active");
+    toggleHighlight = Hili.on;
+    console.log(toggleHighlight);
+
+    inputD1.classList.toggle("css-input-2",false); //Turn off input
     toggleState = shelf.D1;
   }
 
   function unclickShelfD1(){
     mainShelfD1.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+
   }
   
   function clickShelfD2(){
     mainShelfD2.classList.add("shelf-active"),
     mainShelfD1.classList.remove("shelf-active");
+
+    inputD2.classList.toggle("css-input-2",false);
     toggleState = shelf.D2;
   };
 
@@ -274,12 +285,24 @@ let data = [];
      
         highlight.classList.toggle("css-shelf-HIGHLIGHT");
 
+        const loc = highlight.querySelector('.css-shelf-list-LOC').textContent.trim();
+
+// toggle the highlight between body and list
+        if(loc === 'D1'){
+        mainShelfD1.classList.toggle("shelf-active"); 
+        console.log('run')
+        }
+        
+        
+        else if(loc === 'D2'){
+          mainShelfD2.classList.toggle("shelf-active");
+        }
+
       })
     });
   
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-
 
 //REMOVE BUTTON/////////////////////////////////////////////////////////////////////////////////////////
     document.querySelectorAll('.js-remove-button').forEach((removeButton,index) => {
@@ -292,6 +315,13 @@ let data = [];
     };
 ////////////////////////////////////////////////////////////////////////////////////////////
 
+const Hili = { //Hightlight
+  on: 'turn ON',
+  off: 'turn OFF',
+  null: 'LIGHT NULL'
+};
+
+let toggleHighlight = Hili.null;
 
 //INPUT NAME ITEM HERE//////////////////////////////
 inputD1.classList.toggle("css-input-2", false);

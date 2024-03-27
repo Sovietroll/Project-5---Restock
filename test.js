@@ -1,30 +1,13 @@
-function runData() {
-  output.innerHTML = '';
-  data.forEach((item, index) => {
-    const text = `
-      <div class="css-shelf-list">
-        <div class="css-shelf-list-NAME">
-          <div class="list-NAME">
-            ${item.name}
-          </div>
-        </div>
-        <div class="css-shelf-list-QUANTITY">
-          <div class="list-QUANTITY">
-            x${item.quantity}
-          </div>
-        </div>
-        <button class="js-remove-button">remove</button>
-      </div>
-    `;
-    output.innerHTML += text;
-  });
-
-  document.querySelectorAll('.css-shelf-list').forEach((highlight, index) => {
-    let tryOnce = false;
-    highlight.addEventListener('click', () => {
-      tryOnce = !tryOnce;
-      highlight.classList.toggle("css-shelf-HIGHLIGHT", tryOnce);
-      console.log(tryOnce);
-    });
-  });
+if (loc === 'D1') {
+  if (toggleHighlight === Hili.on) {
+    // If toggleHighlight is 'Hili.on', remove the "shelf-active" class
+    mainShelfD1.classList.remove("shelf-active");
+    console.log(toggleHighlight);
+    toggleHighlight = Hili.off; // Update toggleHighlight to 'Hili.off'
+  } else if (toggleHighlight === Hili.off) {
+    // If toggleHighlight is 'Hili.off', add the "shelf-active" class
+    mainShelfD1.classList.add("shelf-active");
+    console.log(toggleHighlight);
+    toggleHighlight = Hili.null; // Update toggleHighlight to 'Hili.null'
+  }
 }
