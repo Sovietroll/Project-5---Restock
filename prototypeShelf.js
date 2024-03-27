@@ -109,14 +109,13 @@ let data = [];
   shelfQuantity_D2.innerHTML = '0';
 
   //INPUT HERE
-  const inputB1 = document.querySelector('.js-input-B1');
-  const inputB2 = document.querySelector('.js-input-B2');
   const inputD1 = document.querySelector('.js-input-D1');
   const inputD2 = document.querySelector('.js-input-D2');
-  //INPUT DISPLAY
-  inputD1.style.display = "none";
-  inputD2.style.display = "none";
 
+   // Click the input directly
+ const inputPopUp = document.querySelectorAll('.js-input-D1 ,.js-input-D2');
+
+  //INPUT DISPLAY
   const allPanels = [numberPanelD1, numberPanelD2];
   
   allPanels.forEach(clickPanels => {
@@ -135,7 +134,8 @@ let data = [];
         enterQuantityD1.classList.add('css-EnterPanelNumber-activeD1');
         enterQuantityD1.classList.remove('css-EnterPanelNumberD1');
 
-        inputD1.style.display = "none";
+        // inputD1.style.display = "none";
+        inputD1.classList.add("css-input");
         toggleState = shelf.D1;
         HideD2();
         clickShelfD1()
@@ -152,7 +152,9 @@ let data = [];
         enterQuantityD1.classList.remove('css-EnterPanelNumber-activeD1');
         enterQuantityD1.classList.add('css-EnterPanelNumberD1');
 
-        inputD1.style.display = "none";
+        // inputD1.style.display = "none";
+        inputD1.classList.add("css-input");
+
 
         togglePanelOnOff = false;
         unclickShelfD1()
@@ -169,7 +171,9 @@ let data = [];
 
         enterQuantityD2.classList.add('css-EnterPanelNumber-active');
         enterQuantityD2.classList.remove('css-EnterPanelNumber');
-        inputD2.style.display = "none";
+        // inputD2.style.display = "none";
+        inputD2.classList.add("css-input");
+
         HideD1();
         clickShelfD2()
         
@@ -187,7 +191,9 @@ let data = [];
     
         enterQuantityD2.classList.remove('css-EnterPanelNumber-active');
         enterQuantityD2.classList.add('css-EnterPanelNumber');
-        inputD2.style.display = "none";
+        // inputD2.style.display = "none";
+        inputD2.classList.add("css-input");
+
 
         togglePanelOnOff = false;
 
@@ -231,27 +237,17 @@ let data = [];
     mainShelfD2.classList.remove("shelf-active");
   }
   ////////////////////////////////////////////////////////////////////////////////////////////
+  let tryOnce = true;
+  console.log(tryOnce);
 
 //RUN DATA FOR SHELF LIST//////////////////////////////////////////////////////////////
   function runData(){
   output.innerHTML = '';
 
   data.forEach((item,index) => {
-   let clickList = false;
-
-  document.querySelectorAll('.css-shelf-list').forEach((selected, index) => {
-    selected.addEventListener('click', () => {
-      clickList = true;
-    
-      console.log(clickList);
-    });
-  });
-
-  const highlightClass = clickList === true ? 'css-shelf-HIGHLIGHT' : '';
 
   const text = `
-  <div class="css-shelf-list ${highlightClass}">
-    <div class="css-shelf-list-PICTURES"></div>
+  <div class="css-shelf-list">
     <div class="css-shelf-list-NAME">
       <div class="list-NAME">
         ${item.name}
@@ -262,11 +258,27 @@ let data = [];
         x${item.quantity}
       </div>
     </div>
-    <button class="js-remove-button">remove</button>
+      <div class="css-shelf-list-LOC">
+      ${item.loc}
+      </div>
+      <div class="js-remove-button">
+       <button class="REMOVE-button">X</button>
+      </div>
   </div>
   `;
     output.innerHTML += text;
-  })
+  });
+
+    
+    document.querySelectorAll('.css-shelf-list').forEach((highlight,index) => {
+      highlight.addEventListener('click', () => { 
+     
+        highlight.classList.toggle("css-shelf-HIGHLIGHT");
+
+      })
+    });
+  
+
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -283,21 +295,79 @@ let data = [];
 
 
 //INPUT NAME ITEM HERE//////////////////////////////
+inputD1.classList.toggle("css-input-2", false);
 
+// typingState is typing to disable dom.body.click
+let typingState;
+let typingStateTwo;
+
+//Click Panel One not Input
 document.querySelector('.js-one-D1').addEventListener('click', () => {
-  inputD1.style.display = "block";
-  inputD2.style.display = "none"; 
+  // inputD1.classList.toggle("css-inputAPPEAR");
+  
+  inputD1.classList.toggle("css-input-2", true);
+  inputD2.classList.toggle("css-input-2",false);
   toggleState = shelf.D1;
-  console.log(toggleState)
+  
+  typingState = true;
+  console.log(`typingState ${typingState}`);
 
+  // toggle on and off typingState
+  // typingState = !typingState;
 })
 
  document.querySelector('.js-one-D2').addEventListener('click', () => {
-    inputD2.style.display = "block";
-    inputD1.style.display = "none"; 
+  
+    // inputD2.style.display = "block";
+    // inputD1.style.display = "block"; 
+
+    inputD2.classList.toggle("css-input-2",true);
+    inputD1.classList.toggle("css-input-2",false);
     toggleState = shelf.D2;
 
- })
+    typingState = true;
+    typingStateTwo = false;
+    console.log(`typingState ${typingState}`);
+
+ });
+
+ //WHEN TYPING INPUT
+  inputPopUp.forEach(element => {
+    element.addEventListener('keypress', () => {
+
+      typingState = !typingState;
+      console.log(`typingState ${typingState}`);
+      if(typingState){
+
+        inputD1.classList.remove("css-input-2");
+        inputD2.classList.remove("css-input-2");
+        console.log('inputPopUp');
+
+      }
+
+    });
+  });
+
+/*  
+  inputD1.addEventListener('keypress', ()=>{
+  console.log('typing');
+
+  typingState = false;
+  console.log(`typingState ${typingState}`);
+});
+*/
+
+// OFF POP UP //click for input pop up///
+ document.body.addEventListener('click', (event) => {
+  if (!event.target.closest('.js-one-D1') && !event.target.closest('.js-one-D2') && typingStateTwo === true) {
+
+    inputD1.classList.remove("css-input-2");
+    inputD2.classList.remove("css-input-2");
+    console.log('trigger OFF INPUT');
+
+  };
+});
+
 
 /////////////////////////////////////////////////////
   
@@ -305,7 +375,8 @@ document.querySelector('.js-one-D1').addEventListener('click', () => {
 
 
 //ENTER PHYSICAL BUTTON ----------------------------------------------------------
-  const bodyEvent = document.body.addEventListener('keydown',(event) => {
+  // const bodyEvent =
+   document.body.addEventListener('keydown',(event) => {
 
     let itemNameHTMLD1 = document.querySelector('.js-one-D1');
     let itemNameHTMLD2 = document.querySelector('.js-one-D2');
@@ -314,36 +385,36 @@ document.querySelector('.js-one-D1').addEventListener('click', () => {
       if (toggleState === shelf.D1){
       data.push({
         name: inputD1.value,
-        quantity: quantitySupplement_D1
+        quantity: quantitySupplement_D1,
+        loc: shelf.D1
        });
-       inputD1.style.display = "none";
-       itemNameHTMLD1.innerHTML = inputD1.value;
+      //  inputD1.style.display = "none";
 
+      // Input to remove css after enter
+
+       inputD1.classList.remove("css-input-2");
+       inputD1.classList.add("css-input");
+
+       typingState; //back to default
+       
+      //////////////////////////
+
+       itemNameHTMLD1.innerHTML = inputD1.value;
     }
     else if (toggleState === shelf.D2){
       data.push({
         name: inputD2.value,
-        quantity: quantitySupplement_D2
+        quantity: quantitySupplement_D2,
+        loc: shelf.D2
        });
-       inputD2.style.display = "none";
+
+       inputD2.classList.remove("css-input-2");
+       inputD2.classList.add("css-input");
+
+       typingState; //back to default
+
        itemNameHTMLD2.innerHTML = inputD2.value;
     }
-
-      if (toggleEditable === 2){
-        inputB1.style.display = "none"; 
-        OneB1.innerHTML = inputB1.value;
-        inputB1.value = '';
-      }
-      else if (toggleEditable === 4){
-        inputD1.style.display = "none";
-        OneD1.innerHTML = inputD1.value;
-        inputD1.value = '';
-      }
-      else if (toggleEditable === 4.1){
-        inputD2.style.display = "none";
-        OneD2.innerHTML = inputD2.value;
-        inputD2.value = '';
-      }
       runData();
       console.log(data);
     } 

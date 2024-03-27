@@ -19,20 +19,35 @@ togglest
       }
       /*LIST ITEM/////////////////////////////////////////////////////////////*/
       .css-shelf-list{
-        background-color: rgb(255, 53, 53);
-        padding: 10px;
+        background-color: rgb(255, 255, 255);
         width: 100%;
         border-radius:20px;
         display: grid;
-        grid-template-columns:10px 1fr 80px 50px 50px;
-        margin: 2px;
+        grid-template-columns:1fr 25px  25px 50px;
+        margin: 4px;
+        z-index: 0;
+        font-size: 15px;
+        font-weight: bold;
+
+        transition: .2s ease;
+
+      }
+      .css-shelf-HIGHLIGHT{
+        background: radial-gradient(circle, rgba(255,120,142,1) 0%, rgba(254,64,93,1) 100%);
+        font-weight: bold;
+
+        font-size: 15px;
+        margin-left: 40px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+        grid-template-columns:1fr 25px  25px 50px;
+
+
+        z-index: 10;
+        transition: .5s ease;
       }
       .css-shelf-list:hover{
-        background-color: rgb(117, 117, 117);
+        background-color: rgb(255, 135, 135);
         cursor: pointer;
-      }
-      .css-shelf-list:active{
-        background-color: blue;
       }
       .css-shelf-list-PICTURES{
         background-image: url(Pictures/pdlime.jpg);
@@ -51,29 +66,48 @@ togglest
         justify-content: center;
       }
       .list-QUANTITY{
-        background-color: rgb(253, 253, 181);
-        border-radius: 100%;
-        font-weight: bold;
-        padding: 10px;
       }
       .css-shelf-list-NAME{
         display: flex;
         align-items: center;
         justify-content: center;
       }
+      .css-shelf-list-LOC{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: rgba(0, 255, 123, 0.5);
+      }
       .list-NAME{
         font-weight: bold;
         padding: 10px;
       }
-      .css-shelf-HIGHLIGHT{
+      .js-remove-button{
         display: flex;
-        align-items: center;
         justify-content: center;
-        background-color: rgb(59, 253, 191);
-        width: 10px;
-        height: 100%;
+        align-items: center;
+        margin: 0px;
       }
+      .REMOVE-button{
+        background-color: rgb(253, 219, 219);
+        border-radius: 100%;
+        border-style: none;
+        width: 25px;
+        height: 25px;
+        font-weight: bold;
+        transition: .2s ease;
 
+      }
+      .REMOVE-button:hover{
+        background-color: rgb(255, 0, 0);
+        cursor:pointer;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        width: 35px;
+        height: 35px;
+        color: rgb(255, 255, 255);
+        transition: .2s ease;
+      }
       .shelf {
         background-color: rgb(255, 111, 245);
         display: grid;
@@ -253,6 +287,8 @@ togglest
         margin: 1%;
       }
       .css-input{
+        visibility: hidden;
+
         position: absolute;
         margin-left: 1px;
         width: 40px;
@@ -261,7 +297,27 @@ togglest
         z-index: 0;
         border-style: none;
         outline:none;
+        z-index: 10;
+        transition: .2s ease;
+        text-align: center;
       }
+      .css-input-2{ 
+        visibility: visible;
+
+        position: absolute;
+        width: 45px;
+        height: 12px;
+        font-size: 10px;
+        border-style: none;
+        border-radius: 5px;
+        outline:none;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        z-index: 10;
+        transition: .2s ease;
+        text-align: center;
+
+      }
+   
  
       .line-main{
         display: flex;
