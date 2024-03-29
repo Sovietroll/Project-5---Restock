@@ -21,7 +21,9 @@ DONE make HTML
 <--
 
 BUGS -->
-togglePanelNumber doesnt work perfectly/ 
+Remove button hightlight shelf.active too
+
+FIXED togglePanelNumber doesnt work perfectly/ 
 
 FIXED - togglePanelNumber double click to on and off (SOLUTION: if else if statement the condition need to have opposite boolean then it finally works)
 

@@ -3,21 +3,54 @@ let data = JSON.parse(localStorage.getItem('savedObjects')) || [];
 let output = document.querySelector('.outputHere');
 runData();
 
-
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
   const savedOutput = JSON.parse(localStorage.getItem('itemName'));
   if (savedOutput) {
     let keys = Object.keys(savedOutput); // Get the keys of savedOutput
+    console.log(savedOutput);
 
-    if (keys.includes('D1')) {
-      const nameValue = savedOutput.D1;
-      itemNameHTMLD1.innerHTML = nameValue;
+    await Promise.all([
+      processLine1(keys, savedOutput),
+      processLine2(keys, savedOutput)
+    ]);
+    /*
+    if (keys.includes('D1') === false) {
+      itemNameHTMLD1.innerHTML = savedOutput.D1;
+      console.log('run line 1');
     }
+    else if (keys.includes('D2')) {
+      itemNameHTMLD2.innerHTML = savedOutput.D2;
+      console.log('run line 2');
+    }
+    */
   }
 });
-//try to shorthand more of this
 
+async function processLine1(keys, savedOutput){
+  if (keys.includes('itemD1')) {
+    itemNameHTMLD1.innerHTML = savedOutput.itemD1;
+    shelfQuantity_D1.innerHTML = savedOutput.quantityD1;
+    console.log('run line 1');
+  }
+}
+async function processLine2(keys, savedOutput){
+  if(keys.includes('itemD2')){
+    itemNameHTMLD2.innerHTML = savedOutput.itemD2;
+    shelfQuantity_D2.innerHTML = savedOutput.quantityD2;
+    console.log('run line 2');
+  }
+  else {
+    itemNameHTMLD2.innerHTML = 'empty';
+    console.log('run line 3')
+  }
+}
 
+let savedInputs = {
+  itemD1: '',
+  quantityD1: '',
+  itemD2: '',
+  quantityD2: ''
+}
 
 
   let quantitySupplement_A1 = 0;//1
@@ -103,7 +136,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     mainShelfD1.classList.remove("shelf-active");
     typingState; //back to default
-    itemNameHTMLD1 = inputD1.value;
+    itemNameHTMLD1.innerHTML = inputD1.value;
     HideD1();
     runData();
   });
@@ -277,6 +310,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function savedData(){
   localStorage.setItem('savedObjects',JSON.stringify(data));
+  };
+  function savedHTML(){
+    localStorage.setItem('itemName', JSON.stringify(savedInputs));
   }
 
 //RUN DATA FOR SHELF LIST//////////////////////////////////////////////////////////////
@@ -431,9 +467,6 @@ let itemNameHTMLD2 = document.querySelector('.js-one-D2');
 const savedAllInputs = [inputD1.value,inputD2.value];
 */
 
-let savedInputs = {
-  D1: ''
-}
 
 
 //ENTER PHYSICAL BUTTON ----------------------------------------------------------
@@ -460,13 +493,11 @@ let savedInputs = {
        
       //////////////////////////
 
-      itemNameHTMLD1.innerHTML = inputD1.value;
+      savedInputs.itemD1 = itemNameHTMLD1.innerHTML = inputD1.value;
+      savedInputs.quantityD1 = quantitySupplement_D1;
 
-      savedInputs.D1 = itemNameHTMLD1.innerHTML;
-
-      console.log(savedInputs)
-
-      localStorage.setItem('itemName', JSON.stringify(savedInputs));
+      savedHTML();
+      console.log(savedInputs);
 
     }
 ///////////////////////////////////////
@@ -477,16 +508,19 @@ let savedInputs = {
         quantity: quantitySupplement_D2,
         loc: shelf.D2
        });
-
+       savedData();
        inputD2.classList.remove("css-input-2");
        inputD2.classList.add("css-input");
-
        typingState; //back to default
+       savedInputs.itemD2 = itemNameHTMLD2.innerHTML = inputD2.
+       value;
+       savedInputs.quantityD2 = quantitySupplement_D2;
+       savedHTML();
+       console.log(savedInputs);
 
-       itemNameHTMLD2.innerHTML = inputD2.value;
     }
-      runData();
-      console.log(data);
+    runData();
+    console.log(data);
     } 
    }
   );
