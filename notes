@@ -1,7 +1,5 @@
 CURRENT -->
-Implement multiple selections in the shelf
-Rearrange the whole js,css,html
-
+Save innerHTML of item name and quantity for HTML. Item still there everytime refereshs
 
 NEXT -->
 create local save
@@ -10,6 +8,9 @@ testing
 <--
 
 FINISHED-->
+DONE  Make localStorage for item list
+DONE Implement multiple selections in the shelf
+DONE Rearrange the whole js,css,html
 DONE creates object for data entry and data saving
 DONE place quantity in array 
 DONE remove button

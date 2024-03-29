@@ -25,7 +25,7 @@ togglest
         border-radius:8px;
         display: grid;
         grid-template-columns:1fr 35px 45px 0px;
-        margin: 3.5px;
+        margin: 4px;
         z-index: 0;
         font-size: 15px;
         font-weight: bold;
@@ -75,7 +75,7 @@ togglest
         font-weight: bold;
         padding: 5px;
       }
-      .js-remove-button{
+      .js-remove-button{ /*Remove button wrapper*/
         position: relative;
         display: flex;
         justify-content: center;
@@ -84,21 +84,23 @@ togglest
       }
       .REMOVE-button{
         position: absolute;
+        font-size: 12px;
         background-color: rgb(132, 255, 136);
-        margin-left: 40px;
-        width: 30px;
-        height: 30px;
+        padding:0px;
+        margin-left: 30px;
         border-style: none;
-        border-radius: 100%;
-        text-align: center;
+        width: 20px;
+        height: 20px;
         font-weight: bold;
+        border-radius: 100px;
         transition: .2s ease;
 
       }
       .REMOVE-button:hover{
+        position: absolute;
         background-color: rgb(255, 0, 0);
-        width: 35px;
-        height: 35px;
+        width: 25px;
+        height: 25px;
         
         cursor:pointer;
         color: rgb(255, 255, 255);

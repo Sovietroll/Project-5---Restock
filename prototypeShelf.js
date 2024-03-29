@@ -1,4 +1,24 @@
-let data = [];
+let data = JSON.parse(localStorage.getItem('savedObjects')) || [];
+
+let output = document.querySelector('.outputHere');
+runData();
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  const savedOutput = JSON.parse(localStorage.getItem('itemName'));
+  if (savedOutput) {
+    let keys = Object.keys(savedOutput); // Get the keys of savedOutput
+
+    if (keys.includes('D1')) {
+      const nameValue = savedOutput.D1;
+      itemNameHTMLD1.innerHTML = nameValue;
+    }
+  }
+});
+//try to shorthand more of this
+
+
+
 
   let quantitySupplement_A1 = 0;//1
   let quantitySupplement_A2 = 0;//1.1
@@ -58,8 +78,6 @@ let data = [];
   let upDown = 0;
   
 
-  let output = document.querySelector('.outputHere');
-
   //Panel Number Div for Plus and Minus
   let numberPanelD2 = document.querySelector('.js-panelNumberD2');
   let numberPanelD1 = document.querySelector('.js-panelNumberD1');
@@ -84,6 +102,9 @@ let data = [];
       loc: shelf.D1
     });
     mainShelfD1.classList.remove("shelf-active");
+    typingState; //back to default
+    itemNameHTMLD1 = inputD1.value;
+    HideD1();
     runData();
   });
 
@@ -97,6 +118,10 @@ let data = [];
       quantity: quantitySupplement_D2,
       loc: shelf.D2
     });
+    mainShelfD2.classList.remove("shelf-active");
+    typingState; //back to default
+    itemNameHTMLD2.innerHTML = inputD2.value;
+    HideD2();
     runData();
   });
 ////////////////////////////////////////
@@ -250,6 +275,10 @@ let data = [];
   ////////////////////////////////////////////////////////////////////////////////////////////
   let tryOnce = true;
 
+  function savedData(){
+  localStorage.setItem('savedObjects',JSON.stringify(data));
+  }
+
 //RUN DATA FOR SHELF LIST//////////////////////////////////////////////////////////////
   function runData(){
   output.innerHTML = '';
@@ -277,6 +306,8 @@ let data = [];
   </div>
   `;
     output.innerHTML += text;
+    localStorage.setItem('output',JSON.stringify(output.innerHTML));
+    savedData()
   });
 
     
@@ -310,8 +341,10 @@ let data = [];
       data.splice(index,1);
       runData();
       })
-      },console.log(`deleted`,data)
+      },savedData()
       );
+
+      
     };
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -391,16 +424,23 @@ document.querySelector('.js-one-D1').addEventListener('click', () => {
 
 /////////////////////////////////////////////////////
   
- 
+let itemNameHTMLD1 = document.querySelector('.js-one-D1');
+let itemNameHTMLD2 = document.querySelector('.js-one-D2');
+
+/*
+const savedAllInputs = [inputD1.value,inputD2.value];
+*/
+
+let savedInputs = {
+  D1: ''
+}
 
 
 //ENTER PHYSICAL BUTTON ----------------------------------------------------------
   // const bodyEvent =
    document.body.addEventListener('keydown',(event) => {
 
-    let itemNameHTMLD1 = document.querySelector('.js-one-D1');
-    let itemNameHTMLD2 = document.querySelector('.js-one-D2');
-    
+////////////////////////////////////////
     if(event.key === 'Enter'){
       if (toggleState === shelf.D1){
       data.push({
@@ -408,6 +448,7 @@ document.querySelector('.js-one-D1').addEventListener('click', () => {
         quantity: quantitySupplement_D1,
         loc: shelf.D1
        });
+       savedData();
       //  inputD1.style.display = "none";
 
       // Input to remove css after enter
@@ -419,8 +460,17 @@ document.querySelector('.js-one-D1').addEventListener('click', () => {
        
       //////////////////////////
 
-       itemNameHTMLD1.innerHTML = inputD1.value;
+      itemNameHTMLD1.innerHTML = inputD1.value;
+
+      savedInputs.D1 = itemNameHTMLD1.innerHTML;
+
+      console.log(savedInputs)
+
+      localStorage.setItem('itemName', JSON.stringify(savedInputs));
+
     }
+///////////////////////////////////////
+
     else if (toggleState === shelf.D2){
       data.push({
         name: inputD2.value,
