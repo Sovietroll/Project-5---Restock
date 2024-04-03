@@ -1,13 +1,9 @@
-if (loc === 'D1') {
-  if (toggleHighlight === Hili.on) {
-    // If toggleHighlight is 'Hili.on', remove the "shelf-active" class
-    mainShelfD1.classList.remove("shelf-active");
-    console.log(toggleHighlight);
-    toggleHighlight = Hili.off; // Update toggleHighlight to 'Hili.off'
-  } else if (toggleHighlight === Hili.off) {
-    // If toggleHighlight is 'Hili.off', add the "shelf-active" class
-    mainShelfD1.classList.add("shelf-active");
-    console.log(toggleHighlight);
-    toggleHighlight = Hili.null; // Update toggleHighlight to 'Hili.null'
-  }
+if (keys.includes('itemD1')) {
+  itemNameHTMLD1.innerHTML = savedOutput.itemD1;
+  shelfQuantity_D1.innerHTML = `x${savedOutput.quantityD1}`;
+  console.log('run line 1');
+  console.log(keys.includes('itemD1'));
+} else if (Object.keys(savedOutput).length === 0) { // Check if object is empty
+  itemNameHTMLD2.innerHTML = 'empty';
+  console.log('Object is empty');
 }

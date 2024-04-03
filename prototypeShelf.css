@@ -33,6 +33,7 @@ togglest
         transition: .2s ease;
 
       }
+      /*---------------------------------*/
       .css-shelf-HIGHLIGHT{
         background: radial-gradient(circle, rgba(255,120,142,1) 0%, rgba(254,64,93,1) 100%);
         box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
@@ -43,17 +44,6 @@ togglest
       .css-shelf-list:hover{
         background-color: rgb(255, 135, 135);
         cursor: pointer;
-      }
-      .css-shelf-list-PICTURES{
-        background-image: url(Pictures/pdlime.jpg);
-        height: 30px;
-        width: 30px;
-        background-size: 50%;
-        background-repeat: no-repeat;
-        padding: 10px;
-        background-color: white;
-        border-radius: 10px;
-        background-position: center;
       }
       .css-shelf-list-QUANTITY{
         display: flex;
@@ -75,7 +65,7 @@ togglest
         font-weight: bold;
         padding: 5px;
       }
-      .js-remove-button{ /*Remove button wrapper*/
+      .js-remove-button{ 
         position: relative;
         display: flex;
         justify-content: center;
@@ -109,6 +99,8 @@ togglest
         z-index: 10;
         transition: .2s ease;
       }
+
+      /*--------------------------*/
       .shelf {
         background-color: rgb(255, 111, 245);
         display: grid;
@@ -124,6 +116,7 @@ togglest
         min-height: 0;
         overflow: hidden;
         position: relative;
+        z-index: 0;
       }
       .shelf-1 {
         display: grid;
@@ -144,7 +137,7 @@ togglest
  
 
       /* HIGHLIGHT */
-      .shelf-D1,.shelf-D2 { 
+      .shelf-D1,.shelf-D2,.shelf-B1 { 
         display: grid;
         grid-template-rows: 0.5fr 0.5fr 2fr;
         overflow: hidden;
@@ -153,13 +146,19 @@ togglest
         margin: 1px;
         border-radius: 1.5px;
       }
-      .shelf-D1:hover,.shelf-D2:hover{
+      .shelf-D1:hover,.shelf-D2:hover.shelf-B1:hover{
         transition: .2s ease;
       }
       /* BODY HIGHLIGHT */
       .shelf-active{ 
-        background-color: rgb(246, 177, 255);
+        width: 47.830px;
+        -webkit-box-shadow:0px 0px 12px 0px rgba(255,66,66,0.39);
+        -moz-box-shadow: 0px 0px 12px 0px rgba(255,66,66,0.39);
+        box-shadow: 0px 0px 12px 0px rgba(255,66,66,0.39);
+
         transition: 0.2s ease;
+        z-index: 10;
+        
       }
 
       /*ITEM NAME HERE*/
@@ -176,9 +175,10 @@ togglest
       /*CONTAINER FOR BUTTONS*/
       .css-panelNumber-buttons {
         display: flex;
+        position: relative;
       }
       /*BUTTONS FOR PLUS AND MINUS *not main*/
-      .buttonD2 {
+      .button {
         border-style: none;
         font-size: 15px;
         width: 25px;
@@ -188,10 +188,10 @@ togglest
         transition: .2s ease;
         border-radius: 3px 3px 0px 0px;
       }
-      .buttonD2:hover {
+      .button:hover {
         background-color:  rgb(253, 119, 139);
       }
-      .css-panelNumber,.css-panelNumberD1 { /*HIDE*/ 
+      .css-panelNumber { /*HIDE*/ 
         font-size: 1px;
         position: absolute;
         top: 120px;
@@ -201,22 +201,42 @@ togglest
         margin-left: 2.5px;
         display: flex;
       } 
-      /*EDIT APPEAR BUTTON*/ 
-      .css-panelNumber-active,.css-panelNumber-activeD1 { /*APPEAR*/
+      .css-panelNumber-active{ /*APPEAR*/
+        font-size: 5px;
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        display: flex;
+        top: 97px;
+        margin-left: 4px;
+        transition: 0.5s ease;
+        z-index: 0;
+      } 
+      .css-panelNumberB { /*HIDE*/ 
+        font-size: 1px;
+        position: absolute;
+        top: 20px;
+        transition: 0.2s ease;
+        z-index: 0; 
+        height: 20px;
+        margin-left: 2.5px;
+        display: flex;
+      } 
+      .css-panelNumber-activeB{ /*APPEAR*/
         font-size: 5px;
         height: 20px;
         width: 10px;
         position: absolute;
         display: flex;
-        top: 97px;
+        top: 0px;
         transition: 0.5s ease;
         margin-left: 2.5px;
         z-index: 0;
-
       } 
+
       /*ENTER BUTTONS*/
-      /*HIDE*/
-      .css-EnterPanelNumber,.css-EnterPanelNumberD1{
+
+      .css-EnterPanelNumber{/*HIDE*/
         font-size: 10px;
         border-radius: 5px;
         border-style: none;
@@ -228,28 +248,27 @@ togglest
         margin-left: 2.5px;
         z-index: 0;
       }
+
       /*APPEAR*/
-      .css-EnterPanelNumber-active,
-      .css-EnterPanelNumber-activeD1{
-        background-color: rgb(255, 255, 255);
+      .css-EnterPanelNumber-active{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         position: absolute;
         font-size: 10px;
         border-radius: 0px 0px 5px 5px;
         border-style: none;
-        width: 39px;
+        width: 42px;
         top: -1px;
         height: 20px;
         transition: .5s ease;
-        margin-left: 2.5px;
+        margin-left: 2px;
         z-index:0;
       }
-      .css-EnterPanelNumber-active:hover,
-      .css-EnterPanelNumber-activeD1:hover{
+      .css-EnterPanelNumber-active:hover{
         background-color: rgb(255, 223, 223);
       }
  
       /*QUANTITY PANEL NUMBER WHERE QUANTITY ITEM SHOWED*/
-      .panelNumber-QuantityD2, .panelNumber-QuantityD1 {
+      .panelNumber-Quantity{
         align-items: center;
         justify-content: center;
         display: flex;
@@ -262,31 +281,10 @@ togglest
         box-shadow: rgba(191, 54, 54, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
       }
 
-      .panelNumber-QuantityD2:hover, .panelNumber-QuantityD1:hover {
+      .panelNumber-Quantity:hover{
         background-color: rgb(250, 41, 73);
       } 
 
-      .panelNumber-QuantityD1:active {
-        background-color: rgb(255, 72, 191);
-      } 
-
-
-
-
-      .pic-d1 {
-        background-image: url(Pictures/vitalize.jpg);
-        background-repeat: no-repeat;
-        background-size: 64%;
-        background-position:center;
-        margin: 1%;
-      }
-      .pic-d2{
-        background-image: url(Pictures/vita-c.jpg);
-        background-repeat: no-repeat;
-        background-size: 60%;
-        background-position:center;
-        margin: 1%;
-      }
       .css-input{
         visibility: hidden;
 
@@ -302,7 +300,7 @@ togglest
         transition: .2s ease;
         text-align: center;
       }
-      .css-input-2{ 
+      .css-input-2{ /*JS*/
         visibility: visible;
 
         position: absolute;
@@ -316,7 +314,6 @@ togglest
         z-index: 10;
         transition: .2s ease;
         text-align: center;
-
       }
    
  
@@ -326,8 +323,25 @@ togglest
         justify-content: left;
         padding-left: 5px;
       }
-      .button-one, .button-two {
-        height: 50%;;
-        margin-left: 5px;
+
+      .pic-B1 {
+        background-image: url(Pictures/herbalBlend.png);
+        background-repeat: no-repeat;
+        background-size: 130%;
+        background-position:center;
+        margin: 1%;
       }
- 
+      .pic-d1 {
+        background-image: url(Pictures/vitalize.jpg);
+        background-repeat: no-repeat;
+        background-size: 64%;
+        background-position:center;
+        margin: 1%;
+      }
+      .pic-d2{
+        background-image: url(Pictures/vita-c.jpg);
+        background-repeat: no-repeat;
+        background-size: 60%;
+        background-position:center;
+        margin: 1%;
+      }

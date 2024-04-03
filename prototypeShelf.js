@@ -3,55 +3,62 @@ let data = JSON.parse(localStorage.getItem('savedObjects')) || [];
 let output = document.querySelector('.outputHere');
 runData();
 
-window.addEventListener('DOMContentLoaded', async () => {
-  const savedOutput = JSON.parse(localStorage.getItem('itemName'));
-  if (savedOutput) {
-    let keys = Object.keys(savedOutput); // Get the keys of savedOutput
-    console.log(savedOutput);
+const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
+  {itemNameB1:'', quantityB1: ''},
+  {itemNameD1:'', quantityD1: ''},
+  {itemNameD2:'', quantityD2: ''}
+];
 
-    await Promise.all([
-      processLine1(keys, savedOutput),
-      processLine2(keys, savedOutput)
-    ]);
-    /*
-    if (keys.includes('D1') === false) {
-      itemNameHTMLD1.innerHTML = savedOutput.D1;
-      console.log('run line 1');
-    }
-    else if (keys.includes('D2')) {
-      itemNameHTMLD2.innerHTML = savedOutput.D2;
-      console.log('run line 2');
-    }
-    */
+  console.log(savedOutput);
+window.addEventListener('DOMContentLoaded',  () => {
+      itemNameHTMLB1.innerHTML = savedOutput[0].itemNameB1;
+      shelfQuantity_B1.innerHTML = savedOutput[0].quantityB1;
+
+      itemNameHTMLD1.innerHTML = savedOutput[1].itemNameD1;
+      shelfQuantity_D1.innerHTML = savedOutput[1].quantityD1;
+
+      itemNameHTMLD2.innerHTML = savedOutput[2].itemNameD2;
+      shelfQuantity_D2.innerHTML = savedOutput[2].quantityD2;      
+    
+    /*await Promise.all([
+      processLine1(savedOutput),
+      processLine2(savedOutput)
+    ]); */
   }
-});
+);
 
-async function processLine1(keys, savedOutput){
-  if (keys.includes('itemD1')) {
+/*
+async function processLine1(savedOutput){
+  if (savedInputsArray.itemD1 !== '') {
     itemNameHTMLD1.innerHTML = savedOutput.itemD1;
-    shelfQuantity_D1.innerHTML = savedOutput.quantityD1;
+    shelfQuantity_D1.innerHTML = `x${savedOutput.quantityD1}`;
     console.log('run line 1');
   }
+  else {
+    itemNameHTMLD1.innerHTML = '';
+    console.log('run line SPECIAL');
+
+  }
 }
-async function processLine2(keys, savedOutput){
-  if(keys.includes('itemD2')){
+async function processLine2(savedOutput){
+  if(savedOutput.itemD2 !== ''){
     itemNameHTMLD2.innerHTML = savedOutput.itemD2;
-    shelfQuantity_D2.innerHTML = savedOutput.quantityD2;
-    console.log('run line 2');
+    shelfQuantity_D2.innerHTML = `x${savedOutput.quantityD2}`;
+    console.log('run line 3');
   }
   else {
-    itemNameHTMLD2.innerHTML = 'empty';
-    console.log('run line 3')
+    itemNameHTMLD2.innerHTML = '';
+    shelfQuantity_D2.innerHTML = '';
+    console.log('run line 4')
   }
 }
+*/
 
-let savedInputs = {
-  itemD1: '',
-  quantityD1: '',
-  itemD2: '',
-  quantityD2: ''
-}
 
+
+//.keys transfer the Object [keys] not convert to object//
+
+//Try changing Objects to Array or Objects of Array
 
   let quantitySupplement_A1 = 0;//1
   let quantitySupplement_A2 = 0;//1.1
@@ -110,22 +117,46 @@ let savedInputs = {
   let togglePanelOnOff = false;
   let upDown = 0;
   
-
+//**************//ADD HERE//************//
   //Panel Number Div for Plus and Minus
+  let numberPanelB1 = document.querySelector('.js-panelNumberB1');
   let numberPanelD2 = document.querySelector('.js-panelNumberD2');
   let numberPanelD1 = document.querySelector('.js-panelNumberD1');
 
    //ENTER PANEL QUANTITY NUMBER
+//**************//ADD HERE//************//
+  let enterQuantityB1 = document.querySelector('.js-EnterPanelNumberB1');
   let enterQuantityD2 = document.querySelector('.js-EnterPanelNumberD2');
   let enterQuantityD1 = document.querySelector('.js-EnterPanelNumberD1');
 
-
+//**************//ADD HERE//************//
+  const mainShelfB1 = document.querySelector('.shelf-B1');
   const mainShelfD1 = document.querySelector('.shelf-D1');
   const mainShelfD2 = document.querySelector('.shelf-D2');
 
 ////////ENTER BUTTON PANEL NUMBER ADDEVENTLISTENER
+//**************//ADD HERE//************//
+
+  enterQuantityB1.addEventListener('click', ()=> {
+    enterQuantityB1.value = quantitySupplement_B1;
+
+    console.log(data);
+
+    data.push({
+      name: inputB1.value,
+      quantity: quantitySupplement_B1,
+      loc: shelf.B1
+    });
+
+    mainShelfB1.classList.remove("shelf-active");
+    typingState;
+    itemNameHTMLB1.innerHTML = inputB1.value;
+    HideB1();
+    runData();
+  });
+
   enterQuantityD1.addEventListener('click', ()=> {
-    enterQuantityD2.value = quantitySupplement_D1;
+    enterQuantityD1.value = quantitySupplement_D1;
 
     console.log(data);
 
@@ -157,47 +188,60 @@ let savedInputs = {
     HideD2();
     runData();
   });
-////////////////////////////////////////
+/////////////////////////////////////////////
 
+//**************//ADD HERE//************//
     //SHELF QUANTITY
+  let shelfQuantity_B1 = document.querySelector('.panelNumber-QuantityB1');
   let shelfQuantity_D2 = document.querySelector('.panelNumber-QuantityD2');
   let shelfQuantity_D1 = document.querySelector('.panelNumber-QuantityD1');
 
-  
+  shelfQuantity_B1.value = '';
   shelfQuantity_D1.value = '';
   shelfQuantity_D2.value = '';
+  
+  shelfQuantity_B1.innerHTML = '0';
   shelfQuantity_D1.innerHTML = '0';
   shelfQuantity_D2.innerHTML = '0';
 
+//**************//ADD HERE//************//
   //INPUT HERE
+  const inputB1 = document.querySelector('.js-input-B1');
   const inputD1 = document.querySelector('.js-input-D1');
   const inputD2 = document.querySelector('.js-input-D2');
 
    // Click the input directly
- const inputPopUp = document.querySelectorAll('.js-input-D1 ,.js-input-D2');
+ const inputPopUp = document.querySelectorAll('.js-input-D1 ,.js-input-D2,.js-input-B1');
 
   //INPUT DISPLAY
-  const allPanels = [numberPanelD1, numberPanelD2];
+  const allPanels = [numberPanelB1,numberPanelD1, numberPanelD2];
   
   allPanels.forEach(clickPanels => {
     clickPanels.addEventListener('click', () => {
      togglePanelOnOff = true;
     })
-  }); //FOR ADD MINUS BUTTON SELECTED FOR THE RIGHT SHELF
-//QUANTITY NUMBER PANEL CLICK TO HIGHLIGHT COLOR
-//COMMENT - GONNA POP MY FUCKING HEAD OFF THINKING OFF THE TOGGLE
+  }); 
+
+    //FOR ADD MINUS BUTTON SELECTED FOR THE RIGHT SHELF
+
+    //QUANTITY NUMBER PANEL CLICK TO HIGHLIGHT COLOR
+
+
+//**************//ADD HERE//************//
+
   shelfQuantity_D1.addEventListener('click', () => {
       if (togglePanelOnOff === false || upDown === 2){
-        numberPanelD1.classList.add("css-panelNumber-activeD1");
-        numberPanelD1.classList.remove("css-panelNumberD1");
+        numberPanelD1.classList.add("css-panelNumber-active");
+        numberPanelD1.classList.remove("css-panelNumber");
 
     
-        enterQuantityD1.classList.add('css-EnterPanelNumber-activeD1');
-        enterQuantityD1.classList.remove('css-EnterPanelNumberD1');
+        enterQuantityD1.classList.add('css-EnterPanelNumber-active');
+        enterQuantityD1.classList.remove('css-EnterPanelNumber');
 
         // inputD1.style.display = "none";
         inputD1.classList.add("css-input");
         toggleState = shelf.D1;
+        HideB1();
         HideD2();
         clickShelfD1()
 
@@ -207,11 +251,11 @@ let savedInputs = {
       }
       else if (upDown === 1) {
 
-        numberPanelD1.classList.add("css-panelNumberD1");
-        numberPanelD1.classList.remove("css-panelNumber-activeD1");
+        numberPanelD1.classList.add("css-panelNumber");
+        numberPanelD1.classList.remove("css-panelNumber-active");
     
-        enterQuantityD1.classList.remove('css-EnterPanelNumber-activeD1');
-        enterQuantityD1.classList.add('css-EnterPanelNumberD1');
+        enterQuantityD1.classList.remove('css-EnterPanelNumber-active');
+        enterQuantityD1.classList.add('css-EnterPanelNumber');
 
         // inputD1.style.display = "none";
         inputD1.classList.add("css-input");
@@ -221,20 +265,17 @@ let savedInputs = {
         unclickShelfD1()
       }
     });
-
-
-
-
   shelfQuantity_D2.addEventListener('click', () => {
       if (togglePanelOnOff === false || upDown === 1){
         numberPanelD2.classList.add("css-panelNumber-active");
-        numberPanelD2.classList.remove("css-panelNumber");
-
         enterQuantityD2.classList.add('css-EnterPanelNumber-active');
+
+        numberPanelD2.classList.remove("css-panelNumber");
         enterQuantityD2.classList.remove('css-EnterPanelNumber');
         // inputD2.style.display = "none";
         inputD2.classList.add("css-input");
 
+        HideB1();
         HideD1();
         clickShelfD2()
         
@@ -242,8 +283,6 @@ let savedInputs = {
 
         upDown = 2;
         togglePanelOnOff = true;
-
-
       }
       else if (upDown === 2){
 
@@ -263,11 +302,59 @@ let savedInputs = {
       }
     })
 
+    shelfQuantity_B1.addEventListener('click', () => {
+      if (togglePanelOnOff === false || upDown === 1){
+        numberPanelB1.classList.add("css-panelNumber-activeB");
+        numberPanelB1.classList.remove("css-panelNumberB");
+
+        enterQuantityB1.classList.add('css-EnterPanelNumber-active');
+        enterQuantityB1.classList.remove('css-EnterPanelNumber');
+        // inputD2.style.display = "none";
+        inputB1.classList.add("css-input");
+
+        HideD1();
+        HideD2();
+        clickShelfB1()
+        
+        toggleState = shelf.B1;
+
+        upDown = 2;
+        togglePanelOnOff = true;
+
+
+      }
+      else if (upDown === 2){
+
+        numberPanelB1.classList.add("css-panelNumberB");
+        numberPanelB1.classList.remove("css-panelNumber-activeB");
+    
+        enterQuantityB1.classList.remove('css-EnterPanelNumber-active');
+        enterQuantityB1.classList.add('css-EnterPanelNumber');
+        // inputB1.style.display = "none";
+        inputB1.classList.add("css-input");
+
+
+        togglePanelOnOff = false;
+
+        
+        unclickShelfB1();
+      }
+    })
+
+//**************//ADD HERE//************//
+
+    function HideB1(){
+      numberPanelB1.classList.add("css-panelNumberB");
+      numberPanelB1.classList.remove("css-panelNumber-activeB");
+      enterQuantityB1.classList.remove('css-EnterPanelNumber-active');
+      enterQuantityB1.classList.add('css-EnterPanelNumber');
+    };
+
     function HideD1(){
-      numberPanelD1.classList.add("css-panelNumberD1");
-      numberPanelD1.classList.remove("css-panelNumber-activeD1");
-      enterQuantityD1.classList.remove('css-EnterPanelNumber-activeD1');
-      enterQuantityD1.classList.add('css-EnterPanelNumberD1');
+      numberPanelD1.classList.add("css-panelNumber");
+      numberPanelD1.classList.remove("css-panelNumber-active");
+      enterQuantityD1.classList.remove('css-EnterPanelNumber-active');
+      enterQuantityD1.classList.add('css-EnterPanelNumber');
     };
 
     function HideD2(){
@@ -278,44 +365,58 @@ let savedInputs = {
     }
 
 //FUNCTIONS FOR CLICKABLE SHELF ///////////////////////////////////////////////////////////
-  function clickShelfD1(){
-    mainShelfD1.classList.add("shelf-active");
+//**************//ADD HERE//************//
+  function clickShelfB1(){
+    mainShelfB1.classList.add("shelf-active");
     mainShelfD2.classList.remove("shelf-active");
     toggleHighlight = Hili.on;
     console.log(toggleHighlight);
 
+    inputB1.classList.toggle("css-input-2",false); //Turn off input
+    toggleState = shelf.B1;
+  };
+  function unclickShelfB1(){
+    // mainShelfB2.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+
+  function clickShelfD1(){
+    mainShelfD1.classList.add("shelf-active");
+    mainShelfB1.classList.remove("shelf-active");
+    mainShelfD2.classList.remove("shelf-active");
+    toggleHighlight = Hili.on;
+    console.log(toggleHighlight);
     inputD1.classList.toggle("css-input-2",false); //Turn off input
     toggleState = shelf.D1;
-  }
-
+  };
   function unclickShelfD1(){
     mainShelfD1.classList.remove("shelf-active");
     toggleHighlight = Hili.off;
-
-  }
+  };
   
   function clickShelfD2(){
     mainShelfD2.classList.add("shelf-active"),
+    mainShelfB1.classList.remove("shelf-active");
     mainShelfD1.classList.remove("shelf-active");
-
     inputD2.classList.toggle("css-input-2",false);
     toggleState = shelf.D2;
   };
-
   function unclickShelfD2(){
     mainShelfD2.classList.remove("shelf-active");
-  }
+  };
+
   ////////////////////////////////////////////////////////////////////////////////////////////
   let tryOnce = true;
 
   function savedData(){
-  localStorage.setItem('savedObjects',JSON.stringify(data));
+    localStorage.setItem('savedObjects',JSON.stringify(data));
   };
   function savedHTML(){
-    localStorage.setItem('itemName', JSON.stringify(savedInputs));
+    localStorage.setItem('itemName', JSON.stringify(savedOutput));
   }
 
-//RUN DATA FOR SHELF LIST//////////////////////////////////////////////////////////////
+//////////////////////RUNDATA//////////////////////////////////////
+
   function runData(){
   output.innerHTML = '';
 
@@ -359,10 +460,11 @@ let savedInputs = {
         mainShelfD1.classList.toggle("shelf-active"); 
         console.log('run')
         }
-        
-        
         else if(loc === 'D2'){
           mainShelfD2.classList.toggle("shelf-active");
+        }
+        else if(loc === 'B1'){
+          mainShelfB1.classList.toggle("shelf-active");
         }
 
       })
@@ -379,8 +481,6 @@ let savedInputs = {
       })
       },savedData()
       );
-
-      
     };
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -398,31 +498,36 @@ inputD1.classList.toggle("css-input-2", false);
 // typingState is typing to disable dom.body.click
 let typingState;
 
-//Click Panel One not Input
+//**************//ADD HERE//************//
+//Click Panel One not Input 
+document.querySelector('.js-one-B1').addEventListener('click', () => {
+
+  inputB1.classList.toggle("css-input-2",true);
+  inputD2.classList.toggle("css-input-2",false);
+  inputD1.classList.toggle("css-input-2",false);
+
+  toggleState = shelf.B1;
+  typingState = true;
+});
 document.querySelector('.js-one-D1').addEventListener('click', () => {
-  // inputD1.classList.toggle("css-inputAPPEAR");
-  
+
   inputD1.classList.toggle("css-input-2", true);
   inputD2.classList.toggle("css-input-2",false);
+  inputB1.classList.toggle("css-input-2",false);
+
   toggleState = shelf.D1;
-  
   typingState = true;
+});
 
+document.querySelector('.js-one-D2').addEventListener('click', () => {
 
-  // toggle on and off typingState
-  // typingState = !typingState;
-})
+  inputD2.classList.toggle("css-input-2",true);
+  inputD1.classList.toggle("css-input-2",false);
+  inputB1.classList.toggle("css-input-2",false);
 
- document.querySelector('.js-one-D2').addEventListener('click', () => {
-  
-    // inputD2.style.display = "block";
-    // inputD1.style.display = "block"; 
-
-    inputD2.classList.toggle("css-input-2",true);
-    inputD1.classList.toggle("css-input-2",false);
-    toggleState = shelf.D2;
-
- });
+  toggleState = shelf.D2;
+  typingState = true;
+});
 
  //WHEN TYPING INPUT 1st STATE//When typing
   inputPopUp.forEach(element => {
@@ -443,33 +548,18 @@ document.querySelector('.js-one-D1').addEventListener('click', () => {
     })
   });
 
-/*  
-// OFF POP UP //click for input pop up///
- const domBody = document.body.addEventListener('click', (event) => {
-  typingState = !typingState;
 
-  if (!event.target.closest('.js-one-D1') && !event.target.closest('.js-one-D2') && typingState === false) {
-
-    inputD1.classList.remove("css-input-2");
-    inputD2.classList.remove("css-input-2");
-    console.log('trigger OFF INPUT');
-    triggeredInputPopUp = true;
-  };
-});
-*/
-
+//**************//ADD HERE//************//
 /////////////////////////////////////////////////////
-  
+let itemNameHTMLB1 = document.querySelector('.js-one-B1');
 let itemNameHTMLD1 = document.querySelector('.js-one-D1');
 let itemNameHTMLD2 = document.querySelector('.js-one-D2');
-
-/*
-const savedAllInputs = [inputD1.value,inputD2.value];
-*/
 
 
 
 //ENTER PHYSICAL BUTTON ----------------------------------------------------------
+//**************//ADD HERE//************//
+
   // const bodyEvent =
    document.body.addEventListener('keydown',(event) => {
 
@@ -482,26 +572,15 @@ const savedAllInputs = [inputD1.value,inputD2.value];
         loc: shelf.D1
        });
        savedData();
-      //  inputD1.style.display = "none";
-
-      // Input to remove css after enter
-
        inputD1.classList.remove("css-input-2");
        inputD1.classList.add("css-input");
-
-       typingState; //back to default
-       
-      //////////////////////////
-
-      savedInputs.itemD1 = itemNameHTMLD1.innerHTML = inputD1.value;
-      savedInputs.quantityD1 = quantitySupplement_D1;
-
-      savedHTML();
-      console.log(savedInputs);
-
+       typingState; 
+       itemNameHTMLD1.innerHTML = inputD1.value;
+       savedOutput[1].itemNameD1 = inputD1.value;
+       savedOutput[1].quantityD1 = quantitySupplement_D1;
+       console.log(savedOutput);
+       savedHTML();
     }
-///////////////////////////////////////
-
     else if (toggleState === shelf.D2){
       data.push({
         name: inputD2.value,
@@ -511,24 +590,41 @@ const savedAllInputs = [inputD1.value,inputD2.value];
        savedData();
        inputD2.classList.remove("css-input-2");
        inputD2.classList.add("css-input");
-       typingState; //back to default
-       savedInputs.itemD2 = itemNameHTMLD2.innerHTML = inputD2.
-       value;
-       savedInputs.quantityD2 = quantitySupplement_D2;
+       typingState; 
+       itemNameHTMLD2.innerHTML = inputD2.value;
+       savedOutput[2].itemNameD2 = inputD2.value;
+       savedOutput[2].quantityD2 = quantitySupplement_D2;
+       console.log(savedOutput);
        savedHTML();
-       console.log(savedInputs);
-
     }
+    else if (toggleState === shelf.B1){
+      data.push({
+        name: inputB1.value,
+        quantity: quantitySupplement_B1,
+        loc: shelf.B1
+       });
+       savedData();
+       inputB1.classList.remove("css-input-2");
+       inputB1.classList.add("css-input");
+       typingState; 
+       itemNameHTMLB1.innerHTML = inputB1.value;
+       savedOutput[0].itemNameB1 = inputB1.value;
+       savedOutput[0].quantityB1 = quantitySupplement_B1;
+       console.log(savedOutput);
+       savedHTML();
+    }
+
     runData();
     console.log(data);
+    
     } 
    }
   );
    
   
-
+//**************//ADD HERE//************//
   //PLUS BUTTON
-  const buttonAdd = document.querySelectorAll('.js-button-plus-B, .js-button-plus-D1, .js-button-plus-D2');
+  const buttonAdd = document.querySelectorAll('.js-button-plus-B1, .js-button-plus-D1, .js-button-plus-D2');
 
   buttonAdd.forEach(add => {
     add.addEventListener('click',buttonPlus);
@@ -551,8 +647,9 @@ const savedAllInputs = [inputD1.value,inputD2.value];
     }
   };
 
+//**************//ADD HERE//************//
 //SUBTRACT BUTTON
-  const buttonSubtract = document.querySelectorAll('.js-button-minus-D1,.js-button-minus-D2');
+  const buttonSubtract = document.querySelectorAll('.js-button-minus-D1,.js-button-minus-D2,.js-button-minus-B1');
 
   buttonSubtract.forEach(minus => {
     minus.addEventListener('click',buttonMinus); 

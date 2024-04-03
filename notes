@@ -1,5 +1,5 @@
 CURRENT -->
-Save innerHTML of item name and quantity for HTML. Item still there everytime refereshs
+Making the whole section of the shelf since the system is done
 
 NEXT -->
 create local save
@@ -8,6 +8,9 @@ testing
 <--
 
 FINISHED-->
+DONE Try changing Objects to Array or Objects of Array [Replace the object with array and set one array of objects with one variable. getItem and ||]
+
+DONE Save innerHTML of item name and quantity for HTML. Item still there everytime refereshs
 DONE  Make localStorage for item list
 DONE Implement multiple selections in the shelf
 DONE Rearrange the whole js,css,html
