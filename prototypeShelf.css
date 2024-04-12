@@ -82,7 +82,7 @@ togglest
         width: 20px;
         height: 20px;
         font-weight: bold;
-        border-radius: 100px;
+        border-radius: 5px;
         transition: .2s ease;
         justify-content: center;
         align-items: center;
@@ -91,12 +91,8 @@ togglest
       .REMOVE-button:hover{
         
         background-color: rgb(255, 0, 0);
-        width: 22px;
-        height: 22px;
-        
         cursor:pointer;
         color: rgb(255, 255, 255);
-
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         z-index: 10;
         transition: .2s ease;
@@ -139,7 +135,7 @@ togglest
  
 
       /* HIGHLIGHT */
-      .shelf-D1,.shelf-D2,.shelf-B1,.shelf-B2 { 
+      .shelf-D1,.shelf-D2,.shelf-B1,.shelf-B2,.shelf-C1,.shelf-C2 { 
         display: grid;
         grid-template-rows: 0.5fr 0.5fr 2fr;
         overflow: hidden;
@@ -148,18 +144,15 @@ togglest
         margin: 1px;
         border-radius: 1.5px;
       }
-      .shelf-D1:hover,.shelf-D2:hover.shelf-B1:hover{
+      .shelf-D1:hover,.shelf-D2:hover,
+      .shelf-B1:hover,.shelf-B2:hover,
+      .shelf-C1:hover,.shelf-C2:hover{
         transition: .2s ease;
       }
       /* BODY HIGHLIGHT */
       .shelf-active{ 
         background-color: aquamarine;
         width: 47.830px;
-        /*
-        -webkit-box-shadow:0px 0px 12px 0px rgba(255,66,66,0.39);
-        -moz-box-shadow: 0px 0px 12px 0px rgba(255,66,66,0.39);
-        box-shadow: 0px 0px 12px 0px rgba(255,66,66,0.39);
-        */
         transition: 0.2s ease;
         z-index: 10;
       }
@@ -352,6 +345,20 @@ togglest
         background-image: url(Pictures/vita-c.jpg);
         background-repeat: no-repeat;
         background-size: 60%;
+        background-position:center;
+        margin: 1%;
+      }
+      .pic-C1{
+        background-image: url(Pictures/esp.png);
+        background-repeat: no-repeat;
+        background-size: 140%;
+        background-position:center;
+        margin: 1%;
+      } 
+      .pic-C2{
+        background-image: url(Pictures/lecithin.png);
+        background-repeat: no-repeat;
+        background-size: 140%;
         background-position:center;
         margin: 1%;
       }
