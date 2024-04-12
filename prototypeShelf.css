@@ -24,26 +24,24 @@ togglest
         width: 100%;
         border-radius:8px;
         display: grid;
-        grid-template-columns:1fr 35px 45px 0px;
+        grid-template-columns:1fr 35px 45px;
         margin: 4px;
         z-index: 0;
         font-size: 15px;
         font-weight: bold;
-
         transition: .2s ease;
 
       }
       /*---------------------------------*/
       .css-shelf-HIGHLIGHT{
         background: radial-gradient(circle, rgba(255,120,142,1) 0%, rgba(254,64,93,1) 100%);
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-        margin-left:50px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         z-index: 10;
-        transition: .5s ease;
+        transition: .2s ease;
       }
       .css-shelf-list:hover{
-        background-color: rgb(255, 135, 135);
         cursor: pointer;
+        transition: .2s ease;
       }
       .css-shelf-list-QUANTITY{
         display: flex;
@@ -74,6 +72,8 @@ togglest
       }
       .REMOVE-button{
         position: absolute;
+        top:10px;
+        right:-30px;
         font-size: 12px;
         background-color: rgb(132, 255, 136);
         padding:0px;
@@ -84,13 +84,15 @@ togglest
         font-weight: bold;
         border-radius: 100px;
         transition: .2s ease;
-
+        justify-content: center;
+        align-items: center;
+        text-align: center;
       }
       .REMOVE-button:hover{
-        position: absolute;
+        
         background-color: rgb(255, 0, 0);
-        width: 25px;
-        height: 25px;
+        width: 22px;
+        height: 22px;
         
         cursor:pointer;
         color: rgb(255, 255, 255);
@@ -100,7 +102,7 @@ togglest
         transition: .2s ease;
       }
 
-      /*--------------------------*/
+      /*------LIST ITEM ENDED--------------------*/
       .shelf {
         background-color: rgb(255, 111, 245);
         display: grid;
@@ -137,7 +139,7 @@ togglest
  
 
       /* HIGHLIGHT */
-      .shelf-D1,.shelf-D2,.shelf-B1 { 
+      .shelf-D1,.shelf-D2,.shelf-B1,.shelf-B2 { 
         display: grid;
         grid-template-rows: 0.5fr 0.5fr 2fr;
         overflow: hidden;
@@ -151,14 +153,15 @@ togglest
       }
       /* BODY HIGHLIGHT */
       .shelf-active{ 
+        background-color: aquamarine;
         width: 47.830px;
+        /*
         -webkit-box-shadow:0px 0px 12px 0px rgba(255,66,66,0.39);
         -moz-box-shadow: 0px 0px 12px 0px rgba(255,66,66,0.39);
         box-shadow: 0px 0px 12px 0px rgba(255,66,66,0.39);
-
+        */
         transition: 0.2s ease;
         z-index: 10;
-        
       }
 
       /*ITEM NAME HERE*/
@@ -326,6 +329,13 @@ togglest
 
       .pic-B1 {
         background-image: url(Pictures/herbalBlend.png);
+        background-repeat: no-repeat;
+        background-size: 130%;
+        background-position:center;
+        margin: 1%;
+      }
+      .pic-B2 {
+        background-image: url(Pictures/OMEGA.png);
         background-repeat: no-repeat;
         background-size: 130%;
         background-position:center;

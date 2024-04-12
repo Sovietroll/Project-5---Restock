@@ -40,3 +40,9 @@ FIXED - remove button doesnt work properly (SOLUTION: document.querySelectorAll 
 
 FIXED - Object Array not saving properly (SOLUTION: need to write .push() method properly)
 <--
+
+
+NOTES
+Switch-Case method
+-multiple conditions
+-more readable than if else statement
