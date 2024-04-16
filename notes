@@ -24,7 +24,10 @@ DONE make HTML
 <--
 
 BUGS -->
-Remove button hightlight shelf.active too
+FIXED Doesnt saved itemName properly 
+(SOLUTION: Turns out browser problem. Needs to refresh the memory back and it will be okay)
+
+FIXED Remove button hightlight shelf.active too
 
 FIXED togglePanelNumber doesnt work perfectly/ 
 

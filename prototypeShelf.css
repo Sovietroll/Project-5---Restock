@@ -135,7 +135,30 @@ togglest
  
 
       /* HIGHLIGHT */
-      .shelf-D1,.shelf-D2,.shelf-B1,.shelf-B2,.shelf-C1,.shelf-C2 { 
+      .shelf-A1,
+      .shelf-A2,
+      .shelf-D1,
+      .shelf-D2,
+      .shelf-B1,
+      .shelf-B2,
+      .shelf-C1,
+      .shelf-C2,
+      .shelf-E1,
+      .shelf-E2,
+      .shelf-F1,
+      .shelf-F2,
+      .shelf-G1,
+      .shelf-G2,
+      .shelf-H1,
+      .shelf-H2,
+      .shelf-I1,
+      .shelf-I2,
+      .shelf-J1,
+      .shelf-J2,
+      .shelf-K1,
+      .shelf-K2,
+      .shelf-L1,
+      .shelf-L2{ 
         display: grid;
         grid-template-rows: 0.5fr 0.5fr 2fr;
         overflow: hidden;
@@ -144,9 +167,30 @@ togglest
         margin: 1px;
         border-radius: 1.5px;
       }
-      .shelf-D1:hover,.shelf-D2:hover,
-      .shelf-B1:hover,.shelf-B2:hover,
-      .shelf-C1:hover,.shelf-C2:hover{
+      .shelf-A1:hover,
+      .shelf-A2:hover,
+      .shelf-B1:hover,
+      .shelf-B2:hover,
+      .shelf-C1:hover,
+      .shelf-C2:hover,
+      .shelf-D1:hover,
+      .shelf-D2:hover,
+      .shelf-E1:hover,
+      .shelf-E2:hover,
+      .shelf-F1:hover,
+      .shelf-F2:hover,
+      .shelf-G1:hover,
+      .shelf-G2:hover,
+      .shelf-H1:hover,
+      .shelf-H2:hover,
+      .shelf-I1:hover,
+      .shelf-I2:hover,
+      .shelf-J1:hover,
+      .shelf-J2:hover,
+      .shelf-K1:hover,
+      .shelf-K2:hover,
+      .shelf-L1:hover,
+      .shelf-L2:hover{
         transition: .2s ease;
       }
       /* BODY HIGHLIGHT */
@@ -197,6 +241,16 @@ togglest
         margin-left: 2.5px;
         display: flex;
       } 
+      .css-panelNumberB { /*HIDE*/ 
+        font-size: 1px;
+        position: absolute;
+        top: 20px;
+        transition: 0.2s ease;
+        z-index: 0; 
+        height: 20px;
+        margin-left: 2.5px;
+        display: flex;
+      } 
       .css-panelNumber-active{ /*APPEAR*/
         font-size: 5px;
         height: 20px;
@@ -207,16 +261,6 @@ togglest
         margin-left: 4px;
         transition: 0.5s ease;
         z-index: 0;
-      } 
-      .css-panelNumberB { /*HIDE*/ 
-        font-size: 1px;
-        position: absolute;
-        top: 20px;
-        transition: 0.2s ease;
-        z-index: 0; 
-        height: 20px;
-        margin-left: 2.5px;
-        display: flex;
       } 
       .css-panelNumber-activeB{ /*APPEAR*/
         font-size: 5px;
@@ -356,6 +400,34 @@ togglest
         margin: 1%;
       } 
       .pic-C2{
+        background-image: url(Pictures/lecithin.png);
+        background-repeat: no-repeat;
+        background-size: 140%;
+        background-position:center;
+        margin: 1%;
+      }
+      .pic-E1{
+        background-image: url(Pictures/esp.png);
+        background-repeat: no-repeat;
+        background-size: 140%;
+        background-position:center;
+        margin: 1%;
+      } 
+      .pic-E2,
+      .pic-F1,
+      .pic-F2,
+      .pic-G1,
+      .pic-G2,
+      .pic-H1,
+      .pic-H2,
+      .pic-I1,
+      .pic-I2,
+      .pic-J1,
+      .pic-J2,
+      .pic-K1,
+      .pic-K2,
+      .pic-L1,
+      .pic-L2{
         background-image: url(Pictures/lecithin.png);
         background-repeat: no-repeat;
         background-size: 140%;
