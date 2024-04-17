@@ -136,6 +136,8 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
 
   // TOGGLE ARRAY
   const shelf = {
+    A1: 'A1',
+    A2: 'A2',
     B1: 'B1',
     B2: 'B2',
     C1: 'C1',
@@ -2173,7 +2175,7 @@ jsOneforAll.forEach((click) => {
       inputD1.classList.toggle("css-input-2",false);
       inputC1.classList.toggle("css-input-2",false);
       inputC2.classList.toggle("css-input-2",false);
-      toggleState = shelf.B1;
+      toggleState = shelf.A1;
       typingState = true;
       break;
 
@@ -2184,7 +2186,7 @@ jsOneforAll.forEach((click) => {
       inputD1.classList.toggle("css-input-2",false);
       inputC1.classList.toggle("css-input-2",false);
       inputC2.classList.toggle("css-input-2",false);
-      toggleState = shelf.B1;
+      toggleState = shelf.A2;
       typingState = true;
       break;
 
@@ -2959,7 +2961,7 @@ console.log(savedOutput)
 
 //**************//ADD HERE//************//
 //SUBTRACT BUTTON
-  const buttonSubtract = document.querySelectorAll('.js-button-minus-D1,.js-button-minus-D2,.js-button-minus-C1,.js-button-minus-C2,.js-button-minus-B1,.js-button-minus-B2,.js-button-minus-E1,.js-button-minus-E2,.js-button-minus-F1,.js-button-minus-F2,.js-button-minus-G1,.js-button-minus-G2,.js-button-minus-H1,.js-button-minus-H2,.js-button-minus-I1,.js-button-minus-I2,.js-button-minus-J1,.js-button-minus-J2,.js-button-minus-K1,.js-button-minus-K2,.js-button-minus-L1,.js-button-minus-L2'
+  const buttonSubtract = document.querySelectorAll('.js-button-minus-A1,.js-button-minus-A2,.js-button-minus-B1,.js-button-minus-B2,.js-button-minus-C1,.js-button-minus-C2,.js-button-minus-D1,.js-button-minus-D2,.js-button-minus-E1,.js-button-minus-E2,.js-button-minus-F1,.js-button-minus-F2,.js-button-minus-G1,.js-button-minus-G2,.js-button-minus-H1,.js-button-minus-H2,.js-button-minus-I1,.js-button-minus-I2,.js-button-minus-J1,.js-button-minus-J2,.js-button-minus-K1,.js-button-minus-K2,.js-button-minus-L1,.js-button-minus-L2'
 );
 
   buttonSubtract.forEach(minus => {
@@ -2967,7 +2969,15 @@ console.log(savedOutput)
     })
 
     function buttonMinus(){
-      if (toggleState === shelf.B1 && quantitySupplement_B1 > 0){
+      if (toggleState === shelf.A1 && quantitySupplement_A1 > 0){
+        quantitySupplement_A1--;
+        shelfQuantity_A1.innerHTML = `x${quantitySupplement_A1}`;
+      }
+      else if (toggleState === shelf.A2 && quantitySupplement_A2 > 0){
+        quantitySupplement_A2--;
+        shelfQuantity_A2.innerHTML = `x${quantitySupplement_A2}`;
+      }
+      else if (toggleState === shelf.B1 && quantitySupplement_B1 > 0){
         quantitySupplement_B1--;
         shelfQuantity_B1.innerHTML = `x${quantitySupplement_B1}`;
       } 
@@ -2975,7 +2985,6 @@ console.log(savedOutput)
         quantitySupplement_B2--;
         shelfQuantity_B2.innerHTML = `x${quantitySupplement_B2}`;
       }
-      
       else if (toggleState === shelf.C1 && quantitySupplement_C1 > 0){
         quantitySupplement_C1--;
         shelfQuantity_C1.innerHTML = `x${quantitySupplement_C1}`;
@@ -2984,7 +2993,6 @@ console.log(savedOutput)
         quantitySupplement_C2--;
         shelfQuantity_C2.innerHTML = `x${quantitySupplement_C2}`;
       }
-
       else if (toggleState === shelf.D1 && quantitySupplement_D1 > 0){
         quantitySupplement_D1--;
         shelfQuantity_D1.innerHTML = `x${quantitySupplement_D1}`;
@@ -3065,7 +3073,19 @@ console.log(savedOutput)
 
 
   function ToggleShelfActive(shelfID){
-    if(shelfID === 'B1'){
+    if(shelfID === 'A1'){
+      mainShelfA1.classList.add("shelf-active");
+      mainShelfB2.classList.remove("shelf-active");
+      mainShelfD1.classList.remove("shelf-active");
+      mainShelfD2.classList.remove("shelf-active");
+    }
+    else if(shelfID === 'A2'){
+      mainShelfA2.classList.add("shelf-active");
+      mainShelfB2.classList.remove("shelf-active");
+      mainShelfD1.classList.remove("shelf-active");
+      mainShelfD2.classList.remove("shelf-active");
+    }
+    else if(shelfID === 'B1'){
       mainShelfB1.classList.add("shelf-active");
       mainShelfB2.classList.remove("shelf-active");
       mainShelfD1.classList.remove("shelf-active");
