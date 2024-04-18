@@ -2,6 +2,7 @@ togglest
       body { /*doesnt work*/
         background-color: rgb(255, 5, 205);
       }
+      /* TRY TO USE % THAN PX BECAUSE ITS MORE COMPATIBLE IN MOBILE */
       .list {
         background-color: rgb(255, 221, 221);
         width: 400px;
@@ -215,10 +216,8 @@ togglest
       .button {
         border-style: none;
         font-size: 15px;
-        width: 25px;
         background-color: rgb(255, 255, 255);
         font-weight: 700;
-        width: 20px;
         transition: .2s ease;
         border-radius: 3px 3px 0px 0px;
       }
@@ -246,7 +245,7 @@ togglest
         display: flex;
       } 
       .css-panelNumber-active{ /*APPEAR*/
-        font-size: 5px;
+        font-size: 30px;
         height: 20px;
         width: 20px;
         position: absolute;
@@ -254,18 +253,19 @@ togglest
         top: 97px;
         margin-left: 4px;
         transition: 0.5s ease;
-        z-index: 0;
+        z-index: 1;
+        background-color: rgb(255, 0, 0);
+
       } 
       .css-panelNumber-activeB{ /*APPEAR*/
         font-size: 5px;
-        height: 20px;
-        width: 10px;
+        width: 10%;
         position: absolute;
         display: flex;
         top: 0px;
         transition: 0.5s ease;
         margin-left: 2.5px;
-        z-index: 0;
+        z-index: 1;
       } 
 
       /*ENTER BUTTONS*/
