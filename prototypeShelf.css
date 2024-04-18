@@ -188,6 +188,7 @@ togglest
       .shelf-L2:hover{
         transition: .2s ease;
       }
+
       /* BODY HIGHLIGHT */
       .shelf-active{ 
         background-color: aquamarine;
@@ -209,35 +210,32 @@ togglest
 
       /*CONTAINER FOR BUTTONS*/
       .css-panelNumber-buttons {
-        display: flex;
+        display: grid;
         position: relative;
+        grid-template-columns: 22.91px 22.91px;
+        padding: 1px;
+        height: 18px;
       }
       /*BUTTONS FOR PLUS AND MINUS *not main*/
       .button {
         border-style: none;
-        font-size: 15px;
         background-color: rgb(255, 255, 255);
-        font-weight: 700;
+        font-weight: 500;
         transition: .2s ease;
         border-radius: 3px 3px 0px 0px;
+        font-size: 8.5px;
+        font-weight: 700;
+        
+        
       }
-      .button:hover {
-        background-color:  rgb(253, 119, 139);
+      .button:active {
+        background-color:  rgb(255, 18, 53);
       }
+
+      
       .css-panelNumber { /*HIDE*/ 
         font-size: 1px;
         position: absolute;
-        top: 120px;
-        transition: 0.2s ease;
-        z-index: 0; 
-        height: 20px;
-        margin-left: 2.5px;
-        display: flex;
-      } 
-      .css-panelNumberB { /*HIDE*/ 
-        font-size: 1px;
-        position: absolute;
-        top: 20px;
         transition: 0.2s ease;
         z-index: 0; 
         height: 20px;
@@ -257,19 +255,35 @@ togglest
         background-color: rgb(255, 0, 0);
 
       } 
-      .css-panelNumber-activeB{ /*APPEAR*/
-        font-size: 5px;
-        width: 10%;
+      /*----------------------------------------------------*/
+      .css-panelNumberA { /*HIDE*/ 
         position: absolute;
-        display: flex;
-        top: 0px;
-        transition: 0.5s ease;
-        margin-left: 2.5px;
+        top: 20px;
+        transition: .2s ease;
+        z-index: 0; 
+      } 
+      .css-panelNumber-activeA{ /*APPEAR*/
+        position: absolute;
+        top: 2px;
+        transition: .5s ease;
+        z-index: 1;
+
+      } 
+
+      .css-panelNumberB { /*HIDE*/ 
+        position: absolute;
+        top: 118px;
+        transition: .2s ease;
+        z-index: 0; 
+      } 
+      .css-panelNumber-activeB{ /*APPEAR*/
+        position: absolute;
+        top: 100px;
+        transition: .2s ease;
         z-index: 1;
       } 
 
       /*ENTER BUTTONS*/
-
       .css-EnterPanelNumber{/*HIDE*/
         font-size: 10px;
         border-radius: 5px;
@@ -278,7 +292,7 @@ togglest
         height: 2px;
         position: absolute;
         top: -22px;
-        transition: 0.2s ease;
+        transition: .2s ease;
         margin-left: 2.5px;
         z-index: 0;
       }
@@ -291,14 +305,11 @@ togglest
         border-radius: 0px 0px 5px 5px;
         border-style: none;
         width: 42px;
-        top: -1px;
+        top: -2px;
         height: 20px;
-        transition: .5s ease;
+        transition: .2s ease;
         margin-left: 2px;
         z-index:0;
-      }
-      .css-EnterPanelNumber-active:hover{
-        background-color: rgb(255, 223, 223);
       }
  
       /*QUANTITY PANEL NUMBER WHERE QUANTITY ITEM SHOWED*/
@@ -315,13 +326,12 @@ togglest
         box-shadow: rgba(191, 54, 54, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
       }
 
-      .panelNumber-Quantity:hover{
-        background-color: rgb(250, 41, 73);
+      .panelNumber-Quantity:active{
+        background-color: rgb(250, 41, 41);
       } 
 
       .css-input{
         visibility: hidden;
-
         position: absolute;
         margin-left: 1px;
         width: 40px;
