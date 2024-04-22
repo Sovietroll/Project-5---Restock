@@ -4,21 +4,44 @@ togglest
       }
       /* TRY TO USE % THAN PX BECAUSE ITS MORE COMPATIBLE IN MOBILE */
       .list {
-        background-color: rgb(255, 221, 221);
-        width: 400px;
+        background-color: rgb(68, 64, 64);
+        width: 100%;
         height: auto;
+        border-radius: 5px;
       }
       .list-title {
         display: flex;
         justify-content: center;
         font-weight: bold;
-        background-color: rgb(250, 108, 108);
+        font-size: 100%;
+        padding: 1%;
+        background-color: rgb(255, 108, 108);
+        border-radius: 5px;
+        position: sticky;
+        top:0;
+        z-index: 10;
       }
       .list-content {
         display: inline-block;
-        width: 400px;
+        width: 100%;
+      }
+      .js-goTop{
+        border-radius: 10px;
+        font-size: 10px;
+        font-weight: 700;
+        border-style: none;
+        width: 14%;
+        height: 50px;
+        margin-left: 20px;
+        transition: .2s ease
+      } /*make the button appear smooth*/
+      .js-goToTop:active {
+        background-color: red;
       }
       /*LIST ITEM/////////////////////////////////////////////////////////////*/
+      .mainCover-list{
+        display: flex;
+      }
       .css-shelf-list{
         background-color: rgb(255, 255, 255);
         display: flex;
@@ -62,27 +85,25 @@ togglest
       .list-NAME{
         padding: 5px;
       }
-      .js-remove-button{ 
-        position: relative;
+      
+
+      .REMOVE-button{
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-      }
-      .REMOVE-button{
-        position: absolute;
-        top:9px;
-        right:-30px;
-        font-size: 12px;
-        background-color: rgb(255, 0, 0);
-        border-style: none;
-        width: 20px;
-        height: 20px;
-        font-weight: bold;
-        border-radius: 5px;
-        transition: .2s ease;
 
+        background-color: rgb(255, 63, 63);
+        font-weight: 700;
+        width: 29px;
+        height: 29px;
+        font-size: 10px;
+        border-style: none;
+        border-radius: 100%;
+        transition: .2s ease;
+        margin-top: 4px;
       }
+      
       .REMOVE-button:hover{
         background-color: rgb(255, 171, 171);
         cursor:pointer;
@@ -90,6 +111,10 @@ togglest
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         z-index: 10;
         transition: .2s ease;
+      }
+
+      .fa-solid{
+        color: black;
       }
 
       /*------LIST ITEM ENDED--------------------*/
@@ -100,10 +125,12 @@ togglest
         grid-template-columns: repeat(3, 1fr);
         row-gap: 0.5px;
         column-gap: 0.5px;
+        /*
         background-image: url(Pictures/concept\ app\ 2-01-01.jpg);
-        background-size:contain;
+        */
+        background-size:cover;
         height: 400px;
-        width: 300px;
+        width: 100%;
         border-style: solid;
         min-width: 0;
         min-height: 0;
@@ -236,7 +263,7 @@ togglest
       .css-panelNumber { /*HIDE*/ 
         font-size: 1px;
         position: absolute;
-        transition: 0.2s ease;
+        transition: .2s ease;
         z-index: 0; 
         height: 20px;
         margin-left: 2.5px;
@@ -250,7 +277,7 @@ togglest
         display: flex;
         top: 97px;
         margin-left: 4px;
-        transition: 0.5s ease;
+        transition: .2s ease;
         z-index: 1;
         background-color: rgb(255, 0, 0);
 
@@ -265,7 +292,7 @@ togglest
       .css-panelNumber-activeA{ /*APPEAR*/
         position: absolute;
         top: 2px;
-        transition: .5s ease;
+        transition: .2s ease;
         z-index: 1;
 
       } 
@@ -389,6 +416,9 @@ togglest
  
       .line-main{
         display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+        grid-template-columns:1fr 1fr ;
         align-items: center;
         justify-content: left;
         padding-left: 5px;
@@ -397,49 +427,49 @@ togglest
       .pic-B1 {
         background-image: url(Pictures/herbalBlend.png);
         background-repeat: no-repeat;
-        background-size: 130%;
+        background-size:contain;
         background-position:center;
         margin: 1%;
       }
       .pic-B2 {
         background-image: url(Pictures/OMEGA.png);
         background-repeat: no-repeat;
-        background-size: 130%;
+        background-size:contain;
         background-position:center;
         margin: 1%;
       }
       .pic-d1 {
         background-image: url(Pictures/vitalize.jpg);
         background-repeat: no-repeat;
-        background-size: 64%;
+        background-size:contain;
         background-position:center;
         margin: 1%;
       }
       .pic-d2{
         background-image: url(Pictures/vita-c.jpg);
         background-repeat: no-repeat;
-        background-size: 60%;
+        background-size:contain;
         background-position:center;
         margin: 1%;
       }
       .pic-C1{
         background-image: url(Pictures/esp.png);
         background-repeat: no-repeat;
-        background-size: 140%;
+        background-size:contain;
         background-position:center;
         margin: 1%;
       } 
       .pic-C2{
         background-image: url(Pictures/lecithin.png);
         background-repeat: no-repeat;
-        background-size: 140%;
+        background-size:contain;
         background-position:center;
         margin: 1%;
       }
       .pic-E1{
         background-image: url(Pictures/esp.png);
         background-repeat: no-repeat;
-        background-size: 140%;
+        background-size:contain;
         background-position:center;
         margin: 1%;
       } 
@@ -460,7 +490,7 @@ togglest
       .pic-L2{
         background-image: url(Pictures/lecithin.png);
         background-repeat: no-repeat;
-        background-size: 140%;
+        background-size:contain;
         background-position:center;
         margin: 1%;
       }

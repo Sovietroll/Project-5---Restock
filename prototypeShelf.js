@@ -1,6 +1,8 @@
 let data = JSON.parse(localStorage.getItem('savedObjects')) || [];
 
 let output = document.querySelector('.output');
+let output2 = document.querySelector('.output2');
+
 runData();
 
 
@@ -1893,47 +1895,80 @@ shelfQuantity_E2.addEventListener('click', () => {
     localStorage.setItem('itemName', JSON.stringify(savedOutput));
   }
 
+function goUp(){
+  document.querySelector('.js-goTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  })
+}
+
+let listTitle = document.querySelector('.list-title');
+
+let scrollLimit = window.innerHeight/3; //10% of the scroll
+
+document.addEventListener('scroll', () => {
+  if(window.scrollY > scrollLimit){
+    console.log('10%');
+    listTitle.innerHTML = `
+    <button class = "js-goTop">
+    UP
+    </button>`;
+    goUp();
+  }
+  else {
+    listTitle.innerHTML = `SHELF`;
+  }
+})
+
 //////////////////////RUNDATA//////////////////////////////////////
 
-  function runData(){
+function runData(){
   output.innerHTML = '';
+  output2.innterHTML = '';
+  
+  let eachEnterList = 0;
 
   data.forEach((item,index) => {
 
   const text = `
+<div class="mainCover-list">
   <div class="js-remove-button">
-  <button class="REMOVE-button">X</button>
- </div>
+    <button class="REMOVE-button">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
   <div class="css-shelf-list">
     <div class="css-shelf-list-NAME">
       <div class="list-NAME">
         ${item.name}
       </div>
     </div>
+
     <div class="css-shelf-list-QUANTITY">
       <div class="list-QUANTITY">
         x${item.quantity}
       </div>
     </div>
-      <div class="css-shelf-list-LOC">
-      ${item.loc}
-      </div>
+
+    <div class="css-shelf-list-LOC">
+    ${item.loc}
+    </div>
   </div>
+</div>
   `;
     output.innerHTML += text;
-    localStorage.setItem('output',JSON.stringify(output.innerHTML));
+    //localStorage.setItem('output',JSON.stringify(output2.innerHTML));
     savedData()
   });
 
-    
-    document.querySelectorAll('.css-shelf-list:not(.js-remove-button)').forEach((highlight,index) => {
+    document.querySelectorAll('.css-shelf-list').forEach((highlight,index) => {
       highlight.addEventListener('click', () => { 
         highlight.classList.toggle("css-shelf-HIGHLIGHT");
 
         const loc = highlight.querySelector('.css-shelf-list-LOC').textContent.trim();
 
-// toggle the highlight between body and list
-//**************//ADD HERE//************//
+      // toggle the highlight between body and list
+      //**************//ADD HERE//************//
 
         if(loc === 'A1'){
         mainShelfD1.classList.toggle("shelf-active"); 
@@ -2021,7 +2056,9 @@ shelfQuantity_E2.addEventListener('click', () => {
     })
     },savedData()
     );
+    
   };
+  
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 const Hili = { //Hightlight
@@ -2764,8 +2801,6 @@ jsOneforAll.forEach((click) => {
     }
 
 runData();
-console.log(data);
-console.log(savedOutput)
     } 
    }
   );
