@@ -1,7 +1,7 @@
 let data = JSON.parse(localStorage.getItem('savedObjects')) || [];
 
 let output = document.querySelector('.output');
-let output2 = document.querySelector('.output2');
+let output2 = document.querySelector('.output2'); //two side 
 
 runData();
 
@@ -198,9 +198,6 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     NEUTRAL: 'null'
   }
   let flipButtons = Switch.NEUTRAL;
-
-  
-  
 
   let toggleEditable;
   let toggleState;
@@ -892,16 +889,13 @@ shelfQuantity_L2.innerHTML = '0';
     })
   }); 
 
-    //FOR ADD MINUS BUTTON SELECTED FOR THE RIGHT SHELF
-
-    //QUANTITY NUMBER PANEL CLICK TO HIGHLIGHT COLOR
-
 
 //**************//ADD HERE//************//
 
 shelfQuantity_A1.addEventListener('click', () => {
   if (upDownStates.A1 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfA1()
+      clickShelfA1();
+      hideOtherPanel('A1');
       upDownStates.A1 = 1;
     }
   else if(upDownStates.A1 === 1) {
@@ -1168,174 +1162,189 @@ shelfQuantity_E2.addEventListener('click', () => {
 
 //**************//ADD HERE//************//
     function HideA1(){
-      numberPanelA1.classList.add("css-panelNumberB");
-      numberPanelA1.classList.remove("css-panelNumber-activeB");
+      numberPanelA1.classList.add("css-panelNumberA");
+      numberPanelA1.classList.remove("css-panelNumber-activeA");
       enterQuantityA1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityA1.classList.add('css-EnterPanelNumber');
     };
 
     function HideA2(){
-      numberPanelA2.classList.add("css-panelNumberB");
-      numberPanelA2.classList.remove("css-panelNumber-activeB");
+      numberPanelA2.classList.add("css-panelNumberA");
+      numberPanelA2.classList.remove("css-panelNumber-activeA");
       enterQuantityA2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityA2.classList.add('css-EnterPanelNumber');
     };
 
     function HideB1(){
-      numberPanelB1.classList.add("css-panelNumberB");
-      numberPanelB1.classList.remove("css-panelNumber-activeB");
+      numberPanelB1.classList.add("css-panelNumberA");
+      numberPanelB1.classList.remove("css-panelNumber-activeA");
       enterQuantityB1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityB1.classList.add('css-EnterPanelNumber');
     };
 
     function HideB2(){
-      numberPanelB2.classList.add("css-panelNumberB");
-      numberPanelB2.classList.remove("css-panelNumber-activeB");
+      numberPanelB2.classList.add("css-panelNumberA");
+      numberPanelB2.classList.remove("css-panelNumber-activeA");
       enterQuantityB2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityB2.classList.add('css-EnterPanelNumber');
     };
 
     function HideC1(){
-      numberPanelC1.classList.add("css-panelNumberB");
-      numberPanelC1.classList.remove("css-panelNumber-activeB");
+      numberPanelC1.classList.add("css-panelNumberA");
+      numberPanelC1.classList.remove("css-panelNumber-activeA");
       enterQuantityC1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityC1.classList.add('css-EnterPanelNumber');
     };
 
     function HideC2(){
-      numberPanelC2.classList.add("css-panelNumberB");
-      numberPanelC2.classList.remove("css-panelNumber-activeB");
+      numberPanelC2.classList.add("css-panelNumberA");
+      numberPanelC2.classList.remove("css-panelNumber-activeA");
       enterQuantityC2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityC2.classList.add('css-EnterPanelNumber');
     };
 
     function HideD1(){
-      numberPanelD1.classList.add("css-panelNumber");
-      numberPanelD1.classList.remove("css-panelNumber-active");
+      numberPanelD1.classList.add("css-panelNumberB");
+      numberPanelD1.classList.remove("css-panelNumber-activeB");
       enterQuantityD1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityD1.classList.add('css-EnterPanelNumber');
     };
 
     function HideD2(){
-      numberPanelD2.classList.add("css-panelNumber");
-      numberPanelD2.classList.remove("css-panelNumber-active");
+      numberPanelD2.classList.add("css-panelNumberB");
+      numberPanelD2.classList.remove("css-panelNumber-activeB");
       enterQuantityD2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityD2.classList.add('css-EnterPanelNumber');
     };
 
     function HideE1(){
-      numberPanelE1.classList.add("css-panelNumber");
-      numberPanelE1.classList.remove("css-panelNumber-active");
+      numberPanelE1.classList.add("css-panelNumberB");
+      numberPanelE1.classList.remove("css-panelNumber-activeB");
       enterQuantityE1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityE1.classList.add('css-EnterPanelNumber');
     };
     
     function HideE2(){
-      numberPanelE2.classList.add("css-panelNumber");
-      numberPanelE2.classList.remove("css-panelNumber-active");
+      numberPanelE2.classList.add("css-panelNumberB");
+      numberPanelE2.classList.remove("css-panelNumber-activeB");
       enterQuantityE2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityE2.classList.add('css-EnterPanelNumber');
     };
 
     function HideF1(){
-      numberPanelF1.classList.add("css-panelNumber");
-      numberPanelF1.classList.remove("css-panelNumber-active");
+      numberPanelF1.classList.add("css-panelNumberB");
+      numberPanelF1.classList.remove("css-panelNumber-activeB");
       enterQuantityF1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityF1.classList.add('css-EnterPanelNumber');
     };
     
     function HideF2(){
       numberPanelF2.classList.add("css-panelNumber");
-      numberPanelF2.classList.remove("css-panelNumber-active");
+      numberPanelF2.classList.remove("css-panelNumber-activeB");
       enterQuantityF2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityF2.classList.add('css-EnterPanelNumber');
     };
 
     function HideG1(){
-      numberPanelG1.classList.add("css-panelNumber");
-      numberPanelG1.classList.remove("css-panelNumber-active");
+      numberPanelG1.classList.add("css-panelNumberC");
+      numberPanelG1.classList.remove("css-css-panelNumber-activeC");
       enterQuantityG1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityG1.classList.add('css-EnterPanelNumber');
     };
     
     function HideG2(){
-      numberPanelG2.classList.add("css-panelNumber");
-      numberPanelG2.classList.remove("css-panelNumber-active");
+      numberPanelG2.classList.add("css-panelNumberC");
+      numberPanelG2.classList.remove("css-panelNumber-activeC");
       enterQuantityG2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityG2.classList.add('css-EnterPanelNumber');
     };
 
     function HideH1(){
-      numberPanelH1.classList.add("css-panelNumber");
-      numberPanelH1.classList.remove("css-panelNumber-active");
+      numberPanelH1.classList.add("css-panelNumberC");
+      numberPanelH1.classList.remove("css-panelNumber-activeC");
       enterQuantityH1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityH1.classList.add('css-EnterPanelNumber');
     };
     
     function HideH2(){
-      numberPanelH2.classList.add("css-panelNumber");
-      numberPanelH2.classList.remove("css-panelNumber-active");
+      numberPanelH2.classList.add("css-panelNumberC");
+      numberPanelH2.classList.remove("css-panelNumber-activeC");
       enterQuantityH2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityH2.classList.add('css-EnterPanelNumber');
     };
     
     function HideI1(){
-      numberPanelI1.classList.add("css-panelNumber");
-      numberPanelI1.classList.remove("css-panelNumber-active");
+      numberPanelI1.classList.add("css-panelNumberC");
+      numberPanelI1.classList.remove("css-panelNumber-activeC");
       enterQuantityI1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityI1.classList.add('css-EnterPanelNumber');
     };
     
     function HideI2(){
-      numberPanelI2.classList.add("css-panelNumber");
-      numberPanelI2.classList.remove("css-panelNumber-active");
+      numberPanelI2.classList.add("css-panelNumberC");
+      numberPanelI2.classList.remove("css-panelNumber-activeC");
       enterQuantityI2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityI2.classList.add('css-EnterPanelNumber');
     };
     
     function HideJ1(){
-      numberPanelJ1.classList.add("css-panelNumber");
-      numberPanelJ1.classList.remove("css-panelNumber-active");
+      numberPanelJ1.classList.add("css-panelNumberD");
+      numberPanelJ1.classList.remove("css-panelNumber-activeD");
       enterQuantityJ1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityJ1.classList.add('css-EnterPanelNumber');
     };
     
     function HideJ2(){
-      numberPanelJ2.classList.add("css-panelNumber");
-      numberPanelJ2.classList.remove("css-panelNumber-active");
+      numberPanelJ2.classList.add("css-panelNumberD");
+      numberPanelJ2.classList.remove("css-panelNumber-activeD");
       enterQuantityJ2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityJ2.classList.add('css-EnterPanelNumber');
     };
     
     function HideK1(){
-      numberPanelK1.classList.add("css-panelNumber");
-      numberPanelK1.classList.remove("css-panelNumber-active");
+      numberPanelK1.classList.add("css-panelNumberD");
+      numberPanelK1.classList.remove("css-panelNumber-activeD");
       enterQuantityK1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityK1.classList.add('css-EnterPanelNumber');
     };
     
     function HideK2(){
-      numberPanelK2.classList.add("css-panelNumber");
-      numberPanelK2.classList.remove("css-panelNumber-active");
+      numberPanelK2.classList.add("css-panelNumberD");
+      numberPanelK2.classList.remove("css-panelNumber-activeD");
       enterQuantityK2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityK2.classList.add('css-EnterPanelNumber');
     };
     
     function HideL1(){
-      numberPanelL1.classList.add("css-panelNumber");
-      numberPanelL1.classList.remove("css-panelNumber-active");
+      numberPanelL1.classList.add("css-panelNumberD");
+      numberPanelL1.classList.remove("css-panelNumber-activeD");
       enterQuantityL1.classList.remove('css-EnterPanelNumber-active');
       enterQuantityL1.classList.add('css-EnterPanelNumber');
     };
     
     function HideL2(){
-      numberPanelL2.classList.add("css-panelNumber");
-      numberPanelL2.classList.remove("css-panelNumber-active");
+      numberPanelL2.classList.add("css-panelNumberD");
+      numberPanelL2.classList.remove("css-panelNumber-activeD");
       enterQuantityL2.classList.remove('css-EnterPanelNumber-active');
       enterQuantityL2.classList.add('css-EnterPanelNumber');
     };
-    
 
+const allFunctions = [
+{ id: 'A1', func: HideA1 },
+{ id: 'A2', func: HideA2 },
+{ id: 'B1', func: HideB1 },
+{ id: 'B2', func: HideB2 },
+{ id: 'C1', func: HideC1 },
+{ id: 'C2', func: HideC2 },
+];
+
+function hideOtherPanel(panelID){
+  allFunctions.forEach ( item => {
+    if (panelID === item.id){
+      item.func();
+    }
+  })
+};
 //FUNCTIONS FOR CLICKABLE SHELF ///////////////////////////////////////////////////////////
 //**************//ADD HERE//************//
   function clickShelfA1(){
@@ -2808,7 +2817,7 @@ runData();
   
 //**************//ADD HERE//************//
   //PLUS BUTTON
-  const buttonAdd = document.querySelectorAll('.js-button-plus-A1,.js-button-plus-A2,.js-button-plus-B1,.js-button-plus-B2,.js-button-plus-C1,.js-button-plus-C2,.js-button-plus-D1,.js-button-plus-D2,.js-button-plus-E1,.js-button-plus-E2','.js-button-plus-F1,.js-button-plus-F2,.js-button-plus-G1,.js-button-plus-G2,.js-button-plus-H1,.js-button-plus-H2,.js-button-plus-I1,.js-button-plus-I2,.js-button-plus-J1,.js-button-plus-J2,.js-button-plus-K1,.js-button-plus-K2,.js-button-plus-L1,.js-button-plus-L2'
+  const buttonAdd = document.querySelectorAll('.js-button-plus-A1,.js-button-plus-A2,.js-button-plus-B1,.js-button-plus-B2,.js-button-plus-C1,.js-button-plus-C2,.js-button-plus-D1,.js-button-plus-D2,.js-button-plus-E1,.js-button-plus-E2,.js-button-plus-F1,.js-button-plus-F2,.js-button-plus-G1,.js-button-plus-G2,.js-button-plus-H1,.js-button-plus-H2,.js-button-plus-I1,.js-button-plus-I2,.js-button-plus-J1,.js-button-plus-J2,.js-button-plus-K1,.js-button-plus-K2,.js-button-plus-L1,.js-button-plus-L2'
 );
 
   buttonAdd.forEach(add => {
@@ -2862,7 +2871,8 @@ runData();
     } 
     else if (toggleState === shelf.F2){
       quantitySupplement_F2++;
-      shelfQuantity_F2.innerHTML = `x${quantitySupplement_F2}`;
+      shelfQuantity_F2.innerHTML = `x${quantitySupplement_F2}`
+      console.log('F2');
     } 
     else if (toggleState === shelf.G1){
       quantitySupplement_G1++;
