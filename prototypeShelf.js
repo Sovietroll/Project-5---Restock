@@ -907,6 +907,7 @@ shelfQuantity_A1.addEventListener('click', () => {
 shelfQuantity_A2.addEventListener('click', () => {
   if (upDownStates.A2 === 0 && flipButtons === Switch.NEUTRAL){
       clickShelfA2()
+      hideOtherPanel('A2');
       upDownStates.A2 = 1;
   }
   else if (upDownStates.A2 === 1){
@@ -1329,572 +1330,45 @@ shelfQuantity_E2.addEventListener('click', () => {
       enterQuantityL2.classList.add('css-EnterPanelNumber');
     };
 
-const allFunctions = [
-{ id: 'A1', func: HideA1 },
-{ id: 'A2', func: HideA2 },
-{ id: 'B1', func: HideB1 },
-{ id: 'B2', func: HideB2 },
-{ id: 'C1', func: HideC1 },
-{ id: 'C2', func: HideC2 },
-];
+    const allFunctions = [
+      { id: 'A1', func: HideA1 },
+      { id: 'A2', func: HideA2 },
+      { id: 'B1', func: HideB1 },
+      { id: 'B2', func: HideB2 },
+      { id: 'C1', func: HideC1 },
+      { id: 'C2', func: HideC2 },
+      { id: 'D1', func: HideD1 },
+      { id: 'D2', func: HideD2 },
+      { id: 'E1', func: HideE1 },
+      { id: 'E2', func: HideE2 },
+      { id: 'F1', func: HideF1 },
+      { id: 'F2', func: HideF2 },
+      { id: 'G1', func: HideG1 },
+      { id: 'G2', func: HideG2 },
+      { id: 'H1', func: HideH1 },
+      { id: 'H2', func: HideH2 },
+      { id: 'I1', func: HideI1 },
+      { id: 'I2', func: HideI2 },
+      { id: 'J1', func: HideJ1 },
+      { id: 'J2', func: HideJ2 },
+      { id: 'K1', func: HideK1 },
+      { id: 'K2', func: HideK2 },
+      { id: 'L1', func: HideL1 },
+      { id: 'L2', func: HideL2 },
+    ];
+    
 
-function hideOtherPanel(panelID){
-  allFunctions.forEach ( item => {
-    if (panelID === item.id){
-      item.func();
-    }
-  })
-};
-//FUNCTIONS FOR CLICKABLE SHELF ///////////////////////////////////////////////////////////
-//**************//ADD HERE//************//
-  function clickShelfA1(){
-    ToggleShelfActive('A1');
-    numberPanelA1.classList.add("css-panelNumber-activeA");
-    numberPanelA1.classList.remove("css-panelNumberA");
-    enterQuantityA1.classList.add('css-EnterPanelNumber-active');
-    enterQuantityA1.classList.remove('css-EnterPanelNumber');
-    inputA1.classList.add("css-input");
-    inputA1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.A1;
-  };
-  function unclickShelfA1(){
-    toggleHighlight = Hili.off;
-    mainShelfA1.classList.remove("shelf-active");
-    numberPanelA1.classList.add("css-panelNumberA");
-    numberPanelA1.classList.remove("css-panelNumber-activeA");
-    enterQuantityA1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityA1.classList.add('css-EnterPanelNumber');
-    inputA1.classList.add("css-input");
-  };
-
-  function clickShelfA2(){
-    ToggleShelfActive('A2');
-    numberPanelA2.classList.add("css-panelNumber-activeA");
-    numberPanelA2.classList.remove("css-panelNumberA");
-    enterQuantityA2.classList.add('css-EnterPanelNumber-active');
-    enterQuantityA2.classList.remove('css-EnterPanelNumber');
-    inputA2.classList.add("css-input");
-    inputA2.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.A2;
-  };
-  function unclickShelfA2(){
-    toggleHighlight = Hili.off;
-    mainShelfA2.classList.remove("shelf-active");
-    numberPanelA2.classList.add("css-panelNumberA");
-    numberPanelA2.classList.remove("css-panelNumber-activeA");
-    enterQuantityA2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityA2.classList.add('css-EnterPanelNumber');
-    inputA2.classList.add("css-input");
+  function hideOtherPanel(panelID){
+    allFunctions.forEach ( item => {
+      if (panelID === item.id){
+        //nothing
+      }
+      else {
+        item.func();
+      }
+    })
   };
 
-  function clickShelfB1(){
-    ToggleShelfActive('B1');
-    numberPanelB1.classList.add("css-panelNumber-activeA");
-    numberPanelB1.classList.remove("css-panelNumberA");
-    enterQuantityB1.classList.add('css-EnterPanelNumber-active');
-    enterQuantityB1.classList.remove('css-EnterPanelNumber');
-    inputB1.classList.add("css-input");
-    inputB1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.B1;
-    togglePanelOnOff = true;
-  };
-  function unclickShelfB1(){
-    numberPanelB1.classList.add("css-panelNumberA");
-    numberPanelB1.classList.remove("css-panelNumber-activeA");
-    enterQuantityB1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityB1.classList.add('css-EnterPanelNumber');
-    inputB1.classList.add("css-input");
-    togglePanelOnOff = false;
-    toggleHighlight = Hili.off;
-    mainShelfB1.classList.remove("shelf-active");
-  };
-
-  function clickShelfB2(){
-    ToggleShelfActive('B2');
-    numberPanelB2.classList.add("css-panelNumber-activeA");
-    numberPanelB2.classList.remove("css-panelNumberA");
-    enterQuantityB2.classList.add('css-EnterPanelNumber-active');
-    enterQuantityB2.classList.remove('css-EnterPanelNumber');
-    inputB2.classList.add("css-input");
-    inputB2.classList.toggle("css-input-2",false); 
-    toggleHighlight = Hili.on;
-    toggleState = shelf.B2;
-  };
-  function unclickShelfB2(){
-    numberPanelB2.classList.add("css-panelNumberA");
-    numberPanelB2.classList.remove("css-panelNumber-activeA");
-    enterQuantityB2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityB2.classList.add('css-EnterPanelNumber');
-    inputB2.classList.add("css-input");
-    toggleHighlight = Hili.off;
-    mainShelfB2.classList.remove("shelf-active");
-  };
-
-  function clickShelfC1(){
-    ToggleShelfActive('C1');
-    numberPanelC1.classList.add("css-panelNumber-activeA");
-    enterQuantityC1.classList.add('css-EnterPanelNumber-active');
-    numberPanelC1.classList.remove("css-panelNumberA");
-    enterQuantityC1.classList.remove('css-EnterPanelNumber');
-    inputC1.classList.add("css-input");
-    inputC1.classList.toggle("css-input-2",false); 
-    toggleHighlight = Hili.on;
-    toggleState = shelf.C1;
-  };
-  function unclickShelfC1(){
-    numberPanelC1.classList.add("css-panelNumberA");
-    numberPanelC1.classList.remove("css-panelNumber-activeA");
-    enterQuantityC1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityC1.classList.add('css-EnterPanelNumber');
-    inputC1.classList.add("css-input");
-    toggleHighlight = Hili.off;
-    mainShelfC1.classList.remove("shelf-active");
-  };
-
-  function clickShelfC2(){
-    ToggleShelfActive('C2');
-    numberPanelC2.classList.add("css-panelNumber-activeA");
-    enterQuantityC2.classList.add('css-EnterPanelNumber-active');
-    numberPanelC2.classList.remove("css-panelNumberA");
-    enterQuantityC2.classList.remove('css-EnterPanelNumber');
-    inputC2.classList.add("css-input");
-    inputC2.classList.toggle("css-input-2",false); 
-    toggleHighlight = Hili.on;
-    toggleState = shelf.C2;
-  };
-  function unclickShelfC2(){
-    numberPanelC2.classList.add("css-panelNumberA");
-    numberPanelC2.classList.remove("css-panelNumber-activeA");
-    enterQuantityC2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityC2.classList.add('css-EnterPanelNumber');
-    inputC2.classList.add("css-input");
-    toggleHighlight = Hili.off;
-    mainShelfC2.classList.remove("shelf-active");
-  };
-
-
-  function clickShelfD1(){
-    ToggleShelfActive('D1');
-    numberPanelD1.classList.add("css-panelNumber-activeB");
-    numberPanelD1.classList.remove("css-panelNumberB");
-    enterQuantityD1.classList.add('css-EnterPanelNumber-active');
-    enterQuantityD1.classList.remove('css-EnterPanelNumber');
-    inputD1.classList.add("css-input");
-    inputD1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.D1;
-  };
-  function unclickShelfD1(){
-    numberPanelD1.classList.add("css-panelNumberB");
-    numberPanelD1.classList.remove("css-panelNumber-activeB");
-    enterQuantityD1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityD1.classList.add('css-EnterPanelNumber');
-    inputD1.classList.add("css-input");
-    mainShelfD1.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  function clickShelfD2(){
-    ToggleShelfActive('D2');
-    numberPanelD2.classList.add("css-panelNumber-activeB");
-    numberPanelD2.classList.remove("css-panelNumberB");
-    enterQuantityD2.classList.add('css-EnterPanelNumber-active');
-    enterQuantityD2.classList.remove('css-EnterPanelNumber');
-    inputD2.classList.add("css-input");
-    inputD2.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.D2;
-  };
-  function unclickShelfD2(){
-    numberPanelD2.classList.add("css-panelNumberB");
-    numberPanelD2.classList.remove("css-panelNumber-activeB");
-    enterQuantityD2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityD2.classList.add('css-EnterPanelNumber');
-    inputD2.classList.add("css-input");
-    mainShelfD2.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-
-  function clickShelfE1(){
-    ToggleShelfActive('E1');
-    numberPanelE1.classList.add("css-panelNumber-activeB");
-    numberPanelE1.classList.remove("css-panelNumberB");
-    enterQuantityE1.classList.add('css-EnterPanelNumber-active');
-    enterQuantityE1.classList.remove('css-EnterPanelNumber');
-    inputE1.classList.add("css-input");
-    inputE1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.E1;
-  };
-  function unclickShelfE1(){
-    numberPanelE1.classList.add("css-panelNumberB");
-    numberPanelE1.classList.remove("css-panelNumber-activeB");
-    enterQuantityE1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityE1.classList.add('css-EnterPanelNumber');
-    inputE1.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfE1.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-    function clickShelfE2(){
-    ToggleShelfActive('E2');
-    numberPanelE2.classList.add("css-panelNumber-activeB");
-    enterQuantityE2.classList.add('css-EnterPanelNumber-active');
-    numberPanelE2.classList.remove("css-panelNumberB");
-    enterQuantityE2.classList.remove('css-EnterPanelNumber');
-    inputE2.classList.add("css-input");
-    inputE2.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.E2;
-  };
-  function unclickShelfE2(){
-    numberPanelE2.classList.add("css-panelNumberB");
-    numberPanelE2.classList.remove("css-panelNumber-activeB");
-    enterQuantityE2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityE2.classList.add('css-EnterPanelNumber');
-    inputE2.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfE2.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-
-  function clickShelfF1(){
-    ToggleShelfActive('F1');
-    numberPanelF1.classList.add("css-panelNumber-activeB");
-    enterQuantityF1.classList.add('css-EnterPanelNumber-active');
-    numberPanelF1.classList.remove("css-panelNumberB");
-    enterQuantityF1.classList.remove('css-EnterPanelNumber');
-    inputF1.classList.add("css-input");
-    inputF1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.F1;
-  };
-  function unclickShelfF1(){
-    numberPanelF1.classList.add("css-panelNumberB");
-    numberPanelF1.classList.remove("css-panelNumber-activeB");
-    enterQuantityF1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityF1.classList.add('css-EnterPanelNumber');
-    inputF1.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfF1.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  function clickShelfF2(){
-    ToggleShelfActive('F2');
-    numberPanelF2.classList.add("css-panelNumber-activeB");
-    enterQuantityF2.classList.add('css-EnterPanelNumber-active');
-    numberPanelF2.classList.remove("css-panelNumberB");
-    enterQuantityF2.classList.remove('css-EnterPanelNumber');
-    inputF2.classList.add("css-input");
-    inputF2.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.F2;
-  };
-  function unclickShelfF2(){
-    numberPanelF2.classList.add("css-panelNumberB");
-    numberPanelF2.classList.remove("css-panelNumber-activeB");
-    enterQuantityF2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityF2.classList.add('css-EnterPanelNumber');
-    inputF2.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfF2.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-
-  function clickShelfG1(){
-    ToggleShelfActive('G1');
-    numberPanelG1.classList.add("css-panelNumber-activeC");
-    enterQuantityG1.classList.add('css-EnterPanelNumber-active');
-    numberPanelG1.classList.remove("css-panelNumberC");
-    enterQuantityG1.classList.remove('css-EnterPanelNumber');
-    inputG1.classList.add("css-input");
-    inputG1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.G1;
-  };
-  function unclickShelfG1(){
-    numberPanelG1.classList.add("css-panelNumberC");
-    numberPanelG1.classList.remove("css-panelNumber-activeC");
-    enterQuantityG1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityG1.classList.add('css-EnterPanelNumber');
-    inputG1.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfG1.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  function clickShelfG2(){
-    ToggleShelfActive('G2');
-    numberPanelG2.classList.add("css-panelNumber-activeC");
-    enterQuantityG2.classList.add('css-EnterPanelNumber-active');
-    numberPanelG2.classList.remove("css-panelNumberC");
-    enterQuantityG2.classList.remove('css-EnterPanelNumber');
-    inputG2.classList.add("css-input");
-    inputG2.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.G2;
-  };
-  
-  function unclickShelfG2(){
-    numberPanelG2.classList.add("css-panelNumberC");
-    numberPanelG2.classList.remove("css-panelNumber-activeC");
-    enterQuantityG2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityG2.classList.add('css-EnterPanelNumber');
-    inputG2.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfG2.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  function clickShelfH1(){
-    ToggleShelfActive('H1');
-    numberPanelH1.classList.add("css-panelNumber-activeC");
-    enterQuantityH1.classList.add('css-EnterPanelNumber-active');
-    numberPanelH1.classList.remove("css-panelNumberC");
-    enterQuantityH1.classList.remove('css-EnterPanelNumber');
-    inputH1.classList.add("css-input");
-    inputH1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.H1;
-  };
-  
-  function unclickShelfH1(){
-    numberPanelH1.classList.add("css-panelNumberC");
-    numberPanelH1.classList.remove("css-panelNumber-activeC");
-    enterQuantityH1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityH1.classList.add('css-EnterPanelNumber');
-    inputH1.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfH1.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  function clickShelfH2(){
-    ToggleShelfActive('H2');
-    numberPanelH2.classList.add("css-panelNumber-activeC");
-    enterQuantityH2.classList.add('css-EnterPanelNumber-active');
-    numberPanelH2.classList.remove("css-panelNumberC");
-    enterQuantityH2.classList.remove('css-EnterPanelNumber');
-    inputH2.classList.add("css-input");
-    inputH2.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.H2;
-  };
-  
-  function unclickShelfH2(){
-    numberPanelH2.classList.add("css-panelNumberC");
-    numberPanelH2.classList.remove("css-panelNumber-activeC");
-    enterQuantityH2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityH2.classList.add('css-EnterPanelNumber');
-    inputH2.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfH2.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  function clickShelfI1(){
-    ToggleShelfActive('I1');
-    numberPanelI1.classList.add("css-panelNumber-activeC");
-    enterQuantityI1.classList.add('css-EnterPanelNumber-active');
-    numberPanelI1.classList.remove("css-panelNumberC");
-    enterQuantityI1.classList.remove('css-EnterPanelNumber');
-    inputI1.classList.add("css-input");
-    inputI1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.I1;
-  };
-  
-  function unclickShelfI1(){
-    numberPanelI1.classList.add("css-panelNumberC");
-    numberPanelI1.classList.remove("css-panelNumber-activeC");
-    enterQuantityI1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityI1.classList.add('css-EnterPanelNumber');
-    inputI1.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfI1.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  function clickShelfI2(){
-    ToggleShelfActive('I2');
-    numberPanelI2.classList.add("css-panelNumber-activeC");
-    enterQuantityI2.classList.add('css-EnterPanelNumber-active');
-    numberPanelI2.classList.remove("css-panelNumberC");
-    enterQuantityI2.classList.remove('css-EnterPanelNumber');
-    inputI2.classList.add("css-input");
-    inputI2.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.I2;
-  };
-  
-  function unclickShelfI2(){
-    numberPanelI2.classList.add("css-panelNumberC");
-    numberPanelI2.classList.remove("css-panelNumber-activeC");
-    enterQuantityI2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityI2.classList.add('css-EnterPanelNumber');
-    inputI2.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfI2.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  function clickShelfJ1(){
-    ToggleShelfActive('J1');
-    numberPanelJ1.classList.add("css-panelNumber-activeD");
-    enterQuantityJ1.classList.add('css-EnterPanelNumber-active');
-    numberPanelJ1.classList.remove("css-panelNumberD");
-    enterQuantityJ1.classList.remove('css-EnterPanelNumber');
-    inputJ1.classList.add("css-input");
-    inputJ1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.J1;
-  };
-  
-  function unclickShelfJ1(){
-    numberPanelJ1.classList.add("css-panelNumberD");
-    numberPanelJ1.classList.remove("css-panelNumber-activeD");
-    enterQuantityJ1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityJ1.classList.add('css-EnterPanelNumber');
-    inputJ1.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfJ1.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  // Similar functions for shelves J2, K1, K2, L1, and L2
-  
-  function clickShelfJ2(){
-    ToggleShelfActive('J2');
-    numberPanelJ2.classList.add("css-panelNumber-activeD");
-    enterQuantityJ2.classList.add('css-EnterPanelNumber-active');
-    numberPanelJ2.classList.remove("css-panelNumberD");
-    enterQuantityJ2.classList.remove('css-EnterPanelNumber');
-    inputJ2.classList.add("css-input");
-    inputJ2.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.J2;
-  };
-  
-  function unclickShelfJ2(){
-    numberPanelJ2.classList.add("css-panelNumberD");
-    numberPanelJ2.classList.remove("css-panelNumber-activeD");
-    enterQuantityJ2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityJ2.classList.add('css-EnterPanelNumber');
-    inputJ2.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfJ2.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-
-  function clickShelfK1(){
-    ToggleShelfActive('K1');
-    numberPanelK1.classList.add("css-panelNumber-activeD");
-    enterQuantityK1.classList.add('css-EnterPanelNumber-active');
-    numberPanelK1.classList.remove("css-panelNumberD");
-    enterQuantityK1.classList.remove('css-EnterPanelNumber');
-    inputK1.classList.add("css-input");
-    inputK1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.K1;
-  };
-  
-  function unclickShelfK1(){
-    numberPanelK1.classList.add("css-panelNumberD");
-    numberPanelK1.classList.remove("css-panelNumber-activeD");
-    enterQuantityK1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityK1.classList.add('css-EnterPanelNumber');
-    inputK1.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfK1.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  // Similar functions for shelves K2, L1, and L2
-  
-  function clickShelfK2(){
-    ToggleShelfActive('K2');
-    numberPanelK2.classList.add("css-panelNumber-activeD");
-    enterQuantityK2.classList.add('css-EnterPanelNumber-active');
-    numberPanelK2.classList.remove("css-panelNumberD");
-    enterQuantityK2.classList.remove('css-EnterPanelNumber');
-    inputK2.classList.add("css-input");
-    inputK2.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.K2;
-  };
-  
-  function unclickShelfK2(){
-    numberPanelK2.classList.add("css-panelNumberD");
-    numberPanelK2.classList.remove("css-panelNumber-activeD");
-    enterQuantityK2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityK2.classList.add('css-EnterPanelNumber');
-    inputK2.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfK2.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-
-  function clickShelfL1(){
-    ToggleShelfActive('L1');
-    numberPanelL1.classList.add("css-panelNumber-activeD");
-    enterQuantityL1.classList.add('css-EnterPanelNumber-active');
-    numberPanelL1.classList.remove("css-panelNumberD");
-    enterQuantityL1.classList.remove('css-EnterPanelNumber');
-    inputL1.classList.add("css-input");
-    inputL1.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.L1;
-  };
-  
-  function unclickShelfL1(){
-    numberPanelL1.classList.add("css-panelNumberD");
-    numberPanelL1.classList.remove("css-panelNumber-activeD");
-    enterQuantityL1.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityL1.classList.add('css-EnterPanelNumber');
-    inputL1.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfL1.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  function clickShelfL2(){
-    ToggleShelfActive('L2');
-    numberPanelL2.classList.add("css-panelNumber-activeD");
-    enterQuantityL2.classList.add('css-EnterPanelNumber-active');
-    numberPanelL2.classList.remove("css-panelNumberD");
-    enterQuantityL2.classList.remove('css-EnterPanelNumber');
-    inputL2.classList.add("css-input");
-    inputL2.classList.toggle("css-input-2",false);
-    toggleHighlight = Hili.on;
-    toggleState = shelf.L2;
-  };
-  
-  function unclickShelfL2(){
-    numberPanelL2.classList.add("css-panelNumberD");
-    numberPanelL2.classList.remove("css-panelNumber-activeD");
-    enterQuantityL2.classList.remove('css-EnterPanelNumber-active');
-    enterQuantityL2.classList.add('css-EnterPanelNumber');
-    inputL2.classList.add("css-input");
-    togglePanelOnOff = false;
-    mainShelfL2.classList.remove("shelf-active");
-    toggleHighlight = Hili.off;
-  };
-  
-  
-  // Functions for shelves L1 and L2 will follow the same structure as above.
-  
-  
-  
-  // Functions for shelves K1, K2, L1, and L2 will follow the same structure as above.
-  
- 
-  
-  ////////////////////////////////////////////////////////////////////////////////////////////
   let tryOnce = true;
 
   function savedData(){
@@ -1904,19 +1378,23 @@ function hideOtherPanel(panelID){
     localStorage.setItem('itemName', JSON.stringify(savedOutput));
   }
 
-function goUp(){
-  document.querySelector('.js-goTop').addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+function buttonClickUp(){
+    document.querySelector('.js-goTop').addEventListener('click', () => {
+    window.scrollTo({ top: 150, behavior: 'smooth' });
   })
 }
 
 let listTitle = document.querySelector('.list-title');
 
-let scrollLimit = window.innerHeight/3; //10% of the scroll
 
+
+let scrollLimit = window.innerHeight/2; //10% of the scroll
+
+/*
 document.addEventListener('scroll', () => {
   if(window.scrollY > scrollLimit){
-    console.log('10%');
+
     listTitle.innerHTML = `
     <button class = "js-goTop">
     UP
@@ -1927,7 +1405,30 @@ document.addEventListener('scroll', () => {
     listTitle.innerHTML = `SHELF`;
   }
 })
+*/
 
+document.addEventListener('scroll', () => {
+  
+  if(window.scrollY > scrollLimit){
+    listTitle.classList.add("goDown");
+    console.log('down');
+    
+    
+      listTitle.innerHTML = `
+      <button class="js-goTop"> 
+      UP
+      </button>`;
+      buttonClickUp();
+       
+  }
+  else if (window.scrollY/2){
+    listTitle.classList.remove("goDown");
+    console.log('up');
+
+    listTitle.innerHTML = `SHELF`;
+  }
+
+})
 //////////////////////RUNDATA//////////////////////////////////////
 
 function runData(){
@@ -1980,10 +1481,10 @@ function runData(){
       //**************//ADD HERE//************//
 
         if(loc === 'A1'){
-        mainShelfD1.classList.toggle("shelf-active"); 
+        mainShelfA1.classList.toggle("shelf-active"); 
         }
         else if(loc === 'A2'){
-          mainShelfD2.classList.toggle("shelf-active");
+          mainShelfA2.classList.toggle("shelf-active");
         }
         else if(loc === 'B1'){
           mainShelfB1.classList.toggle("shelf-active");
@@ -3186,4 +2687,541 @@ runData();
       mainShelfB2.classList.remove("shelf-active");
     }
     
+  };
+
+  function clickShelfA1(){
+    ToggleShelfActive('A1');
+    numberPanelA1.classList.add("css-panelNumber-activeA");
+    numberPanelA1.classList.remove("css-panelNumberA");
+    enterQuantityA1.classList.add('css-EnterPanelNumber-active');
+    enterQuantityA1.classList.remove('css-EnterPanelNumber');
+    inputA1.classList.add("css-input");
+    inputA1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.A1;
+  };
+  function unclickShelfA1(){
+    toggleHighlight = Hili.off;
+    mainShelfA1.classList.remove("shelf-active");
+    numberPanelA1.classList.add("css-panelNumberA");
+    numberPanelA1.classList.remove("css-panelNumber-activeA");
+    enterQuantityA1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityA1.classList.add('css-EnterPanelNumber');
+  };
+
+  function clickShelfA2(){
+    ToggleShelfActive('A2');
+    numberPanelA2.classList.add("css-panelNumber-activeA");
+    numberPanelA2.classList.remove("css-panelNumberA");
+    enterQuantityA2.classList.add('css-EnterPanelNumber-active');
+    enterQuantityA2.classList.remove('css-EnterPanelNumber');
+    inputA2.classList.add("css-input");
+    inputA2.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.A2;
+  };
+  function unclickShelfA2(){
+    toggleHighlight = Hili.off;
+    mainShelfA2.classList.remove("shelf-active");
+    numberPanelA2.classList.add("css-panelNumberA");
+    numberPanelA2.classList.remove("css-panelNumber-activeA");
+    enterQuantityA2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityA2.classList.add('css-EnterPanelNumber');
+    inputA2.classList.add("css-input");
+  };
+
+  function clickShelfB1(){
+    ToggleShelfActive('B1');
+    numberPanelB1.classList.add("css-panelNumber-activeA");
+    numberPanelB1.classList.remove("css-panelNumberA");
+    enterQuantityB1.classList.add('css-EnterPanelNumber-active');
+    enterQuantityB1.classList.remove('css-EnterPanelNumber');
+    inputB1.classList.add("css-input");
+    inputB1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.B1;
+    togglePanelOnOff = true;
+  };
+  function unclickShelfB1(){
+    numberPanelB1.classList.add("css-panelNumberA");
+    numberPanelB1.classList.remove("css-panelNumber-activeA");
+    enterQuantityB1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityB1.classList.add('css-EnterPanelNumber');
+    inputB1.classList.add("css-input");
+    togglePanelOnOff = false;
+    toggleHighlight = Hili.off;
+    mainShelfB1.classList.remove("shelf-active");
+  };
+
+  function clickShelfB2(){
+    ToggleShelfActive('B2');
+    numberPanelB2.classList.add("css-panelNumber-activeA");
+    numberPanelB2.classList.remove("css-panelNumberA");
+    enterQuantityB2.classList.add('css-EnterPanelNumber-active');
+    enterQuantityB2.classList.remove('css-EnterPanelNumber');
+    inputB2.classList.add("css-input");
+    inputB2.classList.toggle("css-input-2",false); 
+    toggleHighlight = Hili.on;
+    toggleState = shelf.B2;
+  };
+  function unclickShelfB2(){
+    numberPanelB2.classList.add("css-panelNumberA");
+    numberPanelB2.classList.remove("css-panelNumber-activeA");
+    enterQuantityB2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityB2.classList.add('css-EnterPanelNumber');
+    inputB2.classList.add("css-input");
+    toggleHighlight = Hili.off;
+    mainShelfB2.classList.remove("shelf-active");
+  };
+
+  function clickShelfC1(){
+    ToggleShelfActive('C1');
+    numberPanelC1.classList.add("css-panelNumber-activeA");
+    enterQuantityC1.classList.add('css-EnterPanelNumber-active');
+    numberPanelC1.classList.remove("css-panelNumberA");
+    enterQuantityC1.classList.remove('css-EnterPanelNumber');
+    inputC1.classList.add("css-input");
+    inputC1.classList.toggle("css-input-2",false); 
+    toggleHighlight = Hili.on;
+    toggleState = shelf.C1;
+  };
+  function unclickShelfC1(){
+    numberPanelC1.classList.add("css-panelNumberA");
+    numberPanelC1.classList.remove("css-panelNumber-activeA");
+    enterQuantityC1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityC1.classList.add('css-EnterPanelNumber');
+    inputC1.classList.add("css-input");
+    toggleHighlight = Hili.off;
+    mainShelfC1.classList.remove("shelf-active");
+  };
+
+  function clickShelfC2(){
+    ToggleShelfActive('C2');
+    numberPanelC2.classList.add("css-panelNumber-activeA");
+    enterQuantityC2.classList.add('css-EnterPanelNumber-active');
+    numberPanelC2.classList.remove("css-panelNumberA");
+    enterQuantityC2.classList.remove('css-EnterPanelNumber');
+    inputC2.classList.add("css-input");
+    inputC2.classList.toggle("css-input-2",false); 
+    toggleHighlight = Hili.on;
+    toggleState = shelf.C2;
+  };
+  function unclickShelfC2(){
+    numberPanelC2.classList.add("css-panelNumberA");
+    numberPanelC2.classList.remove("css-panelNumber-activeA");
+    enterQuantityC2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityC2.classList.add('css-EnterPanelNumber');
+    inputC2.classList.add("css-input");
+    toggleHighlight = Hili.off;
+    mainShelfC2.classList.remove("shelf-active");
+  };
+
+
+  function clickShelfD1(){
+    ToggleShelfActive('D1');
+    numberPanelD1.classList.add("css-panelNumber-activeB");
+    numberPanelD1.classList.remove("css-panelNumberB");
+    enterQuantityD1.classList.add('css-EnterPanelNumber-active');
+    enterQuantityD1.classList.remove('css-EnterPanelNumber');
+    inputD1.classList.add("css-input");
+    inputD1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.D1;
+  };
+  function unclickShelfD1(){
+    numberPanelD1.classList.add("css-panelNumberB");
+    numberPanelD1.classList.remove("css-panelNumber-activeB");
+    enterQuantityD1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityD1.classList.add('css-EnterPanelNumber');
+    inputD1.classList.add("css-input");
+    mainShelfD1.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  function clickShelfD2(){
+    ToggleShelfActive('D2');
+    numberPanelD2.classList.add("css-panelNumber-activeB");
+    numberPanelD2.classList.remove("css-panelNumberB");
+    enterQuantityD2.classList.add('css-EnterPanelNumber-active');
+    enterQuantityD2.classList.remove('css-EnterPanelNumber');
+    inputD2.classList.add("css-input");
+    inputD2.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.D2;
+  };
+  function unclickShelfD2(){
+    numberPanelD2.classList.add("css-panelNumberB");
+    numberPanelD2.classList.remove("css-panelNumber-activeB");
+    enterQuantityD2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityD2.classList.add('css-EnterPanelNumber');
+    inputD2.classList.add("css-input");
+    mainShelfD2.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+
+  function clickShelfE1(){
+    ToggleShelfActive('E1');
+    numberPanelE1.classList.add("css-panelNumber-activeB");
+    numberPanelE1.classList.remove("css-panelNumberB");
+    enterQuantityE1.classList.add('css-EnterPanelNumber-active');
+    enterQuantityE1.classList.remove('css-EnterPanelNumber');
+    inputE1.classList.add("css-input");
+    inputE1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.E1;
+  };
+  function unclickShelfE1(){
+    numberPanelE1.classList.add("css-panelNumberB");
+    numberPanelE1.classList.remove("css-panelNumber-activeB");
+    enterQuantityE1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityE1.classList.add('css-EnterPanelNumber');
+    inputE1.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfE1.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+    function clickShelfE2(){
+    ToggleShelfActive('E2');
+    numberPanelE2.classList.add("css-panelNumber-activeB");
+    enterQuantityE2.classList.add('css-EnterPanelNumber-active');
+    numberPanelE2.classList.remove("css-panelNumberB");
+    enterQuantityE2.classList.remove('css-EnterPanelNumber');
+    inputE2.classList.add("css-input");
+    inputE2.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.E2;
+  };
+  function unclickShelfE2(){
+    numberPanelE2.classList.add("css-panelNumberB");
+    numberPanelE2.classList.remove("css-panelNumber-activeB");
+    enterQuantityE2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityE2.classList.add('css-EnterPanelNumber');
+    inputE2.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfE2.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+
+  function clickShelfF1(){
+    ToggleShelfActive('F1');
+    numberPanelF1.classList.add("css-panelNumber-activeB");
+    enterQuantityF1.classList.add('css-EnterPanelNumber-active');
+    numberPanelF1.classList.remove("css-panelNumberB");
+    enterQuantityF1.classList.remove('css-EnterPanelNumber');
+    inputF1.classList.add("css-input");
+    inputF1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.F1;
+  };
+  function unclickShelfF1(){
+    numberPanelF1.classList.add("css-panelNumberB");
+    numberPanelF1.classList.remove("css-panelNumber-activeB");
+    enterQuantityF1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityF1.classList.add('css-EnterPanelNumber');
+    inputF1.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfF1.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  function clickShelfF2(){
+    ToggleShelfActive('F2');
+    numberPanelF2.classList.add("css-panelNumber-activeB");
+    enterQuantityF2.classList.add('css-EnterPanelNumber-active');
+    numberPanelF2.classList.remove("css-panelNumberB");
+    enterQuantityF2.classList.remove('css-EnterPanelNumber');
+    inputF2.classList.add("css-input");
+    inputF2.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.F2;
+  };
+  function unclickShelfF2(){
+    numberPanelF2.classList.add("css-panelNumberB");
+    numberPanelF2.classList.remove("css-panelNumber-activeB");
+    enterQuantityF2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityF2.classList.add('css-EnterPanelNumber');
+    inputF2.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfF2.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+
+  function clickShelfG1(){
+    ToggleShelfActive('G1');
+    numberPanelG1.classList.add("css-panelNumber-activeC");
+    enterQuantityG1.classList.add('css-EnterPanelNumber-active');
+    numberPanelG1.classList.remove("css-panelNumberC");
+    enterQuantityG1.classList.remove('css-EnterPanelNumber');
+    inputG1.classList.add("css-input");
+    inputG1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.G1;
+  };
+  function unclickShelfG1(){
+    numberPanelG1.classList.add("css-panelNumberC");
+    numberPanelG1.classList.remove("css-panelNumber-activeC");
+    enterQuantityG1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityG1.classList.add('css-EnterPanelNumber');
+    inputG1.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfG1.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  function clickShelfG2(){
+    ToggleShelfActive('G2');
+    numberPanelG2.classList.add("css-panelNumber-activeC");
+    enterQuantityG2.classList.add('css-EnterPanelNumber-active');
+    numberPanelG2.classList.remove("css-panelNumberC");
+    enterQuantityG2.classList.remove('css-EnterPanelNumber');
+    inputG2.classList.add("css-input");
+    inputG2.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.G2;
+  };
+  
+  function unclickShelfG2(){
+    numberPanelG2.classList.add("css-panelNumberC");
+    numberPanelG2.classList.remove("css-panelNumber-activeC");
+    enterQuantityG2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityG2.classList.add('css-EnterPanelNumber');
+    inputG2.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfG2.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  function clickShelfH1(){
+    ToggleShelfActive('H1');
+    numberPanelH1.classList.add("css-panelNumber-activeC");
+    enterQuantityH1.classList.add('css-EnterPanelNumber-active');
+    numberPanelH1.classList.remove("css-panelNumberC");
+    enterQuantityH1.classList.remove('css-EnterPanelNumber');
+    inputH1.classList.add("css-input");
+    inputH1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.H1;
+  };
+  
+  function unclickShelfH1(){
+    numberPanelH1.classList.add("css-panelNumberC");
+    numberPanelH1.classList.remove("css-panelNumber-activeC");
+    enterQuantityH1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityH1.classList.add('css-EnterPanelNumber');
+    inputH1.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfH1.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  function clickShelfH2(){
+    ToggleShelfActive('H2');
+    numberPanelH2.classList.add("css-panelNumber-activeC");
+    enterQuantityH2.classList.add('css-EnterPanelNumber-active');
+    numberPanelH2.classList.remove("css-panelNumberC");
+    enterQuantityH2.classList.remove('css-EnterPanelNumber');
+    inputH2.classList.add("css-input");
+    inputH2.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.H2;
+  };
+  
+  function unclickShelfH2(){
+    numberPanelH2.classList.add("css-panelNumberC");
+    numberPanelH2.classList.remove("css-panelNumber-activeC");
+    enterQuantityH2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityH2.classList.add('css-EnterPanelNumber');
+    inputH2.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfH2.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  function clickShelfI1(){
+    ToggleShelfActive('I1');
+    numberPanelI1.classList.add("css-panelNumber-activeC");
+    enterQuantityI1.classList.add('css-EnterPanelNumber-active');
+    numberPanelI1.classList.remove("css-panelNumberC");
+    enterQuantityI1.classList.remove('css-EnterPanelNumber');
+    inputI1.classList.add("css-input");
+    inputI1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.I1;
+  };
+  
+  function unclickShelfI1(){
+    numberPanelI1.classList.add("css-panelNumberC");
+    numberPanelI1.classList.remove("css-panelNumber-activeC");
+    enterQuantityI1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityI1.classList.add('css-EnterPanelNumber');
+    inputI1.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfI1.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  function clickShelfI2(){
+    ToggleShelfActive('I2');
+    numberPanelI2.classList.add("css-panelNumber-activeC");
+    enterQuantityI2.classList.add('css-EnterPanelNumber-active');
+    numberPanelI2.classList.remove("css-panelNumberC");
+    enterQuantityI2.classList.remove('css-EnterPanelNumber');
+    inputI2.classList.add("css-input");
+    inputI2.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.I2;
+  };
+  
+  function unclickShelfI2(){
+    numberPanelI2.classList.add("css-panelNumberC");
+    numberPanelI2.classList.remove("css-panelNumber-activeC");
+    enterQuantityI2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityI2.classList.add('css-EnterPanelNumber');
+    inputI2.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfI2.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  function clickShelfJ1(){
+    ToggleShelfActive('J1');
+    numberPanelJ1.classList.add("css-panelNumber-activeD");
+    enterQuantityJ1.classList.add('css-EnterPanelNumber-active');
+    numberPanelJ1.classList.remove("css-panelNumberD");
+    enterQuantityJ1.classList.remove('css-EnterPanelNumber');
+    inputJ1.classList.add("css-input");
+    inputJ1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.J1;
+  };
+  
+  function unclickShelfJ1(){
+    numberPanelJ1.classList.add("css-panelNumberD");
+    numberPanelJ1.classList.remove("css-panelNumber-activeD");
+    enterQuantityJ1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityJ1.classList.add('css-EnterPanelNumber');
+    inputJ1.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfJ1.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  // Similar functions for shelves J2, K1, K2, L1, and L2
+  
+  function clickShelfJ2(){
+    ToggleShelfActive('J2');
+    numberPanelJ2.classList.add("css-panelNumber-activeD");
+    enterQuantityJ2.classList.add('css-EnterPanelNumber-active');
+    numberPanelJ2.classList.remove("css-panelNumberD");
+    enterQuantityJ2.classList.remove('css-EnterPanelNumber');
+    inputJ2.classList.add("css-input");
+    inputJ2.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.J2;
+  };
+  
+  function unclickShelfJ2(){
+    numberPanelJ2.classList.add("css-panelNumberD");
+    numberPanelJ2.classList.remove("css-panelNumber-activeD");
+    enterQuantityJ2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityJ2.classList.add('css-EnterPanelNumber');
+    inputJ2.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfJ2.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+
+  function clickShelfK1(){
+    ToggleShelfActive('K1');
+    numberPanelK1.classList.add("css-panelNumber-activeD");
+    enterQuantityK1.classList.add('css-EnterPanelNumber-active');
+    numberPanelK1.classList.remove("css-panelNumberD");
+    enterQuantityK1.classList.remove('css-EnterPanelNumber');
+    inputK1.classList.add("css-input");
+    inputK1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.K1;
+  };
+  
+  function unclickShelfK1(){
+    numberPanelK1.classList.add("css-panelNumberD");
+    numberPanelK1.classList.remove("css-panelNumber-activeD");
+    enterQuantityK1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityK1.classList.add('css-EnterPanelNumber');
+    inputK1.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfK1.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  // Similar functions for shelves K2, L1, and L2
+  
+  function clickShelfK2(){
+    ToggleShelfActive('K2');
+    numberPanelK2.classList.add("css-panelNumber-activeD");
+    enterQuantityK2.classList.add('css-EnterPanelNumber-active');
+    numberPanelK2.classList.remove("css-panelNumberD");
+    enterQuantityK2.classList.remove('css-EnterPanelNumber');
+    inputK2.classList.add("css-input");
+    inputK2.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.K2;
+  };
+  
+  function unclickShelfK2(){
+    numberPanelK2.classList.add("css-panelNumberD");
+    numberPanelK2.classList.remove("css-panelNumber-activeD");
+    enterQuantityK2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityK2.classList.add('css-EnterPanelNumber');
+    inputK2.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfK2.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+
+  function clickShelfL1(){
+    ToggleShelfActive('L1');
+    numberPanelL1.classList.add("css-panelNumber-activeD");
+    enterQuantityL1.classList.add('css-EnterPanelNumber-active');
+    numberPanelL1.classList.remove("css-panelNumberD");
+    enterQuantityL1.classList.remove('css-EnterPanelNumber');
+    inputL1.classList.add("css-input");
+    inputL1.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.L1;
+  };
+  
+  function unclickShelfL1(){
+    numberPanelL1.classList.add("css-panelNumberD");
+    numberPanelL1.classList.remove("css-panelNumber-activeD");
+    enterQuantityL1.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityL1.classList.add('css-EnterPanelNumber');
+    inputL1.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfL1.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
+  };
+  
+  function clickShelfL2(){
+    ToggleShelfActive('L2');
+    numberPanelL2.classList.add("css-panelNumber-activeD");
+    enterQuantityL2.classList.add('css-EnterPanelNumber-active');
+    numberPanelL2.classList.remove("css-panelNumberD");
+    enterQuantityL2.classList.remove('css-EnterPanelNumber');
+    inputL2.classList.add("css-input");
+    inputL2.classList.toggle("css-input-2",false);
+    toggleHighlight = Hili.on;
+    toggleState = shelf.L2;
+  };
+  
+  function unclickShelfL2(){
+    numberPanelL2.classList.add("css-panelNumberD");
+    numberPanelL2.classList.remove("css-panelNumber-activeD");
+    enterQuantityL2.classList.remove('css-EnterPanelNumber-active');
+    enterQuantityL2.classList.add('css-EnterPanelNumber');
+    inputL2.classList.add("css-input");
+    togglePanelOnOff = false;
+    mainShelfL2.classList.remove("shelf-active");
+    toggleHighlight = Hili.off;
   };

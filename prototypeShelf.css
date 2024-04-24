@@ -8,8 +8,14 @@ togglest
         width: 100%;
         height: auto;
         border-radius: 5px;
+        position: relative;
+      }
+      .list-content {
+        display: inline-block;
+        width: 100%;
       }
       .list-title {
+        position: sticky;
         display: flex;
         justify-content: center;
         font-weight: bold;
@@ -17,27 +23,32 @@ togglest
         padding: 1%;
         background-color: rgb(255, 108, 108);
         border-radius: 5px;
-        position: sticky;
         top:0;
+        height: 30px;
+        transition: .5s ease;
         z-index: 10;
       }
-      .list-content {
-        display: inline-block;
-        width: 100%;
+      /* IMPROVE DROP DOWN UP BUTTON */
+      .goDown{
+        position: sticky;
+        top: 0;
+        height: 40px;
+        background-color: rgb(108, 196, 255);
+        transition: .5s ease;
+        z-index: 10;
       }
       .js-goTop{
         border-radius: 10px;
         font-size: 10px;
         font-weight: 700;
         border-style: none;
-        width: 14%;
-        height: 50px;
+        width: 20%;
+        height: 100%;
         margin-left: 20px;
-        transition: .2s ease
+        transition: .2s ease;
+        background-color: rgb(90, 141, 130);
       } /*make the button appear smooth*/
-      .js-goToTop:active {
-        background-color: red;
-      }
+
       /*LIST ITEM/////////////////////////////////////////////////////////////*/
       .mainCover-list{
         display: flex;
@@ -188,6 +199,7 @@ togglest
         transition: .2s ease;
         margin: 1px;
         border-radius: 1.5px;
+        position: relative;
       }
       .shelf-A1:hover,
       .shelf-A2:hover,
@@ -219,7 +231,7 @@ togglest
       /* BODY HIGHLIGHT */
       .shelf-active{ 
         background-color: aquamarine;
-        width: 47.830px;
+        width: 100%; /* This should percent for universal size */
         transition: 0.2s ease;
         z-index: 10;
       }
@@ -237,11 +249,10 @@ togglest
 
       /*CONTAINER FOR BUTTONS*/
       .css-panelNumber-buttons {
-        display: grid;
         position: relative;
-        grid-template-columns: 22.91px 22.91px;
-        padding: 1px;
-        height: 18px;
+        display: flex;
+        width: 100%;
+        height: 50%;
       }
       /*BUTTONS FOR PLUS AND MINUS *not main*/
       .button {
@@ -250,98 +261,38 @@ togglest
         font-weight: 500;
         transition: .2s ease;
         border-radius: 3px 3px 0px 0px;
-        font-size: 8.5px;
         font-weight: 700;
-        
-        
+        font-size: 62%;
       }
       .button:active {
         background-color:  rgb(255, 18, 53);
       }
 
       
-      .css-panelNumber { /*HIDE*/ 
-        font-size: 1px;
-        position: absolute;
-        transition: .2s ease;
-        z-index: 0; 
-        height: 20px;
-        margin-left: 2.5px;
-        display: flex;
-      } 
-      .css-panelNumber-active{ /*APPEAR*/
-        font-size: 30px;
-        height: 20px;
-        width: 20px;
-        position: absolute;
-        display: flex;
-        top: 97px;
-        margin-left: 4px;
-        transition: .2s ease;
-        z-index: 1;
-        background-color: rgb(255, 0, 0);
 
-      } 
       /*----------------------------------------------------*/
-      .css-panelNumberA { /*HIDE*/ 
+      .css-panelNumberA,.css-panelNumberB,
+      .css-panelNumberC,.css-panelNumberD  { /*HIDE*/ 
         position: absolute;
-        top: 20px;
+        top: 15px;
         transition: .2s ease;
         z-index: 0; 
       } 
-      .css-panelNumber-activeA{ /*APPEAR*/
+      .css-panelNumber-activeA,.css-panelNumber-activeB,
+      .css-panelNumber-activeC,.css-panelNumber-activeD{ /*APPEAR*/
         position: absolute;
         top: 2px;
         transition: .2s ease;
         z-index: 1;
-
       } 
 
-      .css-panelNumberB { /*HIDE*/ 
-        position: absolute;
-        top: 118px;
-        transition: .2s ease;
-        z-index: 0; 
-      } 
-      .css-panelNumber-activeB{ /*APPEAR*/
-        position: absolute;
-        top: 100px;
-        transition: .2s ease;
-        z-index: 1;
-      } 
-
-      .css-panelNumberC { /*HIDE*/ 
-        position: absolute;
-        top: 220px;
-        transition: .2s ease;
-        z-index: 0; 
-      } 
-      .css-panelNumber-activeC{ /*APPEAR*/
-        position: absolute;
-        top: 200px;
-        transition: .2s ease;
-        z-index: 1;
-      } 
-
-      .css-panelNumberD { /*HIDE*/ 
-        position: absolute;
-        top: 320px;
-        transition: .2s ease;
-        z-index: 0; 
-      } 
-      .css-panelNumber-activeD{ /*APPEAR*/
-        position: absolute;
-        top: 300px;
-        transition: .2s ease;
-        z-index: 1;
-      } 
 
       /*ENTER BUTTONS*/
       .css-EnterPanelNumber{/*HIDE*/
         font-size: 10px;
         border-radius: 5px;
         border-style: none;
-        width: 39px;
+        width: 100%;
         height: 2px;
         position: absolute;
         top: -22px;
@@ -357,11 +308,10 @@ togglest
         font-size: 10px;
         border-radius: 0px 0px 5px 5px;
         border-style: none;
-        width: 42px;
+        width: 100%;
         top: -2px;
         height: 20px;
         transition: .2s ease;
-        margin-left: 2px;
         z-index:0;
       }
  
@@ -383,11 +333,11 @@ togglest
         background-color: rgb(250, 41, 41);
       } 
 
-      .css-input{
+      .css-input{ /* HIDDEN INPUT */
         visibility: hidden;
         position: absolute;
         margin-left: 1px;
-        width: 40px;
+        width: 0%;
         height: 12px;
         font-size: 10px;
         z-index: 0;
@@ -397,11 +347,12 @@ togglest
         transition: .2s ease;
         text-align: center;
       }
-      .css-input-2{ /*JS*/
+      .css-input-2{ /*APPEAR INPUT*/
         visibility: visible;
 
         position: absolute;
-        width: 45px;
+        
+        width: 80%;
         height: 12px;
         font-size: 10px;
         border-style: none;
