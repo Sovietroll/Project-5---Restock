@@ -321,6 +321,11 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
   const mainShelfL1 = document.querySelector('.shelf-L1');
   const mainShelfL2 = document.querySelector('.shelf-L2');
 
+  const allShelfActive = [
+    mainShelfA1, mainShelfA2, mainShelfB1, mainShelfB2, mainShelfC1, mainShelfC2, mainShelfD1, mainShelfD2, mainShelfE1, mainShelfE2, mainShelfF1, mainShelfF2, mainShelfG1, mainShelfG2, mainShelfH1, mainShelfH2, mainShelfI1, mainShelfI2, mainShelfJ1, mainShelfJ2, mainShelfK1, mainShelfK2, mainShelfL1, mainShelfL2
+  ];
+  
+
 
 
 ////////ENTER BUTTON PANEL NUMBER ADDEVENTLISTENER
@@ -894,269 +899,291 @@ shelfQuantity_L2.innerHTML = '0';
 
 shelfQuantity_A1.addEventListener('click', () => {
   if (upDownStates.A1 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfA1();
-      hideOtherPanel('A1');
-      upDownStates.A1 = 1;
-    }
+    hideUnhideShelves('A1');
+    hideOtherPanel('A1');
+    upDownStates.A1 = 1;
+  }
   else if(upDownStates.A1 === 1) {
-      unclickShelfA1();
-      upDownStates.A1 = 0;
-    }
-  });
+    hideUnhideShelves('HideA1');
+    upDownStates.A1 = 0;
+  }
+});
 
 shelfQuantity_A2.addEventListener('click', () => {
   if (upDownStates.A2 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfA2()
-      hideOtherPanel('A2');
-      upDownStates.A2 = 1;
+    hideUnhideShelves('A2');
+    hideOtherPanel('A2');
+    upDownStates.A2 = 1;
   }
-  else if (upDownStates.A2 === 1){
-      unclickShelfA2();
-      upDownStates.A2 = 0;
+  else if(upDownStates.A2 === 1) {
+    hideUnhideShelves('HideA2');
+    upDownStates.A2 = 0;
   }
-  });
+});
 
 shelfQuantity_B1.addEventListener('click', () => {
-    if (upDownStates.B1 === 0 && flipButtons === Switch.NEUTRAL){
-        clickShelfB1()
-        upDownStates.B1 = 1;
-    }
-    else if (upDownStates.B1 === 1){
-        unclickShelfB1();
-        upDownStates.B1 = 0;
-    }
-  });
+  if (upDownStates.B1 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('B1');
+    hideOtherPanel('B1');
+    upDownStates.B1 = 1;
+  }
+  else if(upDownStates.B1 === 1) {
+    hideUnhideShelves('HideB1');
+    upDownStates.B1 = 0;
+  }
+});
 
 shelfQuantity_B2.addEventListener('click', () => {
   if (upDownStates.B2 === 0 && flipButtons === Switch.NEUTRAL){
-    clickShelfB2()
+    hideUnhideShelves('B2');
+    hideOtherPanel('B2');
     upDownStates.B2 = 1;
   }
-  else if (upDownStates.B2 === 1){
-    unclickShelfB2();
+  else if(upDownStates.B2 === 1) {
+    hideUnhideShelves('HideB2');
     upDownStates.B2 = 0;
-  }})
+  }
+});
 
 shelfQuantity_C1.addEventListener('click', () => {
-  if(upDownStates.C1 === 0 && flipButtons === Switch.NEUTRAL){
-    clickShelfC1()
+  if (upDownStates.C1 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('C1');
+    hideOtherPanel('C1');
     upDownStates.C1 = 1;
   }
-  else if (upDownStates.C1 === 1){
-    unclickShelfC1()
+  else if(upDownStates.C1 === 1) {
+    hideUnhideShelves('HideC1');
     upDownStates.C1 = 0;
   }
 });
 
-
 shelfQuantity_C2.addEventListener('click', () => {
   if (upDownStates.C2 === 0 && flipButtons === Switch.NEUTRAL){
-    clickShelfC2()
+    hideUnhideShelves('C2');
+    hideOtherPanel('C2');
     upDownStates.C2 = 1;
   }
-  else if (upDownStates.C2 === 1){
-    unclickShelfC2()
+  else if(upDownStates.C2 === 1) {
+    hideUnhideShelves('HideC2');
     upDownStates.C2 = 0;
   }
 });
 
-
 shelfQuantity_D1.addEventListener('click', () => {
   if (upDownStates.D1 === 0 && flipButtons === Switch.NEUTRAL){
-    clickShelfD1()
+    hideUnhideShelves('D1');
+    hideOtherPanel('D1');
     upDownStates.D1 = 1;
   }
-  else if (upDownStates.D1 === 1) {
-    unclickShelfD1()
+  else if(upDownStates.D1 === 1) {
+    hideUnhideShelves('HideD1');
     upDownStates.D1 = 0;
   }
 });
 
 shelfQuantity_D2.addEventListener('click', () => {
   if (upDownStates.D2 === 0 && flipButtons === Switch.NEUTRAL){
-    clickShelfD2()
+    hideUnhideShelves('D2');
+    hideOtherPanel('D2');
     upDownStates.D2 = 1;
   }
-  else if (upDownStates.D2 = 1){
-    unclickShelfD2()
+  else if(upDownStates.D2 === 1) {
+    hideUnhideShelves('HideD2');
     upDownStates.D2 = 0;
   }
 });
 
 shelfQuantity_E1.addEventListener('click', () => {
   if (upDownStates.E1 === 0 && flipButtons === Switch.NEUTRAL){
-    clickShelfE1()
+    hideUnhideShelves('E1');
+    hideOtherPanel('E1');
     upDownStates.E1 = 1;
-
   }
-  else if (upDownStates.E1 = 1){
-    unclickShelfE1()
+  else if(upDownStates.E1 === 1) {
+    hideUnhideShelves('HideE1');
     upDownStates.E1 = 0;
   }
-  });
+});
+
 shelfQuantity_E2.addEventListener('click', () => {
   if (upDownStates.E2 === 0 && flipButtons === Switch.NEUTRAL){
-    clickShelfE2()
+    hideUnhideShelves('E2');
+    hideOtherPanel('E2');
     upDownStates.E2 = 1;
   }
-  else if (upDownStates.E2 === 1){
-    unclickShelfE2()
+  else if(upDownStates.E2 === 1) {
+    hideUnhideShelves('HideE2');
     upDownStates.E2 = 0;
   }
-  });
+});
 
-  shelfQuantity_F1.addEventListener('click', () => {
-    if (upDownStates.F1 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfF1()
-      upDownStates.F1 = 1;
-    }
-    else if (upDownStates.F1 === 1){
-      unclickShelfF1()
-      upDownStates.F1 = 0;
-    }
-  });
-  shelfQuantity_F2.addEventListener('click', () => {
-    if (upDownStates.F2 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfF2()
-      upDownStates.F2 = 1;
-    }
-    else if (upDownStates.F2 === 1){
-      unclickShelfF2()
-      upDownStates.F2 = 0;
-    }
-  });
+shelfQuantity_F1.addEventListener('click', () => {
+  if (upDownStates.F1 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('F1');
+    hideOtherPanel('F1');
+    upDownStates.F1 = 1;
+  }
+  else if(upDownStates.F1 === 1) {
+    hideUnhideShelves('HideF1');
+    upDownStates.F1 = 0;
+  }
+});
 
-  shelfQuantity_G1.addEventListener('click', () => {
-    if (upDownStates.G1 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfG1()
-      upDownStates.G1 = 1;
-    }
-    else if (upDownStates.G1 === 1){
-      unclickShelfG1()
-      upDownStates.G1 = 0;
-    }
-  });
-  shelfQuantity_G2.addEventListener('click', () => {
-    if (upDownStates.G2 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfG2();
-      upDownStates.G2 = 1;
-    }
-    else if (upDownStates.G2 === 1){
-      unclickShelfG2();
-      upDownStates.G2 = 0;
-    }
-  });
-  
-  shelfQuantity_H1.addEventListener('click', () => {
-    if (upDownStates.H1 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfH1();
-      upDownStates.H1 = 1;
-    }
-    else if (upDownStates.H1 === 1){
-      unclickShelfH1();
-      upDownStates.H1 = 0;
-    }
-  });
-  
-  shelfQuantity_H2.addEventListener('click', () => {
-    if (upDownStates.H2 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfH2();
-      upDownStates.H2 = 1;
-    }
-    else if (upDownStates.H2 === 1){
-      unclickShelfH2();
-      upDownStates.H2 = 0;
-    }
-  });
-  
-  shelfQuantity_I1.addEventListener('click', () => {
-    if (upDownStates.I1 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfI1();
-      upDownStates.I1 = 1;
-    }
-    else if (upDownStates.I1 === 1){
-      unclickShelfI1();
-      upDownStates.I1 = 0;
-    }
-  });
-  
-  shelfQuantity_I2.addEventListener('click', () => {
-    if (upDownStates.I2 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfI2();
-      upDownStates.I2 = 1;
-    }
-    else if (upDownStates.I2 === 1){
-      unclickShelfI2();
-      upDownStates.I2 = 0;
-    }
-  });
-  
-  shelfQuantity_J1.addEventListener('click', () => {
-    if (upDownStates.J1 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfJ1();
-      upDownStates.J1 = 1;
-    }
-    else if (upDownStates.J1 === 1){
-      unclickShelfJ1();
-      upDownStates.J1 = 0;
-    }
-  });
-  
-  shelfQuantity_J2.addEventListener('click', () => {
-    if (upDownStates.J2 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfJ2();
-      upDownStates.J2 = 1;
-    }
-    else if (upDownStates.J2 === 1){
-      unclickShelfJ2();
-      upDownStates.J2 = 0;
-    }
-  });
-  
-  shelfQuantity_K1.addEventListener('click', () => {
-    if (upDownStates.K1 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfK1();
-      upDownStates.K1 = 1;
-    }
-    else if (upDownStates.K1 === 1){
-      unclickShelfK1();
-      upDownStates.K1 = 0;
-    }
-  });
-  
-  shelfQuantity_K2.addEventListener('click', () => {
-    if (upDownStates.K2 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfK2();
-      upDownStates.K2 = 1;
-    }
-    else if (upDownStates.K2 === 1){
-      unclickShelfK2();
-      upDownStates.K2 = 0;
-    }
-  });
-  
-  shelfQuantity_L1.addEventListener('click', () => {
-    if (upDownStates.L1 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfL1();
-      upDownStates.L1 = 1;
-    }
-    else if (upDownStates.L1 === 1){
-      unclickShelfL1();
-      upDownStates.L1 = 0;
-    }
-  });
-  
-  shelfQuantity_L2.addEventListener('click', () => {
-    if (upDownStates.L2 === 0 && flipButtons === Switch.NEUTRAL){
-      clickShelfL2();
-      upDownStates.L2 = 1;
-    }
-    else if (upDownStates.L2 === 1){
-      unclickShelfL2();
-      upDownStates.L2 = 0;
-    }
-  });
-  
+shelfQuantity_F2.addEventListener('click', () => {
+  if (upDownStates.F2 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('F2');
+    hideOtherPanel('F2');
+    upDownStates.F2 = 1;
+  }
+  else if(upDownStates.F2 === 1) {
+    hideUnhideShelves('HideF2');
+    upDownStates.F2 = 0;
+  }
+});
+shelfQuantity_G1.addEventListener('click', () => {
+  if (upDownStates.G1 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('G1');
+    hideOtherPanel('G1');
+    upDownStates.G1 = 1;
+  }
+  else if(upDownStates.G1 === 1) {
+    hideUnhideShelves('HideG1');
+    upDownStates.G1 = 0;
+  }
+});
+
+shelfQuantity_G2.addEventListener('click', () => {
+  if (upDownStates.G2 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('G2');
+    hideOtherPanel('G2');
+    upDownStates.G2 = 1;
+  }
+  else if(upDownStates.G2 === 1) {
+    hideUnhideShelves('HideG2');
+    upDownStates.G2 = 0;
+  }
+});
+
+shelfQuantity_H1.addEventListener('click', () => {
+  if (upDownStates.H1 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('H1');
+    hideOtherPanel('H1');
+    upDownStates.H1 = 1;
+  }
+  else if(upDownStates.H1 === 1) {
+    hideUnhideShelves('HideH1');
+    upDownStates.H1 = 0;
+  }
+});
+
+shelfQuantity_H2.addEventListener('click', () => {
+  if (upDownStates.H2 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('H2');
+    hideOtherPanel('H2');
+    upDownStates.H2 = 1;
+  }
+  else if(upDownStates.H2 === 1) {
+    hideUnhideShelves('HideH2');
+    upDownStates.H2 = 0;
+  }
+});
+
+shelfQuantity_I1.addEventListener('click', () => {
+  if (upDownStates.I1 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('I1');
+    hideOtherPanel('I1');
+    upDownStates.I1 = 1;
+  }
+  else if(upDownStates.I1 === 1) {
+    hideUnhideShelves('HideI1');
+    upDownStates.I1 = 0;
+  }
+});
+
+shelfQuantity_I2.addEventListener('click', () => {
+  if (upDownStates.I2 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('I2');
+    hideOtherPanel('I2');
+    upDownStates.I2 = 1;
+  }
+  else if(upDownStates.I2 === 1) {
+    hideUnhideShelves('HideI2');
+    upDownStates.I2 = 0;
+  }
+});
+
+shelfQuantity_J1.addEventListener('click', () => {
+  if (upDownStates.J1 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('J1');
+    hideOtherPanel('J1');
+    upDownStates.J1 = 1;
+  }
+  else if(upDownStates.J1 === 1) {
+    hideUnhideShelves('HideJ1');
+    upDownStates.J1 = 0;
+  }
+});
+
+shelfQuantity_J2.addEventListener('click', () => {
+  if (upDownStates.J2 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('J2');
+    hideOtherPanel('J2');
+    upDownStates.J2 = 1;
+  }
+  else if(upDownStates.J2 === 1) {
+    hideUnhideShelves('HideJ2');
+    upDownStates.J2 = 0;
+  }
+});
+
+shelfQuantity_K1.addEventListener('click', () => {
+  if (upDownStates.K1 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('K1');
+    hideOtherPanel('K1');
+    upDownStates.K1 = 1;
+  }
+  else if(upDownStates.K1 === 1) {
+    hideUnhideShelves('HideK1');
+    upDownStates.K1 = 0;
+  }
+});
+
+shelfQuantity_K2.addEventListener('click', () => {
+  if (upDownStates.K2 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('K2');
+    hideOtherPanel('K2');
+    upDownStates.K2 = 1;
+  }
+  else if(upDownStates.K2 === 1) {
+    hideUnhideShelves('HideK2');
+    upDownStates.K2 = 0;
+  }
+});
+
+shelfQuantity_L1.addEventListener('click', () => {
+  if (upDownStates.L1 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('L1');
+    hideOtherPanel('L1');
+    upDownStates.L1 = 1;
+  }
+  else if(upDownStates.L1 === 1) {
+    hideUnhideShelves('HideL1');
+    upDownStates.L1 = 0;
+  }
+});
+
+shelfQuantity_L2.addEventListener('click', () => {
+  if (upDownStates.L2 === 0 && flipButtons === Switch.NEUTRAL){
+    hideUnhideShelves('L2');
+    hideOtherPanel('L2');
+    upDownStates.L2 = 1;
+  }
+  else if(upDownStates.L2 === 1) {
+    hideUnhideShelves('HideL2');
+    upDownStates.L2 = 0;
+  }
+});
+
   
 
 
@@ -1361,6 +1388,8 @@ shelfQuantity_E2.addEventListener('click', () => {
   function hideOtherPanel(panelID){
     allFunctions.forEach ( item => {
       if (panelID === item.id){
+        toggleActive(panelID);
+        console.log(panelID);
         //nothing
       }
       else {
@@ -1368,6 +1397,47 @@ shelfQuantity_E2.addEventListener('click', () => {
       }
     })
   };
+
+
+  //HIGHLIGHT FOR SHELF
+  function toggleActive(shelfID){
+    const mainShelf = {
+      A1: mainShelfA1,
+      A2: mainShelfA2,
+      B1: mainShelfB1,
+      B2: mainShelfB2,
+      C1: mainShelfC1,
+      C2: mainShelfC2,
+      D1: mainShelfD1,
+      D2: mainShelfD2,
+      E1: mainShelfE1,
+      E2: mainShelfE2,
+      F1: mainShelfF1,
+      F2: mainShelfF2,
+      G1: mainShelfG1,
+      G2: mainShelfG2,
+      H1: mainShelfH1,
+      H2: mainShelfH2,
+      I1: mainShelfI1,
+      I2: mainShelfI2,
+      J1: mainShelfJ1,
+      J2: mainShelfJ2,
+      K1: mainShelfK1,
+      K2: mainShelfK2,
+      L1: mainShelfL1,
+      L2: mainShelfL2,
+    }
+    Object.keys(mainShelf).forEach(key => {
+      const shelf = mainShelf[key];
+      if(shelfID === key){
+        mainShelf[shelfID].classList.add("shelf-active");
+      }
+      else{
+        shelf.classList.remove("shelf-active");
+      }
+    })
+  };
+
 
   let tryOnce = true;
 
@@ -1471,87 +1541,45 @@ function runData(){
     savedData()
   });
 
+
     document.querySelectorAll('.css-shelf-list').forEach((highlight,index) => {
       highlight.addEventListener('click', () => { 
         highlight.classList.toggle("css-shelf-HIGHLIGHT");
 
         const loc = highlight.querySelector('.css-shelf-list-LOC').textContent.trim();
 
-      // toggle the highlight between body and list
-      //**************//ADD HERE//************//
+        const locID = {
+          'A1': mainShelfA1,
+          'A2': mainShelfA2,
+          'B1': mainShelfB1,
+          'B2': mainShelfB2,
+          'C1': mainShelfC1,
+          'C2': mainShelfC2,
+          'D1': mainShelfD1,
+          'D2': mainShelfD2,
+          'E1': mainShelfE1,
+          'E2': mainShelfE2,
+          'F1': mainShelfF1,
+          'F2': mainShelfF2,
+          'G1': mainShelfG1,
+          'G2': mainShelfG2,
+          'H1': mainShelfH1,
+          'H2': mainShelfH2,
+          'I1': mainShelfI1,
+          'I2': mainShelfI2,
+          'J1': mainShelfJ1,
+          'J2': mainShelfJ2,
+          'K1': mainShelfK1,
+          'K2': mainShelfK2,
+          'L1': mainShelfL1,
+          'L2': mainShelfL2,
+        };
+        
+        if (locID[loc]){
+          locID[loc].classList.toggle("shelf-active");
+        }
 
-        if(loc === 'A1'){
-        mainShelfA1.classList.toggle("shelf-active"); 
-        }
-        else if(loc === 'A2'){
-          mainShelfA2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'B1'){
-          mainShelfB1.classList.toggle("shelf-active");
-        }
-        else if(loc === 'B2'){
-          mainShelfB2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'C1'){
-          mainShelfC1.classList.toggle("shelf-active");
-        }
-        else if(loc === 'C2'){
-          mainShelfC2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'D1'){
-          mainShelfD2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'D2'){
-          mainShelfD2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'E1'){
-          mainShelfE1.classList.toggle("shelf-active");
-        }
-        else if(loc === 'E2'){
-          mainShelfE2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'F1'){
-          mainShelfF1.classList.toggle("shelf-active");
-        }
-        else if(loc === 'F2'){
-          mainShelfF2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'G1'){
-          mainShelfG1.classList.toggle("shelf-active");
-        }
-        else if(loc === 'G2'){
-          mainShelfG2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'H1'){
-          mainShelfH1.classList.toggle("shelf-active");
-        }
-        else if(loc === 'H2'){
-          mainShelfH2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'I1'){
-          mainShelfI1.classList.toggle("shelf-active");
-        }
-        else if(loc === 'I2'){
-          mainShelfI2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'J1'){
-          mainShelfJ1.classList.toggle("shelf-active");
-        }
-        else if(loc === 'J2'){
-          mainShelfJ2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'K1'){
-          mainShelfK1.classList.toggle("shelf-active");
-        }
-        else if(loc === 'K2'){
-          mainShelfK2.classList.toggle("shelf-active");
-        }
-        else if(loc === 'L1'){
-          mainShelfL1.classList.toggle("shelf-active");
-        }
-        else if(loc === 'L2'){
-          mainShelfL2.classList.toggle("shelf-active");
-        }
+
       })
     });
   
@@ -2538,7 +2566,7 @@ runData();
     }
   };
 
-
+/*
   function ToggleShelfActive(shelfID){
     if(shelfID === 'A1'){
       mainShelfA1.classList.add("shelf-active");
@@ -2688,9 +2716,71 @@ runData();
     }
     
   };
+*/
+
+//make the function for this object of arrays
+const hideUnhide = [
+  { id: 'A1', func: clickShelfA1 },
+  { id: 'A2', func: clickShelfA2 },
+  { id: 'B1', func: clickShelfB1 },
+  { id: 'B2', func: clickShelfB2 },
+  { id: 'C1', func: clickShelfC1 },
+  { id: 'C2', func: clickShelfC2 },
+  { id: 'D1', func: clickShelfD1 },
+  { id: 'D2', func: clickShelfD2 },
+  { id: 'E1', func: clickShelfE1 },
+  { id: 'E2', func: clickShelfE2 },
+  { id: 'F1', func: clickShelfF1 },
+  { id: 'F2', func: clickShelfF2 },
+  { id: 'G1', func: clickShelfG1 },
+  { id: 'G2', func: clickShelfG2 },
+  { id: 'H1', func: clickShelfH1 },
+  { id: 'H2', func: clickShelfH2 },
+  { id: 'I1', func: clickShelfI1 },
+  { id: 'I2', func: clickShelfI2 },
+  { id: 'J1', func: clickShelfJ1 },
+  { id: 'J2', func: clickShelfJ2 },
+  { id: 'K1', func: clickShelfK1 },
+  { id: 'K2', func: clickShelfK2 },
+  { id: 'L1', func: clickShelfL1 },
+  { id: 'L2', func: clickShelfL2 },
+  { id: 'HideA1', func: unclickShelfA1 },
+  { id: 'HideA2', func: unclickShelfA2 },
+  { id: 'HideB1', func: unclickShelfB1 },
+  { id: 'HideB2', func: unclickShelfB2 },
+  { id: 'HideC1', func: unclickShelfC1 },
+  { id: 'HideC2', func: unclickShelfC2 },
+  { id: 'HideD1', func: unclickShelfD1 },
+  { id: 'HideD2', func: unclickShelfD2 },
+  { id: 'HideE1', func: unclickShelfE1 },
+  { id: 'HideE2', func: unclickShelfE2 },
+  { id: 'HideF1', func: unclickShelfF1 },
+  { id: 'HideF2', func: unclickShelfF2 },
+  { id: 'HideG1', func: unclickShelfG1 },
+  { id: 'HideG2', func: unclickShelfG2 },
+  { id: 'HideH1', func: unclickShelfH1 },
+  { id: 'HideH2', func: unclickShelfH2 },
+  { id: 'HideI1', func: unclickShelfI1 },
+  { id: 'HideI2', func: unclickShelfI2 },
+  { id: 'HideJ1', func: unclickShelfJ1 },
+  { id: 'HideJ2', func: unclickShelfJ2 },
+  { id: 'HideK1', func: unclickShelfK1 },
+  { id: 'HideK2', func: unclickShelfK2 },
+  { id: 'HideL1', func: unclickShelfL1 },
+  { id: 'HideL2', func: unclickShelfL2 },
+];
+
+
+function hideUnhideShelves(shelfID){
+    hideUnhide.forEach(index => {
+      if(shelfID === index.id){
+        index.func();
+        console.log('index.func')
+      }
+    })
+}
 
   function clickShelfA1(){
-    ToggleShelfActive('A1');
     numberPanelA1.classList.add("css-panelNumber-activeA");
     numberPanelA1.classList.remove("css-panelNumberA");
     enterQuantityA1.classList.add('css-EnterPanelNumber-active');
@@ -2710,7 +2800,6 @@ runData();
   };
 
   function clickShelfA2(){
-    ToggleShelfActive('A2');
     numberPanelA2.classList.add("css-panelNumber-activeA");
     numberPanelA2.classList.remove("css-panelNumberA");
     enterQuantityA2.classList.add('css-EnterPanelNumber-active');
@@ -2731,7 +2820,6 @@ runData();
   };
 
   function clickShelfB1(){
-    ToggleShelfActive('B1');
     numberPanelB1.classList.add("css-panelNumber-activeA");
     numberPanelB1.classList.remove("css-panelNumberA");
     enterQuantityB1.classList.add('css-EnterPanelNumber-active');
@@ -2754,7 +2842,6 @@ runData();
   };
 
   function clickShelfB2(){
-    ToggleShelfActive('B2');
     numberPanelB2.classList.add("css-panelNumber-activeA");
     numberPanelB2.classList.remove("css-panelNumberA");
     enterQuantityB2.classList.add('css-EnterPanelNumber-active');
@@ -2775,7 +2862,6 @@ runData();
   };
 
   function clickShelfC1(){
-    ToggleShelfActive('C1');
     numberPanelC1.classList.add("css-panelNumber-activeA");
     enterQuantityC1.classList.add('css-EnterPanelNumber-active');
     numberPanelC1.classList.remove("css-panelNumberA");
@@ -2796,7 +2882,6 @@ runData();
   };
 
   function clickShelfC2(){
-    ToggleShelfActive('C2');
     numberPanelC2.classList.add("css-panelNumber-activeA");
     enterQuantityC2.classList.add('css-EnterPanelNumber-active');
     numberPanelC2.classList.remove("css-panelNumberA");
@@ -2818,7 +2903,6 @@ runData();
 
 
   function clickShelfD1(){
-    ToggleShelfActive('D1');
     numberPanelD1.classList.add("css-panelNumber-activeB");
     numberPanelD1.classList.remove("css-panelNumberB");
     enterQuantityD1.classList.add('css-EnterPanelNumber-active');
@@ -2839,7 +2923,6 @@ runData();
   };
   
   function clickShelfD2(){
-    ToggleShelfActive('D2');
     numberPanelD2.classList.add("css-panelNumber-activeB");
     numberPanelD2.classList.remove("css-panelNumberB");
     enterQuantityD2.classList.add('css-EnterPanelNumber-active');
@@ -2860,7 +2943,6 @@ runData();
   };
 
   function clickShelfE1(){
-    ToggleShelfActive('E1');
     numberPanelE1.classList.add("css-panelNumber-activeB");
     numberPanelE1.classList.remove("css-panelNumberB");
     enterQuantityE1.classList.add('css-EnterPanelNumber-active');
@@ -2882,7 +2964,6 @@ runData();
   };
   
     function clickShelfE2(){
-    ToggleShelfActive('E2');
     numberPanelE2.classList.add("css-panelNumber-activeB");
     enterQuantityE2.classList.add('css-EnterPanelNumber-active');
     numberPanelE2.classList.remove("css-panelNumberB");
@@ -2904,7 +2985,6 @@ runData();
   };
 
   function clickShelfF1(){
-    ToggleShelfActive('F1');
     numberPanelF1.classList.add("css-panelNumber-activeB");
     enterQuantityF1.classList.add('css-EnterPanelNumber-active');
     numberPanelF1.classList.remove("css-panelNumberB");
@@ -2926,7 +3006,6 @@ runData();
   };
   
   function clickShelfF2(){
-    ToggleShelfActive('F2');
     numberPanelF2.classList.add("css-panelNumber-activeB");
     enterQuantityF2.classList.add('css-EnterPanelNumber-active');
     numberPanelF2.classList.remove("css-panelNumberB");
@@ -2948,10 +3027,9 @@ runData();
   };
 
   function clickShelfG1(){
-    ToggleShelfActive('G1');
     numberPanelG1.classList.add("css-panelNumber-activeC");
-    enterQuantityG1.classList.add('css-EnterPanelNumber-active');
     numberPanelG1.classList.remove("css-panelNumberC");
+    enterQuantityG1.classList.add('css-EnterPanelNumber-active');
     enterQuantityG1.classList.remove('css-EnterPanelNumber');
     inputG1.classList.add("css-input");
     inputG1.classList.toggle("css-input-2",false);
@@ -2970,10 +3048,9 @@ runData();
   };
   
   function clickShelfG2(){
-    ToggleShelfActive('G2');
     numberPanelG2.classList.add("css-panelNumber-activeC");
-    enterQuantityG2.classList.add('css-EnterPanelNumber-active');
     numberPanelG2.classList.remove("css-panelNumberC");
+    enterQuantityG2.classList.add('css-EnterPanelNumber-active');
     enterQuantityG2.classList.remove('css-EnterPanelNumber');
     inputG2.classList.add("css-input");
     inputG2.classList.toggle("css-input-2",false);
@@ -2993,7 +3070,6 @@ runData();
   };
   
   function clickShelfH1(){
-    ToggleShelfActive('H1');
     numberPanelH1.classList.add("css-panelNumber-activeC");
     enterQuantityH1.classList.add('css-EnterPanelNumber-active');
     numberPanelH1.classList.remove("css-panelNumberC");
@@ -3016,7 +3092,6 @@ runData();
   };
   
   function clickShelfH2(){
-    ToggleShelfActive('H2');
     numberPanelH2.classList.add("css-panelNumber-activeC");
     enterQuantityH2.classList.add('css-EnterPanelNumber-active');
     numberPanelH2.classList.remove("css-panelNumberC");
@@ -3039,7 +3114,6 @@ runData();
   };
   
   function clickShelfI1(){
-    ToggleShelfActive('I1');
     numberPanelI1.classList.add("css-panelNumber-activeC");
     enterQuantityI1.classList.add('css-EnterPanelNumber-active');
     numberPanelI1.classList.remove("css-panelNumberC");
@@ -3062,7 +3136,6 @@ runData();
   };
   
   function clickShelfI2(){
-    ToggleShelfActive('I2');
     numberPanelI2.classList.add("css-panelNumber-activeC");
     enterQuantityI2.classList.add('css-EnterPanelNumber-active');
     numberPanelI2.classList.remove("css-panelNumberC");
@@ -3085,7 +3158,6 @@ runData();
   };
   
   function clickShelfJ1(){
-    ToggleShelfActive('J1');
     numberPanelJ1.classList.add("css-panelNumber-activeD");
     enterQuantityJ1.classList.add('css-EnterPanelNumber-active');
     numberPanelJ1.classList.remove("css-panelNumberD");
@@ -3110,7 +3182,6 @@ runData();
   // Similar functions for shelves J2, K1, K2, L1, and L2
   
   function clickShelfJ2(){
-    ToggleShelfActive('J2');
     numberPanelJ2.classList.add("css-panelNumber-activeD");
     enterQuantityJ2.classList.add('css-EnterPanelNumber-active');
     numberPanelJ2.classList.remove("css-panelNumberD");
@@ -3133,7 +3204,6 @@ runData();
   };
 
   function clickShelfK1(){
-    ToggleShelfActive('K1');
     numberPanelK1.classList.add("css-panelNumber-activeD");
     enterQuantityK1.classList.add('css-EnterPanelNumber-active');
     numberPanelK1.classList.remove("css-panelNumberD");
@@ -3158,7 +3228,6 @@ runData();
   // Similar functions for shelves K2, L1, and L2
   
   function clickShelfK2(){
-    ToggleShelfActive('K2');
     numberPanelK2.classList.add("css-panelNumber-activeD");
     enterQuantityK2.classList.add('css-EnterPanelNumber-active');
     numberPanelK2.classList.remove("css-panelNumberD");
@@ -3181,7 +3250,6 @@ runData();
   };
 
   function clickShelfL1(){
-    ToggleShelfActive('L1');
     numberPanelL1.classList.add("css-panelNumber-activeD");
     enterQuantityL1.classList.add('css-EnterPanelNumber-active');
     numberPanelL1.classList.remove("css-panelNumberD");
@@ -3204,7 +3272,6 @@ runData();
   };
   
   function clickShelfL2(){
-    ToggleShelfActive('L2');
     numberPanelL2.classList.add("css-panelNumber-activeD");
     enterQuantityL2.classList.add('css-EnterPanelNumber-active');
     numberPanelL2.classList.remove("css-panelNumberD");

@@ -1,8 +1,6 @@
-togglest
-      body { /*doesnt work*/
-        background-color: rgb(255, 5, 205);
-      }
+
       /* TRY TO USE % THAN PX BECAUSE ITS MORE COMPATIBLE IN MOBILE */
+
       .list {
         background-color: rgb(68, 64, 64);
         width: 100%;
@@ -35,7 +33,7 @@ togglest
         height: 40px;
         background-color: rgb(108, 196, 255);
         transition: .5s ease;
-        z-index: 10;
+        z-index: 12;
       }
       .js-goTop{
         border-radius: 10px;
@@ -130,29 +128,31 @@ togglest
 
       /*------LIST ITEM ENDED--------------------*/
       .shelf {
-        margin-top: 50px;
-        background-color: rgb(255, 111, 245);
+        margin-top: 20px;
+        height: 408px;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        row-gap: 0.5px;
-        column-gap: 0.5px;
-        /*
-        background-image: url(Pictures/concept\ app\ 2-01-01.jpg);
-        */
-        background-size:cover;
-        height: 400px;
-        width: 100%;
-        border-style: solid;
-        min-width: 0;
-        min-height: 0;
+        row-gap: 2px;
+        column-gap: 2px;
+        padding: 2px;
         overflow: hidden;
         position: relative;
+        border-style: solid;
+        border-radius: 1.2%;
+        border-width: .1px;
+        border-color: rgb(0, 0, 0);
         z-index: 0;
       }
       .shelf-1 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        column-gap: 2px;
         height: 100px;
+        border-style: solid;
+        border-radius: 5%;
+        border-width: .1px;
       }
 
       .shelf-quantity {
@@ -198,7 +198,6 @@ togglest
         font-weight: bold;
         transition: .2s ease;
         margin: 1px;
-        border-radius: 1.5px;
         position: relative;
       }
       .shelf-A1:hover,
@@ -230,10 +229,14 @@ togglest
 
       /* BODY HIGHLIGHT */
       .shelf-active{ 
-        background-color: aquamarine;
-        width: 100%; /* This should percent for universal size */
-        transition: 0.2s ease;
-        z-index: 10;
+        
+        background: radial-gradient(circle, rgba(255,120,142,1) 0%, rgba(254,64,93,1) 100%);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        width: 100%;
+        background-color: brown;
+        transition: .1s ease;
+        z-index: 5;
+        border-radius: 5px;
       }
 
       /*ITEM NAME HERE*/
