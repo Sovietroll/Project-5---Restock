@@ -325,6 +325,7 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     mainShelfA1, mainShelfA2, mainShelfB1, mainShelfB2, mainShelfC1, mainShelfC2, mainShelfD1, mainShelfD2, mainShelfE1, mainShelfE2, mainShelfF1, mainShelfF2, mainShelfG1, mainShelfG2, mainShelfH1, mainShelfH2, mainShelfI1, mainShelfI2, mainShelfJ1, mainShelfJ2, mainShelfK1, mainShelfK2, mainShelfL1, mainShelfL2
   ];
   
+const mainDate = document.querySelector('.main-date');
 
 
 
@@ -1451,51 +1452,43 @@ shelfQuantity_L2.addEventListener('click', () => {
 
 function buttonClickUp(){
     document.querySelector('.js-goTop').addEventListener('click', () => {
-    window.scrollTo({ top: 150, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   })
 }
 
 let listTitle = document.querySelector('.list-title');
 
 
+const butttonTop = document.querySelector('.js-goTop');
 
-let scrollLimit = window.innerHeight/2; //10% of the scroll
+let scrollLimit = window.innerHeight/1.5; //10% of the scroll
 
-/*
+
+const contextMenu = document.querySelector('.context-menu');
+// TRYING TO MAKE EXPIRED DATE
+
 document.addEventListener('scroll', () => {
   if(window.scrollY > scrollLimit){
 
-    listTitle.innerHTML = `
-    <button class = "js-goTop">
-    UP
-    </button>`;
-    goUp();
-  }
-  else {
-    listTitle.innerHTML = `SHELF`;
-  }
-})
-*/
+    listTitle.classList.add("list-title2");
+    listTitle.classList.remove("list-title");
 
-document.addEventListener('scroll', () => {
-  
-  if(window.scrollY > scrollLimit){
-    listTitle.classList.add("goDown");
-    console.log('down');
-    
-    
+
       listTitle.innerHTML = `
-      <button class="js-goTop"> 
-      UP
+      <button class="js-goTop buttonTop"> 
+      UP 
+      <i class="fa-solid fa-circle-chevron-up"></i>
       </button>`;
       buttonClickUp();
-       
+      console.log('runs')
+
   }
   else if (window.scrollY/2){
-    listTitle.classList.remove("goDown");
-    console.log('up');
+    listTitle.classList.add("list-title");
 
-    listTitle.innerHTML = `SHELF`;
+    listTitle.classList.remove("list-title2");
+
+    listTitle.innerHTML = `List Item`;
   }
 
 })
@@ -1517,7 +1510,10 @@ function runData(){
     </button>
   </div>
 
-  <div class="css-shelf-list">
+    <div class="css-shelf-list">
+       <div class="${item.pic}"> 
+    </div>
+
     <div class="css-shelf-list-NAME">
       <div class="list-NAME">
         ${item.name}
@@ -1533,10 +1529,21 @@ function runData(){
     <div class="css-shelf-list-LOC">
     ${item.loc}
     </div>
+
+    <div id ="context-menu">
+       <i class="fa-solid fa-ellipsis-vertical"></i>
+    </div>
+    
   </div>
 </div>
   `;
+  
     output.innerHTML += text;
+    const contextMenu = document.querySelector('.context-menu');
+    document.querySelector('.fa-ellipsis-vertical').addEventListener('click', () => {
+      console.log('test');
+      contextMenu.innerHTML = `test`
+    });
     //localStorage.setItem('output',JSON.stringify(output2.innerHTML));
     savedData()
   });
