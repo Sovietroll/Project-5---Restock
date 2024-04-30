@@ -1480,7 +1480,6 @@ document.addEventListener('scroll', () => {
       <i class="fa-solid fa-circle-chevron-up"></i>
       </button>`;
       buttonClickUp();
-      console.log('runs')
 
   }
   else if (window.scrollY/2){
@@ -1496,7 +1495,6 @@ document.addEventListener('scroll', () => {
 
 function runData(){
   output.innerHTML = '';
-  output2.innterHTML = '';
   
   let eachEnterList = 0;
 
@@ -1530,7 +1528,7 @@ function runData(){
     ${item.loc}
     </div>
 
-    <div id ="context-menu">
+    <div class ="context-menu">
        <i class="fa-solid fa-ellipsis-vertical"></i>
     </div>
     
@@ -1539,11 +1537,18 @@ function runData(){
   `;
   
     output.innerHTML += text;
-    const contextMenu = document.querySelector('.context-menu');
-    document.querySelector('.fa-ellipsis-vertical').addEventListener('click', () => {
-      console.log('test');
-      contextMenu.innerHTML = `test`
+
+    let contextMenu = document.querySelectorAll('.context-menu');
+
+    document.querySelectorAll('.fa-ellipsis-vertical').forEach((threeDots,index) => {
+      threeDots.addEventListener('click', () => {
+        console.log('click');
+      })
     });
+
+    
+    
+
     //localStorage.setItem('output',JSON.stringify(output2.innerHTML));
     savedData()
   });
