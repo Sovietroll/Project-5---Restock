@@ -864,8 +864,27 @@ shelfQuantity_L2.innerHTML = '0';
 
   const inputL1 = document.querySelector('.js-input-L1');
   const inputL2 = document.querySelector('.js-input-L2');
-
+//////////////////////////////////////////////
   
+  const DIVexpA1 = document.querySelector('.js-expDIVDate');
+
+  const EXPinputDateA1 = document.querySelector('.expInput');
+
+  let toggleInputEXP = false;
+
+
+  EXPinputDateA1.addEventListener('keydown', (event)=> {
+    toggleInputEXP = true;
+    
+
+    if(event.key === 'Enter' && toggleInputEXP === true){
+      // run from up to down
+      EXPinputDateA1.classList.remove("expInput");
+      EXPinputDateA1.classList.add("expInput-nonActive");
+      DIVexpA1.innerHTML += EXPinputDateA1.value;
+
+    }
+  })
   
 // Click the input directly
  const inputPopUp = document.querySelectorAll

@@ -179,23 +179,49 @@
 
       /*------LIST ITEM ENDED--------------------*/
 
-      .css-expDate{
+      .css-expDIVDate{ /*place where exp date placed*/
         position: absolute;
         top: 40px;
         left: 0%;
         right: 0%;
         text-align: center;
-        font-size: 10px;
-        color: rgb(247, 43, 43);
+        font-size: 8px;
+        border-radius: 1px;
+         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; 
         z-index: 1;
+        backdrop-filter: blur(50px);
+        background-color: ( 0, 0, 0, 0.6 );
       }
-      .css-expDate .input{
+      /* FIGURE OUT HOW TO PUT BLUR BEHIND INPUT */
+      /* FINISH EXP INPUT */
+  
+      .expInput{
+        position: absolute;
+        visibility: visible;
+        font-size: 10px;
+        top: 40px;
+        left: 1.5%;
+        right: 0%;
+        width: 80%;
+        height: 10%;
+        margin-top:1.5%;
+        outline: none;
+        border-style: none;
+        border-radius: 5px;
+        text-align: center;
+        backdrop-filter: blur(50px);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        z-index: 100;
+      }
+      .expInput-nonActive{
+        position: absolute;
+        visibility: hidden;
         width: 80%;
         height: 10px;
         outline: none;
         border-style: none;
-        border-radius: 10px;
-        background-color: bisque;
+        border-radius: 2px;
+        background-color: rgb(163, 71, 114);
       }
 
       .shelf { /* behind the shelf */
@@ -428,7 +454,6 @@
         display: flex;
         border-style: none;
         outline:none;
-
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         text-align: center;
         justify-content: center;
@@ -446,15 +471,14 @@
         padding-left: 5px;
       }
       .pic-A1{
+        position: relative;
         background-image: url(Pictures/herbalBlend.png);
         background-repeat: no-repeat;
         background-size:contain;
         background-position:center;
         margin: 1%;
       }
-      .pic-A2{
 
-      }
       .pic-B1 {
         background-image: url(Pictures/herbalBlend.png);
         background-repeat: no-repeat;
