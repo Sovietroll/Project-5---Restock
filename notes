@@ -1,16 +1,15 @@
 CURRENT -->
-making input onclick and offclick
-G1 Panel problem!
+Create array of inputs for EXP
+PROB G1 Panel problem!
 
 NEXT -->
-create local save
-create web browser from github
-testing
 <--
 
 FINISHED-->
+DONE create local save
+DONE reate web browser from github
+DONE making input onclick and offclick
 DONE Try changing Objects to Array or Objects of Array [Replace the object with array and set one array of objects with one variable. getItem and ||]
-
 DONE Save innerHTML of item name and quantity for HTML. Item still there everytime refereshs
 DONE  Make localStorage for item list
 DONE Implement multiple selections in the shelf

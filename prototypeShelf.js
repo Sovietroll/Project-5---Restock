@@ -7,10 +7,10 @@ runData();
 
 
 const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
-    {itemNameA1:'', quantityA1: ''}, //0
-    {itemNameA2:'', quantityA2: ''}, //1
-    {itemNameB1:'', quantityB1: ''}, //2
-    {itemNameB2:'', quantityB2: ''}, //3
+    {itemNameA1:'', quantityA1: '', expDateA1: ''}, //0
+    {itemNameA2:'', quantityA2: '', expDateA2: ''}, //1
+    {itemNameB1:'', quantityB1: '', expDateB1: ''}, //2
+    {itemNameB2:'', quantityB2: '', expDateB2: ''}, //3
     {itemNameC1:'', quantityC1: ''}, //4
     {itemNameC2:'', quantityC2: ''}, //5
     {itemNameD1:'', quantityD1: ''}, //6
@@ -37,6 +37,7 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     window.addEventListener('DOMContentLoaded',  () => {
       itemNameHTMLA1.innerHTML = savedOutput[0].itemNameA1;
       shelfQuantity_A1.innerHTML = 'x' + savedOutput[0].quantityA1;
+      DIVexpA1.innerHTML = savedOutput[0].expDateA1;
       
       itemNameHTMLA2.innerHTML = savedOutput[1].itemNameA2;
       shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
@@ -165,6 +166,8 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     L2: 'L2'
     };
     
+    let clickEXPInput;
+
     let upDownStates = {
       A1: 0,
       A2: 0,
@@ -867,26 +870,86 @@ shelfQuantity_L2.innerHTML = '0';
 //////////////////////////////////////////////
   
 /////////EXP Input////////////////////////////////////////////// 
-  const DIVexpA1 = document.querySelector('.js-expDIVDate');
-
-  const EXPinputDateA1 = document.querySelector('.expInput');
-
+ 
   let toggleInputEXP = false;
 
+  const EXPinputDateA1 = document.querySelector('.expInputA1');
+  const EXPinputDateA2 = document.querySelector('.expInputA2');
+/*
+  const allEXPinput = [
+    EXPinputDateA1,
+    EXPinputDateA2
+  ];
 
+  EXPinputDateA1.classList.add("expInput-nonActive");
+
+  allEXPinput.forEach(click => {
+    click.addEventListener('click', () => {
+      typingEXPinput('A2');
+    })
+  })
+  */
+  // Blank input//
   EXPinputDateA1.addEventListener('keydown', (event)=> {
     toggleInputEXP = true;
-    
-
     if(event.key === 'Enter' && toggleInputEXP === true){
       // run from up to down
-      EXPinputDateA1.classList.remove("expInput");
-      EXPinputDateA1.classList.add("expInput-nonActive");
-      DIVexpA1.innerHTML += EXPinputDateA1.value;
-      toggleInputEXP = false;
+      typingEXPinput('A1');
     }
-    // making input onclick and offclick
-  })
+  });
+//FIX THE EXP INPUT!!
+  function typingEXPinput (expID){
+        EXPinputDate[expID].classList.remove("expInput");
+        EXPinputDate[expID].classList.add("expInput-nonActive");
+        DIVexp[expID].innerHTML += EXPinputDate[expID].value;
+        savedOutput[0].expDate[expID] = EXPinputDate[expID].value;
+        toggleInputEXP = false;
+        console.log(clickEXPInput);
+        savedHTML();
+      }
+
+
+  // After blank input//
+
+  const DIVexpA1 = document.querySelector('.js-expDIVDateA1');
+  const DIVexpA2 = document.querySelector('.js-expDIVDateA2');
+
+  let allEXP = [
+    DIVexpA1,
+    DIVexpA2
+  ];
+// switch case method need to set default name for 'click' // 
+  allEXP.forEach((click) => {
+    click.addEventListener('click', () => {
+      switch(click) {
+        case DIVexpA1:
+          EXPinputDateA1.classList.add("expInput");
+          EXPinputDateA1.classList.remove("expInput-nonActive");
+          DIVexpA1.innerHTML = '';
+          toggleInputEXP = true;
+          clickEXPInput = shelf.A1;
+          console.log('A1');
+          break;
+
+        case DIVexpA2:
+          EXPinputDateA1.classList.add("expInput");
+          EXPinputDateA1.classList.remove("expInput-nonActive");
+          DIVexpA2.innerHTML = '';
+          toggleInputEXP = true;
+          clickEXPInput = shelf.A2;
+          console.log('A2');
+          break;
+      }
+    })
+  });
+  /*
+  DIVexpA1.addEventListener('click', () => {
+    EXPinputDateA1.classList.add("expInput");
+    EXPinputDateA1.classList.remove("expInput-nonActive");
+    DIVexpA1.innerHTML = '';
+    toggleInputEXP = true;
+  });
+*/
 ////////////////////////////////////////////////////////////////////////////////////////////    
 
 // Click the input directly

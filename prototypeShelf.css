@@ -189,15 +189,16 @@
         border-radius: 1px;
          box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; 
         z-index: 1;
-        backdrop-filter: blur(2px);
-        background-color: rgb(255, 255, 255,0.6);
+        backdrop-filter: blur(1px);
+        background-color: rgb(255, 255, 255,0.1);
+        transition: .2s ease;
       }
       /* FIGURE OUT HOW TO PUT BLUR BEHIND INPUT */
       /* FINISH EXP INPUT */
   
       .expInput{
+        display: block;
         position: absolute;
-        visibility: visible;
         font-size: 10px;
         top: 40px;
         left: 1.5%;
@@ -212,16 +213,11 @@
         backdrop-filter: blur(10px);
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         z-index: 9;
+        transition: .2s ease;
       }
       .expInput-nonActive{
-        position: absolute;
-        visibility: hidden;
-        width: 80%;
-        height: 10px;
-        outline: none;
-        border-style: none;
-        border-radius: 2px;
-        background-color: rgb(163, 71, 114);
+        display: none;
+        transition: .2s ease;
       }
 
       .shelf { /* behind the shelf */
