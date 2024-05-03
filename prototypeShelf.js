@@ -866,6 +866,7 @@ shelfQuantity_L2.innerHTML = '0';
   const inputL2 = document.querySelector('.js-input-L2');
 //////////////////////////////////////////////
   
+/////////EXP Input////////////////////////////////////////////// 
   const DIVexpA1 = document.querySelector('.js-expDIVDate');
 
   const EXPinputDateA1 = document.querySelector('.expInput');
@@ -882,10 +883,12 @@ shelfQuantity_L2.innerHTML = '0';
       EXPinputDateA1.classList.remove("expInput");
       EXPinputDateA1.classList.add("expInput-nonActive");
       DIVexpA1.innerHTML += EXPinputDateA1.value;
-
+      toggleInputEXP = false;
     }
+    // making input onclick and offclick
   })
-  
+////////////////////////////////////////////////////////////////////////////////////////////    
+
 // Click the input directly
  const inputPopUp = document.querySelectorAll
 ('.js-input-A1,.js-input-A2,.js-input-B1,.js-input-B2,.js-input-C1,.js-input-C2,.js-input-D1,.js-input-D2,.js-input-E1,.js-input-E2,.js-input-F1,.js-input-F2,.js-input-G1,.js-input-G2,.js-input-H1,.js-input-H2,.js-input-I1,.js-input-I2,.js-input-J1,.js-input-J2,.js-input-K1,.js-input-K2,.js-input-L1,.js-input-L2')
