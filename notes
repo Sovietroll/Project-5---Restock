@@ -1,7 +1,8 @@
 CURRENT -->
-Create array of inputs for EXP
-PROB G1 Panel problem!
-
+BUGS expID - parameter saving to localStorage
+NEED TO DO - Create array of inputs for EXP
+BUGS - PROB G1 Panel problem!
+REMOVE - document.querySelector - notes 2 need to be removed (useless)
 NEXT -->
 <--
 
