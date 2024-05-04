@@ -7,7 +7,7 @@ runData();
 
 
 const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
-    {itemNameA1:'', quantityA1: '', expDateA1: ''}, //0
+    {itemNameA1:'', quantityA1: '', expinputDateA1: ''}, //0
     {itemNameA2:'', quantityA2: '', expDateA2: ''}, //1
     {itemNameB1:'', quantityB1: '', expDateB1: ''}, //2
     {itemNameB2:'', quantityB2: '', expDateB2: ''}, //3
@@ -37,7 +37,7 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     window.addEventListener('DOMContentLoaded',  () => {
       itemNameHTMLA1.innerHTML = savedOutput[0].itemNameA1;
       shelfQuantity_A1.innerHTML = 'x' + savedOutput[0].quantityA1;
-      DIVexpA1.innerHTML = savedOutput[0].expDateA1;
+      DIVexpA1.innerHTML = savedOutput[0].expinputDateA1;
       
       itemNameHTMLA2.innerHTML = savedOutput[1].itemNameA2;
       shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
@@ -875,13 +875,14 @@ shelfQuantity_L2.innerHTML = '0';
 
   const EXPinputDateA1 = document.querySelector('.expInputA1');
   const EXPinputDateA2 = document.querySelector('.expInputA2');
+
+  EXPinputDateA1.classList.add("expInput-nonActive");
 /*
   const allEXPinput = [
     EXPinputDateA1,
     EXPinputDateA2
   ];
 
-  EXPinputDateA1.classList.add("expInput-nonActive");
 
   allEXPinput.forEach(click => {
     click.addEventListener('click', () => {
@@ -890,21 +891,21 @@ shelfQuantity_L2.innerHTML = '0';
   })
   */
   // Blank input//
+
   EXPinputDateA1.addEventListener('keydown', (event)=> {
     toggleInputEXP = true;
     if(event.key === 'Enter' && toggleInputEXP === true){
-      // run from up to down
-      typingEXPinput('A1');
+      console.log('runs')
+      typingEXPinput(EXPinputDateA1);
     }
   });
-//FIX THE EXP INPUT!!
+//FIX THE EXP INPUT!!// LEARN NEW PARAMETER//
   function typingEXPinput (expID){
-        EXPinputDate[expID].classList.remove("expInput");
-        EXPinputDate[expID].classList.add("expInput-nonActive");
-        DIVexp[expID].innerHTML += EXPinputDate[expID].value;
-        savedOutput[0].expDate[expID] = EXPinputDate[expID].value;
+        expID.classList.remove("expInput");
+        expID.classList.add("expInput-nonActive");
+        DIVexpA1.innerHTML += expID.value;
+        savedOutput[0].expID = expID.value;
         toggleInputEXP = false;
-        console.log(clickEXPInput);
         savedHTML();
       }
 
@@ -923,20 +924,20 @@ shelfQuantity_L2.innerHTML = '0';
     click.addEventListener('click', () => {
       switch(click) {
         case DIVexpA1:
+          clickEXPInput = shelf.A1;
           EXPinputDateA1.classList.add("expInput");
           EXPinputDateA1.classList.remove("expInput-nonActive");
           DIVexpA1.innerHTML = '';
           toggleInputEXP = true;
-          clickEXPInput = shelf.A1;
           console.log('A1');
           break;
 
         case DIVexpA2:
+          clickEXPInput = shelf.A2;
           EXPinputDateA1.classList.add("expInput");
           EXPinputDateA1.classList.remove("expInput-nonActive");
           DIVexpA2.innerHTML = '';
           toggleInputEXP = true;
-          clickEXPInput = shelf.A2;
           console.log('A2');
           break;
       }
