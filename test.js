@@ -1,10 +1,15 @@
-const shelves = {
-  'A1': mainShelfA1,
-  'A2': mainShelfA2,
-  'B1': mainShelfB1,
-  'B2': mainShelfB2
-};
+const allDIV = {};
 
-if (shelves[loc]) {
-  shelves[loc].classList.toggle("shelf-active");
+for (let letter of ['A', 'B']) {
+  for (let num of [1, 2]) {
+    const className = `.js-expDIVDate${letter}${num}`;
+    const element = document.querySelector(className);
+
+    if (element) {
+      const variableName = `DIVexp${letter}${num}`;
+      allDIV[variableName] = element;
+    } else {
+      console.error(`Element not found for class ${className}`);
+    }
+  }
 }
