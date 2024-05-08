@@ -1,13 +1,16 @@
-CURRENT -->
-BUGS expID - parameter saving to localStorage
-NEED TO DO - Create array of inputs for EXP
-BUGS - PROB G1 Panel problem!
+//TODO CURRENT -->
+Inputs for name and exp date - need to place a function where mouse click/finger anywhere to cancel
+
+//!BUGS 
+PROB - G1 Panel problem!
 REMOVE - document.querySelector - notes 2 need to be removed (useless)
 
 NEXT -->
 <--
 
 FINISHED-->
+DONE BUGS expID - parameter saving to localStorage
+DONE - Create array of inputs for EXP
 DONE create local save
 DONE reate web browser from github
 DONE making input onclick and offclick

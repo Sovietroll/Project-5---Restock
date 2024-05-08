@@ -5,12 +5,12 @@ let output2 = document.querySelector('.output2'); //two side
 
 runData();
 
-
+//TODO FILL THIS next 
 const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     {itemNameA1:'', quantityA1: '', EXPinputDateA1: ''}, //0
     {itemNameA2:'', quantityA2: '', EXPinputDateA2: ''}, //1
-    {itemNameB1:'', quantityB1: '', expDateB1: ''}, //2
-    {itemNameB2:'', quantityB2: '', expDateB2: ''}, //3
+    {itemNameB1:'', quantityB1: '', EXPinputDateB1: ''}, //2
+    {itemNameB2:'', quantityB2: '', EXPinputDateB2: ''}, //3
     {itemNameC1:'', quantityC1: ''}, //4
     {itemNameC2:'', quantityC2: ''}, //5
     {itemNameD1:'', quantityD1: ''}, //6
@@ -98,7 +98,7 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     EXPinputDateK1, EXPinputDateK2,
     EXPinputDateL1, EXPinputDateL2
   ];
-  const allDIV = [
+  let allDIV = [
     DIVexpA1, DIVexpA2, 
     DIVexpB1, DIVexpB2, 
     DIVexpC1, DIVexpC2,
@@ -113,17 +113,16 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     DIVexpL1, DIVexpL2  
   ];
  
-    window.addEventListener('DOMContentLoaded',  () => {
+window.addEventListener('DOMContentLoaded',  () => {
 
-      itemNameHTMLA1.innerHTML = savedOutput[0].itemNameA1;
-      shelfQuantity_A1.innerHTML = 'x' + savedOutput[0].quantityA1;
-      DIVexpA1.innerHTML = savedOutput[0].EXPinputDateA1;
+itemNameHTMLA1.innerHTML = savedOutput[0].itemNameA1;
+shelfQuantity_A1.innerHTML = 'x' + savedOutput[0].quantityA1;
+DIVexpA1.innerHTML = savedOutput[0].EXPinputDateA1;
 
-      itemNameHTMLA2.innerHTML = savedOutput[1].itemNameA2;
-      shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
-      DIVexpA2.innerHTML = savedOutput[1].EXPinputDateA2;
+itemNameHTMLA2.innerHTML = savedOutput[1].itemNameA2;
+shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
+DIVexpA2.innerHTML = savedOutput[1].EXPinputDateA2;
 
-      // For B1
 itemNameHTMLB1.innerHTML = savedOutput[2].itemNameB1;
 shelfQuantity_B1.innerHTML = 'x' + savedOutput[2].quantityB1;
 DIVexpB1.innerHTML = savedOutput[2].EXPinputDateB1;
@@ -238,9 +237,13 @@ DIVexpL2.innerHTML = savedOutput[23].EXPinputDateL2;
         const exp = allEXP[index]; //* Corresponding element in allEXP
         if (div.textContent.trim()) {
           exp.classList.add("expInput-Empty");
+          expInputStatus = true;
           console.log('runs contain');
+
         } else {
+          expInputStatus = false;
           console.log('runs empty');
+
         }
       });
   }
@@ -424,7 +427,8 @@ DIVexpL2.innerHTML = savedOutput[23].EXPinputDateL2;
   let enterQuantityL1 = document.querySelector('.js-EnterPanelNumberL1');
   let enterQuantityL2 = document.querySelector('.js-EnterPanelNumberL2');
 
-//**************//ADD HERE//************//
+
+///ADD HERE///
   const mainShelfA1 = document.querySelector('.shelf-A1');
   const mainShelfA2 = document.querySelector('.shelf-A2');
 
@@ -879,18 +883,6 @@ enterQuantityL2.addEventListener('click', ()=> {
   let shelfQuantity_L2 = document.querySelector('.panelNumber-QuantityL2');
 
 
-
-
-//**************//ADD HERE//************//
-/*
-const shelfQuantities = [
-  'shelfQuantity_B1','shelfQuantity_B2','shelfQuantity_C1','shelfQuantity_C2','shelfQuantity_D1','shelfQuantity_D2','shelfQuantity_E1','shelfQuantity_E2'
-];
-
-shelfQuantities.forEach(id => {
-  document.getElementById(id).value = '';
-})
-*/
 shelfQuantity_A1.value = '';
 shelfQuantity_A2.value = '';
 
@@ -1300,11 +1292,12 @@ EXPinputDateL2.addEventListener('keydown', (event) => {
     );
   }
 });
-// Continue similarly for EXPinputDateL1 and EXPinputDateL2
-// EXPinputDateL1
-EXPinputDateL1.addEventListener
 
+let expInputStatus;
+console.log(expInputStatus);
 
+//! FUNCTION PARAM typingEXPinput()
+//* enter the input / not clicking input 
   function typingEXPinput (expValue, expID, div, index, expKey) {
     let text = expValue;
     div.innerHTML = text;
@@ -1313,16 +1306,25 @@ EXPinputDateL1.addEventListener
     savedHTML();
   }
   
-//! if click outside cancel input
-//TODO DO THIS NEXT
+//! FUNCTION PARAM DIVclick()
+//* clicking the input / not enter input
 function DIVclick(div,shelf,expDIV){
-  if(div.textContent.trim()){
+  if(div.textContent.trim()){ //* IF DIV NOT EMPTY
         clickEXPInput = shelf;
         div.innerHTML = '';
-        expDIV.classList.remove("expInput-Empty");
+        expDIV.classList.remove("expInput-Empty"); //* expinputempty will dissapear
+
+        expInputStatus = true;
+
         console.log(clickEXPInput);
-    }
+        console.log(expInputStatus);
+    } //if after user place the input input will dissapear 
   }
+//TODO create OFFCLICK HERE //////////
+document.addEventListener('click', () => {
+  console.log('clicks HERE');
+})
+//TODO/TODO//////////////////////////////
 
 
 // switch case method need to set default name for 'click' // 
@@ -2486,414 +2488,819 @@ jsOneforAll.forEach((click) => {
 })
 
 //ENTER PHYSICAL BUTTON ----------------------------------------------------------
-//**************//ADD HERE//************//
-  // const bodyEvent =
-   document.body.addEventListener('keydown',(event) => {
 
-////////////////////////////////////////
-    if(event.key === 'Enter'){
-      if (toggleState === shelf.A1){
-      data.push({
-        name: inputA1.value,
-        quantity: quantitySupplement_A1,
-        loc: shelf.A1
-       });
-       savedData();
-       inputA1.classList.remove("css-input-2");
-       inputA1.classList.add("css-input");
-       typingState; 
-       itemNameHTMLA1.innerHTML = inputA1.value;
-       savedOutput[0].itemNameA1 = inputA1.value;
-       savedOutput[0].quantityA1 = quantitySupplement_A1;
-       console.log(savedOutput);
-       savedHTML();
-    }
-    else if (toggleState === shelf.A2){
-      data.push({
-        name: inputA2.value,
-        quantity: quantitySupplement_A2,
-        loc: shelf.A2
-       });
-       savedData();
-       inputA2.classList.remove("css-input-2");
-       inputA2.classList.add("css-input");
-       typingState; 
-       itemNameHTMLA2.innerHTML = inputA2.value;
-       savedOutput[1].itemNameA2 = inputA2.value;
-       savedOutput[1].quantityA2 = quantitySupplement_A2;
-       console.log(savedOutput);
-       savedHTML();
-    }
-    else if (toggleState === shelf.B1){
-      data.push({
-        name: inputB1.value,
-        quantity: quantitySupplement_B1,
-        loc: shelf.B1
-       });
-       savedData();
-       inputB1.classList.remove("css-input-2");
-       inputB1.classList.add("css-input");
-       typingState; 
-       itemNameHTMLB1.innerHTML = inputB1.value;
-       savedOutput[2].itemNameB1 = inputB1.value;
-       savedOutput[2].quantityB1 = quantitySupplement_B1;
-       console.log(savedOutput);
-       savedHTML();
-    }
-    else if (toggleState === shelf.B2){
-      data.push({
-        name: inputB2.value,
-        quantity: quantitySupplement_B2,
-        loc: shelf.B2
-       });
-       savedData();
-       inputB2.classList.remove("css-input-2");
-       inputB2.classList.add("css-input");
-       typingState; 
-       itemNameHTMLB2.innerHTML = inputB2.value;
-       savedOutput[3].itemNameB2 = inputB2.value;
-       savedOutput[3].quantityB2 = quantitySupplement_B2;
-       console.log(savedOutput);
-       savedHTML();
-    }
+  //  document.body.addEventListener('keydown',(event) => {
+    allPanels.forEach(clickPanel => {
+      clickPanel.addEventListener('cick', (event) => {
+        
+        if(event.key === 'Enter'){
+          if (toggleState === shelf.A1){
+          data.push({
+            name: inputA1.value,
+            quantity: quantitySupplement_A1,
+            loc: shelf.A1
+           });
+           savedData();
+           inputA1.classList.remove("css-input-2");
+           inputA1.classList.add("css-input");
+           typingState; 
+           itemNameHTMLA1.innerHTML = inputA1.value;
+           savedOutput[0].itemNameA1 = inputA1.value;
+           savedOutput[0].quantityA1 = quantitySupplement_A1;
+           console.log(savedOutput);
+           savedHTML();
+        }
+        else if (toggleState === shelf.A2){
+          data.push({
+            name: inputA2.value,
+            quantity: quantitySupplement_A2,
+            loc: shelf.A2
+           });
+           savedData();
+           inputA2.classList.remove("css-input-2");
+           inputA2.classList.add("css-input");
+           typingState; 
+           itemNameHTMLA2.innerHTML = inputA2.value;
+           savedOutput[1].itemNameA2 = inputA2.value;
+           savedOutput[1].quantityA2 = quantitySupplement_A2;
+           console.log(savedOutput);
+           savedHTML();
+        }
+        else if (toggleState === shelf.B1){
+          data.push({
+            name: inputB1.value,
+            quantity: quantitySupplement_B1,
+            loc: shelf.B1
+           });
+           savedData();
+           inputB1.classList.remove("css-input-2");
+           inputB1.classList.add("css-input");
+           typingState; 
+           itemNameHTMLB1.innerHTML = inputB1.value;
+           savedOutput[2].itemNameB1 = inputB1.value;
+           savedOutput[2].quantityB1 = quantitySupplement_B1;
+           console.log(savedOutput);
+           savedHTML();
+        }
+        else if (toggleState === shelf.B2){
+          data.push({
+            name: inputB2.value,
+            quantity: quantitySupplement_B2,
+            loc: shelf.B2
+           });
+           savedData();
+           inputB2.classList.remove("css-input-2");
+           inputB2.classList.add("css-input");
+           typingState; 
+           itemNameHTMLB2.innerHTML = inputB2.value;
+           savedOutput[3].itemNameB2 = inputB2.value;
+           savedOutput[3].quantityB2 = quantitySupplement_B2;
+           console.log(savedOutput);
+           savedHTML();
+        }
+        
+        else if (toggleState === shelf.C1){
+          data.push({
+            name: inputC1.value,
+            quantity: quantitySupplement_C1,
+            loc: shelf.C1
+           });
+           savedData();
+           inputC1.classList.remove("css-input-2");
+           inputC1.classList.add("css-input");
+           typingState; 
+           itemNameHTMLC1.innerHTML = inputC1.value;
+           savedOutput[4].itemNameC1 = inputC1.value;
+           savedOutput[4].quantityC1 = quantitySupplement_C1;
+           console.log(savedOutput);
+           savedHTML();
+        }
+        else if (toggleState === shelf.C2){
+          data.push({
+            name: inputC2.value,
+            quantity: quantitySupplement_C2,
+            loc: shelf.C2
+           });
+           savedData();
+           inputC2.classList.remove("css-input-2");
+           inputC2.classList.add("css-input");
+           typingState; 
+           itemNameHTMLC2.innerHTML = inputC2.value;
+           savedOutput[5].itemNameC2 = inputC2.value;
+           savedOutput[5].quantityC2 = quantitySupplement_C2;
+           console.log(savedOutput);
+           savedHTML();
+        }
+        else if (toggleState === shelf.D1){
+          data.push({
+            name: inputD1.value,
+            quantity: quantitySupplement_D1,
+            loc: shelf.D1
+           });
+           savedData();
+           inputD1.classList.remove("css-input-2");
+           inputD1.classList.add("css-input");
+           typingState; 
+           itemNameHTMLD1.innerHTML = inputD1.value;
+           savedOutput[6].itemNameD1 = inputD1.value;
+           savedOutput[6].quantityD1 = quantitySupplement_D1;
+           console.log(savedOutput);
+           savedHTML();
+        }
+        else if (toggleState === shelf.D2){
+          data.push({
+            name: inputD2.value,
+            quantity: quantitySupplement_D2,
+            loc: shelf.D2
+           });
+           savedData();
+           inputD2.classList.remove("css-input-2");
+           inputD2.classList.add("css-input");
+           typingState; 
+           itemNameHTMLD2.innerHTML = inputD2.value;
+           savedOutput[7].itemNameD2 = inputD2.value;
+           savedOutput[7].quantityD2 = quantitySupplement_D2;
+           console.log(savedOutput);
+           savedHTML();
+        }
+        else if (toggleState === shelf.E1){
+          data.push({
+            name: inputE1.value,
+            quantity: quantitySupplement_E1,
+            loc: shelf.E1
+            });
+            savedData();
+            inputE1.classList.remove("css-input-2");
+            inputE1.classList.add("css-input");
+            typingState; 
+            itemNameHTMLE1.innerHTML = inputE1.value;
+            savedOutput[8].itemNameE1 = inputE1.value;
+            savedOutput[8].quantityE1 = quantitySupplement_E1;
+            console.log(savedOutput);
+            savedHTML();
+            console.log('runs [8]');
+        }
+        else if (toggleState === shelf.E2){
+          data.push({
+            name: inputE2.value,
+            quantity: quantitySupplement_E2,
+            loc: shelf.E2
+            });
+            savedData();
+            inputE2.classList.remove("css-input-2");
+            inputE2.classList.add("css-input");
+            typingState; 
+            itemNameHTMLE2.innerHTML = inputE2.value;
+            savedOutput[9].itemNameE2 = inputE2.value;
+            savedOutput[9].quantityE2 = quantitySupplement_E2;
+            console.log(savedOutput);
+            savedHTML();
+            console.log('runs [8]');
+        }
+        else if (toggleState === shelf.F1){
+          data.push({
+            name: inputF1.value,
+            quantity: quantitySupplement_F1,
+            loc: shelf.F1
+          });
+          savedData();
+          inputF1.classList.remove("css-input-2");
+          inputF1.classList.add("css-input");
+          typingState; 
+          itemNameHTMLF1.innerHTML = inputF1.value;
+          savedOutput[10].itemNameF1 = inputF1.value;
+          savedOutput[10].quantityF1 = quantitySupplement_F1;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [9]');
+        }
+        else if (toggleState === shelf.F2){
+          data.push({
+            name: inputF2.value,
+            quantity: quantitySupplement_F2,
+            loc: shelf.F2
+          });
+          savedData();
+          inputF2.classList.remove("css-input-2");
+          inputF2.classList.add("css-input");
+          typingState; 
+          itemNameHTMLF2.innerHTML = inputF2.value;
+          savedOutput[11].itemNameF2 = inputF2.value;
+          savedOutput[11].quantityF2 = quantitySupplement_F2;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [10]');
+        }
+        else if (toggleState === shelf.G1){
+          data.push({
+            name: inputG1.value,
+            quantity: quantitySupplement_G1,
+            loc: shelf.G1
+          });
+          savedData();
+          inputG1.classList.remove("css-input-2");
+          inputG1.classList.add("css-input");
+          typingState; 
+          itemNameHTMLG1.innerHTML = inputG1.value;
+          savedOutput[12].itemNameG1 = inputG1.value;
+          savedOutput[12].quantityG1 = quantitySupplement_G1;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [11]');
+        }
+        else if (toggleState === shelf.G2){
+          data.push({
+            name: inputG2.value,
+            quantity: quantitySupplement_G2,
+            loc: shelf.G2
+          });
+          savedData();
+          inputG2.classList.remove("css-input-2");
+          inputG2.classList.add("css-input");
+          typingState; 
+          itemNameHTMLG2.innerHTML = inputG2.value;
+          savedOutput[13].itemNameG2 = inputG2.value;
+          savedOutput[13].quantityG2 = quantitySupplement_G2;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [12]');
+        }
+        else if (toggleState === shelf.H1){
+          data.push({
+            name: inputH1.value,
+            quantity: quantitySupplement_H1,
+            loc: shelf.H1
+          });
+          savedData();
+          inputH1.classList.remove("css-input-2");
+          inputH1.classList.add("css-input");
+          typingState; 
+          itemNameHTMLH1.innerHTML = inputH1.value;
+          savedOutput[14].itemNameH1 = inputH1.value;
+          savedOutput[14].quantityH1 = quantitySupplement_H1;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [13]');
+        }
+        else if (toggleState === shelf.H2){
+          data.push({
+            name: inputH2.value,
+            quantity: quantitySupplement_H2,
+            loc: shelf.H2
+          });
+          savedData();
+          inputH2.classList.remove("css-input-2");
+          inputH2.classList.add("css-input");
+          typingState; 
+          itemNameHTMLH2.innerHTML = inputH2.value;
+          savedOutput[15].itemNameH2 = inputH2.value;
+          savedOutput[15].quantityH2 = quantitySupplement_H2;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [14]');
+        }
+        else if (toggleState === shelf.I1){
+          data.push({
+            name: inputI1.value,
+            quantity: quantitySupplement_I1,
+            loc: shelf.I1
+          });
+          savedData();
+          inputI1.classList.remove("css-input-2");
+          inputI1.classList.add("css-input");
+          typingState; 
+          itemNameHTMLI1.innerHTML = inputI1.value;
+          savedOutput[16].itemNameI1 = inputI1.value;
+          savedOutput[16].quantityI1 = quantitySupplement_I1;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [15]');
+        }
+        else if (toggleState === shelf.I2){
+          data.push({
+            name: inputI2.value,
+            quantity: quantitySupplement_I2,
+            loc: shelf.I2
+          });
+          savedData();
+          inputI2.classList.remove("css-input-2");
+          inputI2.classList.add("css-input");
+          typingState; 
+          itemNameHTMLI2.innerHTML = inputI2.value;
+          savedOutput[17].itemNameI2 = inputI2.value;
+        }
+        else if (toggleState === shelf.J1){
+          data.push({
+            name: inputJ1.value,
+            quantity: quantitySupplement_J1,
+            loc: shelf.J1
+          });
+          savedData();
+          inputJ1.classList.remove("css-input-2");
+          inputJ1.classList.add("css-input");
+          typingState; 
+          itemNameHTMLJ1.innerHTML = inputJ1.value;
+          savedOutput[18].itemNameJ1 = inputJ1.value;
+          savedOutput[18].quantityJ1 = quantitySupplement_J1;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [17]');
+        }
+        else if (toggleState === shelf.J2){
+          data.push({
+            name: inputJ2.value,
+            quantity: quantitySupplement_J2,
+            loc: shelf.J2
+          });
+          savedData();
+          inputJ2.classList.remove("css-input-2");
+          inputJ2.classList.add("css-input");
+          typingState; 
+          itemNameHTMLJ2.innerHTML = inputJ2.value;
+          savedOutput[19].itemNameJ2 = inputJ2.value;
+          savedOutput[19].quantityJ2 = quantitySupplement_J2;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [18]');
+        }
+        else if (toggleState === shelf.K1){
+          data.push({
+            name: inputK1.value,
+            quantity: quantitySupplement_K1,
+            loc: shelf.K1
+          });
+          savedData();
+          inputK1.classList.remove("css-input-2");
+          inputK1.classList.add("css-input");
+          typingState; 
+          itemNameHTMLK1.innerHTML = inputK1.value;
+          savedOutput[20].itemNameK1 = inputK1.value;
+          savedOutput[20].quantityK1 = quantitySupplement_K1;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [19]');
+        }
+        else if (toggleState === shelf.K2){
+          data.push({
+            name: inputK2.value,
+            quantity: quantitySupplement_K2,
+            loc: shelf.K2
+          });
+          savedData();
+          inputK2.classList.remove("css-input-2");
+          inputK2.classList.add("css-input");
+          typingState; 
+          itemNameHTMLK2.innerHTML = inputK2.value;
+          savedOutput[21].itemNameK2 = inputK2.value;
+          savedOutput[21].quantityK2 = quantitySupplement_K2;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [20]');
+        }
+        else if (toggleState === shelf.L1){
+          data.push({
+            name: inputL1.value,
+            quantity: quantitySupplement_L1,
+            loc: shelf.L1
+          });
+          savedData();
+          inputL1.classList.remove("css-input-2");
+          inputL1.classList.add("css-input");
+          typingState; 
+          itemNameHTMLL1.innerHTML = inputL1.value;
+          savedOutput[22].itemNameL1 = inputL1.value;
+          savedOutput[22].quantityL1 = quantitySupplement_L1;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [21]');
+        }
+        else if (toggleState === shelf.L2){
+          data.push({
+            name: inputL2.value,
+            quantity: quantitySupplement_L2,
+            loc: shelf.L2
+          });
+          savedData();
+          inputL2.classList.remove("css-input-2");
+          inputL2.classList.add("css-input");
+          typingState; 
+          itemNameHTMLL2.innerHTML = inputL2.value;
+          savedOutput[23].itemNameL2 = inputL2.value;
+          savedOutput[23].quantityL2 = quantitySupplement_L2;
+          console.log(savedOutput);
+          savedHTML();
+          console.log('runs [22]');
+        }
     
-    else if (toggleState === shelf.C1){
-      data.push({
-        name: inputC1.value,
-        quantity: quantitySupplement_C1,
-        loc: shelf.C1
-       });
-       savedData();
-       inputC1.classList.remove("css-input-2");
-       inputC1.classList.add("css-input");
-       typingState; 
-       itemNameHTMLC1.innerHTML = inputC1.value;
-       savedOutput[4].itemNameC1 = inputC1.value;
-       savedOutput[4].quantityC1 = quantitySupplement_C1;
-       console.log(savedOutput);
-       savedHTML();
-    }
-    else if (toggleState === shelf.C2){
-      data.push({
-        name: inputC2.value,
-        quantity: quantitySupplement_C2,
-        loc: shelf.C2
-       });
-       savedData();
-       inputC2.classList.remove("css-input-2");
-       inputC2.classList.add("css-input");
-       typingState; 
-       itemNameHTMLC2.innerHTML = inputC2.value;
-       savedOutput[5].itemNameC2 = inputC2.value;
-       savedOutput[5].quantityC2 = quantitySupplement_C2;
-       console.log(savedOutput);
-       savedHTML();
-    }
-    else if (toggleState === shelf.D1){
-      data.push({
-        name: inputD1.value,
-        quantity: quantitySupplement_D1,
-        loc: shelf.D1
-       });
-       savedData();
-       inputD1.classList.remove("css-input-2");
-       inputD1.classList.add("css-input");
-       typingState; 
-       itemNameHTMLD1.innerHTML = inputD1.value;
-       savedOutput[6].itemNameD1 = inputD1.value;
-       savedOutput[6].quantityD1 = quantitySupplement_D1;
-       console.log(savedOutput);
-       savedHTML();
-    }
-    else if (toggleState === shelf.D2){
-      data.push({
-        name: inputD2.value,
-        quantity: quantitySupplement_D2,
-        loc: shelf.D2
-       });
-       savedData();
-       inputD2.classList.remove("css-input-2");
-       inputD2.classList.add("css-input");
-       typingState; 
-       itemNameHTMLD2.innerHTML = inputD2.value;
-       savedOutput[7].itemNameD2 = inputD2.value;
-       savedOutput[7].quantityD2 = quantitySupplement_D2;
-       console.log(savedOutput);
-       savedHTML();
-    }
-    else if (toggleState === shelf.E1){
-      data.push({
-        name: inputE1.value,
-        quantity: quantitySupplement_E1,
-        loc: shelf.E1
-        });
-        savedData();
-        inputE1.classList.remove("css-input-2");
-        inputE1.classList.add("css-input");
-        typingState; 
-        itemNameHTMLE1.innerHTML = inputE1.value;
-        savedOutput[8].itemNameE1 = inputE1.value;
-        savedOutput[8].quantityE1 = quantitySupplement_E1;
-        console.log(savedOutput);
-        savedHTML();
-        console.log('runs [8]');
-    }
-    else if (toggleState === shelf.E2){
-      data.push({
-        name: inputE2.value,
-        quantity: quantitySupplement_E2,
-        loc: shelf.E2
-        });
-        savedData();
-        inputE2.classList.remove("css-input-2");
-        inputE2.classList.add("css-input");
-        typingState; 
-        itemNameHTMLE2.innerHTML = inputE2.value;
-        savedOutput[9].itemNameE2 = inputE2.value;
-        savedOutput[9].quantityE2 = quantitySupplement_E2;
-        console.log(savedOutput);
-        savedHTML();
-        console.log('runs [8]');
-    }
-    else if (toggleState === shelf.F1){
-      data.push({
-        name: inputF1.value,
-        quantity: quantitySupplement_F1,
-        loc: shelf.F1
-      });
-      savedData();
-      inputF1.classList.remove("css-input-2");
-      inputF1.classList.add("css-input");
-      typingState; 
-      itemNameHTMLF1.innerHTML = inputF1.value;
-      savedOutput[10].itemNameF1 = inputF1.value;
-      savedOutput[10].quantityF1 = quantitySupplement_F1;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [9]');
-    }
-    else if (toggleState === shelf.F2){
-      data.push({
-        name: inputF2.value,
-        quantity: quantitySupplement_F2,
-        loc: shelf.F2
-      });
-      savedData();
-      inputF2.classList.remove("css-input-2");
-      inputF2.classList.add("css-input");
-      typingState; 
-      itemNameHTMLF2.innerHTML = inputF2.value;
-      savedOutput[11].itemNameF2 = inputF2.value;
-      savedOutput[11].quantityF2 = quantitySupplement_F2;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [10]');
-    }
-    else if (toggleState === shelf.G1){
-      data.push({
-        name: inputG1.value,
-        quantity: quantitySupplement_G1,
-        loc: shelf.G1
-      });
-      savedData();
-      inputG1.classList.remove("css-input-2");
-      inputG1.classList.add("css-input");
-      typingState; 
-      itemNameHTMLG1.innerHTML = inputG1.value;
-      savedOutput[12].itemNameG1 = inputG1.value;
-      savedOutput[12].quantityG1 = quantitySupplement_G1;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [11]');
-    }
-    else if (toggleState === shelf.G2){
-      data.push({
-        name: inputG2.value,
-        quantity: quantitySupplement_G2,
-        loc: shelf.G2
-      });
-      savedData();
-      inputG2.classList.remove("css-input-2");
-      inputG2.classList.add("css-input");
-      typingState; 
-      itemNameHTMLG2.innerHTML = inputG2.value;
-      savedOutput[13].itemNameG2 = inputG2.value;
-      savedOutput[13].quantityG2 = quantitySupplement_G2;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [12]');
-    }
-    else if (toggleState === shelf.H1){
-      data.push({
-        name: inputH1.value,
-        quantity: quantitySupplement_H1,
-        loc: shelf.H1
-      });
-      savedData();
-      inputH1.classList.remove("css-input-2");
-      inputH1.classList.add("css-input");
-      typingState; 
-      itemNameHTMLH1.innerHTML = inputH1.value;
-      savedOutput[14].itemNameH1 = inputH1.value;
-      savedOutput[14].quantityH1 = quantitySupplement_H1;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [13]');
-    }
-    else if (toggleState === shelf.H2){
-      data.push({
-        name: inputH2.value,
-        quantity: quantitySupplement_H2,
-        loc: shelf.H2
-      });
-      savedData();
-      inputH2.classList.remove("css-input-2");
-      inputH2.classList.add("css-input");
-      typingState; 
-      itemNameHTMLH2.innerHTML = inputH2.value;
-      savedOutput[15].itemNameH2 = inputH2.value;
-      savedOutput[15].quantityH2 = quantitySupplement_H2;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [14]');
-    }
-    else if (toggleState === shelf.I1){
-      data.push({
-        name: inputI1.value,
-        quantity: quantitySupplement_I1,
-        loc: shelf.I1
-      });
-      savedData();
-      inputI1.classList.remove("css-input-2");
-      inputI1.classList.add("css-input");
-      typingState; 
-      itemNameHTMLI1.innerHTML = inputI1.value;
-      savedOutput[16].itemNameI1 = inputI1.value;
-      savedOutput[16].quantityI1 = quantitySupplement_I1;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [15]');
-    }
-    else if (toggleState === shelf.I2){
-      data.push({
-        name: inputI2.value,
-        quantity: quantitySupplement_I2,
-        loc: shelf.I2
-      });
-      savedData();
-      inputI2.classList.remove("css-input-2");
-      inputI2.classList.add("css-input");
-      typingState; 
-      itemNameHTMLI2.innerHTML = inputI2.value;
-      savedOutput[17].itemNameI2 = inputI2.value;
-    }
-    else if (toggleState === shelf.J1){
-      data.push({
-        name: inputJ1.value,
-        quantity: quantitySupplement_J1,
-        loc: shelf.J1
-      });
-      savedData();
-      inputJ1.classList.remove("css-input-2");
-      inputJ1.classList.add("css-input");
-      typingState; 
-      itemNameHTMLJ1.innerHTML = inputJ1.value;
-      savedOutput[18].itemNameJ1 = inputJ1.value;
-      savedOutput[18].quantityJ1 = quantitySupplement_J1;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [17]');
-    }
-    else if (toggleState === shelf.J2){
-      data.push({
-        name: inputJ2.value,
-        quantity: quantitySupplement_J2,
-        loc: shelf.J2
-      });
-      savedData();
-      inputJ2.classList.remove("css-input-2");
-      inputJ2.classList.add("css-input");
-      typingState; 
-      itemNameHTMLJ2.innerHTML = inputJ2.value;
-      savedOutput[19].itemNameJ2 = inputJ2.value;
-      savedOutput[19].quantityJ2 = quantitySupplement_J2;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [18]');
-    }
-    else if (toggleState === shelf.K1){
-      data.push({
-        name: inputK1.value,
-        quantity: quantitySupplement_K1,
-        loc: shelf.K1
-      });
-      savedData();
-      inputK1.classList.remove("css-input-2");
-      inputK1.classList.add("css-input");
-      typingState; 
-      itemNameHTMLK1.innerHTML = inputK1.value;
-      savedOutput[20].itemNameK1 = inputK1.value;
-      savedOutput[20].quantityK1 = quantitySupplement_K1;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [19]');
-    }
-    else if (toggleState === shelf.K2){
-      data.push({
-        name: inputK2.value,
-        quantity: quantitySupplement_K2,
-        loc: shelf.K2
-      });
-      savedData();
-      inputK2.classList.remove("css-input-2");
-      inputK2.classList.add("css-input");
-      typingState; 
-      itemNameHTMLK2.innerHTML = inputK2.value;
-      savedOutput[21].itemNameK2 = inputK2.value;
-      savedOutput[21].quantityK2 = quantitySupplement_K2;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [20]');
-    }
-    else if (toggleState === shelf.L1){
-      data.push({
-        name: inputL1.value,
-        quantity: quantitySupplement_L1,
-        loc: shelf.L1
-      });
-      savedData();
-      inputL1.classList.remove("css-input-2");
-      inputL1.classList.add("css-input");
-      typingState; 
-      itemNameHTMLL1.innerHTML = inputL1.value;
-      savedOutput[22].itemNameL1 = inputL1.value;
-      savedOutput[22].quantityL1 = quantitySupplement_L1;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [21]');
-    }
-    else if (toggleState === shelf.L2){
-      data.push({
-        name: inputL2.value,
-        quantity: quantitySupplement_L2,
-        loc: shelf.L2
-      });
-      savedData();
-      inputL2.classList.remove("css-input-2");
-      inputL2.classList.add("css-input");
-      typingState; 
-      itemNameHTMLL2.innerHTML = inputL2.value;
-      savedOutput[23].itemNameL2 = inputL2.value;
-      savedOutput[23].quantityL2 = quantitySupplement_L2;
-      console.log(savedOutput);
-      savedHTML();
-      console.log('runs [22]');
-    }
+        runData();
+      }
+        //under this
+      })
+    })
 
-runData();
-    } 
-   }
-  );
+//     if(event.key === 'Enter'){
+//       if (toggleState === shelf.A1){
+//       data.push({
+//         name: inputA1.value,
+//         quantity: quantitySupplement_A1,
+//         loc: shelf.A1
+//        });
+//        savedData();
+//        inputA1.classList.remove("css-input-2");
+//        inputA1.classList.add("css-input");
+//        typingState; 
+//        itemNameHTMLA1.innerHTML = inputA1.value;
+//        savedOutput[0].itemNameA1 = inputA1.value;
+//        savedOutput[0].quantityA1 = quantitySupplement_A1;
+//        console.log(savedOutput);
+//        savedHTML();
+//     }
+//     else if (toggleState === shelf.A2){
+//       data.push({
+//         name: inputA2.value,
+//         quantity: quantitySupplement_A2,
+//         loc: shelf.A2
+//        });
+//        savedData();
+//        inputA2.classList.remove("css-input-2");
+//        inputA2.classList.add("css-input");
+//        typingState; 
+//        itemNameHTMLA2.innerHTML = inputA2.value;
+//        savedOutput[1].itemNameA2 = inputA2.value;
+//        savedOutput[1].quantityA2 = quantitySupplement_A2;
+//        console.log(savedOutput);
+//        savedHTML();
+//     }
+//     else if (toggleState === shelf.B1){
+//       data.push({
+//         name: inputB1.value,
+//         quantity: quantitySupplement_B1,
+//         loc: shelf.B1
+//        });
+//        savedData();
+//        inputB1.classList.remove("css-input-2");
+//        inputB1.classList.add("css-input");
+//        typingState; 
+//        itemNameHTMLB1.innerHTML = inputB1.value;
+//        savedOutput[2].itemNameB1 = inputB1.value;
+//        savedOutput[2].quantityB1 = quantitySupplement_B1;
+//        console.log(savedOutput);
+//        savedHTML();
+//     }
+//     else if (toggleState === shelf.B2){
+//       data.push({
+//         name: inputB2.value,
+//         quantity: quantitySupplement_B2,
+//         loc: shelf.B2
+//        });
+//        savedData();
+//        inputB2.classList.remove("css-input-2");
+//        inputB2.classList.add("css-input");
+//        typingState; 
+//        itemNameHTMLB2.innerHTML = inputB2.value;
+//        savedOutput[3].itemNameB2 = inputB2.value;
+//        savedOutput[3].quantityB2 = quantitySupplement_B2;
+//        console.log(savedOutput);
+//        savedHTML();
+//     }
+    
+//     else if (toggleState === shelf.C1){
+//       data.push({
+//         name: inputC1.value,
+//         quantity: quantitySupplement_C1,
+//         loc: shelf.C1
+//        });
+//        savedData();
+//        inputC1.classList.remove("css-input-2");
+//        inputC1.classList.add("css-input");
+//        typingState; 
+//        itemNameHTMLC1.innerHTML = inputC1.value;
+//        savedOutput[4].itemNameC1 = inputC1.value;
+//        savedOutput[4].quantityC1 = quantitySupplement_C1;
+//        console.log(savedOutput);
+//        savedHTML();
+//     }
+//     else if (toggleState === shelf.C2){
+//       data.push({
+//         name: inputC2.value,
+//         quantity: quantitySupplement_C2,
+//         loc: shelf.C2
+//        });
+//        savedData();
+//        inputC2.classList.remove("css-input-2");
+//        inputC2.classList.add("css-input");
+//        typingState; 
+//        itemNameHTMLC2.innerHTML = inputC2.value;
+//        savedOutput[5].itemNameC2 = inputC2.value;
+//        savedOutput[5].quantityC2 = quantitySupplement_C2;
+//        console.log(savedOutput);
+//        savedHTML();
+//     }
+//     else if (toggleState === shelf.D1){
+//       data.push({
+//         name: inputD1.value,
+//         quantity: quantitySupplement_D1,
+//         loc: shelf.D1
+//        });
+//        savedData();
+//        inputD1.classList.remove("css-input-2");
+//        inputD1.classList.add("css-input");
+//        typingState; 
+//        itemNameHTMLD1.innerHTML = inputD1.value;
+//        savedOutput[6].itemNameD1 = inputD1.value;
+//        savedOutput[6].quantityD1 = quantitySupplement_D1;
+//        console.log(savedOutput);
+//        savedHTML();
+//     }
+//     else if (toggleState === shelf.D2){
+//       data.push({
+//         name: inputD2.value,
+//         quantity: quantitySupplement_D2,
+//         loc: shelf.D2
+//        });
+//        savedData();
+//        inputD2.classList.remove("css-input-2");
+//        inputD2.classList.add("css-input");
+//        typingState; 
+//        itemNameHTMLD2.innerHTML = inputD2.value;
+//        savedOutput[7].itemNameD2 = inputD2.value;
+//        savedOutput[7].quantityD2 = quantitySupplement_D2;
+//        console.log(savedOutput);
+//        savedHTML();
+//     }
+//     else if (toggleState === shelf.E1){
+//       data.push({
+//         name: inputE1.value,
+//         quantity: quantitySupplement_E1,
+//         loc: shelf.E1
+//         });
+//         savedData();
+//         inputE1.classList.remove("css-input-2");
+//         inputE1.classList.add("css-input");
+//         typingState; 
+//         itemNameHTMLE1.innerHTML = inputE1.value;
+//         savedOutput[8].itemNameE1 = inputE1.value;
+//         savedOutput[8].quantityE1 = quantitySupplement_E1;
+//         console.log(savedOutput);
+//         savedHTML();
+//         console.log('runs [8]');
+//     }
+//     else if (toggleState === shelf.E2){
+//       data.push({
+//         name: inputE2.value,
+//         quantity: quantitySupplement_E2,
+//         loc: shelf.E2
+//         });
+//         savedData();
+//         inputE2.classList.remove("css-input-2");
+//         inputE2.classList.add("css-input");
+//         typingState; 
+//         itemNameHTMLE2.innerHTML = inputE2.value;
+//         savedOutput[9].itemNameE2 = inputE2.value;
+//         savedOutput[9].quantityE2 = quantitySupplement_E2;
+//         console.log(savedOutput);
+//         savedHTML();
+//         console.log('runs [8]');
+//     }
+//     else if (toggleState === shelf.F1){
+//       data.push({
+//         name: inputF1.value,
+//         quantity: quantitySupplement_F1,
+//         loc: shelf.F1
+//       });
+//       savedData();
+//       inputF1.classList.remove("css-input-2");
+//       inputF1.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLF1.innerHTML = inputF1.value;
+//       savedOutput[10].itemNameF1 = inputF1.value;
+//       savedOutput[10].quantityF1 = quantitySupplement_F1;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [9]');
+//     }
+//     else if (toggleState === shelf.F2){
+//       data.push({
+//         name: inputF2.value,
+//         quantity: quantitySupplement_F2,
+//         loc: shelf.F2
+//       });
+//       savedData();
+//       inputF2.classList.remove("css-input-2");
+//       inputF2.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLF2.innerHTML = inputF2.value;
+//       savedOutput[11].itemNameF2 = inputF2.value;
+//       savedOutput[11].quantityF2 = quantitySupplement_F2;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [10]');
+//     }
+//     else if (toggleState === shelf.G1){
+//       data.push({
+//         name: inputG1.value,
+//         quantity: quantitySupplement_G1,
+//         loc: shelf.G1
+//       });
+//       savedData();
+//       inputG1.classList.remove("css-input-2");
+//       inputG1.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLG1.innerHTML = inputG1.value;
+//       savedOutput[12].itemNameG1 = inputG1.value;
+//       savedOutput[12].quantityG1 = quantitySupplement_G1;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [11]');
+//     }
+//     else if (toggleState === shelf.G2){
+//       data.push({
+//         name: inputG2.value,
+//         quantity: quantitySupplement_G2,
+//         loc: shelf.G2
+//       });
+//       savedData();
+//       inputG2.classList.remove("css-input-2");
+//       inputG2.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLG2.innerHTML = inputG2.value;
+//       savedOutput[13].itemNameG2 = inputG2.value;
+//       savedOutput[13].quantityG2 = quantitySupplement_G2;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [12]');
+//     }
+//     else if (toggleState === shelf.H1){
+//       data.push({
+//         name: inputH1.value,
+//         quantity: quantitySupplement_H1,
+//         loc: shelf.H1
+//       });
+//       savedData();
+//       inputH1.classList.remove("css-input-2");
+//       inputH1.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLH1.innerHTML = inputH1.value;
+//       savedOutput[14].itemNameH1 = inputH1.value;
+//       savedOutput[14].quantityH1 = quantitySupplement_H1;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [13]');
+//     }
+//     else if (toggleState === shelf.H2){
+//       data.push({
+//         name: inputH2.value,
+//         quantity: quantitySupplement_H2,
+//         loc: shelf.H2
+//       });
+//       savedData();
+//       inputH2.classList.remove("css-input-2");
+//       inputH2.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLH2.innerHTML = inputH2.value;
+//       savedOutput[15].itemNameH2 = inputH2.value;
+//       savedOutput[15].quantityH2 = quantitySupplement_H2;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [14]');
+//     }
+//     else if (toggleState === shelf.I1){
+//       data.push({
+//         name: inputI1.value,
+//         quantity: quantitySupplement_I1,
+//         loc: shelf.I1
+//       });
+//       savedData();
+//       inputI1.classList.remove("css-input-2");
+//       inputI1.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLI1.innerHTML = inputI1.value;
+//       savedOutput[16].itemNameI1 = inputI1.value;
+//       savedOutput[16].quantityI1 = quantitySupplement_I1;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [15]');
+//     }
+//     else if (toggleState === shelf.I2){
+//       data.push({
+//         name: inputI2.value,
+//         quantity: quantitySupplement_I2,
+//         loc: shelf.I2
+//       });
+//       savedData();
+//       inputI2.classList.remove("css-input-2");
+//       inputI2.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLI2.innerHTML = inputI2.value;
+//       savedOutput[17].itemNameI2 = inputI2.value;
+//     }
+//     else if (toggleState === shelf.J1){
+//       data.push({
+//         name: inputJ1.value,
+//         quantity: quantitySupplement_J1,
+//         loc: shelf.J1
+//       });
+//       savedData();
+//       inputJ1.classList.remove("css-input-2");
+//       inputJ1.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLJ1.innerHTML = inputJ1.value;
+//       savedOutput[18].itemNameJ1 = inputJ1.value;
+//       savedOutput[18].quantityJ1 = quantitySupplement_J1;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [17]');
+//     }
+//     else if (toggleState === shelf.J2){
+//       data.push({
+//         name: inputJ2.value,
+//         quantity: quantitySupplement_J2,
+//         loc: shelf.J2
+//       });
+//       savedData();
+//       inputJ2.classList.remove("css-input-2");
+//       inputJ2.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLJ2.innerHTML = inputJ2.value;
+//       savedOutput[19].itemNameJ2 = inputJ2.value;
+//       savedOutput[19].quantityJ2 = quantitySupplement_J2;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [18]');
+//     }
+//     else if (toggleState === shelf.K1){
+//       data.push({
+//         name: inputK1.value,
+//         quantity: quantitySupplement_K1,
+//         loc: shelf.K1
+//       });
+//       savedData();
+//       inputK1.classList.remove("css-input-2");
+//       inputK1.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLK1.innerHTML = inputK1.value;
+//       savedOutput[20].itemNameK1 = inputK1.value;
+//       savedOutput[20].quantityK1 = quantitySupplement_K1;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [19]');
+//     }
+//     else if (toggleState === shelf.K2){
+//       data.push({
+//         name: inputK2.value,
+//         quantity: quantitySupplement_K2,
+//         loc: shelf.K2
+//       });
+//       savedData();
+//       inputK2.classList.remove("css-input-2");
+//       inputK2.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLK2.innerHTML = inputK2.value;
+//       savedOutput[21].itemNameK2 = inputK2.value;
+//       savedOutput[21].quantityK2 = quantitySupplement_K2;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [20]');
+//     }
+//     else if (toggleState === shelf.L1){
+//       data.push({
+//         name: inputL1.value,
+//         quantity: quantitySupplement_L1,
+//         loc: shelf.L1
+//       });
+//       savedData();
+//       inputL1.classList.remove("css-input-2");
+//       inputL1.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLL1.innerHTML = inputL1.value;
+//       savedOutput[22].itemNameL1 = inputL1.value;
+//       savedOutput[22].quantityL1 = quantitySupplement_L1;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [21]');
+//     }
+//     else if (toggleState === shelf.L2){
+//       data.push({
+//         name: inputL2.value,
+//         quantity: quantitySupplement_L2,
+//         loc: shelf.L2
+//       });
+//       savedData();
+//       inputL2.classList.remove("css-input-2");
+//       inputL2.classList.add("css-input");
+//       typingState; 
+//       itemNameHTMLL2.innerHTML = inputL2.value;
+//       savedOutput[23].itemNameL2 = inputL2.value;
+//       savedOutput[23].quantityL2 = quantitySupplement_L2;
+//       console.log(savedOutput);
+//       savedHTML();
+//       console.log('runs [22]');
+//     }
+
+// runData();
+  //   } 
+  //  }
+  // );
    
   
 //**************//ADD HERE//************//

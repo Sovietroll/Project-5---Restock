@@ -193,7 +193,7 @@
         background-color: rgb(255, 255, 255,0.1);
         transition: .2s ease;
       }
-      .expInput{
+      .expInput{ /*! BLANK INPUT  */
         visibility: visible;
         position: absolute;
         font-size: 10px;
@@ -211,7 +211,7 @@
         z-index: 10;
       }
 
-      .expInput-Empty{ /* after user click enter input */
+      .expInput-Empty{ /*! INPUT DISSAPEAR */
         /* display: block; */
         visibility: hidden;
         width: 0%;
