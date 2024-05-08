@@ -100,7 +100,7 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
   ];
   const allDIV = [
     DIVexpA1, DIVexpA2, 
-    DIVexpB1,/* DIVexpB2,
+    DIVexpB1, DIVexpB2, 
     DIVexpC1, DIVexpC2,
     DIVexpD1, DIVexpD2,
     DIVexpE1, DIVexpE2,
@@ -110,7 +110,7 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     DIVexpI1, DIVexpI2,
     DIVexpJ1, DIVexpJ2,
     DIVexpK1, DIVexpK2,
-    DIVexpL1, DIVexpL2  */
+    DIVexpL1, DIVexpL2  
   ];
  
     window.addEventListener('DOMContentLoaded',  () => {
@@ -123,72 +123,116 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
       shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
       DIVexpA2.innerHTML = savedOutput[1].EXPinputDateA2;
 
-      itemNameHTMLB1.innerHTML = savedOutput[2].itemNameB1;
-      shelfQuantity_B1.innerHTML = 'x' + savedOutput[2].quantityB1;
-      DIVexpB1.innerHTML = savedOutput[2].EXPinputDateB1;
-      
-      itemNameHTMLB2.innerHTML = savedOutput[3].itemNameB2;
-      shelfQuantity_B2.innerHTML = 'x' + savedOutput[3].quantityB2;
+      // For B1
+itemNameHTMLB1.innerHTML = savedOutput[2].itemNameB1;
+shelfQuantity_B1.innerHTML = 'x' + savedOutput[2].quantityB1;
+DIVexpB1.innerHTML = savedOutput[2].EXPinputDateB1;
 
-      itemNameHTMLC1.innerHTML = savedOutput[4].itemNameC1;
-      shelfQuantity_C1.innerHTML = 'x' + savedOutput[4].quantityC1;
+// For B2
+itemNameHTMLB2.innerHTML = savedOutput[3].itemNameB2;
+shelfQuantity_B2.innerHTML = 'x' + savedOutput[3].quantityB2;
+DIVexpB2.innerHTML = savedOutput[3].EXPinputDateB2;
 
-      itemNameHTMLC2.innerHTML = savedOutput[5].itemNameC2;
-      shelfQuantity_C2.innerHTML = 'x' + savedOutput[5].quantityC2;
-      
-      itemNameHTMLD1.innerHTML = savedOutput[6].itemNameD1;
-      shelfQuantity_D1.innerHTML =  'x' + savedOutput[6].quantityD1;
+// For C1
+itemNameHTMLC1.innerHTML = savedOutput[4].itemNameC1;
+shelfQuantity_C1.innerHTML = 'x' + savedOutput[4].quantityC1;
+DIVexpC1.innerHTML = savedOutput[4].EXPinputDateC1;
 
-      itemNameHTMLD2.innerHTML = savedOutput[7].itemNameD2;
-      shelfQuantity_D2.innerHTML =  'x' + savedOutput[7].quantityD2;
-      
-      itemNameHTMLE1.innerHTML = savedOutput[8].itemNameE1;
-      shelfQuantity_E1.innerHTML =  'x' + savedOutput[8].quantityE1;
+// For C2
+itemNameHTMLC2.innerHTML = savedOutput[5].itemNameC2;
+shelfQuantity_C2.innerHTML = 'x' + savedOutput[5].quantityC2;
+DIVexpC2.innerHTML = savedOutput[5].EXPinputDateC2;
 
-      itemNameHTMLE2.innerHTML = savedOutput[9].itemNameE2;
-      shelfQuantity_E2.innerHTML =  'x' + savedOutput[9].quantityE2;
+// For D1
+itemNameHTMLD1.innerHTML = savedOutput[6].itemNameD1;
+shelfQuantity_D1.innerHTML = 'x' + savedOutput[6].quantityD1;
+DIVexpD1.innerHTML = savedOutput[6].EXPinputDateD1;
 
-      itemNameHTMLF1.innerHTML = savedOutput[10].itemNameF1;
-      shelfQuantity_F1.innerHTML =  'x' + savedOutput[10].quantityF1;
+// For D2
+itemNameHTMLD2.innerHTML = savedOutput[7].itemNameD2;
+shelfQuantity_D2.innerHTML = 'x' + savedOutput[7].quantityD2;
+DIVexpD2.innerHTML = savedOutput[7].EXPinputDateD2;
 
-      itemNameHTMLF2.innerHTML = savedOutput[11].itemNameF2;
-      shelfQuantity_F2.innerHTML =  'x' + savedOutput[11].quantityF2;
+// For E1
+itemNameHTMLE1.innerHTML = savedOutput[8].itemNameE1;
+shelfQuantity_E1.innerHTML = 'x' + savedOutput[8].quantityE1;
+DIVexpE1.innerHTML = savedOutput[8].EXPinputDateE1;
 
-      itemNameHTMLG1.innerHTML = savedOutput[12].itemNameG1;
-      shelfQuantity_G1.innerHTML =  'x' + savedOutput[12].quantityG1;
+// For E2
+itemNameHTMLE2.innerHTML = savedOutput[9].itemNameE2;
+shelfQuantity_E2.innerHTML = 'x' + savedOutput[9].quantityE2;
+DIVexpE2.innerHTML = savedOutput[9].EXPinputDateE2;
 
-      itemNameHTMLG2.innerHTML = savedOutput[13].itemNameG2;
-      shelfQuantity_G2.innerHTML =  'x' + savedOutput[13].quantityG2;
+// For F1
+itemNameHTMLF1.innerHTML = savedOutput[10].itemNameF1;
+shelfQuantity_F1.innerHTML = 'x' + savedOutput[10].quantityF1;
+DIVexpF1.innerHTML = savedOutput[10].EXPinputDateF1;
 
-      itemNameHTMLH1.innerHTML = savedOutput[14].itemNameH1;
-      shelfQuantity_H1.innerHTML =  'x' + savedOutput[14].quantityH1;
+// For F2
+itemNameHTMLF2.innerHTML = savedOutput[11].itemNameF2;
+shelfQuantity_F2.innerHTML = 'x' + savedOutput[11].quantityF2;
+DIVexpF2.innerHTML = savedOutput[11].EXPinputDateF2;
 
-      itemNameHTMLH2.innerHTML = savedOutput[15].itemNameH2;
-      shelfQuantity_H2.innerHTML =  'x' + savedOutput[15].quantityH2;
+// For G1
+itemNameHTMLG1.innerHTML = savedOutput[12].itemNameG1;
+shelfQuantity_G1.innerHTML = 'x' + savedOutput[12].quantityG1;
+DIVexpG1.innerHTML = savedOutput[12].EXPinputDateG1;
 
-      itemNameHTMLI1.innerHTML = savedOutput[16].itemNameI1;
-      shelfQuantity_I1.innerHTML =  'x' + savedOutput[16].quantityI1;
+// For G2
+itemNameHTMLG2.innerHTML = savedOutput[13].itemNameG2;
+shelfQuantity_G2.innerHTML = 'x' + savedOutput[13].quantityG2;
+DIVexpG2.innerHTML = savedOutput[13].EXPinputDateG2;
 
-      itemNameHTMLI2.innerHTML = savedOutput[17].itemNameI2;
-      shelfQuantity_I2.innerHTML =  'x' + savedOutput[17].quantityI2;
+// For H1
+itemNameHTMLH1.innerHTML = savedOutput[14].itemNameH1;
+shelfQuantity_H1.innerHTML = 'x' + savedOutput[14].quantityH1;
+DIVexpH1.innerHTML = savedOutput[14].EXPinputDateH1;
 
-      itemNameHTMLJ1.innerHTML = savedOutput[18].itemNameJ1;
-      shelfQuantity_J1.innerHTML =  'x' + savedOutput[18].quantityJ1;
+// For H2
+itemNameHTMLH2.innerHTML = savedOutput[15].itemNameH2;
+shelfQuantity_H2.innerHTML = 'x' + savedOutput[15].quantityH2;
+DIVexpH2.innerHTML = savedOutput[15].EXPinputDateH2;
 
-      itemNameHTMLJ2.innerHTML = savedOutput[19].itemNameJ2;
-      shelfQuantity_J2.innerHTML =  'x' + savedOutput[19].quantityJ2;
+// For I1
+itemNameHTMLI1.innerHTML = savedOutput[16].itemNameI1;
+shelfQuantity_I1.innerHTML = 'x' + savedOutput[16].quantityI1;
+DIVexpI1.innerHTML = savedOutput[16].EXPinputDateI1;
 
-      itemNameHTMLK1.innerHTML = savedOutput[20].itemNameK1;
-      shelfQuantity_K1.innerHTML =  'x' + savedOutput[20].quantityK1;
+// For I2
+itemNameHTMLI2.innerHTML = savedOutput[17].itemNameI2;
+shelfQuantity_I2.innerHTML = 'x' + savedOutput[17].quantityI2;
+DIVexpI2.innerHTML = savedOutput[17].EXPinputDateI2;
 
-      itemNameHTMLK2.innerHTML = savedOutput[21].itemNameK2;
-      shelfQuantity_K2.innerHTML =  'x' + savedOutput[21].quantityK2;
+// For J1
+itemNameHTMLJ1.innerHTML = savedOutput[18].itemNameJ1;
+shelfQuantity_J1.innerHTML = 'x' + savedOutput[18].quantityJ1;
+DIVexpJ1.innerHTML = savedOutput[18].EXPinputDateJ1;
 
-      itemNameHTMLL1.innerHTML = savedOutput[22].itemNameL1;
-      shelfQuantity_L1.innerHTML =  'x' + savedOutput[22].quantityL1;
+// For J2
+itemNameHTMLJ2.innerHTML = savedOutput[19].itemNameJ2;
+shelfQuantity_J2.innerHTML = 'x' + savedOutput[19].quantityJ2;
+DIVexpJ2.innerHTML = savedOutput[19].EXPinputDateJ2;
 
-      itemNameHTMLL2.innerHTML = savedOutput[23].itemNameL2;
-      shelfQuantity_L2.innerHTML =  'x' + savedOutput[23].quantityL2;
+// For K1
+itemNameHTMLK1.innerHTML = savedOutput[20].itemNameK1;
+shelfQuantity_K1.innerHTML = 'x' + savedOutput[20].quantityK1;
+DIVexpK1.innerHTML = savedOutput[20].EXPinputDateK1;
+
+// For K2
+itemNameHTMLK2.innerHTML = savedOutput[21].itemNameK2;
+shelfQuantity_K2.innerHTML = 'x' + savedOutput[21].quantityK2;
+DIVexpK2.innerHTML = savedOutput[21].EXPinputDateK2;
+
+// For L1
+itemNameHTMLL1.innerHTML = savedOutput[22].itemNameL1;
+shelfQuantity_L1.innerHTML = 'x' + savedOutput[22].quantityL1;
+DIVexpL1.innerHTML = savedOutput[22].EXPinputDateL1;
+
+// For L2
+itemNameHTMLL2.innerHTML = savedOutput[23].itemNameL2;
+shelfQuantity_L2.innerHTML = 'x' + savedOutput[23].quantityL2;
+DIVexpL2.innerHTML = savedOutput[23].EXPinputDateL2;
+
 
       allDIV.forEach((div, index) => {
         const exp = allEXP[index]; //* Corresponding element in allEXP
@@ -965,63 +1009,303 @@ shelfQuantity_L2.innerHTML = '0';
 //EXP Input//
 
 
-  EXPinputDateA1.addEventListener('keydown', (event)=> {
-    if(event.key === 'Enter'){
-      typingEXPinput(
-        EXPinputDateA1.value, 
-        EXPinputDateA1, 
-        DIVexpA1,
-        [0],
-        'EXPinputDateA1'
-      )
-    
-    }
+EXPinputDateA1.addEventListener('keydown', (event)=> {
+  if(event.key === 'Enter'){
+    typingEXPinput(
+      EXPinputDateA1.value, 
+      EXPinputDateA1, 
+      DIVexpA1,
+      [0],
+      'EXPinputDateA1'
+    )}});
+
+EXPinputDateA2.addEventListener('keydown', (event)=> {
+  if(event.key === 'Enter'){
+    typingEXPinput(
+      EXPinputDateA2.value,
+      EXPinputDateA2,
+      DIVexpA2,
+      [1],
+      'EXPinputDateA2'
+    );
   }
-);
+});
 
-  EXPinputDateA2.addEventListener('keydown', (event)=> {
-    if(event.key === 'Enter'){
-      typingEXPinput(
-        EXPinputDateA2.value,
-        EXPinputDateA2,
-        DIVexpA2,
-        [1],
-        'EXPinputDateA2'
-      );
-    }
-  });
+EXPinputDateB1.addEventListener('keydown', (event)=> {
+  if(event.key === 'Enter'){
+    typingEXPinput(
+      EXPinputDateB1.value, 
+      EXPinputDateB1, 
+      DIVexpB1,
+      [2],
+      'EXPinputDateB1'
+    );
+  }
+});
 
-  EXPinputDateB1.addEventListener('keydown', (event)=> {
-    if(event.key === 'Enter'){
-      typingEXPinput(
-        EXPinputDateB1.value, 
-        EXPinputDateB1, 
-        DIVexpB1,
-        [2],
-        'EXPinputDateB1'
-      );
-    }
-  });
+EXPinputDateB2.addEventListener('keydown', (event)=> {
+  if(event.key === 'Enter'){
+    typingEXPinput(
+      EXPinputDateB2.value, 
+      EXPinputDateB2, 
+      DIVexpB2,
+      [3],
+      'EXPinputDateB2'
+    );
+  }
+});
 
-  EXPinputDateB1.addEventListener('keydown', (event)=> {
-    if(event.key === 'Enter'){
-      typingEXPinput(
-        EXPinputDateB1.value, 
-        EXPinputDateB1, 
-        DIVexpB1,
-        [2],
-        'EXPinputDateB1'
-      );
-    }
-  });
+EXPinputDateC1.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateC1.value,
+      EXPinputDateC1,
+      DIVexpC1,
+      [4],
+      'EXPinputDateC1'
+    );
+  }
+});
+  
+EXPinputDateC2.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateC2.value,
+      EXPinputDateC2,
+      DIVexpC2,
+      [5],
+      'EXPinputDateC2'
+    );
+  }
+});
 
-  function typingEXPinput (
-    expValue,
-    expID,
-    div,
-    index,
-    expKey
-  ) {
+EXPinputDateD1.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateD1.value,
+      EXPinputDateD1,
+      DIVexpD1,
+      [6],
+      'EXPinputDateD1'
+    );
+  }
+});
+
+EXPinputDateD2.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateD2.value,
+      EXPinputDateD2,
+      DIVexpD2,
+      [7],
+      'EXPinputDateD2'
+    );
+  }
+});
+
+EXPinputDateE1.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateE1.value,
+      EXPinputDateE1,
+      DIVexpE1,
+      [8],
+      'EXPinputDateE1'
+    );
+  }
+});
+
+EXPinputDateE2.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateE2.value,
+      EXPinputDateE2,
+      DIVexpE2,
+      [9],
+      'EXPinputDateE2'
+    );
+  }
+});
+
+EXPinputDateF1.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateF1.value,
+      EXPinputDateF1,
+      DIVexpF1,
+      [10],
+      'EXPinputDateF1'
+    );
+  }
+});
+
+
+EXPinputDateF2.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateF2.value,
+      EXPinputDateF2,
+      DIVexpF2,
+      [11],
+      'EXPinputDateF2'
+    );
+  }
+});
+
+EXPinputDateG1.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateG1.value,
+      EXPinputDateG1,
+      DIVexpG1,
+      [12],
+      'EXPinputDateG1'
+    );
+  }
+});
+
+EXPinputDateG2.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateG2.value,
+      EXPinputDateG2,
+      DIVexpG2,
+      [13],
+      'EXPinputDateG2'
+    );
+  }
+});
+
+EXPinputDateH1.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateH1.value,
+      EXPinputDateH1,
+      DIVexpH1,
+      [14],
+      'EXPinputDateH1'
+    );
+  }
+});
+
+
+EXPinputDateH2.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateH2.value,
+      EXPinputDateH2,
+      DIVexpH2,
+      [15],
+      'EXPinputDateH2'
+    );
+  }
+});
+
+
+EXPinputDateI1.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateI1.value,
+      EXPinputDateI1,
+      DIVexpI1,
+      [16],
+      'EXPinputDateI1'
+    );
+  }
+});
+
+
+EXPinputDateI2.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateI2.value,
+      EXPinputDateI2,
+      DIVexpI2,
+      [17],
+      'EXPinputDateI2'
+    );
+  }
+});
+
+
+EXPinputDateJ1.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateJ1.value,
+      EXPinputDateJ1,
+      DIVexpJ1,
+      [18],
+      'EXPinputDateJ1'
+    );
+  }
+});
+
+
+EXPinputDateJ2.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateJ2.value,
+      EXPinputDateJ2,
+      DIVexpJ2,
+      [19],
+      'EXPinputDateJ2'
+    );
+  }
+});
+
+
+EXPinputDateK1.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateK1.value,
+      EXPinputDateK1,
+      DIVexpK1,
+      [20],
+      'EXPinputDateK1'
+    );
+  }
+});
+
+EXPinputDateK2.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateK2.value,
+      EXPinputDateK2,
+      DIVexpK2,
+      [21],
+      'EXPinputDateK2'
+    );
+  }
+});
+EXPinputDateL1.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateL1.value,
+      EXPinputDateL1,
+      DIVexpL1,
+      [22],
+      'EXPinputDateL1'
+    );
+  }
+});
+
+EXPinputDateL2.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    typingEXPinput(
+      EXPinputDateL2.value,
+      EXPinputDateL2,
+      DIVexpL2,
+      [23],
+      'EXPinputDateL2'
+    );
+  }
+});
+// Continue similarly for EXPinputDateL1 and EXPinputDateL2
+// EXPinputDateL1
+EXPinputDateL1.addEventListener
+
+
+  function typingEXPinput (expValue, expID, div, index, expKey) {
     let text = expValue;
     div.innerHTML = text;
     expID.classList.add("expInput-Empty");
@@ -1029,7 +1313,8 @@ shelfQuantity_L2.innerHTML = '0';
     savedHTML();
   }
   
-//TODO if click outside cancel input
+//! if click outside cancel input
+//TODO DO THIS NEXT
 function DIVclick(div,shelf,expDIV){
   if(div.textContent.trim()){
         clickEXPInput = shelf;
@@ -1046,221 +1331,81 @@ function DIVclick(div,shelf,expDIV){
       switch (click) {
 
         case DIVexpA1:
-        DIVclick(DIVexpA1, shelf.A1, EXPinputDateA1); 
-        break;
-
+          DIVclick(DIVexpA1, shelf.A1, EXPinputDateA1); 
+          break;
         case DIVexpA2:
-        DIVclick(DIVexpA2, shelf.A2, EXPinputDateA2); 
-        break;
-
+          DIVclick(DIVexpA2, shelf.A2, EXPinputDateA2); 
+          break;
         case DIVexpB1:
           DIVclick(DIVexpB1, shelf.B1, EXPinputDateB1);
           break;
-  
         case DIVexpB2:
           DIVclick(DIVexpB2, shelf.B2, EXPinputDateB2);
           break;
-  
         case DIVexpC1:
           DIVclick(DIVexpC1, shelf.C1, EXPinputDateC1);
-          break;
-  
+          break; 
         case DIVexpC2:
           DIVclick(DIVexpC2, shelf.C2, EXPinputDateC2);
-          break;
-  
+          break; 
         case DIVexpD1:
           DIVclick(DIVexpD1, shelf.D1, EXPinputDateD1);
           break;
-  
         case DIVexpD2:
           DIVclick(DIVexpD2, shelf.D2, EXPinputDateD2);
           break;
-  
         case DIVexpE1:
           DIVclick(DIVexpE1, shelf.E1, EXPinputDateE1);
           break;
-  
         case DIVexpE2:
           DIVclick(DIVexpE2, shelf.E2, EXPinputDateE2);
           break;
-  
         case DIVexpF1:
           DIVclick(DIVexpF1, shelf.F1, EXPinputDateF1);
           break;
-  
         case DIVexpF2:
           DIVclick(DIVexpF2, shelf.F2, EXPinputDateF2);
           break;
-  
         case DIVexpG1:
           DIVclick(DIVexpG1, shelf.G1, EXPinputDateG1);
           break;
-  
         case DIVexpG2:
           DIVclick(DIVexpG2, shelf.G2, EXPinputDateG2);
           break;
-  
         case DIVexpH1:
           DIVclick(DIVexpH1, shelf.H1, EXPinputDateH1);
           break;
-  
         case DIVexpH2:
           DIVclick(DIVexpH2, shelf.H2, EXPinputDateH2);
           break;
-  
         case DIVexpI1:
           DIVclick(DIVexpI1, shelf.I1, EXPinputDateI1);
           break;
-  
         case DIVexpI2:
           DIVclick(DIVexpI2, shelf.I2, EXPinputDateI2);
           break;
-  
         case DIVexpJ1:
           DIVclick(DIVexpJ1, shelf.J1, EXPinputDateJ1);
           break;
-  
         case DIVexpJ2:
           DIVclick(DIVexpJ2, shelf.J2, EXPinputDateJ2);
           break;
-  
         case DIVexpK1:
           DIVclick(DIVexpK1, shelf.K1, EXPinputDateK1);
           break;
-  
         case DIVexpK2:
           DIVclick(DIVexpK2, shelf.K2, EXPinputDateK2);
           break;
-  
         case DIVexpL1:
           DIVclick(DIVexpL1, shelf.L1, EXPinputDateL1);
           break;
-  
         case DIVexpL2:
           DIVclick(DIVexpL2, shelf.L2, EXPinputDateL2);
           break;
-  
       }
   })
 });
        
-
-          /*
-        case DIVexpB1:
-          clickEXPInput = shelf.B1;
-          DIVexpB1.innerHTML = '';
-          console.log('B1');
-          break;
-        case DIVexpB2:
-          clickEXPInput = shelf.B2;
-          DIVexpB2.innerHTML = '';
-          console.log('B2');
-          break;
-        case DIVexpC1:
-          clickEXPInput = shelf.C1;
-          DIVexpC1.innerHTML = '';
-          console.log('C1');
-          break;
-        case DIVexpC2:
-          clickEXPInput = shelf.C2;
-          DIVexpC2.innerHTML = '';
-          console.log('C2');
-          break;
-        case DIVexpD1:
-          clickEXPInput = shelf.D1;
-          DIVexpD1.innerHTML = '';
-          console.log('D1');
-          break;
-        case DIVexpD2:
-          clickEXPInput = shelf.D2;
-          DIVexpD2.innerHTML = '';
-          console.log('D2');
-          break;
-        case DIVexpE1:
-          clickEXPInput = shelf.E1;
-          DIVexpE1.innerHTML = '';
-          console.log('E1');
-          break;
-        case DIVexpE2:
-          clickEXPInput = shelf.E2;
-          DIVexpE2.innerHTML = '';
-          console.log('E2');
-          break;
-        case DIVexpF1:
-          clickEXPInput = shelf.F1;
-          DIVexpF1.innerHTML = '';
-          console.log('F1');
-          break;
-        case DIVexpF2:
-          clickEXPInput = shelf.F2;
-          DIVexpF2.innerHTML = '';
-          console.log('F2');
-          break;
-        case DIVexpG1:
-          clickEXPInput = shelf.G1;
-          DIVexpG1.innerHTML = '';
-          console.log('G1');
-          break;
-        case DIVexpG2:
-          clickEXPInput = shelf.G2;
-          DIVexpG2.innerHTML = '';
-          console.log('G2');
-          break;
-        case DIVexpH1:
-          clickEXPInput = shelf.H1;
-          DIVexpH1.innerHTML = '';
-          console.log('H1');
-          break;
-        case DIVexpH2:
-          clickEXPInput = shelf.H2;
-          DIVexpH2.innerHTML = '';
-          console.log('H2');
-          break;
-        case DIVexpI1:
-          clickEXPInput = shelf.I1;
-          DIVexpI1.innerHTML = '';
-          console.log('I1');
-          break;
-        case DIVexpI2:
-          clickEXPInput = shelf.I2;
-          DIVexpI2.innerHTML = '';
-          console.log('I2');
-          break;
-        case DIVexpJ1:
-          clickEXPInput = shelf.J1;
-          DIVexpJ1.innerHTML = '';
-          console.log('J1');
-          break;
-        case DIVexpJ2:
-          clickEXPInput = shelf.J2;
-          DIVexpJ2.innerHTML = '';
-          console.log('J2');
-          break;
-        case DIVexpK1:
-          clickEXPInput = shelf.K1;
-          DIVexpK1.innerHTML = '';
-          console.log('K1');
-          break;
-        case DIVexpK2:
-          clickEXPInput = shelf.K2;
-          DIVexpK2.innerHTML = '';
-          console.log('K2');
-          break;
-        case DIVexpL1:
-          clickEXPInput = shelf.L1;
-          DIVexpL1.innerHTML = '';
-          console.log('L1');
-          break;
-        case DIVexpL2:
-          clickEXPInput = shelf.L2;
-          DIVexpL2.innerHTML = '';
-          console.log('L2');
-          break;
-      }*/
-
-
-////////////////////////////////////////////////////////////////////////////////////////////    
 
 // Click the input directly
  const inputPopUp = document.querySelectorAll
