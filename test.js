@@ -1,15 +1,11 @@
-const allDIV = {};
+if (currentDate === text){
+  dotdot.classList.add("add color font")
+} 
 
-for (let letter of ['A', 'B']) {
-  for (let num of [1, 2]) {
-    const className = `.js-expDIVDate${letter}${num}`;
-    const element = document.querySelector(className);
+1/1/2024
 
-    if (element) {
-      const variableName = `DIVexp${letter}${num}`;
-      allDIV[variableName] = element;
-    } else {
-      console.error(`Element not found for class ${className}`);
-    }
-  }
-}
+6/1/2024
+
+31/12/2024
+
+9/5/2024 --> 23/6/2024

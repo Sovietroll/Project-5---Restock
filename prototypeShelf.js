@@ -1,13 +1,20 @@
 //DATE HERE//
 const date = new Date();
 let year = date.getFullYear();
+
 let month = String(date.getMonth()+1).padStart(2,"0");
 let day = String(date.getDate()).padStart(2,"0");
 let currentDate = `${day}/${month}/${year}`;
 
-document.querySelector('.currentDate').innerHTML = `Today is ${currentDate}`;
+let dateNow = document.querySelector('.currentDate');
+dateNow.innerHTML = `Today is ${currentDate}`;
+
+const expiredDate = [
+  //continue this
+]
 
 
+expiredDate = '';
 
 let data = JSON.parse(localStorage.getItem('savedObjects')) || [];
 
@@ -122,13 +129,13 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     DIVexpK1, DIVexpK2,
     DIVexpL1, DIVexpL2  
   ];
- 
+
 window.addEventListener('DOMContentLoaded',  () => {
 
 itemNameHTMLA1.innerHTML = savedOutput[0].itemNameA1;
 shelfQuantity_A1.innerHTML = 'x' + savedOutput[0].quantityA1;
-let text = savedOutput[0].EXPinputDateA1;
-DIVexpA1.innerHTML = text;
+DIVexpA1.innerHTML = savedOutput[0].EXPinputDateA1;
+expiredDate = savedOutput[0].EXPinputDateA1;
 
 itemNameHTMLA2.innerHTML = savedOutput[1].itemNameA2;
 shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
@@ -243,24 +250,38 @@ itemNameHTMLL2.innerHTML = savedOutput[23].itemNameL2;
 shelfQuantity_L2.innerHTML = 'x' + savedOutput[23].quantityL2;
 DIVexpL2.innerHTML = savedOutput[23].EXPinputDateL2;
 
+//! comparison exp date test here
+  console.log(currentDate);
+  console.log(expiredDate);
+allDIV.forEach(div => {
+  if(currentDate === expiredDate){
+    div.classList.add("currentDate-test");
+    console.log('runs 1');
+  } 
+  else{
+    div.classList.add("currentDate-Expired");
+    console.log('runs 2');
+  }
+})
 
-      allDIV.forEach((div, index) => {
-        const exp = allEXP[index]; //* Corresponding element in allEXP
-        if (div.textContent.trim()) {
-          exp.classList.add("expInput-Empty");
-          expInputStatus = true;
-          console.log('runs contain');
 
-        } else {
-          exp.classList.add("expInput");
-          expInputStatus = false;
-          console.log('runs empty');
+  allDIV.forEach((div, index) => {
+    const exp = allEXP[index]; //* Corresponding element in allEXP
+    if (div.textContent.trim()) {
+      exp.classList.add("expInput-Empty");
+      expInputStatus = true;
+      // console.log('runs contain');
 
-        }
-      });
+    } else {
+      exp.classList.add("expInput");
+      expInputStatus = false;
+      // console.log('runs empty');
+    }
+  });
   }
   
 );
+
 
 //PLACE C SECTION AND OTHERS
 
@@ -1311,12 +1332,9 @@ let expInputStatus;
 //* enter the input / not clicking input 
   function typingEXPinput (expValue, expID, div, index, expKey) {
     let text = expValue;
-    //TODO CONVERT THIS TO VALUE AND COMPARE IT WITH THE CURRENT DATE IN ORDER TO CHANGE COLOR 
-    //TODO FINISH IT BY TONIGHT 
-    //TODO FOCUS ONLY DATE.VALUE 
-    //TODO I NEED IT BY TONIGHT 12AM SOON 
-    //TODO TQ
+
     div.innerHTML = text;
+    savedOutput[0].EXPinputDateA1;
     expID.classList.add("expInput-Empty");
     savedOutput[index][expKey] = expValue;
     savedHTML();
@@ -1358,12 +1376,12 @@ document.addEventListener('click', () => {
 //TODO/TODO//////////////////////////////
 let currentTyping;
 
+//! typing while in input
 allEXP.forEach((typingInEXP) => {
   typingInEXP.addEventListener('keydown', () => {
     currentTyping = true;
     expInputStatus = true;
 
-    console.log('typing');
   })
 })
 

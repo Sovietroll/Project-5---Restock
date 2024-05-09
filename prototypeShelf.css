@@ -11,6 +11,12 @@
       .currentDate{
         color: white;
       }
+      .currentDate-Expired{
+        color: red;
+      }
+      .currentDate-test{
+        color: blue;
+      }
       .list {
         background-color: rgb(245, 245, 245);
         width: 100%;
