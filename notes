@@ -1,5 +1,7 @@
 //TODO CURRENT -->
-Inputs for name and exp date - need to place a function where mouse click/finger anywhere to cancel
+-Inputs for name and exp date - need to place a function where mouse click/finger anywhere to cancel
+
+-event.key === enter problem for input.name
 
 //!BUGS 
 PROB - G1 Panel problem!

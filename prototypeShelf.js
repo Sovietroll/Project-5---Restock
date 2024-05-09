@@ -1,7 +1,17 @@
+//DATE HERE//
+const date = new Date();
+let year = date.getFullYear();
+let month = String(date.getMonth()+1).padStart(2,"0");
+let day = String(date.getDate()).padStart(2,"0");
+let currentDate = `${day}/${month}/${year}`;
+
+document.querySelector('.currentDate').innerHTML = `Today is ${currentDate}`;
+
+
+
 let data = JSON.parse(localStorage.getItem('savedObjects')) || [];
 
 let output = document.querySelector('.output');
-let output2 = document.querySelector('.output2'); //two side 
 
 runData();
 
@@ -117,7 +127,8 @@ window.addEventListener('DOMContentLoaded',  () => {
 
 itemNameHTMLA1.innerHTML = savedOutput[0].itemNameA1;
 shelfQuantity_A1.innerHTML = 'x' + savedOutput[0].quantityA1;
-DIVexpA1.innerHTML = savedOutput[0].EXPinputDateA1;
+let text = savedOutput[0].EXPinputDateA1;
+DIVexpA1.innerHTML = text;
 
 itemNameHTMLA2.innerHTML = savedOutput[1].itemNameA2;
 shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
@@ -1295,12 +1306,16 @@ EXPinputDateL2.addEventListener('keydown', (event) => {
 });
 
 let expInputStatus;
-console.log(expInputStatus);
 
 //! FUNCTION PARAM typingEXPinput()
 //* enter the input / not clicking input 
   function typingEXPinput (expValue, expID, div, index, expKey) {
     let text = expValue;
+    //TODO CONVERT THIS TO VALUE AND COMPARE IT WITH THE CURRENT DATE IN ORDER TO CHANGE COLOR 
+    //TODO FINISH IT BY TONIGHT 
+    //TODO FOCUS ONLY DATE.VALUE 
+    //TODO I NEED IT BY TONIGHT 12AM SOON 
+    //TODO TQ
     div.innerHTML = text;
     expID.classList.add("expInput-Empty");
     savedOutput[index][expKey] = expValue;
@@ -1316,26 +1331,30 @@ function DIVclick(div,shelf,expDIV){
         clickEXPInput = shelf;
         div.innerHTML = '';
         expDIV.classList.remove("expInput-Empty"); //* expinputempty will dissapear
-
-        console.log(clickEXPInput);
-        console.log(expInputStatus);
     } //if after user place the input input will dissapear 
   }
 //TODO click other input to disable current click //////////
+// document.addEventListener('click', () => {
+//   unclickClickInput(shelf.A2,EXPinputDateA1,DIVexpA1,[0],'EXPinputDateA1');
+// })
 document.addEventListener('click', () => {
-  unclickClickInput(shelf.A2,EXPinputDateA1,DIVexpA1,[0],'EXPinputDateA1');
-  unclickClickInput(shelf.A2,EXPinputDateA1,DIVexpA1,[0],'EXPinputDateA1');
-
+  let currentShelf = clickEXPInput;
+  // inputHide(currentShelf);
+  console.log('inputHide',currentShelf);
 })
 
-//!PARAM for unclickClickInput ////
-function unclickClickInput(shelf,expInput,divHTML,index,savedExpInput){
-  if(clickEXPInput === shelf){
-    expInput.classList.add("expInput-Empty");
-    divHTML.innerHTML = savedOutput[index][savedExpInput];
-    console.log('test');
-  }
-}
+// //!PARAM for unclickClickInput ////
+// function unclickClickInput(shelf,expInput,divHTML,index,savedExpInput){
+//   if(clickEXPInput === shelf){
+//     allEXP.forEach(expInput => {
+    
+//      expInput.classList.add("expInput-Empty");
+//     })
+
+//     divHTML.innerHTML = savedOutput[index][savedExpInput];
+//     console.log('run unclickClickInput');
+//   }
+// }
 //TODO/TODO//////////////////////////////
 let currentTyping;
 
@@ -3722,5 +3741,115 @@ function hideUnhideShelves(shelfID){
       expInput.classList.add("expInput-Empty");
     })
     divHTML.innerHTML = savedOutput[index][savedExpInput];
+  }
+  //! HIDE OTHER INPUTS
+  function inputHide(shelfID){
+    HideInputs.forEach(input => {
+      if(shelfID === input.id){
+        input.func();
+        console.log('input.func')
+      }
+    })
+  }
+
+  const HideInputs = [
+    { id: 'A1', func: hideInputsA1 },
+    { id: 'A2', func: hideInputsA2 },
+    { id: 'B1', func: hideInputsB1 },
+    { id: 'B2', func: hideInputsB2 },
+    { id: 'C1', func: hideInputsC1 },
+    { id: 'C2', func: hideInputsC2 },
+    { id: 'D1', func: hideInputsD1 },
+    { id: 'D2', func: hideInputsD2 },
+    { id: 'E1', func: hideInputsE1 },
+    { id: 'E2', func: hideInputsE2 },
+    { id: 'F1', func: hideInputsF1 },
+    { id: 'F2', func: hideInputsF2 },
+    { id: 'G1', func: hideInputsG1 },
+    { id: 'G2', func: hideInputsG2 },
+    { id: 'H1', func: hideInputsH1 },
+    { id: 'H2', func: hideInputsH2 },
+    { id: 'I1', func: hideInputsI1 },
+    { id: 'I2', func: hideInputsI2 },
+    { id: 'J1', func: hideInputsJ1 },
+    { id: 'J2', func: hideInputsJ2 },
+    { id: 'K1', func: hideInputsK1 },
+    { id: 'K2', func: hideInputsK2 },
+    { id: 'L1', func: hideInputsL1 },
+    { id: 'L2', func: hideInputsL2 }
+  ];
+  
+
+  function hideInputsA1(){
+    EXPinputDateA1.classList.add("expInput-Empty");
+  }
+  function hideInputsA2(){
+    EXPinputDateA2.classList.add("expInput-Empty");
+  }
+  function hideInputsB1(){
+    EXPinputDateB1.classList.add("expInput-Empty");
+  }
+  function hideInputsB2(){
+    EXPinputDateB2.classList.add("expInput-Empty");
+  }
+  function hideInputsC1(){
+    EXPinputDateC1.classList.add("expInput-Empty");
+  }
+  function hideInputsC2(){
+    EXPinputDateC2.classList.add("expInput-Empty");
+  }
+  function hideInputsD1(){
+    EXPinputDateD1.classList.add("expInput-Empty");
+  }
+  function hideInputsD2(){
+    EXPinputDateD2.classList.add("expInput-Empty");
+  }
+  function hideInputsE1(){
+    EXPinputDateE1.classList.add("expInput-Empty");
+  }
+  function hideInputsE2(){
+    EXPinputDateE2.classList.add("expInput-Empty");
+  }
+  function hideInputsF1(){
+    EXPinputDateF1.classList.add("expInput-Empty");
+  }
+  function hideInputsF2(){
+    EXPinputDateF2.classList.add("expInput-Empty");
+  }
+  function hideInputsG1(){
+    EXPinputDateG1.classList.add("expInput-Empty");
+  }
+  function hideInputsG2(){
+    EXPinputDateG2.classList.add("expInput-Empty");
+  }
+  function hideInputsH1(){
+    EXPinputDateH1.classList.add("expInput-Empty");
+  }
+  function hideInputsH2(){
+    EXPinputDateH2.classList.add("expInput-Empty");
+  }
+  function hideInputsI1(){
+    EXPinputDateI1.classList.add("expInput-Empty");
+  }
+  function hideInputsI2(){
+    EXPinputDateI2.classList.add("expInput-Empty");
+  }
+  function hideInputsJ1(){
+    EXPinputDateJ1.classList.add("expInput-Empty");
+  }
+  function hideInputsJ2(){
+    EXPinputDateJ2.classList.add("expInput-Empty");
+  }
+  function hideInputsK1(){
+    EXPinputDateK1.classList.add("expInput-Empty");
+  }
+  function hideInputsK2(){
+    EXPinputDateK2.classList.add("expInput-Empty");
+  }
+  function hideInputsL1(){
+    EXPinputDateL1.classList.add("expInput-Empty");
+  }
+  function hideInputsL2(){
+    EXPinputDateL2.classList.add("expInput-Empty");
   }
   

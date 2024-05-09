@@ -8,6 +8,9 @@
         margin: 0px; 
         background-color: rgb(131, 131, 131);
       }
+      .currentDate{
+        color: white;
+      }
       .list {
         background-color: rgb(245, 245, 245);
         width: 100%;
@@ -210,9 +213,26 @@
         transition: .2s ease;
         z-index: 10;
       }
+      .expInput2{ /*! BLANK INPUT  2*/
+        visibility: visible;
+        position: absolute;
+        font-size: 10px;
+        top: 40px;
+        left: 1.5%;
+        right: 0%;
+        width: 80%;
+        height: 7%;
+        margin-top:1.5%;
+        outline: none;
+        border-style: none;
+        border-radius: 5px;
+        text-align: center;
+        transition: .2s ease;
+        z-index: 10;
+        background-color: black;
+      }
 
       .expInput-Empty{ /*! INPUT DISSAPEAR */
-        /* display: block; */
         visibility: hidden;
         width: 0%;
         transition: .2s ease;
