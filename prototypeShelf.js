@@ -9,20 +9,16 @@ let currentDate = `${day}/${month}/${year}`;
 let dateNow = document.querySelector('.currentDate');
 dateNow.innerHTML = `Today is ${currentDate}`;
 
-// let expiredDate = [
-//   {A1:''},
-//   {A2:''}
-// ]
 
 //TODO PUT DATE AS INPUT
-
 let data = JSON.parse(localStorage.getItem('savedObjects')) || [];
 
 let output = document.querySelector('.output');
 
 runData();
 
-//TODO FILL THIS next 
+
+//TODO FILL THIS next //
 const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     {itemNameA1:'', quantityA1: '', EXPinputDateA1: ''}, //0
     {itemNameA2:'', quantityA2: '', EXPinputDateA2: ''}, //1
@@ -48,8 +44,8 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     {itemNameK2:'', quantityK2: '', EXPinputDateK2: ''}, //21
     {itemNameL1:'', quantityL1: '', EXPinputDateL1: ''}, //22
     {itemNameL2:'', quantityL2: '', EXPinputDateL2: ''}, //23
-
   ];
+
   const DIVexpA1 = document.querySelector('.js-expDIVDateA1');
   const DIVexpA2 = document.querySelector('.js-expDIVDateA2');
   const DIVexpB1 = document.querySelector('.js-expDIVDateB1');
@@ -74,7 +70,6 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
   const DIVexpK2 = document.querySelector('.js-expDIVDateK2');
   const DIVexpL1 = document.querySelector('.js-expDIVDateL1');
   const DIVexpL2 = document.querySelector('.js-expDIVDateL2');
-
 
   const EXPinputDateA1 = document.querySelector('.expInputA1');
   const EXPinputDateA2 = document.querySelector('.expInputA2');
@@ -129,24 +124,24 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     DIVexpK1, DIVexpK2,
     DIVexpL1, DIVexpL2  
   ];
-
+  let expiredDate = [
+    new Date(), // DateA1
+    new Date(), // DateA2
+    new Date(), // DateB1
+    new Date(), // DateB2
+  ];
+//! window.addEventListener  
 window.addEventListener('DOMContentLoaded',  () => {
-
-  let expiredDate;
-  
 
 itemNameHTMLA1.innerHTML = savedOutput[0].itemNameA1;
 shelfQuantity_A1.innerHTML = 'x' + savedOutput[0].quantityA1;
 DIVexpA1.innerHTML = savedOutput[0].EXPinputDateA1;
-
-
-
+expiredDate[0].A1 = savedOutput[0].EXPinputDateA1;
 
 itemNameHTMLA2.innerHTML = savedOutput[1].itemNameA2;
 shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
 DIVexpA2.innerHTML = savedOutput[1].EXPinputDateA2;
 // expiredDate[1].A2 = savedOutput[1].EXPinputDateA2;
-
 
 itemNameHTMLB1.innerHTML = savedOutput[2].itemNameB1;
 shelfQuantity_B1.innerHTML = 'x' + savedOutput[2].quantityB1;
@@ -280,22 +275,19 @@ DIVexpL2.innerHTML = savedOutput[23].EXPinputDateL2;
 // expiredDate[23].L2 = savedOutput[23].EXPinputDateL2;
 
 //! comparison exp date test here
-// console.log(`currentDate ${currentDate}`);
-// console.log(`expiredDate ${expiredDate[0].A1}`);
-// console.log(`expiredDate ${expiredDate[1].A2}`);
-// console.log(`expiredDate ${expiredDate[2].B1}`);
+console.log(date);
+console.log(expiredDate[0]);
 
 
   allDIV.forEach(div => { //TODO EXPERIMENT THIS
-    if(expiredDate >= currentDate){
-      div.classList.add("currentDate-test"); //! BLUE
+    if (expiredDate <= date){
+      div.classList.add("currentDate-test");  //! BLUE //
       console.log('runs NOT EXPIRED');
-    } 
-    else{
-      div.classList.add("currentDate-Expired"); //! RED
+    }  
+    else {
+      div.classList.add("currentDate-Expired"); //! RED //
       console.log('runs EXPIRED');
     }
-
 })
 
 
@@ -1030,45 +1022,35 @@ shelfQuantity_L2.innerHTML = '0';
   //INPUT HERE
   const inputA1 = document.querySelector('.js-input-A1');
   const inputA2 = document.querySelector('.js-input-A2');
-
   const inputB1 = document.querySelector('.js-input-B1');
   const inputB2 = document.querySelector('.js-input-B2');
-
   const inputC1 = document.querySelector('.js-input-C1');
   const inputC2 = document.querySelector('.js-input-C2');
-
   const inputD1 = document.querySelector('.js-input-D1');
   const inputD2 = document.querySelector('.js-input-D2');
-
   const inputE1 = document.querySelector('.js-input-E1');
   const inputE2 = document.querySelector('.js-input-E2');
-
   const inputF1 = document.querySelector('.js-input-F1');
   const inputF2 = document.querySelector('.js-input-F2');
-
   const inputG1 = document.querySelector('.js-input-G1');
   const inputG2 = document.querySelector('.js-input-G2');
-
   const inputH1 = document.querySelector('.js-input-H1');
   const inputH2 = document.querySelector('.js-input-H2');
-
   const inputI1 = document.querySelector('.js-input-I1');
   const inputI2 = document.querySelector('.js-input-I2');
-
   const inputJ1 = document.querySelector('.js-input-J1');
   const inputJ2 = document.querySelector('.js-input-J2');
-
   const inputK1 = document.querySelector('.js-input-K1');
   const inputK2 = document.querySelector('.js-input-K2');
-
   const inputL1 = document.querySelector('.js-input-L1');
   const inputL2 = document.querySelector('.js-input-L2');
 
   
 //EXP Input//
 
+let test = '';
 
-EXPinputDateA1.addEventListener('keydown', (event)=> {
+EXPinputDateA1.addEventListener('keydown', (event) => {
   if(event.key === 'Enter'){
     typingEXPinput(
       EXPinputDateA1.value, 
@@ -1078,10 +1060,8 @@ EXPinputDateA1.addEventListener('keydown', (event)=> {
       'EXPinputDateA1',
     )}
   });
-//? TESTING expiredDate
-console.log(EXPinputDateA1.value);
-console.log(expiredDate);
-
+//! SETTLE THE EXP DATE !/// 
+//! FIND THE VALUE OF EXP DATE !///
 EXPinputDateA2.addEventListener('keydown', (event)=> {
   if(event.key === 'Enter'){
     typingEXPinput(
@@ -1093,7 +1073,6 @@ EXPinputDateA2.addEventListener('keydown', (event)=> {
     );
   }
 });
-
 EXPinputDateB1.addEventListener('keydown', (event)=> {
   if(event.key === 'Enter'){
     typingEXPinput(
@@ -1105,7 +1084,6 @@ EXPinputDateB1.addEventListener('keydown', (event)=> {
     );
   }
 });
-
 EXPinputDateB2.addEventListener('keydown', (event)=> {
   if(event.key === 'Enter'){
     typingEXPinput(
@@ -1153,7 +1131,6 @@ EXPinputDateD1.addEventListener('keydown', (event) => {
     );
   }
 });
-
 EXPinputDateD2.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1165,7 +1142,6 @@ EXPinputDateD2.addEventListener('keydown', (event) => {
     );
   }
 });
-
 EXPinputDateE1.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1177,7 +1153,6 @@ EXPinputDateE1.addEventListener('keydown', (event) => {
     );
   }
 });
-
 EXPinputDateE2.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1189,7 +1164,6 @@ EXPinputDateE2.addEventListener('keydown', (event) => {
     );
   }
 });
-
 EXPinputDateF1.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1201,8 +1175,6 @@ EXPinputDateF1.addEventListener('keydown', (event) => {
     );
   }
 });
-
-
 EXPinputDateF2.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1214,7 +1186,6 @@ EXPinputDateF2.addEventListener('keydown', (event) => {
     );
   }
 });
-
 EXPinputDateG1.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1226,7 +1197,6 @@ EXPinputDateG1.addEventListener('keydown', (event) => {
     );
   }
 });
-
 EXPinputDateG2.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1238,7 +1208,6 @@ EXPinputDateG2.addEventListener('keydown', (event) => {
     );
   }
 });
-
 EXPinputDateH1.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1250,8 +1219,6 @@ EXPinputDateH1.addEventListener('keydown', (event) => {
     );
   }
 });
-
-
 EXPinputDateH2.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1263,8 +1230,6 @@ EXPinputDateH2.addEventListener('keydown', (event) => {
     );
   }
 });
-
-
 EXPinputDateI1.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1276,8 +1241,6 @@ EXPinputDateI1.addEventListener('keydown', (event) => {
     );
   }
 });
-
-
 EXPinputDateI2.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1289,8 +1252,6 @@ EXPinputDateI2.addEventListener('keydown', (event) => {
     );
   }
 });
-
-
 EXPinputDateJ1.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1302,8 +1263,6 @@ EXPinputDateJ1.addEventListener('keydown', (event) => {
     );
   }
 });
-
-
 EXPinputDateJ2.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1315,8 +1274,6 @@ EXPinputDateJ2.addEventListener('keydown', (event) => {
     );
   }
 });
-
-
 EXPinputDateK1.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1328,7 +1285,6 @@ EXPinputDateK1.addEventListener('keydown', (event) => {
     );
   }
 });
-
 EXPinputDateK2.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     typingEXPinput(
@@ -1365,21 +1321,26 @@ EXPinputDateL2.addEventListener('keydown', (event) => {
 });
 
 let expInputStatus;
-
 //! FUNCTION PARAM typingEXPinput()
 //* enter the input / not clicking input 
   function typingEXPinput (expValue, expID, div, index, expKey) {
+    
     let text = expValue;
-
     div.innerHTML = text;
     expID.classList.add("expInput-Empty");
     savedOutput[index][expKey] = expValue;
-    //TODO convert the value to date 
+    //TODO /////////////////////////-->
+    let dateValue = new Date(expValue);
+    expiredDate[index] = dateValue;
+    test = dateValue;
+    //TODO convert the value to date-->
     savedHTML();
     expInputStatus = false;
     currentTyping = false;
+console.log(test);
+
   }
-  convert.log()
+
 //! FUNCTION PARAM DIVclick()
 //* clicking the input / not enter input
 function DIVclick(div,shelf,expDIV){
@@ -2103,7 +2064,6 @@ let scrollLimit = window.innerHeight/1.5; //10% of the scroll
 
 
 const contextMenu = document.querySelector('.context-menu');
-// TRYING TO MAKE EXPIRED DATE
 
 document.addEventListener('scroll', () => {
   if(window.scrollY > scrollLimit){
