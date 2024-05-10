@@ -14,7 +14,7 @@ dateNow.innerHTML = `Today is ${currentDate}`;
 //   {A2:''}
 // ]
 
-expiredDate = '';
+//TODO PUT DATE AS INPUT
 
 let data = JSON.parse(localStorage.getItem('savedObjects')) || [];
 
@@ -1076,7 +1076,6 @@ EXPinputDateA1.addEventListener('keydown', (event)=> {
       DIVexpA1,
       [0],
       'EXPinputDateA1',
-      expiredDate
     )}
   });
 //? TESTING expiredDate
@@ -1369,17 +1368,18 @@ let expInputStatus;
 
 //! FUNCTION PARAM typingEXPinput()
 //* enter the input / not clicking input 
-  function typingEXPinput (expValue, expID, div, index, expKey,expDate) {
+  function typingEXPinput (expValue, expID, div, index, expKey) {
     let text = expValue;
 
     div.innerHTML = text;
     expID.classList.add("expInput-Empty");
     savedOutput[index][expKey] = expValue;
-    expDate = expValue;
+    //TODO convert the value to date 
     savedHTML();
     expInputStatus = false;
     currentTyping = false;
   }
+  convert.log()
 //! FUNCTION PARAM DIVclick()
 //* clicking the input / not enter input
 function DIVclick(div,shelf,expDIV){
