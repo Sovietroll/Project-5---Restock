@@ -221,6 +221,7 @@
         text-align: center;
         transition: .2s ease;
         z-index: 10;
+        background-color: white;
       }
       .expInput2{ /*! BLANK INPUT  2*/
         visibility: visible;
