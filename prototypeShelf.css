@@ -8,14 +8,17 @@
         margin: 0px; 
         background-color: rgb(131, 131, 131);
       }
-      .currentDate{
+      .currentDate{ /** default **/
         color: white;
+        font-weight: 700;
       }
       .currentDate-Expired{
         color: red;
+        font-weight: 700;
       }
       .currentDate-test{
         color: blue;
+        font-weight: 700;
       }
       .list {
         background-color: rgb(245, 245, 245);

@@ -1,11 +1,24 @@
-if (currentDate === text){
-  dotdot.classList.add("add color font")
-} 
-
-1/1/2024
-
-6/1/2024
-
-31/12/2024
-
-9/5/2024 --> 23/6/2024
+expiredDate[0].A1 = savedOutput[0].EXPinputDateA1;
+expiredDate[1].A2 = savedOutput[1].EXPinputDateA2;
+expiredDate[2].B1 = savedOutput[2].EXPinputDateB1;
+expiredDate[3].B2 = savedOutput[3].EXPinputDateB2;
+expiredDate[4].C1 = savedOutput[4].EXPinputDateC1;
+expiredDate[5].C2 = savedOutput[5].EXPinputDateC2;
+expiredDate[6].D1 = savedOutput[6].EXPinputDateD1;
+expiredDate[7].D2 = savedOutput[7].EXPinputDateD2;
+expiredDate[8].E1 = savedOutput[8].EXPinputDateE1;
+expiredDate[9].E2 = savedOutput[9].EXPinputDateE2;
+expiredDate[10].F1 = savedOutput[10].EXPinputDateF1;
+expiredDate[11].F2 = savedOutput[11].EXPinputDateF2;
+expiredDate[12].G1 = savedOutput[12].EXPinputDateG1;
+expiredDate[13].G2 = savedOutput[13].EXPinputDateG2;
+expiredDate[14].H1 = savedOutput[14].EXPinputDateH1;
+expiredDate[15].H2 = savedOutput[15].EXPinputDateH2;
+expiredDate[16].I1 = savedOutput[16].EXPinputDateI1;
+expiredDate[17].I2 = savedOutput[17].EXPinputDateI2;
+expiredDate[18].J1 = savedOutput[18].EXPinputDateJ1;
+expiredDate[19].J2 = savedOutput[19].EXPinputDateJ2;
+expiredDate[20].K1 = savedOutput[20].EXPinputDateK1;
+expiredDate[21].K2 = savedOutput[21].EXPinputDateK2;
+expiredDate[22].L1 = savedOutput[22].EXPinputDateL1;
+expiredDate[23].L2 = savedOutput[23].EXPinputDateL2;

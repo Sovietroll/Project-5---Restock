@@ -9,10 +9,10 @@ let currentDate = `${day}/${month}/${year}`;
 let dateNow = document.querySelector('.currentDate');
 dateNow.innerHTML = `Today is ${currentDate}`;
 
-const expiredDate = [
-  //continue this
-]
-
+// let expiredDate = [
+//   {A1:''},
+//   {A2:''}
+// ]
 
 expiredDate = '';
 
@@ -132,136 +132,199 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
 
 window.addEventListener('DOMContentLoaded',  () => {
 
+  let expiredDate = [
+    { A1: '' },
+    { A2: '' },
+    { B1: '' },
+    { B2: '' },
+    { C1: '' },
+    { C2: '' },
+    { D1: '' },
+    { D2: '' },
+    { E1: '' },
+    { E2: '' },
+    { F1: '' },
+    { F2: '' },
+    { G1: '' },
+    { G2: '' },
+    { H1: '' },
+    { H2: '' },
+    { I1: '' },
+    { I2: '' },
+    { J1: '' },
+    { J2: '' },
+    { K1: '' },
+    { K2: '' },
+    { L1: '' },
+    { L2: '' }
+  ];
+  
+
 itemNameHTMLA1.innerHTML = savedOutput[0].itemNameA1;
 shelfQuantity_A1.innerHTML = 'x' + savedOutput[0].quantityA1;
 DIVexpA1.innerHTML = savedOutput[0].EXPinputDateA1;
-expiredDate = savedOutput[0].EXPinputDateA1;
+let text = savedOutput[0].EXPinputDateA1;
+
+let date2 = new Date ();
+let months = date2.getMonth;
+console.log(months)
+expiredDate[0].A1 = Number(text);
+
 
 itemNameHTMLA2.innerHTML = savedOutput[1].itemNameA2;
 shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
 DIVexpA2.innerHTML = savedOutput[1].EXPinputDateA2;
+expiredDate[1].A2 = savedOutput[1].EXPinputDateA2;
+
 
 itemNameHTMLB1.innerHTML = savedOutput[2].itemNameB1;
 shelfQuantity_B1.innerHTML = 'x' + savedOutput[2].quantityB1;
 DIVexpB1.innerHTML = savedOutput[2].EXPinputDateB1;
+expiredDate[2].B1 = savedOutput[2].EXPinputDateB1;
 
 // For B2
 itemNameHTMLB2.innerHTML = savedOutput[3].itemNameB2;
 shelfQuantity_B2.innerHTML = 'x' + savedOutput[3].quantityB2;
 DIVexpB2.innerHTML = savedOutput[3].EXPinputDateB2;
+expiredDate[3].B2 = savedOutput[3].EXPinputDateB2;
 
 // For C1
 itemNameHTMLC1.innerHTML = savedOutput[4].itemNameC1;
 shelfQuantity_C1.innerHTML = 'x' + savedOutput[4].quantityC1;
 DIVexpC1.innerHTML = savedOutput[4].EXPinputDateC1;
+expiredDate[4].C1 = savedOutput[4].EXPinputDateC1;
 
 // For C2
 itemNameHTMLC2.innerHTML = savedOutput[5].itemNameC2;
 shelfQuantity_C2.innerHTML = 'x' + savedOutput[5].quantityC2;
 DIVexpC2.innerHTML = savedOutput[5].EXPinputDateC2;
+expiredDate[5].C2 = savedOutput[5].EXPinputDateC2;
 
 // For D1
 itemNameHTMLD1.innerHTML = savedOutput[6].itemNameD1;
 shelfQuantity_D1.innerHTML = 'x' + savedOutput[6].quantityD1;
 DIVexpD1.innerHTML = savedOutput[6].EXPinputDateD1;
+expiredDate[6].D1 = savedOutput[6].EXPinputDateD1;
 
 // For D2
 itemNameHTMLD2.innerHTML = savedOutput[7].itemNameD2;
 shelfQuantity_D2.innerHTML = 'x' + savedOutput[7].quantityD2;
 DIVexpD2.innerHTML = savedOutput[7].EXPinputDateD2;
+expiredDate[7].D2 = savedOutput[7].EXPinputDateD2;
 
 // For E1
 itemNameHTMLE1.innerHTML = savedOutput[8].itemNameE1;
 shelfQuantity_E1.innerHTML = 'x' + savedOutput[8].quantityE1;
 DIVexpE1.innerHTML = savedOutput[8].EXPinputDateE1;
+expiredDate[8].E1 = savedOutput[8].EXPinputDateE1;
 
 // For E2
 itemNameHTMLE2.innerHTML = savedOutput[9].itemNameE2;
 shelfQuantity_E2.innerHTML = 'x' + savedOutput[9].quantityE2;
 DIVexpE2.innerHTML = savedOutput[9].EXPinputDateE2;
+expiredDate[9].E2 = savedOutput[9].EXPinputDateE2;
 
 // For F1
 itemNameHTMLF1.innerHTML = savedOutput[10].itemNameF1;
 shelfQuantity_F1.innerHTML = 'x' + savedOutput[10].quantityF1;
 DIVexpF1.innerHTML = savedOutput[10].EXPinputDateF1;
+expiredDate[10].F1 = savedOutput[10].EXPinputDateF1;
 
 // For F2
 itemNameHTMLF2.innerHTML = savedOutput[11].itemNameF2;
 shelfQuantity_F2.innerHTML = 'x' + savedOutput[11].quantityF2;
 DIVexpF2.innerHTML = savedOutput[11].EXPinputDateF2;
+expiredDate[11].F2 = savedOutput[11].EXPinputDateF2;
 
 // For G1
 itemNameHTMLG1.innerHTML = savedOutput[12].itemNameG1;
 shelfQuantity_G1.innerHTML = 'x' + savedOutput[12].quantityG1;
 DIVexpG1.innerHTML = savedOutput[12].EXPinputDateG1;
+expiredDate[12].G1 = savedOutput[12].EXPinputDateG1;
 
 // For G2
 itemNameHTMLG2.innerHTML = savedOutput[13].itemNameG2;
 shelfQuantity_G2.innerHTML = 'x' + savedOutput[13].quantityG2;
 DIVexpG2.innerHTML = savedOutput[13].EXPinputDateG2;
+expiredDate[13].G2 = savedOutput[13].EXPinputDateG2;
 
 // For H1
 itemNameHTMLH1.innerHTML = savedOutput[14].itemNameH1;
 shelfQuantity_H1.innerHTML = 'x' + savedOutput[14].quantityH1;
 DIVexpH1.innerHTML = savedOutput[14].EXPinputDateH1;
+expiredDate[14].H1 = savedOutput[14].EXPinputDateH1;
 
 // For H2
 itemNameHTMLH2.innerHTML = savedOutput[15].itemNameH2;
 shelfQuantity_H2.innerHTML = 'x' + savedOutput[15].quantityH2;
 DIVexpH2.innerHTML = savedOutput[15].EXPinputDateH2;
+expiredDate[15].H2 = savedOutput[15].EXPinputDateH2;
 
 // For I1
 itemNameHTMLI1.innerHTML = savedOutput[16].itemNameI1;
 shelfQuantity_I1.innerHTML = 'x' + savedOutput[16].quantityI1;
 DIVexpI1.innerHTML = savedOutput[16].EXPinputDateI1;
+expiredDate[16].I1 = savedOutput[16].EXPinputDateI1;
 
 // For I2
 itemNameHTMLI2.innerHTML = savedOutput[17].itemNameI2;
 shelfQuantity_I2.innerHTML = 'x' + savedOutput[17].quantityI2;
 DIVexpI2.innerHTML = savedOutput[17].EXPinputDateI2;
+expiredDate[17].I2 = savedOutput[17].EXPinputDateI2;
 
 // For J1
 itemNameHTMLJ1.innerHTML = savedOutput[18].itemNameJ1;
 shelfQuantity_J1.innerHTML = 'x' + savedOutput[18].quantityJ1;
 DIVexpJ1.innerHTML = savedOutput[18].EXPinputDateJ1;
+expiredDate[18].J1 = savedOutput[18].EXPinputDateJ1;
 
 // For J2
 itemNameHTMLJ2.innerHTML = savedOutput[19].itemNameJ2;
 shelfQuantity_J2.innerHTML = 'x' + savedOutput[19].quantityJ2;
 DIVexpJ2.innerHTML = savedOutput[19].EXPinputDateJ2;
+expiredDate[19].J2 = savedOutput[19].EXPinputDateJ2;
 
 // For K1
 itemNameHTMLK1.innerHTML = savedOutput[20].itemNameK1;
 shelfQuantity_K1.innerHTML = 'x' + savedOutput[20].quantityK1;
 DIVexpK1.innerHTML = savedOutput[20].EXPinputDateK1;
+expiredDate[20].K1 = savedOutput[20].EXPinputDateK1;
 
 // For K2
 itemNameHTMLK2.innerHTML = savedOutput[21].itemNameK2;
 shelfQuantity_K2.innerHTML = 'x' + savedOutput[21].quantityK2;
 DIVexpK2.innerHTML = savedOutput[21].EXPinputDateK2;
+expiredDate[21].K2 = savedOutput[21].EXPinputDateK2;
 
 // For L1
 itemNameHTMLL1.innerHTML = savedOutput[22].itemNameL1;
 shelfQuantity_L1.innerHTML = 'x' + savedOutput[22].quantityL1;
 DIVexpL1.innerHTML = savedOutput[22].EXPinputDateL1;
+expiredDate[22].L1 = savedOutput[22].EXPinputDateL1;
 
 // For L2
 itemNameHTMLL2.innerHTML = savedOutput[23].itemNameL2;
 shelfQuantity_L2.innerHTML = 'x' + savedOutput[23].quantityL2;
 DIVexpL2.innerHTML = savedOutput[23].EXPinputDateL2;
+expiredDate[23].L2 = savedOutput[23].EXPinputDateL2;
 
 //! comparison exp date test here
-  console.log(currentDate);
-  console.log(expiredDate);
-allDIV.forEach(div => {
-  if(currentDate === expiredDate){
-    div.classList.add("currentDate-test");
-    console.log('runs 1');
-  } 
-  else{
-    div.classList.add("currentDate-Expired");
-    console.log('runs 2');
-  }
+// console.log(`currentDate ${currentDate}`);
+console.log(`expiredDate ${expiredDate[0].A1}`);
+// console.log(`expiredDate ${expiredDate[1].A2}`);
+// console.log(`expiredDate ${expiredDate[2].B1}`);
+
+
+  allDIV.forEach(div => { //TODO EXPERIMENT THIS
+    if(expiredDate >= currentDate){
+      div.classList.add("currentDate-test"); //! BLUE
+      console.log('runs NOT EXPIRED');
+    } 
+    else{
+      div.classList.add("currentDate-Expired"); //! RED
+      console.log('runs EXPIRED');
+    }
+
 })
 
 
