@@ -308,13 +308,11 @@ expiredDateValue[23] = savedOutput[23].EXPinputDateL2;
 
       if (expDate <= currentDate){
         div.classList.add("currentDate-Expired"); //! RED //
-
         console.log('runs EXPIRED');
-      }  
-      else {
+      }
+      else if (expDate >= currentDate){
         div.classList.add("currentDate-NotExpired");  //! BLUE //
         console.log('runs NOT EXPIRED');
-
       }
     
 })
