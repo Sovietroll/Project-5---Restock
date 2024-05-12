@@ -8,9 +8,8 @@ let day = String(date.getDate()).padStart(2,"0");
 
 let currentDate = `${year}-${month}-${day}`; //! for compare dates
 
-let frontPageCurrentDate = `${day}-${month}-${year}`;
-let dateNow = document.querySelector('.currentDate');
-dateNow.innerHTML = `Today is ${frontPageCurrentDate}`;
+dateNow = document.querySelector('.currentDate');
+dateNow.innerHTML = `Today is ${currentDate}`;
 
 
 //TODO PUT DATE AS INPUT
@@ -53,6 +52,28 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     new Date(), //[0]
     new Date(), //[1]
     new Date(), //[2]
+    new Date(), //[3]
+    new Date(), //[4]
+    new Date(), //[5]
+    new Date(), //[6]
+    new Date(), //[7]
+    new Date(), //[8]
+    new Date(), //[9]
+    new Date(), //[10]
+    new Date(), //[11]
+    new Date(), //[12]
+    new Date(), //[13]
+    new Date(), //[14]
+    new Date(), //[15]
+    new Date(), //[16]
+    new Date(), //[17]
+    new Date(), //[18]
+    new Date(), //[19]
+    new Date(), //[20]
+    new Date(), //[21]
+    new Date(), //[22]
+    new Date(), //[23]
+    new Date(), //[24]
   ]
   const DIVexpA1 = document.querySelector('.js-expDIVDateA1');
   const DIVexpA2 = document.querySelector('.js-expDIVDateA2');
@@ -141,144 +162,141 @@ shelfQuantity_A1.innerHTML = 'x' + savedOutput[0].quantityA1;
 DIVexpA1.innerHTML = savedOutput[0].EXPinputDateA1;
 expiredDateValue[0] = savedOutput[0].EXPinputDateA1;
 
-
-
 itemNameHTMLA2.innerHTML = savedOutput[1].itemNameA2;
 shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
 DIVexpA2.innerHTML = savedOutput[1].EXPinputDateA2;
-expiredDateValue[1] = savedOutput[0].EXPinputDateA2;
-
+expiredDateValue[1] = savedOutput[1].EXPinputDateA2;
 
 itemNameHTMLB1.innerHTML = savedOutput[2].itemNameB1;
 shelfQuantity_B1.innerHTML = 'x' + savedOutput[2].quantityB1;
 DIVexpB1.innerHTML = savedOutput[2].EXPinputDateB1;
-// expiredDate[2].B1 = savedOutput[2].EXPinputDateB1;
+expiredDateValue[2] = savedOutput[2].EXPinputDateB1;
 
 // For B2
 itemNameHTMLB2.innerHTML = savedOutput[3].itemNameB2;
 shelfQuantity_B2.innerHTML = 'x' + savedOutput[3].quantityB2;
 DIVexpB2.innerHTML = savedOutput[3].EXPinputDateB2;
-// expiredDate[3].B2 = savedOutput[3].EXPinputDateB2;
+expiredDateValue[3] = savedOutput[3].EXPinputDateB2;
 
 // For C1
 itemNameHTMLC1.innerHTML = savedOutput[4].itemNameC1;
 shelfQuantity_C1.innerHTML = 'x' + savedOutput[4].quantityC1;
 DIVexpC1.innerHTML = savedOutput[4].EXPinputDateC1;
-// expiredDate[4].C1 = savedOutput[4].EXPinputDateC1;
+expiredDateValue[4] = savedOutput[4].EXPinputDateC1;
 
 // For C2
 itemNameHTMLC2.innerHTML = savedOutput[5].itemNameC2;
 shelfQuantity_C2.innerHTML = 'x' + savedOutput[5].quantityC2;
 DIVexpC2.innerHTML = savedOutput[5].EXPinputDateC2;
-// expiredDate[5].C2 = savedOutput[5].EXPinputDateC2;
+expiredDateValue[5] = savedOutput[5].EXPinputDateC2;
 
 // For D1
 itemNameHTMLD1.innerHTML = savedOutput[6].itemNameD1;
 shelfQuantity_D1.innerHTML = 'x' + savedOutput[6].quantityD1;
 DIVexpD1.innerHTML = savedOutput[6].EXPinputDateD1;
-// expiredDate[6].D1 = savedOutput[6].EXPinputDateD1;
+expiredDateValue[6] = savedOutput[6].EXPinputDateD1;
 
 // For D2
 itemNameHTMLD2.innerHTML = savedOutput[7].itemNameD2;
 shelfQuantity_D2.innerHTML = 'x' + savedOutput[7].quantityD2;
 DIVexpD2.innerHTML = savedOutput[7].EXPinputDateD2;
-// expiredDate[7].D2 = savedOutput[7].EXPinputDateD2;
+expiredDateValue[7] = savedOutput[7].EXPinputDateD2;
 
 // For E1
 itemNameHTMLE1.innerHTML = savedOutput[8].itemNameE1;
 shelfQuantity_E1.innerHTML = 'x' + savedOutput[8].quantityE1;
 DIVexpE1.innerHTML = savedOutput[8].EXPinputDateE1;
-// expiredDate[8].E1 = savedOutput[8].EXPinputDateE1;
+expiredDateValue[8] = savedOutput[8].EXPinputDateE1; 
 
 // For E2
 itemNameHTMLE2.innerHTML = savedOutput[9].itemNameE2;
 shelfQuantity_E2.innerHTML = 'x' + savedOutput[9].quantityE2;
 DIVexpE2.innerHTML = savedOutput[9].EXPinputDateE2;
-// expiredDate[9].E2 = savedOutput[9].EXPinputDateE2;
+expiredDateValue[9] = savedOutput[9].EXPinputDateE2;
 
 // For F1
 itemNameHTMLF1.innerHTML = savedOutput[10].itemNameF1;
 shelfQuantity_F1.innerHTML = 'x' + savedOutput[10].quantityF1;
 DIVexpF1.innerHTML = savedOutput[10].EXPinputDateF1;
-// expiredDate[10].F1 = savedOutput[10].EXPinputDateF1;
+expiredDateValue[10] = savedOutput[10].EXPinputDateF1;
 
 // For F2
 itemNameHTMLF2.innerHTML = savedOutput[11].itemNameF2;
 shelfQuantity_F2.innerHTML = 'x' + savedOutput[11].quantityF2;
 DIVexpF2.innerHTML = savedOutput[11].EXPinputDateF2;
-// expiredDate[11].F2 = savedOutput[11].EXPinputDateF2;
+expiredDateValue[11] = savedOutput[11].EXPinputDateF2;
 
 // For G1
 itemNameHTMLG1.innerHTML = savedOutput[12].itemNameG1;
 shelfQuantity_G1.innerHTML = 'x' + savedOutput[12].quantityG1;
 DIVexpG1.innerHTML = savedOutput[12].EXPinputDateG1;
-// expiredDate[12].G1 = savedOutput[12].EXPinputDateG1;
+expiredDateValue[12] = savedOutput[12].EXPinputDateG1;
 
 // For G2
 itemNameHTMLG2.innerHTML = savedOutput[13].itemNameG2;
 shelfQuantity_G2.innerHTML = 'x' + savedOutput[13].quantityG2;
 DIVexpG2.innerHTML = savedOutput[13].EXPinputDateG2;
-// expiredDate[13].G2 = savedOutput[13].EXPinputDateG2;
+expiredDateValue[13] = savedOutput[13].EXPinputDateG2;
 
 // For H1
 itemNameHTMLH1.innerHTML = savedOutput[14].itemNameH1;
 shelfQuantity_H1.innerHTML = 'x' + savedOutput[14].quantityH1;
 DIVexpH1.innerHTML = savedOutput[14].EXPinputDateH1;
-// expiredDate[14].H1 = savedOutput[14].EXPinputDateH1;
+expiredDateValue[14] = savedOutput[14].EXPinputDateH1;
 
 // For H2
 itemNameHTMLH2.innerHTML = savedOutput[15].itemNameH2;
 shelfQuantity_H2.innerHTML = 'x' + savedOutput[15].quantityH2;
 DIVexpH2.innerHTML = savedOutput[15].EXPinputDateH2;
-// expiredDate[15].H2 = savedOutput[15].EXPinputDateH2;
+expiredDateValue[15] = savedOutput[15].EXPinputDateH2;
 
 // For I1
 itemNameHTMLI1.innerHTML = savedOutput[16].itemNameI1;
 shelfQuantity_I1.innerHTML = 'x' + savedOutput[16].quantityI1;
 DIVexpI1.innerHTML = savedOutput[16].EXPinputDateI1;
-// expiredDate[16].I1 = savedOutput[16].EXPinputDateI1;
+expiredDateValue[16] = savedOutput[16].EXPinputDateI1;
 
 // For I2
 itemNameHTMLI2.innerHTML = savedOutput[17].itemNameI2;
 shelfQuantity_I2.innerHTML = 'x' + savedOutput[17].quantityI2;
 DIVexpI2.innerHTML = savedOutput[17].EXPinputDateI2;
-// expiredDate[17].I2 = savedOutput[17].EXPinputDateI2;
+expiredDateValue[17] = savedOutput[17].EXPinputDateI2;
 
 // For J1
 itemNameHTMLJ1.innerHTML = savedOutput[18].itemNameJ1;
 shelfQuantity_J1.innerHTML = 'x' + savedOutput[18].quantityJ1;
 DIVexpJ1.innerHTML = savedOutput[18].EXPinputDateJ1;
-// expiredDate[18].J1 = savedOutput[18].EXPinputDateJ1;
+expiredDateValue[18] = savedOutput[18].EXPinputDateJ1;
 
 // For J2
 itemNameHTMLJ2.innerHTML = savedOutput[19].itemNameJ2;
 shelfQuantity_J2.innerHTML = 'x' + savedOutput[19].quantityJ2;
 DIVexpJ2.innerHTML = savedOutput[19].EXPinputDateJ2;
-// expiredDate[19].J2 = savedOutput[19].EXPinputDateJ2;
+expiredDateValue[19] = savedOutput[19].EXPinputDateJ2;
 
 // For K1
 itemNameHTMLK1.innerHTML = savedOutput[20].itemNameK1;
 shelfQuantity_K1.innerHTML = 'x' + savedOutput[20].quantityK1;
 DIVexpK1.innerHTML = savedOutput[20].EXPinputDateK1;
-// expiredDate[20].K1 = savedOutput[20].EXPinputDateK1;
+expiredDateValue[20] = savedOutput[20].EXPinputDateK1;
 
 // For K2
 itemNameHTMLK2.innerHTML = savedOutput[21].itemNameK2;
 shelfQuantity_K2.innerHTML = 'x' + savedOutput[21].quantityK2;
 DIVexpK2.innerHTML = savedOutput[21].EXPinputDateK2;
-// expiredDate[21].K2 = savedOutput[21].EXPinputDateK2;
+expiredDateValue[21] = savedOutput[21].EXPinputDateK2;
 
 // For L1
 itemNameHTMLL1.innerHTML = savedOutput[22].itemNameL1;
 shelfQuantity_L1.innerHTML = 'x' + savedOutput[22].quantityL1;
 DIVexpL1.innerHTML = savedOutput[22].EXPinputDateL1;
-// expiredDate[22].L1 = savedOutput[22].EXPinputDateL1;
+expiredDateValue[22] = savedOutput[22].EXPinputDateL1;
 
 // For L2
 itemNameHTMLL2.innerHTML = savedOutput[23].itemNameL2;
 shelfQuantity_L2.innerHTML = 'x' + savedOutput[23].quantityL2;
 DIVexpL2.innerHTML = savedOutput[23].EXPinputDateL2;
-// expiredDate[23].L2 = savedOutput[23].EXPinputDateL2;
+expiredDateValue[23] = savedOutput[23].EXPinputDateL2;
 
 //! DATE
 //! COMPARISON CURRENT DATE vs ITEM DATE
@@ -1094,6 +1112,7 @@ EXPinputDateB1.addEventListener('keydown', (event)=> {
       EXPinputDateB1, 
       DIVexpB1,
       [2],
+      'expiredDate[2]',
       'EXPinputDateB1'
     );
   }
@@ -1105,6 +1124,7 @@ EXPinputDateB2.addEventListener('keydown', (event)=> {
       EXPinputDateB2, 
       DIVexpB2,
       [3],
+      'expiredDate[3]',
       'EXPinputDateB2'
     );
   }
@@ -1117,6 +1137,7 @@ EXPinputDateC1.addEventListener('keydown', (event) => {
       EXPinputDateC1,
       DIVexpC1,
       [4],
+      'expiredDate[4]',
       'EXPinputDateC1'
     );
   }
@@ -1129,6 +1150,7 @@ EXPinputDateC2.addEventListener('keydown', (event) => {
       EXPinputDateC2,
       DIVexpC2,
       [5],
+      'expiredDate[5]',
       'EXPinputDateC2'
     );
   }
@@ -1141,6 +1163,7 @@ EXPinputDateD1.addEventListener('keydown', (event) => {
       EXPinputDateD1,
       DIVexpD1,
       [6],
+      'expiredDate[6]',
       'EXPinputDateD1'
     );
   }
@@ -1152,6 +1175,7 @@ EXPinputDateD2.addEventListener('keydown', (event) => {
       EXPinputDateD2,
       DIVexpD2,
       [7],
+      'expiredDate[7]',
       'EXPinputDateD2'
     );
   }
@@ -1163,6 +1187,7 @@ EXPinputDateE1.addEventListener('keydown', (event) => {
       EXPinputDateE1,
       DIVexpE1,
       [8],
+      'expiredDate[8]',
       'EXPinputDateE1'
     );
   }
@@ -1174,6 +1199,7 @@ EXPinputDateE2.addEventListener('keydown', (event) => {
       EXPinputDateE2,
       DIVexpE2,
       [9],
+      'expiredDate[9]',
       'EXPinputDateE2'
     );
   }
@@ -1185,6 +1211,7 @@ EXPinputDateF1.addEventListener('keydown', (event) => {
       EXPinputDateF1,
       DIVexpF1,
       [10],
+      'expiredDate[10]',
       'EXPinputDateF1'
     );
   }
@@ -1196,6 +1223,7 @@ EXPinputDateF2.addEventListener('keydown', (event) => {
       EXPinputDateF2,
       DIVexpF2,
       [11],
+      'expiredDate[11]',
       'EXPinputDateF2'
     );
   }
@@ -1207,6 +1235,7 @@ EXPinputDateG1.addEventListener('keydown', (event) => {
       EXPinputDateG1,
       DIVexpG1,
       [12],
+      'expiredDate[12]',
       'EXPinputDateG1'
     );
   }
@@ -1218,6 +1247,7 @@ EXPinputDateG2.addEventListener('keydown', (event) => {
       EXPinputDateG2,
       DIVexpG2,
       [13],
+      'expiredDate[13]',
       'EXPinputDateG2'
     );
   }
@@ -1229,6 +1259,7 @@ EXPinputDateH1.addEventListener('keydown', (event) => {
       EXPinputDateH1,
       DIVexpH1,
       [14],
+      'expiredDate[14]',
       'EXPinputDateH1'
     );
   }
@@ -1240,6 +1271,7 @@ EXPinputDateH2.addEventListener('keydown', (event) => {
       EXPinputDateH2,
       DIVexpH2,
       [15],
+      'expiredDate[15]',
       'EXPinputDateH2'
     );
   }
@@ -1251,6 +1283,7 @@ EXPinputDateI1.addEventListener('keydown', (event) => {
       EXPinputDateI1,
       DIVexpI1,
       [16],
+      'expiredDate[16]',
       'EXPinputDateI1'
     );
   }
@@ -1262,6 +1295,7 @@ EXPinputDateI2.addEventListener('keydown', (event) => {
       EXPinputDateI2,
       DIVexpI2,
       [17],
+      'expiredDate[17]',
       'EXPinputDateI2'
     );
   }
@@ -1273,6 +1307,7 @@ EXPinputDateJ1.addEventListener('keydown', (event) => {
       EXPinputDateJ1,
       DIVexpJ1,
       [18],
+      'expiredDate[18]',
       'EXPinputDateJ1'
     );
   }
@@ -1284,6 +1319,7 @@ EXPinputDateJ2.addEventListener('keydown', (event) => {
       EXPinputDateJ2,
       DIVexpJ2,
       [19],
+      'expiredDate[19]',
       'EXPinputDateJ2'
     );
   }
@@ -1295,6 +1331,7 @@ EXPinputDateK1.addEventListener('keydown', (event) => {
       EXPinputDateK1,
       DIVexpK1,
       [20],
+      'expiredDate[20]',
       'EXPinputDateK1'
     );
   }
@@ -1306,6 +1343,7 @@ EXPinputDateK2.addEventListener('keydown', (event) => {
       EXPinputDateK2,
       DIVexpK2,
       [21],
+      'expiredDate[21]',
       'EXPinputDateK2'
     );
   }
@@ -1317,6 +1355,7 @@ EXPinputDateL1.addEventListener('keydown', (event) => {
       EXPinputDateL1,
       DIVexpL1,
       [22],
+      'expiredDate[22]',
       'EXPinputDateL1'
     );
   }
@@ -1329,6 +1368,7 @@ EXPinputDateL2.addEventListener('keydown', (event) => {
       EXPinputDateL2,
       DIVexpL2,
       [23],
+      'expiredDate[23]',
       'EXPinputDateL2'
     );
   }

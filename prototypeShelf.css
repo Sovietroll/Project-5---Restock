@@ -13,10 +13,11 @@
         font-weight: 700;
       }
       .currentDate-Expired{
-        color: red;
+        color: rgb(255, 58, 58);
+        /* background-color: rgb(253, 101, 101, 0.5); */
       }
       .currentDate-NotExpired{
-        color: blue;
+        color: rgb(75, 75, 243);
       }
       .list {
         background-color: rgb(245, 245, 245);
@@ -192,16 +193,16 @@
       .css-expDIVDate{ /*place where exp date placed*/
         position: absolute;
         top: 40px;
+        height: 15.5px;
         left: 0%;
         right: 0%;
         text-align: center;
-        font-size: 10px;
-        font-weight: 700;
+        font-size: 9.5px;
         border-radius: 2px;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(240, 2, 2, 0.24) 0px 1px 2px;
         z-index: 1;
-        backdrop-filter: blur(2px);
-        background-color: rgb(255, 255, 255,0.1);
+        backdrop-filter: blur(1px);
+        /* background-color: rgb(255, 255, 255,0.1); */
         transition: .2s ease;
       }
       .expInput{ /*! BLANK INPUT  */
@@ -212,7 +213,7 @@
         left: 1.5%;
         right: 0%;
         width: 80%;
-        height: 7%;
+        height: 10%;
         margin-top:1.5%;
         outline: none;
         border-style: none;
