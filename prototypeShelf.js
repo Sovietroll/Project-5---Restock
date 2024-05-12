@@ -1,13 +1,16 @@
 //DATE HERE//
 const date = new Date();
-let year = date.getFullYear();
+date.toLocaleDateString('en-GB');
 
+let year = date.getFullYear();
 let month = String(date.getMonth()+1).padStart(2,"0");
 let day = String(date.getDate()).padStart(2,"0");
-let currentDate = `${day}/${month}/${year}`;
 
+let currentDate = `${year}-${month}-${day}`; //! for compare dates
+
+let frontPageCurrentDate = `${day}-${month}-${year}`;
 let dateNow = document.querySelector('.currentDate');
-dateNow.innerHTML = `Today is ${currentDate}`;
+dateNow.innerHTML = `Today is ${frontPageCurrentDate}`;
 
 
 //TODO PUT DATE AS INPUT
@@ -46,6 +49,11 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     {itemNameL2:'', quantityL2: '', EXPinputDateL2: ''}, //23
   ];
 
+  let expiredDateValue = [
+    new Date(), //[0]
+    new Date(), //[1]
+    new Date(), //[2]
+  ]
   const DIVexpA1 = document.querySelector('.js-expDIVDateA1');
   const DIVexpA2 = document.querySelector('.js-expDIVDateA2');
   const DIVexpB1 = document.querySelector('.js-expDIVDateB1');
@@ -124,24 +132,22 @@ const savedOutput = JSON.parse(localStorage.getItem('itemName')) || [
     DIVexpK1, DIVexpK2,
     DIVexpL1, DIVexpL2  
   ];
-  let expiredDate = [
-    new Date(), // DateA1
-    new Date(), // DateA2
-    new Date(), // DateB1
-    new Date(), // DateB2
-  ];
+
 //! window.addEventListener  
 window.addEventListener('DOMContentLoaded',  () => {
 
 itemNameHTMLA1.innerHTML = savedOutput[0].itemNameA1;
 shelfQuantity_A1.innerHTML = 'x' + savedOutput[0].quantityA1;
 DIVexpA1.innerHTML = savedOutput[0].EXPinputDateA1;
-expiredDate[0].A1 = savedOutput[0].EXPinputDateA1;
+expiredDateValue[0] = savedOutput[0].EXPinputDateA1;
+
+
 
 itemNameHTMLA2.innerHTML = savedOutput[1].itemNameA2;
 shelfQuantity_A2.innerHTML = 'x' + savedOutput[1].quantityA2;
 DIVexpA2.innerHTML = savedOutput[1].EXPinputDateA2;
-// expiredDate[1].A2 = savedOutput[1].EXPinputDateA2;
+expiredDateValue[1] = savedOutput[0].EXPinputDateA2;
+
 
 itemNameHTMLB1.innerHTML = savedOutput[2].itemNameB1;
 shelfQuantity_B1.innerHTML = 'x' + savedOutput[2].quantityB1;
@@ -274,23 +280,28 @@ shelfQuantity_L2.innerHTML = 'x' + savedOutput[23].quantityL2;
 DIVexpL2.innerHTML = savedOutput[23].EXPinputDateL2;
 // expiredDate[23].L2 = savedOutput[23].EXPinputDateL2;
 
-//! comparison exp date test here
-console.log(date);
-console.log(expiredDate[0]);
+//! DATE
+//! COMPARISON CURRENT DATE vs ITEM DATE
+//* IF NEED TO LOOP TWICE IN ONE WAY, USE 'FOREACH' AND 'INDEX'
+//TODO NOTED* NOTEBOOK
 
+  allDIV.forEach((div, index) => { 
+   const expDate = expiredDateValue[index];
 
-  allDIV.forEach(div => { //TODO EXPERIMENT THIS
-    if (expiredDate <= date){
-      div.classList.add("currentDate-test");  //! BLUE //
-      console.log('runs NOT EXPIRED');
-    }  
-    else {
-      div.classList.add("currentDate-Expired"); //! RED //
-      console.log('runs EXPIRED');
-    }
+      if (expDate <= currentDate){
+        div.classList.add("currentDate-Expired"); //! RED //
+
+        console.log('runs EXPIRED');
+      }  
+      else {
+        div.classList.add("currentDate-NotExpired");  //! BLUE //
+        console.log('runs NOT EXPIRED');
+
+      }
+    
 })
 
-
+//! Loop checking which has font.innerHTML, which is not 
   allDIV.forEach((div, index) => {
     const exp = allEXP[index]; //* Corresponding element in allEXP
     if (div.textContent.trim()) {
@@ -1048,7 +1059,9 @@ shelfQuantity_L2.innerHTML = '0';
   
 //EXP Input//
 
-let test = '';
+//TODO iPhone date input - use addEventListener when user pick date in iPhone
+
+let  expiredDate;
 
 EXPinputDateA1.addEventListener('keydown', (event) => {
   if(event.key === 'Enter'){
@@ -1057,11 +1070,11 @@ EXPinputDateA1.addEventListener('keydown', (event) => {
       EXPinputDateA1, 
       DIVexpA1,
       [0],
+      'expiredDate[0]',
       'EXPinputDateA1',
     )}
   });
-//! SETTLE THE EXP DATE !/// 
-//! FIND THE VALUE OF EXP DATE !///
+
 EXPinputDateA2.addEventListener('keydown', (event)=> {
   if(event.key === 'Enter'){
     typingEXPinput(
@@ -1069,6 +1082,7 @@ EXPinputDateA2.addEventListener('keydown', (event)=> {
       EXPinputDateA2,
       DIVexpA2,
       [1],
+      'expiredDate[1]',
       'EXPinputDateA2'
     );
   }
@@ -1319,25 +1333,21 @@ EXPinputDateL2.addEventListener('keydown', (event) => {
     );
   }
 });
-
 let expInputStatus;
+let dateValue;
 //! FUNCTION PARAM typingEXPinput()
 //* enter the input / not clicking input 
-  function typingEXPinput (expValue, expID, div, index, expKey) {
+  function typingEXPinput (expValue, expID, div, index, indexExp, expKey) {
     
     let text = expValue;
     div.innerHTML = text;
     expID.classList.add("expInput-Empty");
     savedOutput[index][expKey] = expValue;
-    //TODO /////////////////////////-->
-    let dateValue = new Date(expValue);
-    expiredDate[index] = dateValue;
-    test = dateValue;
-    //TODO convert the value to date-->
+    indexExp = expValue;
     savedHTML();
     expInputStatus = false;
     currentTyping = false;
-console.log(test);
+
 
   }
 

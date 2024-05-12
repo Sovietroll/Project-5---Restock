@@ -20,13 +20,19 @@
   </head>
   <body>
 
-    <h3>SHELF STOCK CHECKING ver2.2 (mobile only)</h3>
-      <h4>updated 9/5/24
+    <h3>SHELF STOCK CHECKING ver2.3 (mobile only)</h3>
+      <h4>updated 12/5/24
         DEADLINE: 15/5/24
       </h4>
       <h4 class="currentDate"></h4>
-      <!*--CURRENT DATE  -->
-
+        <input type="date"
+               name="" 
+               id=""
+               placeholder="EXP"
+               style="
+               font-size: 10px;
+               background-color: rgb(255, 255, 255);
+               ">
     <div class="list">
       <div class="list-title">
         List Item
@@ -34,7 +40,7 @@
       <div class="list-content">
         <li class="line-main">
           <div class="output"></div>
-          <div class="output2"></div>
+          <!-- <div class="output2"></div> -->
         </li>
       </div>
     </div>
@@ -69,8 +75,13 @@
     </div>
 
     <div class="css-expDIVDate js-expDIVDateA1"></div>
-      <input type="date" class="expInputA1 expInput" placeholder="EXP">
+      <input  type="date"
+              class="expInputA1 expInput"
+              placeholder="EXP"
+              min="1997-01-01" 
+              max="2030-12-31">
     <!-- !expInput -->
+    <!-- test date -->
     <div class="pic-A1" style="position: relative">
      
       <div> <!--JS-ENTERPANELNUMEBR-->
